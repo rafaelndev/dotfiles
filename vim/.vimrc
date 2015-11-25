@@ -327,7 +327,7 @@ let g:solarized_termcolors=256
 
 " Visual Select Color
 hi Visual gui=NONE guibg=White guifg=Black
-hi Visual gui=NONE ctermbg=White ctermfg=Black
+hi Visual cterm=NONE ctermbg=White ctermfg=Black
 
 " Cor de palavras erradas
 hi SpellBad cterm=underline ctermfg=red
