@@ -1,0 +1,19 @@
+#!/bin/bash
+
+function git_modificacoes_qtd {
+  expr `sudo etckeeper vcs status --porcelain 2>/dev/null| wc -l`
+}
+
+HAS_CHANGES=$(sudo etckeeper vcs status --porcelain)
+
+if [[ $HAS_CHANGES ]]; then
+  # CHANGES_QTD=$(echo $HAS_CHANGES | wc -l)
+  CHANGES_QTD=$(git_modificacoes_qtd)
+  echo "/etc ($CHANGES_QTD)"
+  echo "/etc ($CHANGES_QTD)"
+  echo "#FF6600"
+fi
+
+if [ "$BLOCK_BUTTON" = '1' ]; then
+    xterm -e "sudo etckeeper vcs status;$SHELL" &
+fi

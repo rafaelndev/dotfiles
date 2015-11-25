@@ -1,0 +1,9 @@
+#!/bin/bash
+
+BRIGHTNESS="$(xbacklight | awk '{printf "%.f%", $1 }')"
+
+# Full Text
+echo $BRIGHTNESS
+# Short Text
+echo $BRIGHTNESS
+

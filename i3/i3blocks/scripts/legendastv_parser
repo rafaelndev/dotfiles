@@ -1,0 +1,71 @@
+#!/usr/bin/env python
+from pyquery import PyQuery
+import os
+from os.path import expanduser
+import subprocess
+from subprocess import Popen
+import requests
+import urllib
+
+URL = "http://legendas.tv/legenda/carrega_destaques"
+
+d = PyQuery(URL)
+pag = d("div.galery")
+clearfix = pag.find("div.clearfix")
+
+
+SERIES = ['The Flash', 'Arrow', 'Gotham', 'Agents of S.H.I.E.L.D',
+          'Supernatural']
+HOME = expanduser("~") + '/'
+
+def check_serie_ignorada(serie):
+    with open(HOME + 'episodios_ignorados.txt', 'r+') as f:
+        lines = f.read().splitlines()
+
+    for line in lines:
+        if serie == line:
+            return True
+
+    return False
+
+def format_episodio(episodio):
+    episodio = episodio.replace('HDTV', '')
+    episodio = episodio.replace('720p', '')
+    episodio = episodio.replace('1080p', '')
+    episodio = episodio.replace('|', '')
+    episodio = ' '.join(episodio.split())
+
+    return(episodio)
+
+url = ''
+episodio_escolhido = ''
+
+for film in pag("div.film").items():
+    episodio = film.find("h3").text()
+    for serie in SERIES:
+
+        if not check_serie_ignorada(episodio):
+            if episodio.find(serie) != -1:
+                download_link = film.find("span.bt_seta_download > a.texto")
+                episodio_escolhido = episodio
+
+                url = "http://legendas.tv" + download_link.attr['href']
+
+if 'BLOCK_BUTTON' in os.environ:
+    block_button = os.environ.get('BLOCK_BUTTON')
+
+    if block_button == '1':
+        Popen("firefox '" + url + "' &", shell=True)
+        with open(HOME + 'episodios_ignorados.txt', 'a') as arquivo:
+            arquivo.write(episodio_escolhido + '\n')
+
+        print("")
+        print("")
+
+print(format_episodio(episodio_escolhido))
+print(format_episodio(episodio_escolhido))
+print("#00FF00")
+
+# if episodio_escolhido:
+    # os.system("notify-send -i video-display 'Nova legenda !' '" +
+    #       episodio_escolhido + "'")

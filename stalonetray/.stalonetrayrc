@@ -1,0 +1,12 @@
+background "#292f34" 
+icon_size 32 
+dockapp_mode simple 
+grow_gravity SE 
+sticky true 
+window_layer top 
+geometry 1x1-380-1
+tint_color grey
+tint_level 255
+fuzzy_edges 0
+decorations none
+kludges use_icons_hints

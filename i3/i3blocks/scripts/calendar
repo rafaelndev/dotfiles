@@ -1,0 +1,12 @@
+DATE="$(date '+%H:%M - %a, %d de %b %Y')"
+
+if [ $BLOCK_BUTTON = 1 ]; then
+  if ! pgrep "gsimplecal" > /dev/null
+  then
+    gsimplecal &
+  fi
+fi
+
+echo $DATE
+echo $DATE
+

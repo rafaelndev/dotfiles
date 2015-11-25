@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/home/rafael/Documentos/Monografia Latex - Ensino com Vídeo Interativo'
+let g:netrw_dirhist_2='/home/rafael/.nvim'
+let g:netrw_dirhist_3='/home/rafael/.vim/plugged/vimtex'
+let g:netrw_dirhist_4='/home/rafael/.vim/plugged/vimtex/after'
+let g:netrw_dirhist_5='/home/rafael/.vim/plugged/vimtex/after/syntax'
+let g:netrw_dirhist_6='/etc/smbnetfs'
+let g:netrw_dirhist_7='/home/rafael/Documentos/Monografia - Correções'

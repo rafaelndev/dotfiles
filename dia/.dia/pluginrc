@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugins>
+  <plugin filename="&lt;builtin&gt;"><name>Internal</name><description>Objetos e filtros internos do Dia</description></plugin>
+  <plugin filename="/usr/lib/dia/libstandard_objects.so"><name>Standard</name><description>Objetos padrão</description></plugin>
+  <plugin filename="/usr/lib/dia/libaadl_objects.so"><name>AADL</name><description>Objetos do diagrama de Linguagem de projeto e análise de arquitetura</description></plugin>
+  <plugin filename="/usr/lib/dia/libxslt_filter.so"><name>XSLT</name><description>Filtro de transformação XSL</description></plugin>
+  <plugin filename="/usr/lib/dia/libnetwork_objects.so"><name>Network</name><description>Objetos de diagrama de rede</description></plugin>
+  <plugin filename="/usr/lib/dia/libsadt_objects.so"><name>SADT</name><description>Objetos de diagrama SADT</description></plugin>
+  <plugin filename="/usr/lib/dia/libdb_objects.so"><name>ERT</name><description>Objetos do diagrama de Tabelas de entidade/relacionamento</description></plugin>
+  <plugin filename="/usr/lib/dia/libcairo_filter.so"><name>Cairo</name><description>Renderização baseada na Cairo</description></plugin>
+  <plugin filename="/usr/lib/dia/libvdx_filter.so"><name>VDX</name><description>Filtro de importação e exportação do formato XML do Visio</description></plugin>
+  <plugin filename="/usr/lib/dia/libistar_objects.so"><name>Istar</name><description>Diagrama Istar</description></plugin>
+  <plugin filename="/usr/lib/dia/libxfig_filter.so"><name>FIG</name><description>Filtro de importação e exportação para o formato Fig</description></plugin>
+  <plugin filename="/usr/lib/dia/libpython_plugin.so"><name>Python</name><description>Suporte aos scripts Python</description></plugin>
+  <plugin filename="/usr/lib/dia/libkaos_objects.so"><name>KAOS</name><description>Diagrama KAOS</description></plugin>
+  <plugin filename="/usr/lib/dia/libgrafcet_objects.so"><name>GRAFCET</name><description>Objetos de diagrama GRAFCET</description></plugin>
+  <plugin filename="/usr/lib/dia/libflowchart_objects.so"><name>Flowchart</name><description>Objetos de fluxograma</description></plugin>
+  <plugin filename="/usr/lib/dia/libhpgl_filter.so"><name>HPGL</name><description>Filtro de exportação para Linguagem Gráfica HP</description></plugin>
+  <plugin filename="/usr/lib/dia/libpostscript_filter.so"><name>Postscript</name><description>Renderização do Postscript</description></plugin>
+  <plugin filename="/usr/lib/dia/libmetapost_filter.so"><name>Metapost</name><description>Filtro de exportação para TeX Metapost</description></plugin>
+  <plugin filename="/usr/lib/dia/libpixbuf_filter.so"><name>Pixbuf</name><description>gdk-pixbuf based bitmap export/import</description></plugin>
+  <plugin filename="/usr/lib/dia/libchronogram_objects.so"><name>Chronogram</name><description>Objetos do diagrama de cronograma</description></plugin>
+  <plugin filename="/usr/lib/dia/libjackson_objects.so"><name>Jackson</name><description>Diagrama de Jackson</description></plugin>
+  <plugin filename="/usr/lib/dia/libuml_objects.so"><name>UML</name><description>Objetos do diagrama da Linguagem de Modelagem Unificada UML 1.3</description></plugin>
+  <plugin filename="/usr/lib/dia/libcgm_filter.so"><name>CGM</name><description>Filtro de exportação para CGM</description></plugin>
+  <plugin filename="/usr/lib/dia/libpstricks_filter.so"><name>Pstricks</name><description>Filtro de exportação para TeX Pstricks</description></plugin>
+  <plugin filename="/usr/lib/dia/libfs_objects.so"><name>FS</name><description>Objetos do diagrama de Estrutura funcional</description></plugin>
+  <plugin filename="/usr/lib/dia/libdxf_filter.so"><name>DXF</name><description>Filtros de importação e exportação para o formato DXF</description></plugin>
+  <plugin filename="/usr/lib/dia/libwpg_filter.so"><name>WPG</name><description>Filtro de exportação para gráficos do WordPerfect</description></plugin>
+  <plugin filename="/usr/lib/dia/libart_filter.so"><name>Libart</name><description>Renderização baseada na Libart</description></plugin>
+  <plugin filename="/usr/lib/dia/libmisc_objects.so"><name>Misc</name><description>Objetos diversos</description></plugin>
+  <plugin filename="/usr/lib/dia/libcustom_objects.so"><name>Personalizar</name><description>Carregador de formas XML personalizadas</description></plugin>
+  <plugin filename="/usr/lib/dia/libshape_filter.so"><name>shape</name><description>dia shape export filter</description></plugin>
+  <plugin filename="/usr/lib/dia/libsvg_filter.so"><name>SVG</name><description>Filtros de importação e exportação para o formato Scalable Vector Graphics</description></plugin>
+  <plugin filename="/usr/lib/dia/liber_objects.so"><name>ER</name><description>Objetos do diagrama Entidade/Relacionamento</description></plugin>
+  <plugin filename="/usr/lib/dia/libcustom_lines_objects.so"><name>CustomLines</name><description>Carregador de linhas XML personalizadas</description></plugin>
+  <plugin filename="/usr/lib/dia/libpgf_filter.so"><name>PGF</name><description>Filtro de exportação para LaTeX PGF</description></plugin>
+</plugins>

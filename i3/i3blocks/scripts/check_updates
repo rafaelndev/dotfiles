@@ -1,0 +1,19 @@
+#!/bin/bash
+
+PACOTES_DESATUALIZADOS=$(kalu --manual-checks)
+
+NORMAL=$(echo $PACOTES_DESATUALIZADOS | grep "updates available" | awk '{ print $1}')
+AUR=$(echo $PACOTES_DESATUALIZADOS | grep "AUR: " | awk '{ print $2 }')
+
+UPDATES=""
+
+if [ "$(echo "$NORMAL > 0" | bc -l)" -eq 1 ]; then
+  UPDATES="CORE: $NORMAL"
+fi
+
+if [ "$(echo "$AUR > 0" | bc -l)" -eq 1 ]; then
+  UPDATES="$UPDATES | AUR: $AUR"
+fi
+
+echo $UPDATES
+echo $UPDATES

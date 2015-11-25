@@ -1,0 +1,25 @@
+#!/usr/bin/env python
+import sh
+import os
+# print(sh.awk(sh.seq('100000'), '{print $0 + 1;}'))
+memory_usage = sh.awk(sh.free(), '/Mem/{printf(\"%.2f\"), $3/$2*100;}')
+
+print(str(memory_usage) + "%")
+print(str(memory_usage) + "%")
+
+if float(memory_usage) >= 80:
+    print("#00FF00")
+elif float(memory_usage) < 80:
+    print("#FFF600")
+elif float(memory_usage) < 60:
+    print("#FFAE00")
+elif float(memory_usage) < 40:
+    print("#FF0000")
+
+if 'BLOCK_BUTTON' in os.environ:
+    block_button = os.environ.get('BLOCK_BUTTON')
+
+    if block_button == '1':
+        terminology = sh.Command("/usr/bin/terminology")
+        terminology("-e", "sudo ps_mem;$SHELL", _piped=True)
+        # sh.terminology("-e", "sudo ps_mem;$SHELL", _piped=True)

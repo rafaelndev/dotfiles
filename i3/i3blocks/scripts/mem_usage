@@ -1,0 +1,23 @@
+#!/bin/sh
+
+MEMORY_USAGE="$(free | awk '/Mem/{printf("%.2f"), $3/$2*100}')%"
+
+if [ "$BLOCK_BUTTON" = '1' ]; then
+    xterm -e "sudo ps_mem;$SHELL" &
+elif [ "$BLOCK_BUTTON" = '3' ]; then
+    MEMORY_USAGE=$(sudo ps_mem -p $(ps aux | awk '{print $2, $4, $11}' | sort -k2rn | head -n 1 | awk '{print $1}') | tail -4 | head -1 | awk '{print $9 " - " $7$8}')
+    notify-send -i utilities-system-monitor "Processo consumindo mais memória" "$MEMORY_USAGE"
+fi
+
+echo "$MEMORY_USAGE"
+echo "$MEMORY_USAGE"
+
+if [ "$(echo "$MEMORY_USAGE > 80" | bc -l)" -eq 1 ]; then
+    echo "#00FF00"
+elif [ "$(echo "$MEMORY_USAGE < 80" | bc -l)" -eq 1 ]; then
+    echo "#FFF600"
+elif [ "$(echo "$MEMORY_USAGE < 60" | bc -l)" -eq 1 ]; then
+    echo "#FFAE00"
+elif [ "$(echo "$MEMORY_USAGE < 40" | bc -l)" -eq 1 ]; then
+    echo "#FF0000"
+fi
