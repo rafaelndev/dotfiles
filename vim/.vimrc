@@ -308,6 +308,10 @@ map <Leader>T :%s/\s\+$//<CR>
 " Transformar tabs em espaços no documento
 map <Leader>R :retab<CR>
 
+" Corrigir erros de digitação
+nnoremap <C-s> [s1z=<c-o>
+inoremap <C-s> <c-g>u<Esc>[s1z=`]A<c-g>u
+
 " Voltar para posição anterior
 augroup resCur
     autocmd!
