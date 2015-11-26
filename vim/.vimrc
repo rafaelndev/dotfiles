@@ -43,12 +43,14 @@ Plug 'Valloric/YouCompleteMe', { 'on': [], 'do': './install.sh' }
 Plug 'zef/vim-cycle'
 Plug 'jez/vim-superman'
 Plug 'haya14busa/incsearch.vim'
-Plug 'junegunn/vim-peekaboo'
+" Plug 'junegunn/vim-peekaboo'
 Plug 'Shougo/vimproc.vim'
 Plug 'm2mdas/phpcomplete-extended'
 Plug 'm2mdas/phpcomplete-extended-laravel'
 Plug 'tobyS/vmustache'
 Plug 'tobyS/pdv'
+Plug 'chrisbra/csv.vim'
+Plug 'dhruvasagar/vim-table-mode'
 
 " Syntax
 Plug 'sheerun/vim-polyglot'
@@ -271,11 +273,6 @@ map <down>    :wincmd j<CR>
 map <right>   :wincmd l<CR>
 map <left>    :wincmd h<CR>
 
-" map <C-k>     :wincmd k<CR>
-" map <C-j>     :wincmd j<CR>
-" map <C-l>     :wincmd l<CR>
-" map <C-h>     :wincmd h<CR>
-"
 map <C-right> :bnext<CR>
 map <C-left>  :bprevious<CR>
 
@@ -785,12 +782,6 @@ augroup pencil
   autocmd Filetype html,xml     call pencil#init({'wrap': 'soft'})
                             \ | setl spell spelllang=pt,en_us et sw=2 ts=2
 augroup END
-
-" Auto reload i3wm
-" augroup reload_i3wm " {
-"     autocmd!
-"     autocmd BufWritePost ~/.i3/config !i3-msg restart
-" augroup END " }
 
 " ========================================================================
 "                              Configurações Extras
