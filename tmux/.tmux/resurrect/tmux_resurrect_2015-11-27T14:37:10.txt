@@ -1,0 +1,5 @@
+pane	1	1	:~	1	:*	0	:/home/rafael	1	zsh	:
+pane	2	1	:vim	1	:*	0	:/home/rafael	1	vim	:vim /home/rafael/.tmux.conf
+window	1	1	1	:*	ae5e,84x13,0,0,1
+window	2	1	1	:*	a861,84x21,0,0,4
+state	2	
