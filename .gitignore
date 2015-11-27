@@ -1,2 +1,3 @@
 vim/.vim/undo/*
-tmux/.tmux/resurect
+vim/.vim/plugged/*
+tmux/.tmux/resurect/*
