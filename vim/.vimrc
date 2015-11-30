@@ -51,6 +51,7 @@ Plug 'tobyS/vmustache'
 Plug 'tobyS/pdv'
 Plug 'chrisbra/csv.vim'
 Plug 'dhruvasagar/vim-table-mode'
+Plug 'ervandew/eclim'
 
 " Syntax
 Plug 'sheerun/vim-polyglot'
@@ -686,6 +687,8 @@ let g:phpcomplete_index_composer_command = '/usr/bin/composer'
 let g:pdv_template_dir = $HOME ."/.vim/plugged/pdv/templates_snip"
 map <leader>p :call pdv#DocumentWithSnip()<CR>
 
+" Eclim
+let g:EclimCompletionMethod = 'omnifunc'
 
 " Cycle
 " call AddCycleGroup('python', ['True', 'False'])
@@ -851,7 +854,19 @@ function! s:IndTxtObj(inner)
   endif
 endfunction
 
+" Abrir a configuração
 function! s:config()
   :e $MYVIMRC
 endfunction
 command! Config call s:config()
+
+fun! RangerChooser()
+  exec "silent !ranger --choosefile=/tmp/chosenfile " .           expand("%:p:h")
+  if filereadable('/tmp/chosenfile')
+    exec 'edit ' . system('cat /tmp/chosenfile')
+    call system('rm /tmp/chosenfile')
+  endif
+  redraw!
+endfun
+
+map <Leader>x :call RangerChooser()<CR>
