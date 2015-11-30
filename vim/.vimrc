@@ -444,7 +444,7 @@ xmap { S{
 xmap ( S(
 
 " Polyglot
-let g:polyglot_disabled = ['latex', 'dockerfile']
+let g:polyglot_disabled = ['latex', 'dockerfile', 'git']
 
 " Vim-Javascript
 let javascript_enable_domhtmlcss = 1
