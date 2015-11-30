@@ -125,6 +125,7 @@ stty -ixon
 
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:/usr/lib/eclipse/
 
 PATH="/home/rafael/perl5/bin${PATH+:}${PATH}"; export PATH;
 PERL5LIB="/home/rafael/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
