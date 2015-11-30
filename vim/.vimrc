@@ -119,7 +119,7 @@ set nrformats-=octal
 set shiftround
 set encoding=utf-8 nobomb
 " Timeout
-set notimeout
+" set notimeout
 set ttimeout
 set ttimeoutlen=50
 set copyindent
@@ -202,6 +202,9 @@ set completeopt=menuone,longest
 
 " Toggle Paste mode
 set pastetoggle=<F2>
+
+" S-k abre a ajuda para a palavra selecionada
+set keywordprg=":help"
 
 " Mapeando <leader> para " " Espaço"
 nnoremap <Space> <nop>
@@ -508,7 +511,7 @@ let g:UltiSnipsJumpForwardTrigger  = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 let g:UltiSnipsListSnippets        = "<c-l>"
 let g:did_UltiSnips_vim_after      = 1
-let g:UltiSnipsSnippetsDir         = '~/.vim/plugged/vim-snippets/UltiSnips'
+let g:UltiSnipsSnippetDirectories  = ["UltiSnips", "~/.vim/plugged/vim-snippets/UltiSnips"]
 
 " vim-airline
 let g:airline#extensions#tabline#enabled          = 1
@@ -688,6 +691,10 @@ map <leader>p :call pdv#DocumentWithSnip()<CR>
 
 " Eclim
 let g:EclimCompletionMethod = 'omnifunc'
+
+" Vim-expand-region
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 
 " Cycle
 " call AddCycleGroup('python', ['True', 'False'])
