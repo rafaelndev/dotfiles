@@ -606,7 +606,6 @@ augroup END
 " " Enable omni completion.
 autocmd FileType css           setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript    setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python        setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml           setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php           setlocal omnifunc=phpcomplete_extended#CompletePHP
@@ -701,59 +700,6 @@ let g:EclimCompletionMethod = 'omnifunc'
 augroup configgroup
     autocmd!
 
-    au FileType java setlocal noexpandtab
-    au FileType java setlocal list
-    au FileType java setlocal listchars=tab:+\ ,eol:-
-    au FileType java setlocal formatprg=par\ -w80\ -T4
-    au FileType java UltiSnipsAddFiletypes java
-
-    au FileType javascript UltiSnipsAddFiletypes javascript
-    au FileType javascript setlocal tabstop=2
-    au FileType javascript setlocal shiftwidth=2
-    au FileType javascript setlocal softtabstop=2
-
-    au BufReadPre *.js let b:javascript_lib_use_jquery = 1
-    au BufReadPre *.js let b:javascript_lib_use_underscore = 1
-
-    au FileType php setlocal expandtab
-    au FileType php setlocal list
-    au FileType php setlocal listchars=tab:+\ ,eol:-
-    au FileType php setlocal formatprg=par\ -w80\ -T4
-    au FileType php setlocal tabstop=4
-    au FileType php setlocal shiftwidth=4
-    au FileType php setlocal softtabstop=4
-    au FileType php UltiSnipsAddFiletypes php
-
-    au FileType ruby setlocal tabstop=2
-    au FileType ruby setlocal shiftwidth=2
-    au FileType ruby setlocal softtabstop=2
-    au FileType ruby setlocal commentstring=#\ %s
-    au FileType ruby UltiSnipsAddFiletypes ruby
-
-    au FileType python setlocal tabstop=4
-    au FileType python setlocal softtabstop=4
-    au FileType python setlocal shiftwidth=4
-    au FileType python setlocal textwidth=79
-    au FileType python setlocal expandtab
-    au FileType python setlocal autoindent
-    au FileType python setlocal fileformat=unix
-    au FileType python setlocal commentstring=#\ %s
-    au FileType python UltiSnipsAddFiletypes python
-
-    au FileType html UltiSnipsAddFileTypes html
-    au FileType html setlocal tabstop=2
-    au FileType html setlocal shiftwidth=2
-    au FileType html setlocal softtabstop=2
-
-    au FileType tex UltiSnipsAddFiletypes tex
-    au FileType tex setlocal spell
-    au FileType tex setlocal spelllang=pt,en_us
-    au FileType tex setlocal guifont=Monaco\ for\ Powerline\ 10
-
-    au FileType notes setlocal spell
-    au FileType notes setlocal spelllang=pt,en_us
-    au FileType notes setlocal guifont=Monaco\ for\ Powerline\ 10
-
     au FileType markdown,mkd UltiSnipsAddFiletypes markdown
 
     au BufNewFile,BufRead *.ctp set filetype=php
@@ -761,14 +707,6 @@ augroup configgroup
     au BufNewFile,BufRead *.blade.php set filetype=blade.php
     au BufNewFile,BufRead *.vue set filetype=html.javascript.vue
 
-    au FileType sh setlocal tabstop=2
-    au FileType sh setlocal shiftwidth=2
-    au FileType sh setlocal softtabstop=2
-    au FileType sh UltiSnipsAddFiletypes sh
-
-    " au Filetype notes setlocal guifont=Monaco\ for\ Powerline\ 10
-
-    autocmd FileType Makefile setlocal noexpandtab
 augroup END
 
 augroup pencil
