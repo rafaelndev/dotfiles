@@ -7,9 +7,11 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
+
 " ========================================================================
 "                               PLUGINS
 " ========================================================================
+
 call plug#begin('~/.vim/plugged')
 Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-surround'
@@ -39,19 +41,20 @@ Plug 'docunext/closetag.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
 Plug 'lervag/vimtex', { 'for': 'tex' }
+Plug 'ervandew/supertab'
 Plug 'Valloric/YouCompleteMe', { 'on': [], 'do': './install.sh' }
 Plug 'zef/vim-cycle'
 Plug 'jez/vim-superman'
 Plug 'haya14busa/incsearch.vim'
-" Plug 'junegunn/vim-peekaboo'
-Plug 'Shougo/vimproc.vim'
-Plug 'm2mdas/phpcomplete-extended'
-Plug 'm2mdas/phpcomplete-extended-laravel'
-Plug 'tobyS/vmustache'
-Plug 'tobyS/pdv'
-Plug 'chrisbra/csv.vim'
+" Plug 'Shougo/vimproc.vim'
+" Plug 'm2mdas/phpcomplete-extended'
+" Plug 'm2mdas/phpcomplete-extended-laravel'
+" Plug 'tobyS/vmustache'
+" Plug 'tobyS/pdv'
+" Plug 'chrisbra/csv.vim'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'ervandew/eclim'
+Plug 'ConradIrwin/vim-bracketed-paste' "Automatic :set paste
 
 " Syntax
 Plug 'sheerun/vim-polyglot'
@@ -108,10 +111,13 @@ endif
 set autoindent
 set smartindent
 set backspace=indent,eol,start
+set linebreak
+set nolist
 set whichwrap+=<,>,h,l
-set complete-=i
-set complete+=k
+" set complete-=i
+set complete+=k,kspell
 set complete+=t
+set thesaurus+=~/.vim/spell/th_pt_BR.txt
 set showmatch
 set showmode
 set smarttab
@@ -200,22 +206,35 @@ set fileformats=unix,dos,mac
 " Configuração de auto completar para funcionar com o YCM
 set completeopt=menuone,longest
 
-" Toggle Paste mode
-set pastetoggle=<F2>
-
 " S-k abre a ajuda para a palavra selecionada
 set keywordprg=":help"
+
+" Compartilhar Clipboard com o sistema
+set clipboard=unnamedplus
+
+" Desabilitar arquivos desnecessarios
+set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
+
+" Ignorar Imagens e arquivos de Log
+set wildignore+=*.gif,*.jpg,*.png,*.log
+
+" Ignorar zip e irmãos
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
+
+" Ignorar algumas pastas
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,/lib/*,*/Vendor/*
+
+" ========================================================================
+"                               KEYBINDS
+" ========================================================================
+
+" Toggle Paste mode
+set pastetoggle=<F2>
 
 " Mapeando <leader> para " " Espaço"
 nnoremap <Space> <nop>
 let mapleader = ' '
 let maplocalleader = ' '
-
-" <Leader>v = Colar do Clipboard
-map <Leader>v "+gP
-
-" <Leader>c = Copiar para o clipboard
-map <Leader>c "+y
 
 " Movimentação de uma linha com Shift+Arrow Keys
 nnoremap <S-Up> :m-2<CR>
@@ -234,14 +253,8 @@ nnoremap k gk
 " Salvar arquivo como root
 cmap w!! w !sudo tee % <CR>
 
-" Recortar, Colar, Copiar
-vmap <C-x> d
-vmap <C-v> p
-vmap <C-c> y
-
-" Undo, Redo
-nnoremap <C-z>  :undo<CR>
-inoremap <C-z>  <Esc>:undo<CR>
+" Disabilitar C-z, use sempre uuuuu
+nnoremap <C-z> <nop>
 
 " Y, Copiar a linha inteira
 map Y y$
@@ -252,31 +265,25 @@ nnoremap ; :
 " <leader>h limpa as buscas
 nmap <leader>h :set nohlsearch<CR>
 
-" Compartilhar Clipboard com o sistema
-set clipboard=unnamedplus
-
 " Abreviações nos comandos
 cnoreabbrev W w
 cnoreabbrev Q q
 
 " Quebrar linha em dois
-nmap <leader>lb i<cr><esc>k$
-
-
-" Desativado por problemas com performance
-" Ativar números relativos quando entra em foco
-" au FocusLost * :set norelativenumber
-" au FocusGained * :set relativenumber
-" Desativar números relativos quando entrar em insert mode
-" au InsertEnter * :set norelativenumber
-" au InsertLeave * :set relativenumber
+nmap <leader>lb i<cr><esc>
 
 " Mover pela janelas
+" Tentar fazer uso adequado do nosso inimigo arrow keys
 map <up>      :wincmd k<CR>
 map <down>    :wincmd j<CR>
 map <right>   :wincmd l<CR>
 map <left>    :wincmd h<CR>
+map <c-k>     :wincmd k<CR>
+map <c-j>     :wincmd j<CR>
+map <c-l>     :wincmd l<CR>
+map <c-h>     :wincmd h<CR>
 
+" Mover pelos buffers, nem uso muito prefiro <leader>Number
 map <C-right> :bnext<CR>
 map <C-left>  :bprevious<CR>
 
@@ -313,60 +320,18 @@ map <Leader>R :retab<CR>
 nnoremap <C-s> [s1z=<c-o>
 inoremap <C-s> <c-g>u<Esc>[s1z=`]A<c-g>u
 
-" Voltar para posição anterior
-augroup resCur
-    autocmd!
-    autocmd BufReadPost * call setpos(".", getpos("'\""))
-augroup END
-
-let g:gruvbox_italic        = 0
-let g:gruvbox_bold          = 1
-let g:gruvbox_contrast_dark = 'hard'
-
-set background=dark
-
-colorscheme gruvbox
-" colorscheme molokai
-
-let g:solarized_termcolors=256
-
-" Visual Select Color
-hi Visual gui=NONE guibg=White guifg=Black
-hi Visual cterm=NONE ctermbg=White ctermfg=Black
-
-" Cor de palavras erradas
-hi SpellBad cterm=underline ctermfg=red
-hi SpellBad gui=undercurl guisp=red guifg=red
-
-" Salvar arquivos quando perder o foco do buffer ou do vim
-set autowrite
-au FocusLost * :wa
-
 " Salvar quando sair do insert mode
 inoremap <Esc> <Esc>:w<CR>
 
 " Salvar arquivo com <leader>s
 nnoremap <leader>s :w<cr>
 
-" Desabilitar arquivos desnecessarios
-set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
-
-" Ignorar Imagens e arquivos de Log
-set wildignore+=*.gif,*.jpg,*.png,*.log
-
-" Ignorar zip e irmãos
-set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
-
-" Ignorar algumas pastas
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,/lib/*,*/Vendor/*
-
-
 " ========================================================================
 "                          Configuração dos Plugins
 " ========================================================================
 
 " vim-plug
-let g:plug_timeout = 5000
+let g:plug_timeout = 5000 "Necessário porcausa das compilações
 
 " delimitMate
 let delimitMate_expand_cr = 1
@@ -425,9 +390,6 @@ let g:syntastic_php_jshint_args     = "--extract=always"
 let g:syntastic_python_checkers     = ['flake8']
 let g:syntastic_python_flake8_args  = '--ignore="E501,E302,E261,E701,E241,E126,E127,E128,W801"'
 
-" NeoMake
-" autocmd! BufWritePost * Neomake
-
 " Vim Surround
 let g:surround_indent = 1
 autocmd FileType tex let g:surround_{char2nr('c')} = "\\\1command\1{\r}" " Latex Binding c
@@ -467,14 +429,11 @@ noremap <leader>f :Autoformat<CR><CR>
 
 " SuperTab
 let g:SuperTabDefaultCompletionType    = "<C-n>"
-let g:SuperTabSetDefaultCompletionType = "context"
-let g:SuperTabCompletionContexts       = ['s:ContextText', 's:ContextDiscover']
 
 " CtrlP
 if exists("g:ctrl_user_command")
     unlet g:ctrlp_user_command
 endif
-
 
 " Usando Silver_Searcher
 let g:ctrlp_user_command            = 'ag %s -i --nocolor --nogroup --ignore-case --hidden --silent
@@ -490,8 +449,8 @@ let g:ctrlp_custom_ignore          = '\v[\/]\.(DS_Storegit|hg|svn|node_modules|l
 if has('nvim')
   let g:ctrlp_match_func             = { 'match': 'pymatcher#PyMatch' }
 else
-  " let g:ctrlp_match_func             = { 'match': 'cpsm#CtrlPMatch' }
-  let g:ctrlp_match_func             = { 'match': 'pymatcher#PyMatch' }
+  let g:ctrlp_match_func             = { 'match': 'cpsm#CtrlPMatch' }
+  " let g:ctrlp_match_func             = { 'match': 'pymatcher#PyMatch' }
 endif
 let g:ctrlp_match_window           = 'bottom,order:ttb,results:20'
 let g:ctrlp_switch_buffer          = 0
@@ -506,12 +465,15 @@ nnoremap <leader>b :CtrlPBuffer<CR>
 map <F5> :CtrlPClearCache<CR>
 
 " Ultisnip
-let g:UltiSnipsExpandTrigger       = "<c-j>"
-let g:UltiSnipsJumpForwardTrigger  = "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
-let g:UltiSnipsListSnippets        = "<c-l>"
+" let g:UltiSnipsExpandTrigger       = "<c-j>"
+" let g:UltiSnipsJumpForwardTrigger  = "<c-j>"
+" let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+let g:UltiSnipsExpandTrigger       = "<Tab>"
+let g:UltiSnipsJumpForwardTrigger  = "<Tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
+let g:UltiSnipsListSnippets        = "<C-L>"
 let g:did_UltiSnips_vim_after      = 1
-let g:UltiSnipsSnippetDirectories  = ["UltiSnips", "~/.vim/plugged/vim-snippets/UltiSnips"]
+let g:UltiSnipsSnippetDirectories  = ["~/.vim/plugged/vim-snippets/UltiSnips", "UltiSnips"]
 
 " vim-airline
 let g:airline#extensions#tabline#enabled          = 1
@@ -570,8 +532,8 @@ let g:tagbar_type_php                              = {
             \ }
 
 " YouCompleteMe
-" let g:ycm_key_list_select_completion               = ['<C-n>', '<Down>']
-" let g:ycm_key_list_previous_completion             = ['<C-p>', '<Up>']
+let g:ycm_key_list_select_completion                    = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion                  = ['<C-p>', '<Up>']
 let g:ycm_global_ycm_extra_conf                         = '~/ycm_extra_conf.py'
 let g:ycm_autoclose_preview_window_after_insertion      = 1
 let g:ycm_min_num_of_chars_for_completion               = 3
@@ -594,7 +556,6 @@ let g:ycm_semantic_triggers                             = {
   \   'lua' : ['.', ':'],
   \   'erlang' : [':'],
 \ }
-
 
 augroup load_ycm
   autocmd!
@@ -641,11 +602,11 @@ let g:gundo_right          = 1
 " Vim Fugitive
 nnoremap <Leader>gs  :Gstatus<CR>
 nnoremap <Leader>gr  :Gremove<CR>
-nnoremap <Leader>gl  :Gpull<CR>
+nnoremap <Leader>gl  :Dispatch git pull<CR>
 nnoremap <Leader>glo :Glog<CR>
 nnoremap <Leader>gb  :Gblame<CR>
 nnoremap <Leader>gm  :Gmove<CR>
-nnoremap <Leader>gp  :Gpush<CR>
+nnoremap <Leader>gp  :Dispatch git push<CR>
 nnoremap <Leader>gR  :Gread<CR>
 nnoremap <Leader>gg  :Git
 nnoremap <Leader>gd  :Gdiff<CR>
@@ -658,7 +619,6 @@ let g:notes_suffix = '.note'
 " Configurações do GVIM
 if has('gui_running')
   set guifont=Dejavu\ Sans\ Mono\ for\ Powerline\ 10
-  " set guifont=Monaco\ for\ Powerline\ 10
   set guioptions-=m  "remove menu bar
   set guioptions-=T  "remove toolbar
   set guioptions-=r  "remove right-hand scroll bar
@@ -682,13 +642,6 @@ map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 let g:incsearch#magic = '\v' " very magic
 
-" PHPComplete Extended
-let g:phpcomplete_index_composer_command = '/usr/bin/composer'
-
-" PDV
-let g:pdv_template_dir = $HOME ."/.vim/plugged/pdv/templates_snip"
-map <leader>p :call pdv#DocumentWithSnip()<CR>
-
 " Eclim
 let g:EclimCompletionMethod = 'omnifunc'
 
@@ -696,8 +649,11 @@ let g:EclimCompletionMethod = 'omnifunc'
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
-" Cycle
-" call AddCycleGroup('python', ['True', 'False'])
+" Gruvbox
+let g:gruvbox_italic        = 0
+let g:gruvbox_bold          = 1
+let g:gruvbox_contrast_dark = 'hard'
+
 
 " ========================================================================
 "                              Auto Grupos
@@ -731,21 +687,23 @@ augroup pencil
                             \ | setl spell spelllang=pt,en_us et sw=2 ts=2
 augroup END
 
+" Voltar para posição anterior
+augroup resCur
+    autocmd!
+    autocmd BufReadPost * call setpos(".", getpos("'\""))
+augroup END
+
+" Salvar arquivos quando perder o foco do buffer ou do vim
+set autowrite
+au FocusLost * :wa
+
 " ========================================================================
 "                              Configurações Extras
 "   - Funções, etc
 " ========================================================================
 
-" Tig Status
-function! s:tig_status()
-    cd `git rev-parse --show-toplevel`
-    silent !tig status
-endfunction
-
-map <C-G> :TigStatus<CR><CR>
-command! TigStatus call s:tig_status()
-
-imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
+" Tig
+command! Tig :Dispatch tig
 
 function! ConfirmQuit(writeFile)
     if (a:writeFile)
@@ -805,13 +763,22 @@ function! s:config()
 endfunction
 command! Config call s:config()
 
-fun! RangerChooser()
-  exec "silent !ranger --choosefile=/tmp/chosenfile " .           expand("%:p:h")
-  if filereadable('/tmp/chosenfile')
-    exec 'edit ' . system('cat /tmp/chosenfile')
-    call system('rm /tmp/chosenfile')
-  endif
-  redraw!
-endfun
 
-map <Leader>x :call RangerChooser()<CR>
+" ========================================================================
+"                              ARCO-IRIS
+" ========================================================================
+
+set background=dark
+
+colorscheme gruvbox
+" colorscheme molokai
+
+let g:solarized_termcolors=256
+
+" Visual Select Color
+hi Visual gui=NONE guibg=White guifg=Black
+hi Visual cterm=NONE ctermbg=White ctermfg=Black
+
+" Cor de palavras erradas
+hi SpellBad cterm=underline ctermfg=red
+hi SpellBad gui=undercurl guisp=red guifg=red

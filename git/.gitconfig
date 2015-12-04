@@ -22,3 +22,5 @@
 	ui = true
 [alias]
 	d = difftool
+[push]
+	default = simple
