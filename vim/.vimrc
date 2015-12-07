@@ -41,7 +41,7 @@ Plug 'docunext/closetag.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
 Plug 'lervag/vimtex', { 'for': 'tex' }
-Plug 'ervandew/supertab'
+" Plug 'ervandew/supertab'
 Plug 'Valloric/YouCompleteMe', { 'on': [], 'do': './install.sh' }
 Plug 'zef/vim-cycle'
 Plug 'jez/vim-superman'
@@ -55,8 +55,10 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'ervandew/eclim'
 Plug 'ConradIrwin/vim-bracketed-paste' "Automatic :set paste
+Plug 'mattn/ctrlp-register'
 
 " Syntax
+Plug 'Chiel92/vim-autoformat'
 Plug 'sheerun/vim-polyglot'
 Plug 'reedes/vim-pencil'
 Plug 'othree/javascript-libraries-syntax.vim'
@@ -83,6 +85,8 @@ Plug 'kana/vim-textobj-function', { 'do': 'mkdir ./after/ftplugin/php; cp ./afte
 Plug 'thinca/vim-textobj-function-javascript'
 Plug 'kana/vim-textobj-line'
 Plug 'rbonvall/vim-textobj-latex'
+Plug 'captbaritone/better-indent-support-for-php-with-html'
+Plug 'christoomey/vim-tmux-navigator'
 
 
 
@@ -278,10 +282,10 @@ map <up>      :wincmd k<CR>
 map <down>    :wincmd j<CR>
 map <right>   :wincmd l<CR>
 map <left>    :wincmd h<CR>
-map <c-k>     :wincmd k<CR>
-map <c-j>     :wincmd j<CR>
-map <c-l>     :wincmd l<CR>
-map <c-h>     :wincmd h<CR>
+" map <c-k>     :wincmd k<CR>
+" map <c-j>     :wincmd j<CR>
+" map <c-l>     :wincmd l<CR>
+" map <c-h>     :wincmd h<CR>
 
 " Mover pelos buffers, nem uso muito prefiro <leader>Number
 map <C-right> :bnext<CR>
@@ -428,7 +432,7 @@ let g:vimtex_quickfix_open_on_warning     = 0
 noremap <leader>f :Autoformat<CR><CR>
 
 " SuperTab
-let g:SuperTabDefaultCompletionType    = "<C-n>"
+" let g:SuperTabDefaultCompletionType    = "<C-n>"
 
 " CtrlP
 if exists("g:ctrl_user_command")
@@ -436,7 +440,7 @@ if exists("g:ctrl_user_command")
 endif
 
 " Usando Silver_Searcher
-let g:ctrlp_user_command            = 'ag %s -i --nocolor --nogroup --ignore-case --hidden --silent
+let g:ctrlp_user_command            = 'ag %s -i --nocolor --hidden --ignore-case --silent
             \ --ignore .git
             \ --ignore .svn
             \ --ignore .hg
@@ -457,7 +461,7 @@ let g:ctrlp_switch_buffer          = 0
 let g:ctrlp_working_path_mode      = 'a'
 let g:ctrlp_clear_cache_on_exit    = 1
 let g:ctrlp_cache_dir              = $HOME . '/.cache/ctrlp'
-let g:ctrlp_extensions             = ['funky']
+let g:ctrlp_extensions             = ['funky', 'register']
 let g:ctrlp_funky_syntax_highlight = 1
 let g:ctrlp_open_new_file          = "t"
 nnoremap <leader>@ :CtrlPFunky<CR>
@@ -472,6 +476,7 @@ let g:UltiSnipsExpandTrigger       = "<Tab>"
 let g:UltiSnipsJumpForwardTrigger  = "<Tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
 let g:UltiSnipsListSnippets        = "<C-L>"
+let g:UltiSnipsEditSplit           = "vertical"
 let g:did_UltiSnips_vim_after      = 1
 let g:UltiSnipsSnippetDirectories  = ["~/.vim/plugged/vim-snippets/UltiSnips", "UltiSnips"]
 
@@ -653,7 +658,6 @@ vmap <C-v> <Plug>(expand_region_shrink)
 let g:gruvbox_italic        = 0
 let g:gruvbox_bold          = 1
 let g:gruvbox_contrast_dark = 'hard'
-
 
 " ========================================================================
 "                              Auto Grupos
