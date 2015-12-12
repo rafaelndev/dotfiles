@@ -31,8 +31,22 @@ rofi.ssh-set-title:         true
 xft.dpi:                    96
 xft.hinting:                true
 
-xterm*faceName: Dejavu Sans Mono for Powerline:size=10:antialias=true
+! xterm*faceName: Dejavu Sans Mono for Powerline:size=10:antialias=true
+xterm*faceName: Source Code Pro for Powerline:size=10:antialias=true
+xterm*faceNameDoublesize: Dejavu Sans Mono for Powerline:size=10:antialias=true
 xterm*font: 7x13
+URxvt*font:  xft:Source Code Pro for Powerline:size=10:antialias=true, \
+             xft:Dejavu Sans Mono for Powerline:size=10:antialias=true
+URxvt.letterSpace: -1
+URxvt.lineSpace: -1
+URxvt.scrollKey: true
+URxvt.depth: 32
+URxvt.loginShell: true
+URxvt.geometry: 100x30
+URxvt.saveLines: 10000
+URxvt.cutchars: "`\"'&()*,:;<=>?[\\]^{|}$"
+URxvt.scrollBar: false
+URxvt.visualBell: true  ```
 
 ! Molokai
 ! *xterm*background:          #000000
