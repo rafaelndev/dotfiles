@@ -1,3 +1,4 @@
 vim/.vim/undo/*
 vim/.vim/plugged/*
+vim/.vim/sessions/*
 tmux/.tmux/resurect/*
