@@ -11,4 +11,7 @@ UltiSnipsAddFiletypes java
 nnoremap <silent> <buffer> <leader>ji :JavaImport<cr>
 nnoremap <silent> <buffer> <leader>jd :JavaDocSearch -x declarations<cr>
 nnoremap <silent> <buffer> <leader>jc :JavaCorrect<cr>
-nnoremap <silent> <buffer> <cr> :JavaSearchContext<cr>
+nnoremap <silent> <buffer> <leader>jo :JavaConstruct<cr>
+nnoremap <silent> <buffer> <leader>jg :JavaGetSet<cr>
+nnoremap <silent> <buffer> <leader>jr :JavaRename 
+nnoremap <silent> <buffer> <C-cr> :JavaSearchContext<cr>
