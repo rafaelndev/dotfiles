@@ -49,7 +49,7 @@ DISABLE_AUTO_UPDATE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git extract zsh-syntax-highlighting systemd screen)
+plugins=(git zsh-syntax-highlighting systemd screen)
 
 # User configuration
 
@@ -136,5 +136,6 @@ PERL_MM_OPT="INSTALL_BASE=/home/rafael/perl5"; export PERL_MM_OPT;
 alias CMD_HOTSPOT="_ create_ap wlo1 enp8s0 ZueraADS ads123456"
 alias ultimo_arquivo="ls -t | head -1"
 alias pkg-update='sudo etckeeper pre-install && yaourt -Suya && sudo etckeeper post-install'
+alias extract="aunpack"
 export EDITOR="vim"
 export BROWSER="firefox"
