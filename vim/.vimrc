@@ -691,8 +691,17 @@ let g:tagbar_phpctags_bin='/home/rafael/Downloads/phpctags/bin/phpctags'
 
 " Startify
 let g:startify_session_dir         = '~/.vim/sessions'
-let g:startify_list_order          = ['sessions', 'files', 'bookmarks', 'dir']
 let g:startify_session_persistence = 1
+let g:startify_list_order = [
+      \ ['   Sessões:'],
+      \ 'sessions',
+      \ ['   Arquivos usados recentimente:'],
+      \ 'files',
+      \ ['   Arquivos mais usados nessa pasta::'],
+      \ 'dir',
+      \ ['   Favoritos:'],
+      \ 'bookmarks',
+      \ ]
 let g:startify_custom_header = [
       \ '              ______       __           _   _   _ ________  ____     ',
       \ '              | ___ \     / _|         | | | | | |_   _|  \/  ( )    ',
