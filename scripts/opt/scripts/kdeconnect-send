@@ -1,0 +1,29 @@
+#!/bin/zsh
+
+ARQUIVO=$1
+
+if [[ ! -a $ARQUIVO ]]; then
+  echo "Arquivo não existe."
+  notify-send "Erro" "Arquivo não existe."
+  exit 1
+fi
+
+DEVICE_LIST=()
+while IFS= read -r ROW; do
+  DEVICE_LIST+=("$ROW")
+done <<<$(kdeconnect-cli -a | awk -F ":" '{print $1}')
+
+escolha=$(yad --width 300 --entry --title "Enviar Arquivo" \
+--button="Enviar" \
+--text "Escolha o dispositivo:" \
+--entry-text \
+"${DEVICE_LIST[@]}")
+
+[[ -z "$escolha" ]] && exit 1
+
+CHOOSE_DEVICE=$(kdeconnect-cli -a | grep "^$escolha")
+DEVICE=$(echo $CHOOSE_DEVICE | awk -F ":" '{print $1}')
+ID=$(echo $CHOOSE_DEVICE | awk -F ":" '{print $2}' | awk -F "(" '{print $1}' | tr -d ' ')
+kdeconnect-cli -d $ID --share "$ARQUIVO"
+
+notify-send -i emblem-shared "Arquivo Enviado" "$ARQUIVO"

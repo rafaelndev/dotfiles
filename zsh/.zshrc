@@ -136,6 +136,7 @@ PERL_MM_OPT="INSTALL_BASE=/home/rafael/perl5"; export PERL_MM_OPT;
 alias CMD_HOTSPOT="_ create_ap wlo1 enp8s0 ZueraADS ads123456"
 alias ultimo_arquivo="ls -t | head -1"
 alias pkg-update='sudo etckeeper pre-install && yaourt -Suya && sudo etckeeper post-install'
+alias CMD_ENVIAR_PHONE="/opt/scripts/kdeconnect-send"
 alias extract="aunpack"
 export EDITOR="vim"
 export BROWSER="firefox"

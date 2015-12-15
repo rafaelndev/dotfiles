@@ -250,6 +250,7 @@ assign [class="Hexchat"] $work4
 
 for_window [window_type="dialog"] floating enable
 for_window [class="Yad"]          floating enable
+for_window [class="Yad"]          border normal
 for_window [title="^Terminology"] border normal
 for_window [title="urxvt"]        border normal
 for_window [title="sakura"]       border normal
