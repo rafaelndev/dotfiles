@@ -118,6 +118,10 @@ vman() {
   fi
 }
 
+cpr() {
+  rsync --progress --size-only --inplace --verbose $@
+}
+
 # man autocomplete > vman
 compdef vman="man"
 
