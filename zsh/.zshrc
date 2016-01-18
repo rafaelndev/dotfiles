@@ -49,7 +49,7 @@ DISABLE_AUTO_UPDATE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting systemd screen)
+plugins=(git zsh-syntax-highlighting systemd screen vi-mode)
 
 # User configuration
 
@@ -144,3 +144,9 @@ alias CMD_ENVIAR_PHONE="/opt/scripts/kdeconnect-send"
 alias extract="aunpack"
 export EDITOR="vim"
 export BROWSER="firefox"
+
+
+source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_DEFAULT_OPTS="-i"
+export FZF_COMPLETION_TRIGGER='--'
