@@ -35,7 +35,7 @@ show_marks yes
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec urxvtc
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -94,7 +94,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+# bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -228,20 +228,22 @@ focus_on_window_activation urgent
 workspace_auto_back_and_forth yes
 
 
-exec --no-startup-id compton --vsync opengl --backend glx --paint-on-overlay --glx-no-stencil --glx-no-rebind-pixmap
+exec --no-startup-id compton --vsync opengl-swc --backend glx --paint-on-overlay --glx-no-stencil --glx-no-rebind-pixmap
 exec redshift-gtk
 exec nm-applet
 exec killall -q notify-osd
 # exec syndaemon -i 1 -K -d
+exec urxvtd -q -o -f
 exec udiskie --smart-tray
 exec_always --no-startup-id synapse -s
 exec syndaemon -t -i 3
+exec unclutter
 exec sh -c 'sleep 15; exec caffeine'
 exec sh -c 'sleep 15; dropbox'
 exec sh -c 'sleep 15; smbnetfs ~/sambashare'
 
 # Firefox Suspender
-exec screen -S firefox_suspender -d -m /opt/scripts/firefox_suspender.sh
+# exec screen -S firefox_suspender -d -m /opt/scripts/firefox_suspender.sh
 
 # Aplicações em workspaces especiais
 assign [class="Firefox"] $work1
@@ -250,19 +252,22 @@ assign [class="Hexchat"] $work4
 
 for_window [window_type="dialog"] floating enable
 for_window [class="Yad"]          floating enable
-for_window [class="Yad"]          border normal
-for_window [title="^Terminology"] border normal
-for_window [title="urxvt"]        border normal
-for_window [title="sakura"]       border normal
-for_window [title="xterm"]        border normal
+for_window [class="Yad"]          border normal 2
+for_window [title="^Terminology"] border normal 2
+for_window [title="urxvt"]        border toggle
+for_window [title="sakura"]       border normal 2
+for_window [title="xterm"]        border normal 2
 for_window [title="galculator"]   floating enable
 for_window [title="galculator"]   border normal 2
 for_window [title="Cobrança CAIXA^"] floating disable
-for_window [title="Cobrança CAIXA^"] border normal
+for_window [title="Cobrança CAIXA^"] border normal 2
 for_window [class="Spotify"]      move to workspace $work5
 for_window [class="Pavucontrol"]  floating enable
 for_window [class="Pavucontrol"]  border normal 2
+for_window [class="i3-frame"] floating enable
+for_window [class="i3-frame"] border normal 2
 
+bindsym $mod+a [class="URxvt" title="vim"] focus
 # Custom i3exit
 set $i3exit /opt/scripts/i3lock/i3exit
 
