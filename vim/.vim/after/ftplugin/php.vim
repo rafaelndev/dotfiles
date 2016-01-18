@@ -19,3 +19,5 @@ nnoremap <Leader>pdu :call PhpDetectUnusedUseStatements()<CR>
 vnoremap <Leader>p== :call PhpAlignAssigns()<CR>
 nnoremap <Leader>psg :call PhpCreateSettersAndGetters()<CR>
 nnoremap <Leader>pda :call PhpDocAll()<CR>
+nnoremap <Leader>pdf :call pdv#DocumentWithSnip()<CR>
+nmap <Leader>pau <Plug>(phpcomplete-extended-add-use) 
