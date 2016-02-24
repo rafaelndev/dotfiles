@@ -21,7 +21,7 @@ my $cpu_usage = -1;
 $BLOCK_BUTTON = $ENV{'BLOCK_BUTTON'};
 
 if ($BLOCK_BUTTON == 1) {
-    system("xterm -e 'htop;' &");
+    system("xterm -e htop &");
 }
 
 sub help {
@@ -49,8 +49,8 @@ close(MPSTAT);
 $cpu_usage eq -1 and die 'Can\'t find CPU information';
 
 # Print short_text, full_text
-printf "%.2f%%\n", $cpu_usage;
-printf "%.2f%%\n", $cpu_usage;
+printf "%.f%%\n", $cpu_usage;
+printf "%.f%%\n", $cpu_usage;
 
 # Print color, if needed
 if ($cpu_usage >= $t_crit) {

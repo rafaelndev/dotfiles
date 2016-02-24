@@ -12,7 +12,7 @@ clearfix = pag.find("div.clearfix")
 
 
 SERIES = ['The Flash', 'Arrow', 'Gotham', 'Agents of S.H.I.E.L.D',
-          'Supernatural', 'Ash vs Evil']
+          'Supernatural', 'Ash vs Evil', 'Vikings', 'Lucifer', 'Legends of Tomorrow', 'Marvel\'s Agent Carter']
 HOME = expanduser("~") + '/'
 
 def check_serie_ignorada(serie):

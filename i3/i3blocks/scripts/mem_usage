@@ -1,6 +1,6 @@
 #!/bin/sh
 
-MEMORY_USAGE="$(free | awk '/Mem/{printf("%.2f"), $3/$2*100}')%"
+MEMORY_USAGE="$(free | awk '/Mem/{printf("%.f"), $3/$2*100}')%"
 
 if [ "$BLOCK_BUTTON" = '1' ]; then
     xterm -e "sudo ps_mem;$SHELL" &
