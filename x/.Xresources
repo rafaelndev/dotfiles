@@ -36,7 +36,7 @@ xterm*faceNameDoublesize: Dejavu Sans Mono for Powerline:size=10:antialias=true
 xterm*font: 7x13
 URxvt*font:  xft:Source Code Pro for Powerline:Medium:size=10:antialias=true, \
              xft:Dejavu Sans Mono for Powerline:size=10:antialias=true
-URxvt.cursorBlink: true
+URxvt.cursorBlink: false
 ! URxvt*termName: screen-256color
 URxvt.letterSpace: -1
 URxvt.lineSpace: -1
