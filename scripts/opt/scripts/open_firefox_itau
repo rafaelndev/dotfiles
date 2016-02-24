@@ -1,0 +1,24 @@
+#!/bin/sh
+
+VM_Name="Lubuntu Itau"
+VM_User="rafael-VirtualBox"
+
+VM_Login=rafael
+VM_Password=123
+
+# Iniciar a virtual machine
+VBoxManage startvm "$VM_Name" --type headless
+
+# Conectar a maquina e iniciar o firefox na página do itaú
+plink -P 3022 -batch -X -l $VM_Login 127.0.0.1 -pw $VM_Password "/usr/bin/firefox --new-instance 'https://itau.com.br' && exit" &
+
+# Esperar 1 min, mais ou menos o tempo até que o firefox abra
+sleep 60
+
+# Loop infinito para verificar se a janela do firefox da maquina virtual está aberta.
+while [[ -n $(wmctrl -l | grep "Mozilla Firefox" | grep "$VM_User") ]]; do
+  sleep 1
+done
+
+# Se o firefox for fechado desliga a maquina virtual.
+VBoxManage controlvm "$VM_Name" savestate

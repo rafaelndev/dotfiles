@@ -1,0 +1,13 @@
+#!/bin/sh
+
+case "$1" in
+  true)
+    # 30%
+    echo 281 > /sys/class/backlight/intel_backlight/brightness
+    ;;
+  false)
+    # 60%
+    echo 562 > /sys/class/backlight/intel_backlight/brightness
+    ;;
+esac
+exit 0
