@@ -1,0 +1,5 @@
+#!/bin/sh
+
+SPEED=$(speedtest-cli --simple)
+
+echo $SPEED | grep Download | awk '{printf "%0.1f Mb/s", $5}'
