@@ -36,8 +36,6 @@
         "SynapseFileOpPlugin",
         "SynapseOpenSearchPlugin",
         "SynapseImgUrPlugin",
-        "SynapseCommandPlugin",
-        "SynapseCalculatorPlugin",
         "SynapseChatActions"
       ]
     }
