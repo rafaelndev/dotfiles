@@ -1,0 +1,17 @@
+snippet php "Tag do PHP"
+<?php ${1} ?>
+endsnippet
+
+snippet find "CakePHP Find"
+$this->${1}>find('${2:all}', array(
+    ${3:'recursive' => -1,}
+    'conditions' => array(
+        ${4}
+    )
+));
+endsnippet
+
+snippet fredir "Flash e Redirect"
+$this->Session->setFlash("${1}");
+$this->redirect(array(${2:'controller' => '${3}', }'action' => '${4}'));
+endsnippet
