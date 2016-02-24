@@ -20,7 +20,6 @@ endif
 " }}}
 
 " ================         Plugins          ================ {{{
-
 call plug#begin('~/.vim/plugged')
 Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-surround'
@@ -30,45 +29,44 @@ Plug 'tpope/vim-surround'
 " endif
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'tpope/vim-dispatch'
+Plug 'ryanoasis/vim-devicons'
 Plug 'bling/vim-airline'
-" if has('nvim')
-  " Plug 'benekastah/neomake'
-" else
+Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/syntastic'
-" endif
 Plug 'majutsushi/tagbar'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'tpope/vim-repeat'
 Plug 'xolox/vim-misc'
 Plug 'junegunn/vim-easy-align'
-Plug 'scrooloose/nerdtree', { 'on':  [ 'NERDTreeToggle', 'NERDTreeFind' ] }
+Plug 'scrooloose/nerdtree' , { 'on':  [ 'NERDTreeToggle', 'NERDTreeFind' ] }
 Plug 'tommcdo/vim-exchange'
 Plug 'tomtom/tcomment_vim'
 Plug 'vim-scripts/ReplaceWithRegister'
-Plug 'rstacruz/sparkup'
-Plug 'jiangmiao/auto-pairs'
+Plug 'mattn/emmet-vim'
+" Plug 'jiangmiao/auto-pairs'
+Plug 'cohama/lexima.vim'
+" Plug 'Raimondi/delimitMate'
 Plug 'terryma/vim-expand-region'
-Plug 'simnalamburt/vim-mundo', { 'on': ['GundoToggle'] }
-Plug 'terryma/vim-multiple-cursors'
+Plug 'simnalamburt/vim-mundo' , { 'on': ['GundoToggle'] }
 Plug 'tpope/vim-fugitive'
 Plug 'lervag/vimtex', { 'for': 'tex' }
-" Auto Completar
-if has('nvim') || has('win32')
-  Plug 'Shougo/deoplete.nvim'
-else
-  " Plug 'Shougo/neocomplete.vim'
-  Plug 'Valloric/YouCompleteMe', { 'on': [], 'do': './install.sh' }
-endif
-Plug 'zef/vim-cycle'
+Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/neoinclude.vim'
+Plug 'Shougo/neco-vim'
+Plug 'Shougo/neco-syntax'
 
+" Plug 'Valloric/YouCompleteMe', { 'on': [], 'do': './install.sh --clang-completer --gocode-completer --tern-completer '  }
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+Plug 'zef/vim-cycle'
 Plug 'jez/vim-superman'
 Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'Shougo/vimproc.vim'
 
 " Plug 'm2mdas/phpcomplete-extended'
 " Plug 'm2mdas/phpcomplete-extended-laravel'
+Plug 'shawncplus/phpcomplete.vim'
 Plug 'dhruvasagar/vim-table-mode'
-" Plug 'ConradIrwin/vim-bracketed-paste' "Automatic :set paste
 Plug 'mattn/ctrlp-register'
 Plug 'mhinz/vim-startify'
 Plug 'arnaud-lb/vim-php-namespace'
@@ -77,13 +75,20 @@ Plug 'tobyS/vmustache'
 Plug 'tobyS/pdv'
 Plug 'adoy/vim-php-refactoring-toolbox'
 Plug 'kana/vim-operator-user'
-Plug 'haya14busa/vim-operator-flashy'
 Plug 'mhinz/vim-grepper'
-Plug 'svermeulen/vim-easyclip'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install --all' }
 Plug 'junegunn/fzf.vim'
 Plug '1995eaton/vim-better-javascript-completion'
 Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'christoomey/vim-tmux-navigator'
+" Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
+Plug 'jszakmeister/vim-togglecursor'
+Plug 'davidhalter/jedi', { 'for': 'python' }
+Plug 'osyo-manga/vim-over'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'docunext/closetag.vim', { 'for': ['html', 'xml', 'php', 'blade']}
+Plug 'triglav/vim-visual-increment'
+Plug 'matze/vim-move'
 
 " Syntax
 Plug 'Chiel92/vim-autoformat'
@@ -93,17 +98,16 @@ Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'othree/html5.vim'
 Plug 'posva/vim-vue'
-Plug 'xolox/vim-notes'
-Plug 'vim-scripts/indentpython.vim'
+Plug 'xolox/vim-notes', { 'for': 'notes' }
 Plug 'tpope/vim-markdown'
 Plug 'aklt/plantuml-syntax'
-Plug 'Valloric/MatchTagAlways'
+Plug 'Valloric/MatchTagAlways', { 'for': ['html', 'xml', 'php', 'blade' ]}
+Plug 'captbaritone/better-indent-support-for-php-with-html'
 
 " Color Schemes
 Plug 'morhetz/gruvbox'
 Plug 'flazz/vim-colorschemes'
 Plug 'tomasr/molokai'
-" Plug 'chrisbra/Colorizer'
 Plug 'gorodinskiy/vim-coloresque'
 Plug 'NLKNguyen/papercolor-theme'
 
@@ -113,8 +117,7 @@ Plug 'kana/vim-textobj-function', { 'do': 'mkdir ./after/ftplugin/php; cp ./afte
 Plug 'thinca/vim-textobj-function-javascript'
 Plug 'kana/vim-textobj-line'
 Plug 'rbonvall/vim-textobj-latex'
-Plug 'captbaritone/better-indent-support-for-php-with-html'
-Plug 'christoomey/vim-tmux-navigator'
+Plug 'saaguero/vim-textobj-pastedtext'
 
 " Plug 'nathanaelkane/vim-indent-guides'
 " Plug 'joonty/vdebug'
@@ -142,7 +145,6 @@ set backspace=indent,eol,start
 set linebreak
 set nolist
 set whichwrap+=<,>,h,l
-" set complete-=i
 set complete+=k,kspell
 set complete+=t
 set thesaurus+=~/.vim/spell/th_pt_BR.txt
@@ -153,12 +155,17 @@ set nrformats-=octal
 set shiftround
 set encoding=utf-8 nobomb
 " Timeout
-" set notimeout
+set timeout
+set timeoutlen=1000
 set ttimeout
-set ttimeoutlen=50
+set ttimeoutlen=10
 set copyindent
 set cpoptions+=$
-" set nofoldenable
+set nofoldenable
+" Sem VisualBells
+set novb
+set t_vb=
+set modeline
 
 " Salvar arquivo 'undo' depois de fechar o arquivo
 set undofile
@@ -187,8 +194,8 @@ set nostartofline
 " Ler arquivo automaticamente caso ele for modificado externalmente
 set autoread
 
-" Mudar versão do Regex para 1
-set regexpengine=1
+" Mudar versão do Regex para 0 (Automatico)
+set regexpengine=0
 
 " Realça linha atual
 " set cursorline
@@ -232,7 +239,7 @@ set noswapfile
 set fileformats=unix,dos,mac
 
 " Configuração de auto completar para funcionar com o YCM
-set completeopt=menuone,longest
+set completeopt=longest
 
 " S-k abre a ajuda para a palavra selecionada
 set keywordprg=":help"
@@ -258,6 +265,10 @@ set sessionoptions-=help
 
 " set shell=/usr/bin/zsh\ -l
 
+if executable("ag")
+    let g:ackprg = 'ag --nogroup --nocolor --column'
+endif
+
 " }}}
 
 " ================         Keybinds         ================ {{{
@@ -269,16 +280,6 @@ set pastetoggle=<F2>
 nnoremap <Space> <nop>
 let mapleader = ' '
 let maplocalleader = ' '
-
-" Movimentação de uma linha com Shift+Arrow Keys
-nnoremap <S-Up> :m-2<CR>
-nnoremap <S-Down> :m+<CR>
-inoremap <S-Up> <Esc>:m-2<CR>
-inoremap <S-Down> <Esc>:m+<CR>
-
-" Mover linhas no modo visual
-vnoremap <S-Down> :m '>+1<CR>gv=gv
-vnoremap <S-Up> :m '<-2<CR>gv=gv
 
 " Modifica a movimentação por linhas visuais
 nnoremap j gj
@@ -355,18 +356,28 @@ map <Leader>R :retab<CR>
 nnoremap <C-s> [s1z=<c-o>
 inoremap <C-s> <c-g>u<Esc>[s1z=`]A<c-g>u
 
-" Salvar quando sair do insert mode
-inoremap <Esc> <Esc>:w<CR>
-
 " Salvar arquivo com <leader>s
 nnoremap <leader>s :w<cr>
+
+" Selecionar autocompletar com <Enter>
+" inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " }}}
 
 " ================ Configuração dos Plugins ================ {{{
 
 " vim-plug
-let g:plug_timeout = 5000 "Necessário porcausa das compilações
+let g:plug_timeout = 5000 "Necessário por causa das compilações
+
+" " delimitMate
+" let g:delimitMate_expand_cr = 2
+" let g:delimitMate_jump_expansion = 1
+" let g:delimitMate_balance_matchpairs = 1
+" let g:delimitMate_insert_eol_marker = 2
+" au FileType c,php let b:delimitMate_eol_marker = ";"
+
+" Lexima
+let g:lexima_enable_space_rules = 0
 
 " VDebug
 let g:vdebug_options= {
@@ -406,42 +417,18 @@ let g:mta_filetypes = {
       \}
 
 " Syntastic
-let g:syntastic_error_symbol           = "✗"
-let g:syntastic_warning_symbol         = "⚠"
+let g:syntastic_warning_symbol         = "✹"
+let g:syntastic_error_symbol           = "✖"
+" let g:syntastic_php_checkers           = ["php", "phpcs", "phpmd"]
 let g:syntastic_php_checkers           = ["php"]
+let g:syntastic_php_phpcs_args         = '--standard=PSR2 -n'
 let g:syntastic_javascript_checkers    = ["jshint"]
 let g:syntastic_html_jshint_args       = "--extract=always"
 let g:syntastic_javascript_jshint_args = "--extract=always"
 let g:syntastic_python_checkers        = ["flake8"]
 let g:syntastic_python_flake8_args     = '--ignore="E501,E302,E261,E701,E241,E126,E127,E128,W801"'
 let g:syntastic_check_on_wq            = 0
-
-" Neomake
-" if has('nvim')
-  " autocmd! BufWritePost * Neomake
-  " let g:neomake_javascript_enabled_makers = ['jshint']
-  " " let g:neomake_python_enabled_makers = ['flake8']
-  let g:neomake_php_enabled_makers = ['php']
-
-  let g:neomake_verbose = 3
-
-  let g:neomake_logfile = '/home/rafael/neomake.log'
-  let g:neomake_make_maker = {
-        \ 'exe': 'php',
-        \ 'args': ['-d error_reporting=E_ALL', '%:p', '-l -d display_errors=1 -d log_errors=0 -d xdebug.cli_color=0'],
-        \ 'errorformat': 'PHP Parse error:  %#syntax %trror\, %m in %f on line %l,',
-        \ }
-  " let g:neomake_warning_sign = {
-  "   \ 'text': '✹',
-  "   \ 'texthl': 'WarningMsg',
-  "   \ }
-  "
-  " let g:neomake_error_sign = {
-  "   \ 'text': '✖',
-  "   \ 'texthl': 'ErrorMsg',
-  "   \ }
-
-" endif
+let g:syntastic_aggregate_errors       = 1
 
 " Vim Surround
 let g:surround_indent = 1
@@ -492,30 +479,30 @@ if exists("g:ctrl_user_command")
 endif
 
 " Usando Silver_Searcher
-" let g:ctrlp_user_command            = 'ag %s -i --nocolor --hidden --ignore-case --silent
-"       \ --ignore .git
-"       \ --ignore .svn
-"       \ --ignore .hg
-"       \ --ignore .DS_Store
-"       \ --ignore "**/lib/*"
-"       \ --ignore "**/Vendor/*"
-"       \ --ignore "**/*.pyc"
-"       \ -g ""'
-" let g:ctrlp_custom_ignore          = '\v[\/]\.(DS_Storegit|hg|svn|node_modules|lib|Vendor)$'
-" if has('nvim')
-"   let g:ctrlp_match_func             = { 'match': 'pymatcher#PyMatch' }
-" else
-"   let g:ctrlp_match_func             = { 'match': 'cpsm#CtrlPMatch' }
-"   " let g:ctrlp_match_func             = { 'match': 'pymatcher#PyMatch' }
-" endif
-" let g:ctrlp_match_window           = 'bottom,order:ttb,results:20'
-" let g:ctrlp_switch_buffer          = 0
-" let g:ctrlp_working_path_mode      = 'a'
-" let g:ctrlp_clear_cache_on_exit    = 1
-" let g:ctrlp_cache_dir              = $HOME . '/.cache/ctrlp'
-" let g:ctrlp_extensions             = ['funky', 'register']
-" let g:ctrlp_funky_syntax_highlight = 1
-" let g:ctrlp_open_new_file          = "t"
+let g:ctrlp_user_command            = 'ag %s -i --nocolor --hidden --ignore-case --silent
+      \ --ignore .git
+      \ --ignore .svn
+      \ --ignore .hg
+      \ --ignore .DS_Store
+      \ --ignore "**/lib/*"
+      \ --ignore "**/Vendor/*"
+      \ --ignore "**/*.pyc"
+      \ -g ""'
+let g:ctrlp_custom_ignore          = '\v[\/]\.(DS_Storegit|hg|svn|node_modules|lib|Vendor)$'
+if has('nvim')
+  let g:ctrlp_match_func             = { 'match': 'pymatcher#PyMatch' }
+else
+  let g:ctrlp_match_func             = { 'match': 'cpsm#CtrlPMatch' }
+  " let g:ctrlp_match_func             = { 'match': 'pymatcher#PyMatch' }
+endif
+let g:ctrlp_match_window           = 'bottom,order:ttb,results:20'
+let g:ctrlp_switch_buffer          = 0
+let g:ctrlp_working_path_mode      = 'a'
+let g:ctrlp_clear_cache_on_exit    = 1
+let g:ctrlp_cache_dir              = $HOME . '/.cache/ctrlp'
+let g:ctrlp_extensions             = ['funky', 'register']
+let g:ctrlp_funky_syntax_highlight = 1
+let g:ctrlp_open_new_file          = "t"
 " map <F5> :CtrlPClearCache<CR>
 
 "FZF
@@ -531,6 +518,7 @@ let g:UltiSnipsListSnippets        = "<C-L>"
 let g:UltiSnipsEditSplit           = "vertical"
 let g:did_UltiSnips_vim_after      = 1
 let g:UltiSnipsSnippetDirectories  = ["~/.vim/plugged/vim-snippets/UltiSnips", "UltiSnips"]
+let g:UltiSnipsUsePythonVersion    = 2
 
 " vim-airline
 let g:airline#extensions#tabline#enabled          = 1
@@ -543,7 +531,10 @@ let g:airline#extensions#tabline#formatter        = 'unique_tail'
 let g:airline#extensions#tabline#fnamemod         = ':t'
 let g:airline#extensions#whitespace#enabled       = 0
 let g:airline#extensions#branch#enabled           = 1
-let g:airline_section_y = 'Tab: %{&tabstop}'
+let g:airline#extensions#tagbar#enabled           = 1
+let g:airline#extensions#syntastic#enabled        = 0
+let g:airline#extensions#hunks#enabled            = 0
+let g:airline_section_y                           = 'Tab: %{&tabstop}'
 
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
@@ -563,17 +554,8 @@ let g:airline#extensions#capslock#enabled   = 0
 let g:airline#extensions#windowswap#enabled = 0
 let g:airline_theme='badwolf'
 
-" Sparkup
-let g:sparkupNextMapping = '<C-q>'
-
-" easytags
-set tags+=~/.vimtags;
-" let g:easytags_dynamic_files  = 2
-" let g:easytags_events         = ['BufWritePost']
-" let b:easytags_auto_highlight = 0
-" let g:easytags_async          = 1
-" let g:easytags_opts           = ['--fields=+l --PHP-kinds=+cf']
-" let g:easytags_syntax_keyword = 0
+" Emmet
+let g:user_emmet_leader_key='<C-e>'
 
 " TagBar
 nmap <C-t> :TagbarToggle<CR>
@@ -596,54 +578,72 @@ let g:ycm_global_ycm_extra_conf                         = '~/ycm_extra_conf.py'
 let g:ycm_autoclose_preview_window_after_insertion      = 1
 let g:ycm_min_num_of_chars_for_completion               = 2
 let g:ycm_collect_identifiers_from_tags_files           = 1
-let g:ycm_add_preview_to_completeopt                    = 0
+let g:ycm_seed_identifiers_with_syntax                  = 0
+" let g:ycm_add_preview_to_completeopt                    = 1
 let g:ycm_auto_trigger                                  = 1
 let g:ycm_complete_in_comments                          = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_cache_omnifunc                                = 1
+let g:ycm_use_ultisnips_completer                       = 1
 let g:ycm_complete_in_comments                          = 1
 let g:ycm_filepath_completion_use_working_dir           = 1
 let g:ycm_semantic_triggers                             = {
       \   'c' : ['->', '.'],
+      \   'php' : [],
       \   'objc' : ['->', '.', 're!\[[_a-zA-Z]+\w*\s', 're!^\s*[^\W\d]\w*\s',
       \             're!\[.*\]\s'],
       \   'ocaml' : ['.', '#'],
       \   'cpp,objcpp' : ['->', '.', '::'],
       \   'perl' : ['->'],
-      \   'php' : ['->', '::', '(', 'use ', 'namespace ', '\'],
       \   'cs,java,javascript,typescript,d,python,perl6,scala,vb,elixir,go' : ['.'],
       \   'vim' : ['re![_a-zA-Z]+[_\w]*\.'],
       \   'ruby' : ['.', '::'],
       \   'lua' : ['.', ':'],
       \   'erlang' : [':'],
       \ }
+" \   'php' : ['->', '::', '(', 'use ', 'namespace ', '\'],
+let g:ycm_filetype_specific_completion_to_disable = {
+      \ 'php': 1
+      \}
 
-if !has('nvim')
-  augroup load_ycm
-    autocmd!
-    autocmd! InsertEnter *
-          \ call plug#load('YouCompleteMe') |
-          \ if exists('g:loaded_youcompleteme')          |
-          \   call youcompleteme#Enable()                |
-          \ endif                                        |
-          \ autocmd! load_ycm
-  augroup END
-endif
+augroup load_ycm
+  autocmd!
+  autocmd! InsertEnter *
+        \ call plug#load('YouCompleteMe') |
+        \ if exists('g:loaded_youcompleteme')          |
+        \   call youcompleteme#Enable()                |
+        \ endif                                        |
+        \ autocmd! load_ycm
+augroup END
+inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
 
 " Deoplete
 if has('nvim')
+  let g:deoplete#auto_completion_start_length = 1
   let g:deoplete#enable_at_startup = 1
+  " let g:deoplete#enable_refresh_always = 1
+  let g:deoplete#delimiters = ['/', '.', '::', ':', '#']
   let g:deoplete#sources={}
-  let g:deoplete#sources._    = ['buffer', 'member', 'file', 'omni', 'ultisnips']
-  " let g:deoplete#sources.vim  = ['buffer', 'member', 'file', 'ultisnips']
-  " let g:deoplete#sources.css  = ['buffer', 'member', 'file', 'omni', 'ultisnips']
-  "
-  " let g:deoplete#sources.javascript  = ['buffer', 'member', 'file', 'ultisnips']
-  " let g:deoplete#sources.js  = ['buffer', 'member', 'file', 'ultisnips']
-  " let g:deoplete#sources.php  = ['buffer', 'member', 'file', 'ultisnips']
+  let g:deoplete#sources._=['omni', 'buffer', 'member', 'ultisnips', 'file', 'tag']
+  call deoplete#custom#set('_', 'matchers', ['matcher_fuzzy', 'matcher_full_fuzzy'])
+  call deoplete#custom#set('_', 'converters',
+        \ ['converter_auto_paren',
+        \  'converter_auto_delimiter', 'remove_overlap', 'converter_remove_paren'])
+  let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
+  let g:deoplete#omni#input_patterns.tex =
+        \ '\v\\%('
+        \ . '\a*%(ref|cite)\a*%(\s*\[[^]]*\])?\s*\{[^{}]*'
+        \ . '|includegraphics%(\s*\[[^]]*\])?\s*\{[^{}]*'
+        \ . '|%(include|input)\s*\{[^{}]*'
+        \ . ')'
 
-	if has("patch-7.4.314")
-	  set shortmess+=c
-	endif
+  let g:neoinclude#exts          = {'php': ['php', 'inc', 'tpl']}
+  let g:neoinclude#max_processes = 5
+
+
+  if has("patch-7.4.314")
+    set shortmess+=c
+  endif
   " use tab to forward cycle
   inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
   " use tab to backward cycle
@@ -653,45 +653,33 @@ endif
 " Enable omni completion.
 autocmd FileType css           setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType python        setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType python        setlocal omnifunc=jedi#completions
 autocmd FileType xml           setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php           setlocal omnifunc=phpcomplete#CompletePHP
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+" autocmd FileType javascript setlocal omnifunc=tern#Complete
+autocmd FileType vim setlocal omnifunc=syntaxcomplete#Complete
+autocmd FileType vim setlocal foldenable
 
 " Easy EasyAlign
 vmap <leader>a <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
-" Operator Flashy
-map y <Plug>(operator-flashy)
-nmap Y <Plug>(operator-flashy)$
-let g:operator#flashy#flash_time=350
-
-" EasyClip
-let g:EasyClipUsePasteToggleDefaults = 0
-let g:EasyClipAutoFormat = 1
-" nmap <c-i> <plug>EasyClipSwapPasteForward
-" nmap <c-o> <plug>EasyClipSwapPasteBackwards
-imap <c-v> <plug>EasyClipInsertModePaste
-cmap <c-v> <plug>EasyClipCommandModePaste
-
-" " Ag Silver Seacher
-" let g:ag_prg="ag --vimgrep --smart-case --silent"
-" let g:ag_highlight=1
-"
-" " Ack
-" if executable('ag')
-"   let g:ackprg = 'ag --vimgrep --smart-case --silent'
-" endif
-" let g:ack_use_dispatch = 1
+" Multiple Cursor
+function! Multiple_cursors_before()
+    let g:ycm_auto_trigger = 0
+endfunction
+ 
+function! Multiple_cursors_after()
+    let g:ycm_auto_trigger = 1
+endfunction
 
 " Vim Grepper
 let g:grepper = {
-    \ 'tools': ['agnew'],
-    \ 'agnew': {
-    \   'grepprg':    'ag --vimgrep -F',
-    \ }}
-nnoremap <leader>ag  :Grepper! -tool agnew  -open -switch<cr>
+      \ 'tools': ['agnew'],
+      \ 'agnew': {
+      \   'grepprg':    'ag --vimgrep -F',
+      \ }}
+nnoremap <leader>ag :Grepper -tool agnew  -open -switch<cr>
 
 " Nerdtree
 map <leader>n :NERDTreeToggle<CR>
@@ -750,9 +738,9 @@ map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 let g:incsearch#magic = '\v' " very magic
-
-" " Eclim
-" let g:EclimCompletionMethod = 'omnifunc'
+map z/ <Plug>(incsearch-fuzzyspell-/)
+map z? <Plug>(incsearch-fuzzyspell-?)
+map zg/ <Plug>(incsearch-fuzzyspell-stay)
 
 " Vim-expand-region
 vmap v <Plug>(expand_region_expand)
@@ -763,13 +751,12 @@ let g:gruvbox_italic        = 0
 let g:gruvbox_bold          = 1
 let g:gruvbox_contrast_dark = 'hard'
 
-" " Tern
-" let g:tern_show_argument_hints = 'on_hold'
-" let g:tern_show_signature_in_pum = 1
+" PHP Complete
+let g:phpcomplete_cache_taglists = 1
 
-" " PHP Extended
-" let g:phpcomplete_index_composer_command = "composer"
-" let g:phpcomplete_extended_use_default_mapping = 0
+" PHP Extended
+let g:phpcomplete_index_composer_command = "composer"
+let g:phpcomplete_extended_use_default_mapping = 0
 
 " Php Refactoring
 let g:vim_php_refactoring_use_default_mapping = 0
@@ -803,6 +790,17 @@ let g:startify_custom_header = [
       \ '',
       \ ]
 
+" Ternjs
+let g:tern_show_argument_hints = 'on_hold'
+let g:tern_show_signature_in_pum = 1
+
+" Togglecursor
+let g:togglecursor_default = 'block'
+let g:togglecursor_insert = 'line'
+
+" Vim-Over
+nnoremap <C-F> :OverCommandLine %s/<CR>
+
 " }}}
 
 " ================       Auto Grupos        ================ {{{
@@ -816,6 +814,7 @@ augroup configgroup
 
   au BufNewFile,BufRead *.blade.php set filetype=blade.php
   au BufNewFile,BufRead *.vue set filetype=html.javascript.vue
+  au BufNewFile,BufRead *.note set filetype=notes
 
 augroup END
 
@@ -840,22 +839,23 @@ augroup resCur
   autocmd BufReadPost * call setpos(".", getpos("'\""))
 augroup END
 
+
 " Salvar arquivos quando perder o foco do buffer ou do vim
 set autowrite
-au FocusLost * :wa
-au FocusGained * :checktime
+au FocusLost * update
+au FocusGained * if &autoread | silent checktime | endif
 
 " Recarregar o NERDTree
 autocmd WinEnter * if exists('b:NERDTree') | execute 'normal R' | endif
 
-" Mudar estilo do cursor no modo normal/insert
-if &term =~ "xterm\\|rxvt"
-  " Insert
-  let &t_SI .= "\<Esc>[5 q"
-  " Normal
-  let &t_EI .= "\<Esc>[2 q"
-  autocmd VimLeave * silent !echo -ne "\033]112\007"
-endif
+" Fix QuickFix
+au WinEnter,BufEnter * if &filetype == "qf" | call AdjustWindowHeight(3, 10)
+function! AdjustWindowHeight(minheight, maxheight)
+  exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
+endfunction
+
+" Salvar quando sair do insert mode
+au InsertLeave * if &mod == 1 | update | endif
 
 " }}}
 
@@ -863,6 +863,8 @@ endif
 
 " Tig
 command! Tig :Dispatch tig
+let g:python_host_skip_check = 1
+let g:python3_host_skip_check = 1
 
 function! ConfirmQuit(writeFile)
   if (a:writeFile)
@@ -922,23 +924,24 @@ function! s:config()
 endfunction
 command! Config call s:config()
 
-if &term =~ '^xterm\\|rxvt'
-  " solid underscore
-  let &t_SI .= "\<Esc>[4 q"
-  " solid block
-  let &t_EI .= "\<Esc>[2 q"
-  " 1 or 0 -> blinking block
-  " 3 -> blinking underscore
-  " Recent versions of xterm (282 or above) also support
-  " 5 -> blinking vertical bar
-  " 6 -> solid vertical bar
-endif
-
+command! -nargs=0 -bar Qargs execute 'args ' . QuickfixFilenames()
+function! QuickfixFilenames()
+  " Building a hash ensures we get each buffer only once
+  let buffer_numbers = {}
+  for quickfix_item in getqflist()
+    let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
+  endfor
+  return join(values(buffer_numbers))
+endfunction
 " }}}
 
 " ================        Arco-Iris         ================ {{{
 
 set background=dark
+
+" if has('nvim')
+"  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+" endif
 
 colorscheme gruvbox
 " colorscheme molokai
@@ -955,3 +958,6 @@ hi SpellBad gui=undercurl guisp=red guifg=red
 
 hi StartifyHeader  ctermfg=40
 
+hi! BufTabLineCurrent guibg=#151515 guifg=#ffffff gui=None cterm=None ctermbg=190 ctermfg=17
+hi! BufTabLineHidden guibg=#151515 guifg=#ffffff gui=None cterm=None ctermbg=238 ctermfg=15
+hi! BufTabLineFill guibg=#151515 guifg=#ffffff gui=None cterm=None ctermbg=234 ctermfg=15

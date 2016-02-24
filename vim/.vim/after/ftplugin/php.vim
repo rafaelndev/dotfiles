@@ -5,6 +5,8 @@ setlocal formatprg=par\ -w80\ -T4
 setlocal tabstop=4
 setlocal shiftwidth=4
 setlocal softtabstop=4
+let php_htmlInStrings = 1
+let php_sql_query = 1
 UltiSnipsAddFiletypes php
 
 nnoremap <Leader>prlv :call PhpRenameLocalVariable()<CR>
@@ -20,4 +22,5 @@ vnoremap <Leader>p== :call PhpAlignAssigns()<CR>
 nnoremap <Leader>psg :call PhpCreateSettersAndGetters()<CR>
 nnoremap <Leader>pda :call PhpDocAll()<CR>
 nnoremap <Leader>pdf :call pdv#DocumentWithSnip()<CR>
-nmap <Leader>pau <Plug>(phpcomplete-extended-add-use) 
+nnoremap <silent><leader>pcf :Dispatch php-cs-fixer fix % -v --ansi<CR>:e<CR>:w<CR>
+nmap <Leader>pau <Plug>(phpcomplete-extended-add-use)
