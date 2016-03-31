@@ -27,6 +27,8 @@ rofi.hmode:                 false
 rofi.terminal:              x-terminal-emulator
 rofi.ssh-set-title:         true
 
+Xcursor.theme: Oxygen Zion
+
 xft.dpi:                    96
 xft.hinting:                true
 
