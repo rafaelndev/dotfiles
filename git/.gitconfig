@@ -5,8 +5,10 @@
 	editor = vim
 	askpass = 
 	compression = 9
+	preloadindex = true
+	fscache = true
 [gc]
-	auto = 1
+	auto = 256
 [diff]
 	tool = vimdiff
 [merge]
