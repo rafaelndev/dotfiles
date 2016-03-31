@@ -1,5 +1,6 @@
 [options]
-font = Source Code Pro for Powerline Medium 10.5
+; font = Source Code Pro for Powerline Medium 10
+font = Fira Mono Medium for Powerline Medium 10
 allow_bold = true
 dynamic_title = true
 clickable_url = true
