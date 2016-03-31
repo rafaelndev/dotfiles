@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Função para controlar o player MPC ou Playerctl
+function control {
+  # Se o mpd for encontrado executa as ações nele
+  if pgrep "mpd"; then
+    case $1 in
+      previous ) mpc prev ;;
+      * ) mpc $1 ;;
+    esac
+  # Caso o mpd não for encontrado usa o playerctl
+  else
+    case $1 in
+      toggle ) playerctl play-pause ;;
+      * ) playerctl $1 ;;
+    esac
+  fi
+}
+
+control $1
+
