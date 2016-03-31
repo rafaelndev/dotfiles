@@ -1,0 +1,56 @@
+#
+# A single line theme with Git information on the left and Ruby on the right.
+# Um tema simples com informações de Git, baseado no robbyrussell do oh-my-zsh
+#
+# Authors:
+#   Rafael Nascimento <rafaeln.dev@gmail.com>
+#
+# Features:
+#   - Indica se o reposítorio está 'dirty' ou 'clean'
+#
+
+function prompt_rafaeln_precmd {
+  setopt LOCAL_OPTIONS
+  unsetopt XTRACE KSH_ARRAYS
+
+  # Get Git repository information.
+  if (( $+functions[git-info] )); then
+    git-info
+  fi
+
+  # Get Ruby information.
+  if (( $+functions[ruby-info] )); then
+    ruby-info
+  fi
+}
+
+function prompt_rafaeln_setup {
+  setopt LOCAL_OPTIONS
+  unsetopt XTRACE KSH_ARRAYS
+  prompt_opts=(cr percent subst)
+
+  # Load required functions.
+  autoload -Uz add-zsh-hook
+
+  # Add hook for calling git-info before each command.
+  add-zsh-hook precmd prompt_rafaeln_precmd
+
+  # Set editor-info parameters.
+  zstyle ':prezto:module:editor:info:completing' format '%B%F{red}...%f%b'
+
+  # Set git-info parameters.
+  zstyle ':prezto:module:git:info' verbose 'no'
+  zstyle ':prezto:module:git:info:branch' format '%B%F{red} %b%f'
+  zstyle ':prezto:module:git:info:dirty' format '%B%F{yellow} ✗%f%b'
+  zstyle ':prezto:module:git:info:clean' format '%B%F{green} ✔%f%b'
+  zstyle ':prezto:module:git:info:indexed' format ' '
+  zstyle ':prezto:module:git:info:unindexed' format ' '
+  zstyle ':prezto:module:git:info:untracked' format ' '
+  zstyle ':prezto:module:git:info:keys' format 'prompt' '%F{blue}%f(%b%D) '
+
+  # Define prompts.
+  PROMPT='%F{green}➜%b%f  %B%F{cyan}%c%f${git_info:+ ${(e)git_info[prompt]}}%b '
+  RPROMPT=''
+}
+
+prompt_rafaeln_setup "$@"

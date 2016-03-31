@@ -1,0 +1,821 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/f2fef59/
+$(OH_MY_ZSH_LINK_TARGET)	modules/autosuggestions/external/Makefile	/^$(OH_MY_ZSH_LINK_TARGET): $(PLUGIN_TARGET)$/;"	t
+$(PLUGIN_TARGET)	modules/autosuggestions/external/Makefile	/^$(PLUGIN_TARGET): $(HEADER_FILES) $(SRC_FILES)$/;"	t
+--	modules/syntax-highlighting/external/highlighters/main/main-highlighter.zsh	/^                            local aliased_command="${"$(alias -- $arg)"#*=}"$/;"	a
+-s	modules/syntax-highlighting/external/highlighters/main/test-data/alias.zsh	/^alias -s alias2="echo"$/;"	a
+.borderless	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^.borderless, table.borderless td, table.borderless th {$/;"	c
+.first	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^.first {$/;"	c
+.hidden	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^.hidden {$/;"	c
+.last	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^.last, .with-subtitle {$/;"	c
+.with-subtitle	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^.last, .with-subtitle {$/;"	c
+0	modules/prompt/external/pure/package.json	/^    "pure.zsh",$/;"	s	array:files
+0	modules/prompt/external/pure/package.json	/^    "zsh",$/;"	s	array:keywords
+0	modules/prompt/external/pure/package.json	/^    {$/;"	o	array:maintainers
+1	modules/prompt/external/pure/package.json	/^    "async.zsh"$/;"	s	array:files
+1	modules/prompt/external/pure/package.json	/^    "zshell",$/;"	s	array:keywords
+10	modules/prompt/external/pure/package.json	/^    "fast",$/;"	s	array:keywords
+11	modules/prompt/external/pure/package.json	/^    "minimal",$/;"	s	array:keywords
+12	modules/prompt/external/pure/package.json	/^    "pretty"$/;"	s	array:keywords
+2	modules/prompt/external/pure/package.json	/^    "sh",$/;"	s	array:keywords
+3	modules/prompt/external/pure/package.json	/^    "shell",$/;"	s	array:keywords
+4	modules/prompt/external/pure/package.json	/^    "bash",$/;"	s	array:keywords
+5	modules/prompt/external/pure/package.json	/^    "pure",$/;"	s	array:keywords
+6	modules/prompt/external/pure/package.json	/^    "prompt",$/;"	s	array:keywords
+7	modules/prompt/external/pure/package.json	/^    "theme",$/;"	s	array:keywords
+8	modules/prompt/external/pure/package.json	/^    "git",$/;"	s	array:keywords
+9	modules/prompt/external/pure/package.json	/^    "async",$/;"	s	array:keywords
+ALL_TARGETS	modules/autosuggestions/external/Makefile	/^ALL_TARGETS := \\$/;"	m
+DOC_DIR	modules/syntax-highlighting/external/Makefile	/^DOC_DIR?=$(DESTDIR)$(PREFIX)\/share\/doc\/$(NAME)$/;"	m
+HEADER_FILES	modules/autosuggestions/external/Makefile	/^HEADER_FILES := \\$/;"	m
+INSTALL	modules/syntax-highlighting/external/Makefile	/^INSTALL?=install -c$/;"	m
+NAME	modules/syntax-highlighting/external/Makefile	/^NAME=zsh-syntax-highlighting$/;"	m
+OH_MY_ZSH_LINK_TARGET	modules/autosuggestions/external/Makefile	/^OH_MY_ZSH_LINK_TARGET := zsh-autosuggestions.plugin.zsh$/;"	m
+PLUGIN_TARGET	modules/autosuggestions/external/Makefile	/^PLUGIN_TARGET := zsh-autosuggestions.zsh$/;"	m
+PREFIX	modules/syntax-highlighting/external/Makefile	/^PREFIX?=\/usr\/local$/;"	m
+SCRIPT_DIR	modules/autosuggestions/external/Makefile	/^SCRIPT_DIR := .\/script$/;"	m
+SHARE_DIR	modules/syntax-highlighting/external/Makefile	/^SHARE_DIR?=$(DESTDIR)$(PREFIX)\/share\/$(NAME)$/;"	m
+SRC_DIR	modules/autosuggestions/external/Makefile	/^SRC_DIR    := .\/src$/;"	m
+SRC_FILES	modules/autosuggestions/external/Makefile	/^SRC_FILES := \\$/;"	m
+ZSH	modules/syntax-highlighting/external/Makefile	/^ZSH?=zsh # zsh binary to run tests with$/;"	m
+_	modules/utility/init.zsh	/^alias _='sudo'$/;"	a
+___docker-compose_all_services_in_compose_file	modules/docker-compose/init.zsh	/^___docker-compose_all_services_in_compose_file() {$/;"	f
+___docker-compose_services_with_key	modules/docker-compose/init.zsh	/^___docker-compose_services_with_key() {$/;"	f
+__docker-compose_caching_policy	modules/docker-compose/init.zsh	/^__docker-compose_caching_policy() {$/;"	f
+__docker-compose_commands	modules/docker-compose/init.zsh	/^__docker-compose_commands () {$/;"	f
+__docker-compose_compose_file	modules/docker-compose/init.zsh	/^__docker-compose_compose_file() {$/;"	f
+__docker-compose_get_services	modules/docker-compose/init.zsh	/^__docker-compose_get_services() {$/;"	f
+__docker-compose_runningservices	modules/docker-compose/init.zsh	/^__docker-compose_runningservices() {$/;"	f
+__docker-compose_services	modules/docker-compose/init.zsh	/^__docker-compose_services () {$/;"	f
+__docker-compose_services_all	modules/docker-compose/init.zsh	/^__docker-compose_services_all() {$/;"	f
+__docker-compose_services_from_build	modules/docker-compose/init.zsh	/^__docker-compose_services_from_build() {$/;"	f
+__docker-compose_services_from_image	modules/docker-compose/init.zsh	/^__docker-compose_services_from_image() {$/;"	f
+__docker-compose_stoppedservices	modules/docker-compose/init.zsh	/^__docker-compose_stoppedservices() {$/;"	f
+__docker-compose_subcommand	modules/docker-compose/init.zsh	/^__docker-compose_subcommand () {$/;"	f
+__stub_call	modules/autosuggestions/external/test/stub-1.0.2.sh	/^__stub_call() {$/;"	f
+__stub_clean	modules/autosuggestions/external/test/stub-1.0.2.sh	/^__stub_clean() {$/;"	f
+__stub_index	modules/autosuggestions/external/test/stub-1.0.2.sh	/^__stub_index() {$/;"	f
+__stub_register	modules/autosuggestions/external/test/stub-1.0.2.sh	/^__stub_register() {$/;"	f
+_async_job	modules/prompt/external/pure/async.zsh	/^_async_job() {$/;"	f
+_async_notify_trap	modules/prompt/external/pure/async.zsh	/^_async_notify_trap() {$/;"	f
+_async_worker	modules/prompt/external/pure/async.zsh	/^_async_worker() {$/;"	f
+_async_zle_watcher	modules/prompt/external/pure/async.zsh	/^_async_zle_watcher() {$/;"	f
+_docker-compose	modules/docker-compose/init.zsh	/^_docker-compose () {$/;"	f
+_gpg-agent-update-tty	modules/gpg/init.zsh	/^  function _gpg-agent-update-tty {$/;"	f
+_history-substring-search-begin	modules/history-substring-search/external/zsh-history-substring-search.zsh	/^_history-substring-search-begin() {$/;"	f
+_history-substring-search-down-buffer	modules/history-substring-search/external/zsh-history-substring-search.zsh	/^_history-substring-search-down-buffer() {$/;"	f
+_history-substring-search-down-history	modules/history-substring-search/external/zsh-history-substring-search.zsh	/^_history-substring-search-down-history() {$/;"	f
+_history-substring-search-down-search	modules/history-substring-search/external/zsh-history-substring-search.zsh	/^_history-substring-search-down-search() {$/;"	f
+_history-substring-search-end	modules/history-substring-search/external/zsh-history-substring-search.zsh	/^_history-substring-search-end() {$/;"	f
+_history-substring-search-not-found	modules/history-substring-search/external/zsh-history-substring-search.zsh	/^_history-substring-search-not-found() {$/;"	f
+_history-substring-search-up-buffer	modules/history-substring-search/external/zsh-history-substring-search.zsh	/^_history-substring-search-up-buffer() {$/;"	f
+_history-substring-search-up-history	modules/history-substring-search/external/zsh-history-substring-search.zsh	/^_history-substring-search-up-history() {$/;"	f
+_history-substring-search-up-search	modules/history-substring-search/external/zsh-history-substring-search.zsh	/^_history-substring-search-up-search() {$/;"	f
+_shunit_assertFail	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2	/^_shunit_assertFail()$/;"	f
+_shunit_assertPass	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2	/^_shunit_assertPass()$/;"	f
+_shunit_assertSkip	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2	/^_shunit_assertSkip()$/;"	f
+_shunit_cleanup	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2	/^_shunit_cleanup()$/;"	f
+_shunit_error	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2	/^_shunit_error() { echo "shunit2:ERROR $@" >&2; }$/;"	f
+_shunit_escapeCharInStr	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2	/^_shunit_escapeCharInStr()$/;"	f
+_shunit_escapeCharactersInString	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2	/^_shunit_escapeCharactersInString()$/;"	f
+_shunit_execSuite	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2	/^_shunit_execSuite()$/;"	f
+_shunit_extractTestFunctions	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2	/^_shunit_extractTestFunctions()$/;"	f
+_shunit_fatal	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2	/^_shunit_fatal() { echo "shunit2:FATAL $@" >&2; exit ${SHUNIT_ERROR}; }$/;"	f
+_shunit_generateReport	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2	/^_shunit_generateReport()$/;"	f
+_shunit_mktempDir	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2	/^_shunit_mktempDir()$/;"	f
+_shunit_mktempFunc	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2	/^_shunit_mktempFunc()$/;"	f
+_shunit_prepForSourcing	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2	/^_shunit_prepForSourcing()$/;"	f
+_shunit_shouldSkip	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2	/^_shunit_shouldSkip()$/;"	f
+_shunit_warn	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2	/^_shunit_warn() { echo "shunit2:WARN $@" >&2; }$/;"	f
+_terminal-set-terminal-app-proxy-icon	modules/terminal/init.zsh	/^  function _terminal-set-terminal-app-proxy-icon {$/;"	f
+_terminal-set-titles-with-command	modules/terminal/init.zsh	/^function _terminal-set-titles-with-command {$/;"	f
+_terminal-set-titles-with-path	modules/terminal/init.zsh	/^function _terminal-set-titles-with-path {$/;"	f
+_terminal-unset-terminal-app-proxy-icon	modules/terminal/init.zsh	/^  function _terminal-unset-terminal-app-proxy-icon {$/;"	f
+_versions_have_strings	modules/autosuggestions/external/test/shunit2-2.1.6/lib/versions	/^_versions_have_strings()$/;"	f
+_zsh_autosuggest_accept	modules/autosuggestions/external/src/widgets.zsh	/^_zsh_autosuggest_accept() {$/;"	f
+_zsh_autosuggest_accept	modules/autosuggestions/external/zsh-autosuggestions.plugin.zsh	/^_zsh_autosuggest_accept() {$/;"	f
+_zsh_autosuggest_accept	modules/autosuggestions/external/zsh-autosuggestions.zsh	/^_zsh_autosuggest_accept() {$/;"	f
+_zsh_autosuggest_bind_widget	modules/autosuggestions/external/src/bind.zsh	/^_zsh_autosuggest_bind_widget() {$/;"	f
+_zsh_autosuggest_bind_widget	modules/autosuggestions/external/zsh-autosuggestions.plugin.zsh	/^_zsh_autosuggest_bind_widget() {$/;"	f
+_zsh_autosuggest_bind_widget	modules/autosuggestions/external/zsh-autosuggestions.zsh	/^_zsh_autosuggest_bind_widget() {$/;"	f
+_zsh_autosuggest_bind_widgets	modules/autosuggestions/external/src/bind.zsh	/^_zsh_autosuggest_bind_widgets() {$/;"	f
+_zsh_autosuggest_bind_widgets	modules/autosuggestions/external/zsh-autosuggestions.plugin.zsh	/^_zsh_autosuggest_bind_widgets() {$/;"	f
+_zsh_autosuggest_bind_widgets	modules/autosuggestions/external/zsh-autosuggestions.zsh	/^_zsh_autosuggest_bind_widgets() {$/;"	f
+_zsh_autosuggest_check_deprecated_config	modules/autosuggestions/external/src/deprecated.zsh	/^_zsh_autosuggest_check_deprecated_config() {$/;"	f
+_zsh_autosuggest_check_deprecated_config	modules/autosuggestions/external/zsh-autosuggestions.plugin.zsh	/^_zsh_autosuggest_check_deprecated_config() {$/;"	f
+_zsh_autosuggest_check_deprecated_config	modules/autosuggestions/external/zsh-autosuggestions.zsh	/^_zsh_autosuggest_check_deprecated_config() {$/;"	f
+_zsh_autosuggest_clear	modules/autosuggestions/external/src/widgets.zsh	/^_zsh_autosuggest_clear() {$/;"	f
+_zsh_autosuggest_clear	modules/autosuggestions/external/zsh-autosuggestions.plugin.zsh	/^_zsh_autosuggest_clear() {$/;"	f
+_zsh_autosuggest_clear	modules/autosuggestions/external/zsh-autosuggestions.zsh	/^_zsh_autosuggest_clear() {$/;"	f
+_zsh_autosuggest_deprecated_start_widget	modules/autosuggestions/external/src/deprecated.zsh	/^_zsh_autosuggest_deprecated_start_widget() {$/;"	f
+_zsh_autosuggest_deprecated_start_widget	modules/autosuggestions/external/zsh-autosuggestions.plugin.zsh	/^_zsh_autosuggest_deprecated_start_widget() {$/;"	f
+_zsh_autosuggest_deprecated_start_widget	modules/autosuggestions/external/zsh-autosuggestions.zsh	/^_zsh_autosuggest_deprecated_start_widget() {$/;"	f
+_zsh_autosuggest_deprecated_warning	modules/autosuggestions/external/src/deprecated.zsh	/^_zsh_autosuggest_deprecated_warning() {$/;"	f
+_zsh_autosuggest_deprecated_warning	modules/autosuggestions/external/zsh-autosuggestions.plugin.zsh	/^_zsh_autosuggest_deprecated_warning() {$/;"	f
+_zsh_autosuggest_deprecated_warning	modules/autosuggestions/external/zsh-autosuggestions.zsh	/^_zsh_autosuggest_deprecated_warning() {$/;"	f
+_zsh_autosuggest_escape_command_prefix	modules/autosuggestions/external/src/suggestion.zsh	/^_zsh_autosuggest_escape_command_prefix() {$/;"	f
+_zsh_autosuggest_escape_command_prefix	modules/autosuggestions/external/zsh-autosuggestions.plugin.zsh	/^_zsh_autosuggest_escape_command_prefix() {$/;"	f
+_zsh_autosuggest_escape_command_prefix	modules/autosuggestions/external/zsh-autosuggestions.zsh	/^_zsh_autosuggest_escape_command_prefix() {$/;"	f
+_zsh_autosuggest_highlight_apply	modules/autosuggestions/external/src/highlight.zsh	/^_zsh_autosuggest_highlight_apply() {$/;"	f
+_zsh_autosuggest_highlight_apply	modules/autosuggestions/external/zsh-autosuggestions.plugin.zsh	/^_zsh_autosuggest_highlight_apply() {$/;"	f
+_zsh_autosuggest_highlight_apply	modules/autosuggestions/external/zsh-autosuggestions.zsh	/^_zsh_autosuggest_highlight_apply() {$/;"	f
+_zsh_autosuggest_highlight_reset	modules/autosuggestions/external/src/highlight.zsh	/^_zsh_autosuggest_highlight_reset() {$/;"	f
+_zsh_autosuggest_highlight_reset	modules/autosuggestions/external/zsh-autosuggestions.plugin.zsh	/^_zsh_autosuggest_highlight_reset() {$/;"	f
+_zsh_autosuggest_highlight_reset	modules/autosuggestions/external/zsh-autosuggestions.zsh	/^_zsh_autosuggest_highlight_reset() {$/;"	f
+_zsh_autosuggest_invoke_original_widget	modules/autosuggestions/external/src/bind.zsh	/^_zsh_autosuggest_invoke_original_widget() {$/;"	f
+_zsh_autosuggest_invoke_original_widget	modules/autosuggestions/external/zsh-autosuggestions.plugin.zsh	/^_zsh_autosuggest_invoke_original_widget() {$/;"	f
+_zsh_autosuggest_invoke_original_widget	modules/autosuggestions/external/zsh-autosuggestions.zsh	/^_zsh_autosuggest_invoke_original_widget() {$/;"	f
+_zsh_autosuggest_modify	modules/autosuggestions/external/src/widgets.zsh	/^_zsh_autosuggest_modify() {$/;"	f
+_zsh_autosuggest_modify	modules/autosuggestions/external/zsh-autosuggestions.plugin.zsh	/^_zsh_autosuggest_modify() {$/;"	f
+_zsh_autosuggest_modify	modules/autosuggestions/external/zsh-autosuggestions.zsh	/^_zsh_autosuggest_modify() {$/;"	f
+_zsh_autosuggest_partial_accept	modules/autosuggestions/external/src/widgets.zsh	/^_zsh_autosuggest_partial_accept() {$/;"	f
+_zsh_autosuggest_partial_accept	modules/autosuggestions/external/zsh-autosuggestions.plugin.zsh	/^_zsh_autosuggest_partial_accept() {$/;"	f
+_zsh_autosuggest_partial_accept	modules/autosuggestions/external/zsh-autosuggestions.zsh	/^_zsh_autosuggest_partial_accept() {$/;"	f
+_zsh_autosuggest_start	modules/autosuggestions/external/src/start.zsh	/^_zsh_autosuggest_start() {$/;"	f
+_zsh_autosuggest_start	modules/autosuggestions/external/zsh-autosuggestions.plugin.zsh	/^_zsh_autosuggest_start() {$/;"	f
+_zsh_autosuggest_start	modules/autosuggestions/external/zsh-autosuggestions.zsh	/^_zsh_autosuggest_start() {$/;"	f
+_zsh_autosuggest_suggestion	modules/autosuggestions/external/src/suggestion.zsh	/^_zsh_autosuggest_suggestion() {$/;"	f
+_zsh_autosuggest_suggestion	modules/autosuggestions/external/zsh-autosuggestions.plugin.zsh	/^_zsh_autosuggest_suggestion() {$/;"	f
+_zsh_autosuggest_suggestion	modules/autosuggestions/external/zsh-autosuggestions.zsh	/^_zsh_autosuggest_suggestion() {$/;"	f
+_zsh_highlight	modules/history-substring-search/external/zsh-history-substring-search.zsh	/^  _zsh_highlight() {$/;"	f
+_zsh_highlight	modules/syntax-highlighting/external/zsh-syntax-highlighting.plugin.zsh	/^_zsh_highlight()$/;"	f
+_zsh_highlight	modules/syntax-highlighting/external/zsh-syntax-highlighting.zsh	/^_zsh_highlight()$/;"	f
+_zsh_highlight_bind_widgets	modules/history-substring-search/external/zsh-history-substring-search.zsh	/^  _zsh_highlight_bind_widgets()$/;"	f
+_zsh_highlight_bind_widgets	modules/syntax-highlighting/external/zsh-syntax-highlighting.plugin.zsh	/^_zsh_highlight_bind_widgets()$/;"	f
+_zsh_highlight_bind_widgets	modules/syntax-highlighting/external/zsh-syntax-highlighting.zsh	/^_zsh_highlight_bind_widgets()$/;"	f
+_zsh_highlight_brackets_highlighter	modules/syntax-highlighting/external/highlighters/brackets/brackets-highlighter.zsh	/^_zsh_highlight_brackets_highlighter()$/;"	f
+_zsh_highlight_brackets_highlighter_brackettype	modules/syntax-highlighting/external/highlighters/brackets/brackets-highlighter.zsh	/^_zsh_highlight_brackets_highlighter_brackettype()$/;"	f
+_zsh_highlight_brackets_highlighter_predicate	modules/syntax-highlighting/external/highlighters/brackets/brackets-highlighter.zsh	/^_zsh_highlight_brackets_highlighter_predicate()$/;"	f
+_zsh_highlight_buffer_modified	modules/syntax-highlighting/external/zsh-syntax-highlighting.plugin.zsh	/^_zsh_highlight_buffer_modified()$/;"	f
+_zsh_highlight_buffer_modified	modules/syntax-highlighting/external/zsh-syntax-highlighting.zsh	/^_zsh_highlight_buffer_modified()$/;"	f
+_zsh_highlight_call_widget	modules/syntax-highlighting/external/zsh-syntax-highlighting.plugin.zsh	/^_zsh_highlight_call_widget()$/;"	f
+_zsh_highlight_call_widget	modules/syntax-highlighting/external/zsh-syntax-highlighting.zsh	/^_zsh_highlight_call_widget()$/;"	f
+_zsh_highlight_cursor_highlighter	modules/syntax-highlighting/external/highlighters/cursor/cursor-highlighter.zsh	/^_zsh_highlight_cursor_highlighter()$/;"	f
+_zsh_highlight_cursor_highlighter_predicate	modules/syntax-highlighting/external/highlighters/cursor/cursor-highlighter.zsh	/^_zsh_highlight_cursor_highlighter_predicate()$/;"	f
+_zsh_highlight_cursor_moved	modules/syntax-highlighting/external/zsh-syntax-highlighting.plugin.zsh	/^_zsh_highlight_cursor_moved()$/;"	f
+_zsh_highlight_cursor_moved	modules/syntax-highlighting/external/zsh-syntax-highlighting.zsh	/^_zsh_highlight_cursor_moved()$/;"	f
+_zsh_highlight_line_highlighter	modules/syntax-highlighting/external/highlighters/line/line-highlighter.zsh	/^_zsh_highlight_line_highlighter()$/;"	f
+_zsh_highlight_line_highlighter_predicate	modules/syntax-highlighting/external/highlighters/line/line-highlighter.zsh	/^_zsh_highlight_line_highlighter_predicate()$/;"	f
+_zsh_highlight_load_highlighters	modules/syntax-highlighting/external/zsh-syntax-highlighting.plugin.zsh	/^_zsh_highlight_load_highlighters()$/;"	f
+_zsh_highlight_load_highlighters	modules/syntax-highlighting/external/zsh-syntax-highlighting.zsh	/^_zsh_highlight_load_highlighters()$/;"	f
+_zsh_highlight_main__type	modules/syntax-highlighting/external/highlighters/main/main-highlighter.zsh	/^_zsh_highlight_main__type() {$/;"	f
+_zsh_highlight_main_add_region_highlight	modules/syntax-highlighting/external/highlighters/main/main-highlighter.zsh	/^_zsh_highlight_main_add_region_highlight() {$/;"	f
+_zsh_highlight_main_highlighter	modules/syntax-highlighting/external/highlighters/main/main-highlighter.zsh	/^_zsh_highlight_main_highlighter()$/;"	f
+_zsh_highlight_main_highlighter_check_assign	modules/syntax-highlighting/external/highlighters/main/main-highlighter.zsh	/^_zsh_highlight_main_highlighter_check_assign()$/;"	f
+_zsh_highlight_main_highlighter_check_path	modules/syntax-highlighting/external/highlighters/main/main-highlighter.zsh	/^_zsh_highlight_main_highlighter_check_path()$/;"	f
+_zsh_highlight_main_highlighter_expand_path	modules/syntax-highlighting/external/highlighters/main/main-highlighter.zsh	/^_zsh_highlight_main_highlighter_expand_path()$/;"	f
+_zsh_highlight_main_highlighter_highlight_dollar_string	modules/syntax-highlighting/external/highlighters/main/main-highlighter.zsh	/^_zsh_highlight_main_highlighter_highlight_dollar_string()$/;"	f
+_zsh_highlight_main_highlighter_highlight_string	modules/syntax-highlighting/external/highlighters/main/main-highlighter.zsh	/^_zsh_highlight_main_highlighter_highlight_string()$/;"	f
+_zsh_highlight_main_highlighter_predicate	modules/syntax-highlighting/external/highlighters/main/main-highlighter.zsh	/^_zsh_highlight_main_highlighter_predicate()$/;"	f
+_zsh_highlight_pattern_highlighter	modules/syntax-highlighting/external/highlighters/pattern/pattern-highlighter.zsh	/^_zsh_highlight_pattern_highlighter()$/;"	f
+_zsh_highlight_pattern_highlighter_loop	modules/syntax-highlighting/external/highlighters/pattern/pattern-highlighter.zsh	/^_zsh_highlight_pattern_highlighter_loop()$/;"	f
+_zsh_highlight_pattern_highlighter_predicate	modules/syntax-highlighting/external/highlighters/pattern/pattern-highlighter.zsh	/^_zsh_highlight_pattern_highlighter_predicate()$/;"	f
+_zsh_highlight_preexec_hook	modules/syntax-highlighting/external/zsh-syntax-highlighting.plugin.zsh	/^_zsh_highlight_preexec_hook()$/;"	f
+_zsh_highlight_preexec_hook	modules/syntax-highlighting/external/zsh-syntax-highlighting.zsh	/^_zsh_highlight_preexec_hook()$/;"	f
+_zsh_highlight_root_highlighter	modules/syntax-highlighting/external/highlighters/root/root-highlighter.zsh	/^_zsh_highlight_root_highlighter()$/;"	f
+_zsh_highlight_root_highlighter_predicate	modules/syntax-highlighting/external/highlighters/root/root-highlighter.zsh	/^_zsh_highlight_root_highlighter_predicate()$/;"	f
+a.toc-backref	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^a.toc-backref {$/;"	c
+ack	modules/utility/init.zsh	/^alias ack='nocorrect ack'$/;"	a
+alias1	modules/syntax-highlighting/external/highlighters/main/test-data/alias.zsh	/^alias alias1="unused expansion"$/;"	a
+alias1	modules/syntax-highlighting/external/highlighters/main/test-data/alias.zsh	/^alias1() {} # to check that it's highlighted as an alias, not as a function$/;"	f
+all	modules/autosuggestions/external/Makefile	/^all: $(ALL_TARGETS)$/;"	t
+all	modules/syntax-highlighting/external/Makefile	/^all:$/;"	t
+assertEquals	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2	/^assertEquals()$/;"	f
+assertFalse	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2	/^assertFalse()$/;"	f
+assertNotEquals	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2	/^assertNotEquals()$/;"	f
+assertNotNull	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2	/^assertNotNull()$/;"	f
+assertNotSame	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2	/^assertNotSame()$/;"	f
+assertNull	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2	/^assertNull()$/;"	f
+assertSame	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2	/^assertSame()$/;"	f
+assertTrue	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2	/^assertTrue()$/;"	f
+async	modules/prompt/external/pure/async.zsh	/^async() {$/;"	f
+async_flush_jobs	modules/prompt/external/pure/async.zsh	/^async_flush_jobs() {$/;"	f
+async_init	modules/prompt/external/pure/async.zsh	/^async_init() {$/;"	f
+async_job	modules/prompt/external/pure/async.zsh	/^async_job() {$/;"	f
+async_process_results	modules/prompt/external/pure/async.zsh	/^async_process_results() {$/;"	f
+async_register_callback	modules/prompt/external/pure/async.zsh	/^async_register_callback() {$/;"	f
+async_start_worker	modules/prompt/external/pure/async.zsh	/^async_start_worker() {$/;"	f
+async_stop_worker	modules/prompt/external/pure/async.zsh	/^async_stop_worker() {$/;"	f
+async_unregister_callback	modules/prompt/external/pure/async.zsh	/^async_unregister_callback() {$/;"	f
+author	modules/prompt/external/pure/package.json	/^  "author": {$/;"	o
+b	modules/utility/init.zsh	/^alias b='${(z)BROWSER}'$/;"	a
+blockquote.epigraph	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^blockquote.epigraph {$/;"	c
+bower	modules/utility/init.zsh	/^alias bower='noglob bower'$/;"	a
+brewC	modules/homebrew/init.zsh	/^alias brewC='brew cleanup --force'$/;"	a
+brewc	modules/homebrew/init.zsh	/^alias brewc='brew cleanup'$/;"	a
+brewi	modules/homebrew/init.zsh	/^alias brewi='brew install'$/;"	a
+brewl	modules/homebrew/init.zsh	/^alias brewl='brew list'$/;"	a
+brews	modules/homebrew/init.zsh	/^alias brews='brew search'$/;"	a
+brewu	modules/homebrew/init.zsh	/^alias brewu='brew update && brew upgrade --all'$/;"	a
+brewx	modules/homebrew/init.zsh	/^alias brewx='brew remove'$/;"	a
+caI	modules/emacs/init.zsh	/^alias caI='cask init'$/;"	a
+cae	modules/emacs/init.zsh	/^alias cae='cask exec'$/;"	a
+cai	modules/emacs/init.zsh	/^alias cai='cask install'$/;"	a
+cask	modules/homebrew/init.zsh	/^alias cask='brew cask'$/;"	a
+caskC	modules/homebrew/init.zsh	/^alias caskC='brew cask cleanup'$/;"	a
+caskc	modules/homebrew/init.zsh	/^alias caskc='brew cask cleanup --outdated'$/;"	a
+caski	modules/homebrew/init.zsh	/^alias caski='brew cask install'$/;"	a
+caskl	modules/homebrew/init.zsh	/^alias caskl='brew cask list'$/;"	a
+casks	modules/homebrew/init.zsh	/^alias casks='brew cask search'$/;"	a
+caskx	modules/homebrew/init.zsh	/^alias caskx='brew cask uninstall'$/;"	a
+cau	modules/emacs/init.zsh	/^alias cau='cask update'$/;"	a
+cd	modules/syntax-highlighting/external/highlighters/main/test-data/function.zsh	/^cd() {$/;"	f
+cd	modules/utility/init.zsh	/^alias cd='nocorrect cd'$/;"	a
+cdf	modules/osx/init.zsh	/^alias cdf='cd "$(pfd)"'$/;"	a
+cdls	modules/utility/init.zsh	/^function cdls {$/;"	f
+clean	modules/autosuggestions/external/Makefile	/^clean:$/;"	t
+clean	modules/syntax-highlighting/external/Makefile	/^clean:$/;"	t
+cmd	modules/completion/external/src/_setup.py	/^    cmd="${${_setuppy_cmds[(r)$words[1]:*]%%:*}:-${(k)_setuppy_syns[(r)(*:|)$words[1](:*|)]}}"$/;"	v
+coalesce	modules/helper/init.zsh	/^function coalesce {$/;"	f
+commands	modules/completion/external/src/_manage.py	/^    commands=($commands$/;"	v
+commands	modules/completion/external/src/_manage.py	/^  commands=($/;"	v
+commonEqualsSame	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_asserts.sh	/^commonEqualsSame()$/;"	f
+commonNotEqualsSame	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_asserts.sh	/^commonNotEqualsSame()$/;"	f
+cp	modules/utility/init.zsh	/^alias cp="${aliases[cp]:-cp} -i"$/;"	a
+cp	modules/utility/init.zsh	/^alias cp='nocorrect cp'$/;"	a
+cur_widget	modules/history-substring-search/external/zsh-history-substring-search.zsh	/^                            _zsh_highlight_widget_$cur_widget() { builtin zle orig-$cur_widget -/;"	f
+cur_widget	modules/history-substring-search/external/zsh-history-substring-search.zsh	/^                      _zsh_highlight_widget_$cur_widget() { builtin zle orig-$cur_widget -- \\"\\/;"	f
+cur_widget	modules/syntax-highlighting/external/zsh-syntax-highlighting.plugin.zsh	/^                          _zsh_highlight_widget_$cur_widget() { _zsh_highlight_call_widget orig-/;"	f
+cur_widget	modules/syntax-highlighting/external/zsh-syntax-highlighting.plugin.zsh	/^                    _zsh_highlight_widget_$cur_widget() { _zsh_highlight_call_widget orig-$cur_w/;"	f
+cur_widget	modules/syntax-highlighting/external/zsh-syntax-highlighting.zsh	/^                          _zsh_highlight_widget_$cur_widget() { _zsh_highlight_call_widget orig-/;"	f
+cur_widget	modules/syntax-highlighting/external/zsh-syntax-highlighting.zsh	/^                    _zsh_highlight_widget_$cur_widget() { _zsh_highlight_call_widget orig-$cur_w/;"	f
+curcontext	modules/completion/external/src/_manage.py	/^    curcontext="${curcontext%:*:*}:managepy-$words[1]:"$/;"	v
+d	modules/directory/init.zsh	/^alias d='dirs -v'$/;"	a
+deb-build	modules/dpkg/init.zsh	/^alias deb-build='time dpkg-buildpackage -rfakeroot -us -uc'$/;"	a
+deb-kclean	modules/dpkg/init.zsh	/^alias deb-kclean='sudo aptitude remove -P "?and(~i~nlinux-(ima|hea) ?not(~n`uname -r`))"'$/;"	a
+debI	modules/dpkg/init.zsh	/^alias debI='sudo dpkg -i'$/;"	a
+debU	modules/dpkg/init.zsh	/^alias debU='sudo apt-get update && sudo apt-get dist-upgrade'$/;"	a
+debX	modules/dpkg/init.zsh	/^alias debX='sudo apt-get remove --purge && sudo apt-get autoremove --purge'$/;"	a
+debc	modules/dpkg/init.zsh	/^alias debc='sudo apt-get clean && sudo apt-get autoclean'$/;"	a
+debf	modules/dpkg/init.zsh	/^alias debf='apt-file search --regexp'$/;"	a
+debi	modules/dpkg/init.zsh	/^alias debi='sudo apt-get install'$/;"	a
+debq	modules/dpkg/init.zsh	/^alias debq='apt-cache show'$/;"	a
+debs	modules/dpkg/init.zsh	/^  alias debs='apt-cache search'$/;"	a
+debs	modules/dpkg/init.zsh	/^  alias debs='aptitude -F "* %p -> %d \\n(%v\/%V)" --no-gui --disable-columns search'$/;"	a
+debu	modules/dpkg/init.zsh	/^alias debu='sudo apt-get update'$/;"	a
+debx	modules/dpkg/init.zsh	/^alias debx='sudo apt-get remove'$/;"	a
+description	modules/prompt/external/pure/package.json	/^  "description": "Pretty, minimal and fast ZSH prompt",$/;"	s
+df	modules/utility/init.zsh	/^alias df='df -kh'$/;"	a
+die	modules/autosuggestions/external/test/shunit2-2.1.6/bin/gen_test_results.sh	/^die()$/;"	f
+div.abstract	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.abstract {$/;"	c
+div.abstract p.topic-title	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.abstract p.topic-title {$/;"	c
+div.admonition	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.admonition, div.attention, div.caution, div.danger, div.error,$/;"	c
+div.admonition p.admonition-title	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.admonition p.admonition-title, div.hint p.admonition-title,$/;"	c
+div.attention	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.admonition, div.attention, div.caution, div.danger, div.error,$/;"	c
+div.attention p.admonition-title	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.attention p.admonition-title, div.caution p.admonition-title,$/;"	c
+div.caution	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.admonition, div.attention, div.caution, div.danger, div.error,$/;"	c
+div.caution p.admonition-title	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.attention p.admonition-title, div.caution p.admonition-title,$/;"	c
+div.danger	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.admonition, div.attention, div.caution, div.danger, div.error,$/;"	c
+div.danger p.admonition-title	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.danger p.admonition-title, div.error p.admonition-title,$/;"	c
+div.dedication	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.dedication {$/;"	c
+div.dedication p.topic-title	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.dedication p.topic-title {$/;"	c
+div.error	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.admonition, div.attention, div.caution, div.danger, div.error,$/;"	c
+div.error p.admonition-title	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.danger p.admonition-title, div.error p.admonition-title,$/;"	c
+div.figure	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.figure {$/;"	c
+div.footer	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.footer, div.header {$/;"	c
+div.header	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.footer, div.header {$/;"	c
+div.hint	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.hint, div.important, div.note, div.tip, div.warning {$/;"	c
+div.hint p.admonition-title	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.admonition p.admonition-title, div.hint p.admonition-title,$/;"	c
+div.important	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.hint, div.important, div.note, div.tip, div.warning {$/;"	c
+div.important p.admonition-title	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.important p.admonition-title, div.note p.admonition-title,$/;"	c
+div.line-block	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.line-block {$/;"	c
+div.line-block div.line-block	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.line-block div.line-block {$/;"	c
+div.note	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.hint, div.important, div.note, div.tip, div.warning {$/;"	c
+div.note p.admonition-title	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.important p.admonition-title, div.note p.admonition-title,$/;"	c
+div.sidebar	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.sidebar {$/;"	c
+div.sidebar p.rubric	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.sidebar p.rubric {$/;"	c
+div.system-message	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.system-message {$/;"	c
+div.system-message p.system-message-title	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.system-message p.system-message-title {$/;"	c
+div.system-messages	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.system-messages {$/;"	c
+div.system-messages h1	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.system-messages h1 {$/;"	s
+div.tip	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.hint, div.important, div.note, div.tip, div.warning {$/;"	c
+div.tip p.admonition-title	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.tip p.admonition-title {$/;"	c
+div.topic	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.topic {$/;"	c
+div.warning	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.hint, div.important, div.note, div.tip, div.warning {$/;"	c
+div.warning p.admonition-title	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^div.warning p.admonition-title {$/;"	c
+dl.docutils dd	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^dl.docutils dd {$/;"	s
+dnfL	modules/dnf/init.zsh	/^alias dnfL='dnf list installed'    # Lists installed packages.$/;"	a
+dnfU	modules/dnf/init.zsh	/^alias dnfU='sudo dnf upgrade'      # Upgrades packages.$/;"	a
+dnfc	modules/dnf/init.zsh	/^alias dnfc='sudo dnf clean all'    # Cleans the cache.$/;"	a
+dnfh	modules/dnf/init.zsh	/^alias dnfh='dnf history'           # Displays history.$/;"	a
+dnfi	modules/dnf/init.zsh	/^alias dnfi='sudo dnf install'      # Installs package(s).$/;"	a
+dnfl	modules/dnf/init.zsh	/^alias dnfl='dnf list'              # Lists packages.$/;"	a
+dnfq	modules/dnf/init.zsh	/^alias dnfq='dnf info'              # Displays package information.$/;"	a
+dnfr	modules/dnf/init.zsh	/^alias dnfr='sudo dnf remove'       # Removes package(s).$/;"	a
+dnfs	modules/dnf/init.zsh	/^alias dnfs='dnf search'            # Searches for a package.$/;"	a
+dnfu	modules/dnf/init.zsh	/^alias dnfu='sudo dnf update'       # Updates packages.$/;"	a
+du	modules/utility/init.zsh	/^alias du='du -kh'$/;"	a
+e	modules/utility/init.zsh	/^alias e='${(z)VISUAL:-${(z)EDITOR}}'$/;"	a
+ebuild	modules/utility/init.zsh	/^alias ebuild='nocorrect ebuild'$/;"	a
+editor-info	modules/editor/init.zsh	/^function editor-info {$/;"	f
+email	modules/prompt/external/pure/package.json	/^    "email": "sindresorhus@gmail.com",$/;"	s	object:author
+endSkipping	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2	/^endSkipping()$/;"	f
+engines	modules/prompt/external/pure/package.json	/^  "engines": {$/;"	o
+expand-dot-to-parent-directory-path	modules/editor/init.zsh	/^function expand-dot-to-parent-directory-path {$/;"	f
+expand-or-complete-with-indicator	modules/editor/init.zsh	/^function expand-or-complete-with-indicator {$/;"	f
+fail	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2	/^fail()$/;"	f
+failNotEquals	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2	/^failNotEquals()$/;"	f
+failNotSame	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2	/^failNotSame()$/;"	f
+failSame	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2	/^failSame()$/;"	f
+fasd_cd	modules/fasd/init.zsh	/^function fasd_cd {$/;"	f
+fc	modules/utility/init.zsh	/^alias fc='noglob fc'$/;"	a
+fcgi_opts	modules/completion/external/src/_manage.py	/^  fcgi_opts=($/;"	v
+files	modules/prompt/external/pure/package.json	/^  "files": [$/;"	a
+find	modules/utility/init.zsh	/^alias find='noglob find'$/;"	a
+find-exec	modules/utility/init.zsh	/^function find-exec {$/;"	f
+ftp	modules/utility/init.zsh	/^alias ftp='noglob ftp'$/;"	a
+g	modules/git/alias.zsh	/^alias g='git'$/;"	a
+gCO	modules/git/alias.zsh	/^alias gCO='gCo $(gCl)'$/;"	a
+gCT	modules/git/alias.zsh	/^alias gCT='gCt $(gCl)'$/;"	a
+gCa	modules/git/alias.zsh	/^alias gCa='git add $(gCl)'$/;"	a
+gCe	modules/git/alias.zsh	/^alias gCe='git mergetool $(gCl)'$/;"	a
+gCl	modules/git/alias.zsh	/^alias gCl='git status | sed -n "s\/^.*both [a-z]*ed: *\/\/p"'$/;"	a
+gCo	modules/git/alias.zsh	/^alias gCo='git checkout --ours --'$/;"	a
+gCt	modules/git/alias.zsh	/^alias gCt='git checkout --theirs --'$/;"	a
+gR	modules/git/alias.zsh	/^alias gR='git remote'$/;"	a
+gRa	modules/git/alias.zsh	/^alias gRa='git remote add'$/;"	a
+gRb	modules/git/alias.zsh	/^alias gRb='git-hub-browse'$/;"	a
+gRl	modules/git/alias.zsh	/^alias gRl='git remote --verbose'$/;"	a
+gRm	modules/git/alias.zsh	/^alias gRm='git remote rename'$/;"	a
+gRp	modules/git/alias.zsh	/^alias gRp='git remote prune'$/;"	a
+gRs	modules/git/alias.zsh	/^alias gRs='git remote show'$/;"	a
+gRu	modules/git/alias.zsh	/^alias gRu='git remote update'$/;"	a
+gRx	modules/git/alias.zsh	/^alias gRx='git remote rm'$/;"	a
+gS	modules/git/alias.zsh	/^alias gS='git submodule'$/;"	a
+gSI	modules/git/alias.zsh	/^alias gSI='git submodule update --init --recursive'$/;"	a
+gSa	modules/git/alias.zsh	/^alias gSa='git submodule add'$/;"	a
+gSf	modules/git/alias.zsh	/^alias gSf='git submodule foreach'$/;"	a
+gSi	modules/git/alias.zsh	/^alias gSi='git submodule init'$/;"	a
+gSl	modules/git/alias.zsh	/^alias gSl='git submodule status'$/;"	a
+gSm	modules/git/alias.zsh	/^alias gSm='git-submodule-move'$/;"	a
+gSs	modules/git/alias.zsh	/^alias gSs='git submodule sync'$/;"	a
+gSu	modules/git/alias.zsh	/^alias gSu='git submodule foreach git pull origin master'$/;"	a
+gSx	modules/git/alias.zsh	/^alias gSx='git-submodule-remove'$/;"	a
+gb	modules/git/alias.zsh	/^alias gb='git branch'$/;"	a
+gbL	modules/git/alias.zsh	/^alias gbL='git branch -av'$/;"	a
+gbM	modules/git/alias.zsh	/^alias gbM='git branch -M'$/;"	a
+gbS	modules/git/alias.zsh	/^alias gbS='git show-branch -a'$/;"	a
+gbX	modules/git/alias.zsh	/^alias gbX='git branch -D'$/;"	a
+gbc	modules/git/alias.zsh	/^alias gbc='git checkout -b'$/;"	a
+gbl	modules/git/alias.zsh	/^alias gbl='git branch -v'$/;"	a
+gbm	modules/git/alias.zsh	/^alias gbm='git branch -m'$/;"	a
+gbs	modules/git/alias.zsh	/^alias gbs='git show-branch'$/;"	a
+gbx	modules/git/alias.zsh	/^alias gbx='git branch -d'$/;"	a
+gc	modules/git/alias.zsh	/^alias gc='git commit --verbose'$/;"	a
+gcF	modules/git/alias.zsh	/^alias gcF='git commit --verbose --amend'$/;"	a
+gcO	modules/git/alias.zsh	/^alias gcO='git checkout --patch'$/;"	a
+gcP	modules/git/alias.zsh	/^alias gcP='git cherry-pick --no-commit'$/;"	a
+gcR	modules/git/alias.zsh	/^alias gcR='git reset "HEAD^"'$/;"	a
+gca	modules/git/alias.zsh	/^alias gca='git commit --verbose --all'$/;"	a
+gcc	modules/utility/init.zsh	/^alias gcc='nocorrect gcc'$/;"	a
+gcf	modules/git/alias.zsh	/^alias gcf='git commit --amend --reuse-message HEAD'$/;"	a
+gcl	modules/git/alias.zsh	/^alias gcl='git-commit-lost'$/;"	a
+gcm	modules/git/alias.zsh	/^alias gcm='git commit --message'$/;"	a
+gco	modules/git/alias.zsh	/^alias gco='git checkout'$/;"	a
+gcp	modules/git/alias.zsh	/^alias gcp='git cherry-pick --ff'$/;"	a
+gcr	modules/git/alias.zsh	/^alias gcr='git revert'$/;"	a
+gcs	modules/git/alias.zsh	/^alias gcs='git show'$/;"	a
+gd	modules/git/alias.zsh	/^alias gd='git ls-files'$/;"	a
+gdc	modules/git/alias.zsh	/^alias gdc='git ls-files --cached'$/;"	a
+gdi	modules/git/alias.zsh	/^alias gdi='git status --porcelain --short --ignored | sed -n "s\/^!! \/\/p"'$/;"	a
+gdk	modules/git/alias.zsh	/^alias gdk='git ls-files --killed'$/;"	a
+gdm	modules/git/alias.zsh	/^alias gdm='git ls-files --modified'$/;"	a
+gdu	modules/git/alias.zsh	/^alias gdu='git ls-files --other --exclude-standard'$/;"	a
+gdx	modules/git/alias.zsh	/^alias gdx='git ls-files --deleted'$/;"	a
+get	modules/utility/init.zsh	/^  alias get='curl --continue-at - --location --progress-bar --remote-name --remote-time'$/;"	a
+get	modules/utility/init.zsh	/^  alias get='wget --continue --progress=bar --timestamping'$/;"	a
+gf	modules/git/alias.zsh	/^alias gf='git fetch'$/;"	a
+gfc	modules/git/alias.zsh	/^alias gfc='git clone'$/;"	a
+gfm	modules/git/alias.zsh	/^alias gfm='git pull'$/;"	a
+gfr	modules/git/alias.zsh	/^alias gfr='git pull --rebase'$/;"	a
+gg	modules/git/alias.zsh	/^alias gg='git grep'$/;"	a
+ggL	modules/git/alias.zsh	/^alias ggL='git grep --files-without-matches'$/;"	a
+ggi	modules/git/alias.zsh	/^alias ggi='git grep --ignore-case'$/;"	a
+ggl	modules/git/alias.zsh	/^alias ggl='git grep --files-with-matches'$/;"	a
+ggv	modules/git/alias.zsh	/^alias ggv='git grep --invert-match'$/;"	a
+ggw	modules/git/alias.zsh	/^alias ggw='git grep --word-regexp'$/;"	a
+giA	modules/git/alias.zsh	/^alias giA='git add --patch'$/;"	a
+giD	modules/git/alias.zsh	/^alias giD='git diff --no-ext-diff --cached --word-diff'$/;"	a
+giR	modules/git/alias.zsh	/^alias giR='git reset --patch'$/;"	a
+giX	modules/git/alias.zsh	/^alias giX='git rm -rf --cached'$/;"	a
+gia	modules/git/alias.zsh	/^alias gia='git add'$/;"	a
+gid	modules/git/alias.zsh	/^alias gid='git diff --no-ext-diff --cached'$/;"	a
+gir	modules/git/alias.zsh	/^alias gir='git reset'$/;"	a
+gist	modules/utility/init.zsh	/^alias gist='nocorrect gist'$/;"	a
+giu	modules/git/alias.zsh	/^alias giu='git add --update'$/;"	a
+gix	modules/git/alias.zsh	/^alias gix='git rm -r --cached'$/;"	a
+gl	modules/git/alias.zsh	/^alias gl='git log --topo-order --pretty=format:"${_git_log_medium_format}"'$/;"	a
+glb	modules/git/alias.zsh	/^alias glb='git log --topo-order --pretty=format:"${_git_log_brief_format}"'$/;"	a
+glc	modules/git/alias.zsh	/^alias glc='git shortlog --summary --numbered'$/;"	a
+gld	modules/git/alias.zsh	/^alias gld='git log --topo-order --stat --patch --full-diff --pretty=format:"${_git_log_medium_fo/;"	a
+glg	modules/git/alias.zsh	/^alias glg='git log --topo-order --all --graph --pretty=format:"${_git_log_oneline_format}"'$/;"	a
+glo	modules/git/alias.zsh	/^alias glo='git log --topo-order --pretty=format:"${_git_log_oneline_format}"'$/;"	a
+gls	modules/git/alias.zsh	/^alias gls='git log --topo-order --stat --pretty=format:"${_git_log_medium_format}"'$/;"	a
+gm	modules/git/alias.zsh	/^alias gm='git merge'$/;"	a
+gmC	modules/git/alias.zsh	/^alias gmC='git merge --no-commit'$/;"	a
+gmF	modules/git/alias.zsh	/^alias gmF='git merge --no-ff'$/;"	a
+gma	modules/git/alias.zsh	/^alias gma='git merge --abort'$/;"	a
+gmt	modules/git/alias.zsh	/^alias gmt='git mergetool'$/;"	a
+gp	modules/git/alias.zsh	/^alias gp='git push'$/;"	a
+gpA	modules/git/alias.zsh	/^alias gpA='git push --all && git push --tags'$/;"	a
+gpa	modules/git/alias.zsh	/^alias gpa='git push --all'$/;"	a
+gpc	modules/git/alias.zsh	/^alias gpc='git push --set-upstream origin "$(git-branch-current 2> \/dev\/null)"'$/;"	a
+gpf	modules/git/alias.zsh	/^alias gpf='git push --force'$/;"	a
+gpp	modules/git/alias.zsh	/^alias gpp='git pull origin "$(git-branch-current 2> \/dev\/null)" && git push origin "$(git-bran/;"	a
+gpt	modules/git/alias.zsh	/^alias gpt='git push --tags'$/;"	a
+gr	modules/git/alias.zsh	/^alias gr='git rebase'$/;"	a
+gra	modules/git/alias.zsh	/^alias gra='git rebase --abort'$/;"	a
+grc	modules/git/alias.zsh	/^alias grc='git rebase --continue'$/;"	a
+grep	modules/utility/init.zsh	/^  alias grep="${aliases[grep]:-grep} --color=auto"$/;"	a
+grep	modules/utility/init.zsh	/^alias grep='nocorrect grep'$/;"	a
+gri	modules/git/alias.zsh	/^alias gri='git rebase --interactive'$/;"	a
+grs	modules/git/alias.zsh	/^alias grs='git rebase --skip'$/;"	a
+gs	modules/git/alias.zsh	/^alias gs='git stash'$/;"	a
+gsL	modules/git/alias.zsh	/^alias gsL='git-stash-dropped'$/;"	a
+gsS	modules/git/alias.zsh	/^alias gsS='git stash save --patch --no-keep-index'$/;"	a
+gsX	modules/git/alias.zsh	/^alias gsX='git-stash-clear-interactive'$/;"	a
+gsa	modules/git/alias.zsh	/^alias gsa='git stash apply'$/;"	a
+gsd	modules/git/alias.zsh	/^alias gsd='git stash show --patch --stat'$/;"	a
+gsl	modules/git/alias.zsh	/^alias gsl='git stash list'$/;"	a
+gsp	modules/git/alias.zsh	/^alias gsp='git stash pop'$/;"	a
+gsr	modules/git/alias.zsh	/^alias gsr='git-stash-recover'$/;"	a
+gss	modules/git/alias.zsh	/^alias gss='git stash save --include-untracked'$/;"	a
+gsw	modules/git/alias.zsh	/^alias gsw='git stash save --include-untracked --keep-index'$/;"	a
+gsx	modules/git/alias.zsh	/^alias gsx='git stash drop'$/;"	a
+gwC	modules/git/alias.zsh	/^alias gwC='git clean -f'$/;"	a
+gwD	modules/git/alias.zsh	/^alias gwD='git diff --no-ext-diff --word-diff'$/;"	a
+gwR	modules/git/alias.zsh	/^alias gwR='git reset --hard'$/;"	a
+gwS	modules/git/alias.zsh	/^alias gwS='git status --ignore-submodules=${_git_status_ignore_submodules}'$/;"	a
+gwX	modules/git/alias.zsh	/^alias gwX='git rm -rf'$/;"	a
+gwc	modules/git/alias.zsh	/^alias gwc='git clean -n'$/;"	a
+gwd	modules/git/alias.zsh	/^alias gwd='git diff --no-ext-diff'$/;"	a
+gwr	modules/git/alias.zsh	/^alias gwr='git reset --soft'$/;"	a
+gws	modules/git/alias.zsh	/^alias gws='git status --ignore-submodules=${_git_status_ignore_submodules} --short'$/;"	a
+gwx	modules/git/alias.zsh	/^alias gwx='git rm -r'$/;"	a
+h1	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^h1 { font-size: 133%; border-top:1px solid #CCCCFF; }$/;"	s
+h1 tt.docutils	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,$/;"	c
+h1.section-subtitle	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,$/;"	c
+h1.title	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^h1.title { font-size: 150%; border-top:0px; padding-top: 1em; }$/;"	c
+h1.title	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^h1.title {$/;"	c
+h2 tt.docutils	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,$/;"	c
+h2.section-subtitle	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,$/;"	c
+h2.subtitle	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^h2.subtitle {$/;"	c
+h3 tt.docutils	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,$/;"	c
+h3.section-subtitle	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,$/;"	c
+h4 tt.docutils	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {$/;"	c
+h4.section-subtitle	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {$/;"	c
+h5 tt.docutils	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {$/;"	c
+h5.section-subtitle	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {$/;"	c
+h6 tt.docutils	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {$/;"	c
+h6.section-subtitle	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {$/;"	c
+heroku	modules/utility/init.zsh	/^alias heroku='nocorrect heroku'$/;"	a
+history	modules/utility/init.zsh	/^alias history='noglob history'$/;"	a
+history-stat	modules/history/init.zsh	/^alias history-stat="history 0 | awk '{print \\$2}' | sort | uniq -c | sort -n -r | head"$/;"	a
+history-substring-search-down	modules/history-substring-search/external/zsh-history-substring-search.zsh	/^history-substring-search-down() {$/;"	f
+history-substring-search-up	modules/history-substring-search/external/zsh-history-substring-search.zsh	/^history-substring-search-up() {$/;"	f
+hr.docutils	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^hr.docutils {$/;"	c
+http-serve	modules/utility/init.zsh	/^alias http-serve='python -m SimpleHTTPServer'$/;"	a
+img.align-left	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^img.align-left {$/;"	c
+img.align-right	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^img.align-right {$/;"	c
+install	modules/syntax-highlighting/external/Makefile	/^install: all$/;"	t
+is-autoloadable	modules/helper/init.zsh	/^function is-autoloadable {$/;"	f
+is-callable	modules/helper/init.zsh	/^function is-callable {$/;"	f
+is-true	modules/helper/init.zsh	/^function is-true {$/;"	f
+isSkipping	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2	/^isSkipping()$/;"	f
+j	modules/fasd/init.zsh	/^alias j='fasd_cd -i'$/;"	a
+keywords	modules/prompt/external/pure/package.json	/^  "keywords": [$/;"	a
+l	modules/utility/init.zsh	/^alias l='ls -1A'         # Lists in one column, hidden files.$/;"	a
+la	modules/utility/init.zsh	/^alias la='ll -A'         # Lists human readable sizes, hidden files.$/;"	a
+lc	modules/utility/init.zsh	/^alias lc='lt -c'         # Lists sorted by date, most recent last, shows change time.$/;"	a
+license	modules/prompt/external/pure/package.json	/^  "license": "MIT",$/;"	s
+lk	modules/utility/init.zsh	/^alias lk='ll -Sr'        # Lists sorted by size, largest last.$/;"	a
+ll	modules/utility/init.zsh	/^alias ll='ls -lh'        # Lists human readable sizes.$/;"	a
+lm	modules/utility/init.zsh	/^alias lm='la | "$PAGER"' # Lists human readable sizes, hidden files through pager.$/;"	a
+ln	modules/utility/init.zsh	/^alias ln="${aliases[ln]:-ln} -i"$/;"	a
+ln	modules/utility/init.zsh	/^alias ln='nocorrect ln'$/;"	a
+locate	modules/utility/init.zsh	/^alias locate='noglob locate'$/;"	a
+lr	modules/utility/init.zsh	/^alias lr='ll -R'         # Lists human readable sizes, recursively.$/;"	a
+ls	modules/syntax-highlighting/external/highlighters/main/test-data/function.zsh	/^ls() {$/;"	f
+ls	modules/utility/init.zsh	/^    alias ls="${aliases[ls]:-ls} --color=auto"$/;"	a
+ls	modules/utility/init.zsh	/^    alias ls="${aliases[ls]:-ls} -F"$/;"	a
+ls	modules/utility/init.zsh	/^    alias ls="${aliases[ls]:-ls} -G"$/;"	a
+ls	modules/utility/init.zsh	/^  alias ls='ls --group-directories-first'$/;"	a
+lt	modules/utility/init.zsh	/^alias lt='ll -tr'        # Lists sorted by date, most recent last.$/;"	a
+lu	modules/utility/init.zsh	/^alias lu='lt -u'         # Lists sorted by date, most recent last, shows access time.$/;"	a
+lx	modules/utility/init.zsh	/^alias lx='ll -XB'        # Lists sorted by extension (GNU only).$/;"	a
+main	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_standalone.sh	/^main()$/;"	f
+maintainers	modules/prompt/external/pure/package.json	/^  "maintainers": [$/;"	a
+man	modules/utility/init.zsh	/^alias man='nocorrect man'$/;"	a
+mkdcd	modules/utility/init.zsh	/^function mkdcd {$/;"	f
+mkdir	modules/utility/init.zsh	/^alias mkdir="${aliases[mkdir]:-mkdir} -p"$/;"	a
+mkdir	modules/utility/init.zsh	/^alias mkdir='nocorrect mkdir'$/;"	a
+mv	modules/utility/init.zsh	/^alias mv="${aliases[mv]:-mv} -i"$/;"	a
+mv	modules/utility/init.zsh	/^alias mv='nocorrect mv'$/;"	a
+mysql	modules/utility/init.zsh	/^alias mysql='nocorrect mysql'$/;"	a
+name	modules/prompt/external/pure/package.json	/^      "name": "Mathias Fredriksson",$/;"	s	object:maintainers.0
+name	modules/prompt/external/pure/package.json	/^    "name": "Sindre Sorhus",$/;"	s	object:author
+name	modules/prompt/external/pure/package.json	/^  "name": "pure-prompt",$/;"	s
+node	modules/prompt/external/pure/package.json	/^    "node": ">=0.10.0"$/;"	s	object:engines
+nul_args	modules/completion/external/src/_manage.py	/^  nul_args=($/;"	v
+o	modules/utility/init.zsh	/^  alias o='cygstart'$/;"	a
+o	modules/utility/init.zsh	/^  alias o='open'$/;"	a
+o	modules/utility/init.zsh	/^  alias o='xdg-open'$/;"	a
+ol.arabic	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^ol.arabic {$/;"	c
+ol.loweralpha	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^ol.loweralpha {$/;"	c
+ol.lowerroman	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^ol.lowerroman {$/;"	c
+ol.simple	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^ol.simple, ul.simple {$/;"	c
+ol.upperalpha	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^ol.upperalpha {$/;"	c
+ol.upperroman	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^ol.upperroman {$/;"	c
+oneTimeSetUp	modules/autosuggestions/external/test/shunit2-2.1.6/examples/math_test.sh	/^oneTimeSetUp()$/;"	f
+oneTimeSetUp	modules/autosuggestions/external/test/shunit2-2.1.6/examples/mkdir_test.sh	/^oneTimeSetUp()$/;"	f
+oneTimeSetUp	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_asserts.sh	/^oneTimeSetUp()$/;"	f
+oneTimeSetUp	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_failures.sh	/^oneTimeSetUp()$/;"	f
+oneTimeSetUp	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_macros.sh	/^oneTimeSetUp()$/;"	f
+oneTimeSetUp	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_misc.sh	/^oneTimeSetUp()$/;"	f
+overwrite-mode	modules/editor/init.zsh	/^function overwrite-mode {$/;"	f
+p	modules/utility/init.zsh	/^alias p='${(z)PAGER}'$/;"	a
+p.attribution	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^p.attribution {$/;"	c
+p.caption	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^p.caption {$/;"	c
+p.credits	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^p.credits {$/;"	c
+p.label	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^p.label {$/;"	c
+p.rubric	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^p.rubric {$/;"	c
+p.sidebar-subtitle	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^p.sidebar-subtitle {$/;"	c
+p.sidebar-title	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^p.sidebar-title {$/;"	c
+p.topic-title	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^p.topic-title {$/;"	c
+pac	modules/pacman/init.zsh	/^alias pac="${_pacman_frontend}"$/;"	a
+pacI	modules/pacman/init.zsh	/^alias pacI="${_pacman_sudo}${_pacman_frontend} --upgrade"$/;"	a
+pacQ	modules/pacman/init.zsh	/^alias pacQ="${_pacman_frontend} --query --info"$/;"	a
+pacS	modules/pacman/init.zsh	/^alias pacS="${_pacman_frontend} --query --search"$/;"	a
+pacU	modules/pacman/init.zsh	/^alias pacU="${_pacman_sudo}${_pacman_frontend} --sync --refresh --sysupgrade"$/;"	a
+pacX	modules/pacman/init.zsh	/^alias pacX="${_pacman_sudo}${_pacman_frontend} --remove --nosave --recursive"$/;"	a
+pacc	modules/pacman/yaourt.zsh	/^alias pacc='yaourt -C'$/;"	a
+paci	modules/pacman/init.zsh	/^alias paci="${_pacman_sudo}${_pacman_frontend} --sync"$/;"	a
+pacman	modules/pacman/init.zsh	/^  alias pacman="$_pacman_frontend"$/;"	a
+pacman	modules/pacman/yaourt.zsh	/^  alias pacman='yaourt --nocolor'$/;"	a
+pacman-list-orphans	modules/pacman/init.zsh	/^alias pacman-list-orphans="${_pacman_sudo}${_pacman_frontend} --query --deps --unrequired"$/;"	a
+pacman-remove-orphans	modules/pacman/init.zsh	/^alias pacman-remove-orphans="${_pacman_sudo}${_pacman_frontend} --remove --recursive \\$(${_pacm/;"	a
+pacq	modules/pacman/init.zsh	/^alias pacq="${_pacman_frontend} --sync --info"$/;"	a
+pacs	modules/pacman/init.zsh	/^alias pacs="${_pacman_frontend} --sync --search"$/;"	a
+pacu	modules/pacman/init.zsh	/^  alias pacu="${_pacman_sudo}${_pacman_frontend} --sync --refresh && sudo abs"$/;"	a
+pacu	modules/pacman/init.zsh	/^  alias pacu="${_pacman_sudo}${_pacman_frontend} --sync --refresh"$/;"	a
+pacx	modules/pacman/init.zsh	/^alias pacx="${_pacman_sudo}${_pacman_frontend} --remove"$/;"	a
+pbc	modules/utility/init.zsh	/^alias pbc='pbcopy'$/;"	a
+pbcopy	modules/utility/init.zsh	/^    alias pbcopy='xclip -selection clipboard -in'$/;"	a
+pbcopy	modules/utility/init.zsh	/^    alias pbcopy='xsel --clipboard --input'$/;"	a
+pbcopy	modules/utility/init.zsh	/^  alias pbcopy='tee > \/dev\/clipboard'$/;"	a
+pbp	modules/utility/init.zsh	/^alias pbp='pbpaste'$/;"	a
+pbpaste	modules/utility/init.zsh	/^    alias pbpaste='xclip -selection clipboard -out'$/;"	a
+pbpaste	modules/utility/init.zsh	/^    alias pbpaste='xsel --clipboard --output'$/;"	a
+pbpaste	modules/utility/init.zsh	/^  alias pbpaste='cat \/dev\/clipboard'$/;"	a
+perf	modules/syntax-highlighting/external/Makefile	/^perf:$/;"	t
+pl	modules/perl/init.zsh	/^alias pl='perl'$/;"	a
+plb	modules/perl/init.zsh	/^alias plb='perlbrew'$/;"	a
+plbO	modules/perl/init.zsh	/^alias plbO='perlbrew switch-off'$/;"	a
+plba	modules/perl/init.zsh	/^alias plba='perlbrew available'$/;"	a
+plbi	modules/perl/init.zsh	/^alias plbi='perlbrew install'$/;"	a
+plbl	modules/perl/init.zsh	/^alias plbl='perlbrew list'$/;"	a
+plbo	modules/perl/init.zsh	/^alias plbo='perlbrew off'$/;"	a
+plbs	modules/perl/init.zsh	/^alias plbs='perlbrew switch'$/;"	a
+plbu	modules/perl/init.zsh	/^alias plbu='perlbrew use'$/;"	a
+plbx	modules/perl/init.zsh	/^alias plbx='perlbrew uninstall'$/;"	a
+pld	modules/perl/init.zsh	/^alias pld='perldoc'$/;"	a
+ple	modules/perl/init.zsh	/^alias ple='perl -wlne'$/;"	a
+pmodload	init.zsh	/^function pmodload {$/;"	f
+po	modules/utility/init.zsh	/^alias po='popd'$/;"	a
+popdls	modules/utility/init.zsh	/^function popdls {$/;"	f
+portU	modules/macports/init.zsh	/^alias portU='sudo port selfupdate && sudo port upgrade outdated'$/;"	a
+portX	modules/macports/init.zsh	/^alias portX='sudo port -u uninstall'$/;"	a
+portc	modules/macports/init.zsh	/^alias portc='sudo port clean --all installed'$/;"	a
+porti	modules/macports/init.zsh	/^alias porti='sudo port install'$/;"	a
+ports	modules/macports/init.zsh	/^alias ports='port search'$/;"	a
+portu	modules/macports/init.zsh	/^alias portu='sudo port upgrade'$/;"	a
+portx	modules/macports/init.zsh	/^alias portx='sudo port uninstall'$/;"	a
+postinstall	modules/prompt/external/pure/package.json	/^    "postinstall": "dest=\/usr\/local\/share\/zsh\/site-functions; mkdir -p $dest && ln -sf \\"$/;"	s	object:scripts
+pre.address	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^pre.address {$/;"	c
+pre.doctest-block	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^pre.literal-block, pre.doctest-block {$/;"	c
+pre.literal-block	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^pre.literal-block, pre.doctest-block {$/;"	c
+prepend-sudo	modules/editor/init.zsh	/^function prepend-sudo {$/;"	f
+prompt_pure_async_callback	modules/prompt/external/pure/pure.plugin.zsh	/^prompt_pure_async_callback() {$/;"	f
+prompt_pure_async_callback	modules/prompt/external/pure/pure.zsh	/^prompt_pure_async_callback() {$/;"	f
+prompt_pure_async_git_dirty	modules/prompt/external/pure/pure.plugin.zsh	/^prompt_pure_async_git_dirty() {$/;"	f
+prompt_pure_async_git_dirty	modules/prompt/external/pure/pure.zsh	/^prompt_pure_async_git_dirty() {$/;"	f
+prompt_pure_async_git_fetch	modules/prompt/external/pure/pure.plugin.zsh	/^prompt_pure_async_git_fetch() {$/;"	f
+prompt_pure_async_git_fetch	modules/prompt/external/pure/pure.zsh	/^prompt_pure_async_git_fetch() {$/;"	f
+prompt_pure_async_tasks	modules/prompt/external/pure/pure.plugin.zsh	/^prompt_pure_async_tasks() {$/;"	f
+prompt_pure_async_tasks	modules/prompt/external/pure/pure.zsh	/^prompt_pure_async_tasks() {$/;"	f
+prompt_pure_check_cmd_exec_time	modules/prompt/external/pure/pure.plugin.zsh	/^prompt_pure_check_cmd_exec_time() {$/;"	f
+prompt_pure_check_cmd_exec_time	modules/prompt/external/pure/pure.zsh	/^prompt_pure_check_cmd_exec_time() {$/;"	f
+prompt_pure_check_git_arrows	modules/prompt/external/pure/pure.plugin.zsh	/^prompt_pure_check_git_arrows() {$/;"	f
+prompt_pure_check_git_arrows	modules/prompt/external/pure/pure.zsh	/^prompt_pure_check_git_arrows() {$/;"	f
+prompt_pure_clear_screen	modules/prompt/external/pure/pure.plugin.zsh	/^prompt_pure_clear_screen() {$/;"	f
+prompt_pure_clear_screen	modules/prompt/external/pure/pure.zsh	/^prompt_pure_clear_screen() {$/;"	f
+prompt_pure_human_time_to_var	modules/prompt/external/pure/pure.plugin.zsh	/^prompt_pure_human_time_to_var() {$/;"	f
+prompt_pure_human_time_to_var	modules/prompt/external/pure/pure.zsh	/^prompt_pure_human_time_to_var() {$/;"	f
+prompt_pure_precmd	modules/prompt/external/pure/pure.plugin.zsh	/^prompt_pure_precmd() {$/;"	f
+prompt_pure_precmd	modules/prompt/external/pure/pure.zsh	/^prompt_pure_precmd() {$/;"	f
+prompt_pure_preexec	modules/prompt/external/pure/pure.plugin.zsh	/^prompt_pure_preexec() {$/;"	f
+prompt_pure_preexec	modules/prompt/external/pure/pure.zsh	/^prompt_pure_preexec() {$/;"	f
+prompt_pure_preprompt_render	modules/prompt/external/pure/pure.plugin.zsh	/^prompt_pure_preprompt_render() {$/;"	f
+prompt_pure_preprompt_render	modules/prompt/external/pure/pure.zsh	/^prompt_pure_preprompt_render() {$/;"	f
+prompt_pure_set_title	modules/prompt/external/pure/pure.plugin.zsh	/^prompt_pure_set_title() {$/;"	f
+prompt_pure_set_title	modules/prompt/external/pure/pure.zsh	/^prompt_pure_set_title() {$/;"	f
+prompt_pure_setup	modules/prompt/external/pure/pure.plugin.zsh	/^prompt_pure_setup() {$/;"	f
+prompt_pure_setup	modules/prompt/external/pure/pure.zsh	/^prompt_pure_setup() {$/;"	f
+prompt_pure_string_length_to_var	modules/prompt/external/pure/pure.plugin.zsh	/^prompt_pure_string_length_to_var() {$/;"	f
+prompt_pure_string_length_to_var	modules/prompt/external/pure/pure.zsh	/^prompt_pure_string_length_to_var() {$/;"	f
+psu	modules/utility/init.zsh	/^function psu {$/;"	f
+pu	modules/utility/init.zsh	/^alias pu='pushd'$/;"	a
+pushdf	modules/osx/init.zsh	/^alias pushdf='pushd "$(pfd)"'$/;"	a
+pushdls	modules/utility/init.zsh	/^function pushdls {$/;"	f
+py	modules/python/init.zsh	/^alias py='python'$/;"	a
+quiet-test	modules/syntax-highlighting/external/Makefile	/^quiet-test:$/;"	t
+rake	modules/utility/init.zsh	/^alias rake='noglob rake'$/;"	a
+rb	modules/ruby/init.zsh	/^alias rb='ruby'$/;"	a
+rbb	modules/ruby/init.zsh	/^  alias rbb='bundle'$/;"	a
+rbbI	modules/ruby/init.zsh	/^  alias rbbI='rbbi \\$/;"	a
+rbbe	modules/ruby/init.zsh	/^  alias rbbe='bundle exec'$/;"	a
+rbbi	modules/ruby/init.zsh	/^  alias rbbi='bundle install --path vendor\/bundle'$/;"	a
+rbbl	modules/ruby/init.zsh	/^  alias rbbl='bundle list'$/;"	a
+rbbo	modules/ruby/init.zsh	/^  alias rbbo='bundle open'$/;"	a
+rbbp	modules/ruby/init.zsh	/^  alias rbbp='bundle package'$/;"	a
+rbbu	modules/ruby/init.zsh	/^  alias rbbu='bundle update'$/;"	a
+repository	modules/prompt/external/pure/package.json	/^  "repository": "sindresorhus\/pure",$/;"	s
+restore	modules/autosuggestions/external/test/stub-1.0.2.sh	/^restore() {$/;"	f
+rm	modules/utility/init.zsh	/^alias rm="${aliases[rm]:-rm} -i"$/;"	a
+rm	modules/utility/init.zsh	/^alias rm='nocorrect rm'$/;"	a
+ror	modules/rails/init.zsh	/^alias ror='bundle exec rails'$/;"	a
+rorc	modules/rails/init.zsh	/^alias rorc='bundle exec rails console'$/;"	a
+rordM	modules/rails/init.zsh	/^alias rordM='bundle exec rake db:migrate db:test:clone'$/;"	a
+rordc	modules/rails/init.zsh	/^alias rordc='bundle exec rails dbconsole'$/;"	a
+rordm	modules/rails/init.zsh	/^alias rordm='bundle exec rake db:migrate'$/;"	a
+rordr	modules/rails/init.zsh	/^alias rordr='bundle exec rake db:rollback'$/;"	a
+rorg	modules/rails/init.zsh	/^alias rorg='bundle exec rails generate'$/;"	a
+rorl	modules/rails/init.zsh	/^alias rorl='tail -f "$(ruby-app-root)\/log\/development.log"'$/;"	a
+rorlc	modules/rails/init.zsh	/^alias rorlc='bundle exec rake log:clear'$/;"	a
+rorp	modules/rails/init.zsh	/^alias rorp='bundle exec rails plugin'$/;"	a
+rorr	modules/rails/init.zsh	/^alias rorr='bundle exec rails runner'$/;"	a
+rors	modules/rails/init.zsh	/^alias rors='bundle exec rails server'$/;"	a
+rorsd	modules/rails/init.zsh	/^alias rorsd='bundle exec rails server --debugger'$/;"	a
+rorx	modules/rails/init.zsh	/^alias rorx='bundle exec rails destroy'$/;"	a
+rsync	modules/utility/init.zsh	/^alias rsync='noglob rsync'$/;"	a
+rsync-copy	modules/rsync/init.zsh	/^alias rsync-copy="${_rsync_cmd}"$/;"	a
+rsync-move	modules/rsync/init.zsh	/^alias rsync-move="${_rsync_cmd} --remove-source-files"$/;"	a
+rsync-synchronize	modules/rsync/init.zsh	/^alias rsync-synchronize="${_rsync_cmd} --update --delete"$/;"	a
+rsync-update	modules/rsync/init.zsh	/^alias rsync-update="${_rsync_cmd} --update"$/;"	a
+run_test	modules/syntax-highlighting/external/tests/test-highlighting.zsh	/^run_test() {$/;"	f
+run_test	modules/syntax-highlighting/external/tests/test-perfs.zsh	/^run_test() {$/;"	f
+run_test_internal	modules/syntax-highlighting/external/tests/test-highlighting.zsh	/^run_test_internal() {$/;"	f
+run_test_internal	modules/syntax-highlighting/external/tests/test-perfs.zsh	/^run_test_internal() {$/;"	f
+sc-	modules/systemd/init.zsh	/^for c in $sudo_commands; do; alias sc-$c="sudo systemctl $c"; done$/;"	a
+sc-	modules/systemd/init.zsh	/^for c in $user_commands; do; alias sc-$c="systemctl $c"; done$/;"	a
+sc-disable-now	modules/systemd/init.zsh	/^alias sc-disable-now="sc-disable --now"$/;"	a
+sc-enable-now	modules/systemd/init.zsh	/^alias sc-enable-now="sc-enable --now"$/;"	a
+sc-mask-now	modules/systemd/init.zsh	/^alias sc-mask-now="sc-mask --now"$/;"	a
+scp	modules/utility/init.zsh	/^alias scp='noglob scp'$/;"	a
+scr	modules/screen/init.zsh	/^alias scr='screen'$/;"	a
+scripts	modules/prompt/external/pure/package.json	/^  "scripts": {$/;"	o
+scrl	modules/screen/init.zsh	/^alias scrl='screen -list'$/;"	a
+scrn	modules/screen/init.zsh	/^alias scrn='screen -U -S'$/;"	a
+scrr	modules/screen/init.zsh	/^alias scrr='screen -a -A -U -D -R'$/;"	a
+set-tab-title	modules/terminal/init.zsh	/^function set-tab-title {$/;"	f
+set-window-title	modules/terminal/init.zsh	/^function set-window-title {$/;"	f
+setUp	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_misc.sh	/^setUp()$/;"	f
+sftp	modules/utility/init.zsh	/^alias sftp='noglob sftp'$/;"	a
+sl	modules/utility/init.zsh	/^alias sl='ls'            # I often screw this up.$/;"	a
+slit	modules/utility/init.zsh	/^function slit {$/;"	f
+span.classifier	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^span.classifier {$/;"	c
+span.classifier-delimiter	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^span.classifier-delimiter {$/;"	c
+span.interpreted	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^span.interpreted {$/;"	c
+span.option	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^span.option {$/;"	c
+span.pre	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^span.pre {$/;"	c
+span.problematic	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^span.problematic {$/;"	c
+span.section-subtitle	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^span.section-subtitle {$/;"	c
+startSkipping	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2	/^startSkipping()$/;"	f
+stub	modules/autosuggestions/external/test/stub-1.0.2.sh	/^stub() {$/;"	f
+stub_and_echo	modules/autosuggestions/external/test/stub-1.0.2.sh	/^stub_and_echo() {$/;"	f
+stub_and_eval	modules/autosuggestions/external/test/stub-1.0.2.sh	/^stub_and_eval() {$/;"	f
+stub_called	modules/autosuggestions/external/test/stub-1.0.2.sh	/^stub_called() {$/;"	f
+stub_called_at_least_times	modules/autosuggestions/external/test/stub-1.0.2.sh	/^stub_called_at_least_times() {$/;"	f
+stub_called_at_most_times	modules/autosuggestions/external/test/stub-1.0.2.sh	/^stub_called_at_most_times() {$/;"	f
+stub_called_exactly_times	modules/autosuggestions/external/test/stub-1.0.2.sh	/^stub_called_exactly_times() {$/;"	f
+stub_called_times	modules/autosuggestions/external/test/stub-1.0.2.sh	/^stub_called_times() {$/;"	f
+stub_called_with	modules/autosuggestions/external/test/stub-1.0.2.sh	/^stub_called_with() {$/;"	f
+stub_called_with_at_least_times	modules/autosuggestions/external/test/stub-1.0.2.sh	/^stub_called_with_at_least_times() {$/;"	f
+stub_called_with_at_most_times	modules/autosuggestions/external/test/stub-1.0.2.sh	/^stub_called_with_at_most_times() {$/;"	f
+stub_called_with_exactly_times	modules/autosuggestions/external/test/stub-1.0.2.sh	/^stub_called_with_exactly_times() {$/;"	f
+stub_called_with_times	modules/autosuggestions/external/test/stub-1.0.2.sh	/^stub_called_with_times() {$/;"	f
+suite_addTest	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2	/^suite_addTest()$/;"	f
+table.borderless td	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^.borderless, table.borderless td, table.borderless th {$/;"	s
+table.borderless td	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^table.borderless td, table.borderless th {$/;"	s
+table.borderless th	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^.borderless, table.borderless td, table.borderless th {$/;"	s
+table.borderless th	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^table.borderless td, table.borderless th {$/;"	s
+table.citation	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^table.citation {$/;"	c
+table.docinfo	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^table.docinfo {$/;"	c
+table.docinfo td	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^table.docinfo td, table.docinfo th {$/;"	s
+table.docinfo th	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^table.docinfo td, table.docinfo th {$/;"	s
+table.docinfo th.docinfo-name	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^table.docutils th.field-name, table.docinfo th.docinfo-name {$/;"	c
+table.docutils td	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^table.docutils td, table.docutils th,$/;"	s
+table.docutils th	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^table.docutils td, table.docutils th,$/;"	s
+table.docutils th.field-name	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^table.docutils th.field-name, table.docinfo th.docinfo-name {$/;"	c
+table.footnote	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^table.footnote {$/;"	c
+tearDown	modules/autosuggestions/external/test/shunit2-2.1.6/examples/mkdir_test.sh	/^tearDown()$/;"	f
+test	modules/autosuggestions/external/Makefile	/^test: all$/;"	t
+test	modules/syntax-highlighting/external/Makefile	/^test:$/;"	t
+testAdding	modules/autosuggestions/external/test/shunit2-2.1.6/examples/math_test.sh	/^testAdding()$/;"	f
+testAssertEquals	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_asserts.sh	/^testAssertEquals()$/;"	f
+testAssertEquals	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_macros.sh	/^testAssertEquals()$/;"	f
+testAssertFalse	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_asserts.sh	/^testAssertFalse()$/;"	f
+testAssertFalse	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_macros.sh	/^testAssertFalse()$/;"	f
+testAssertNotEquals	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_asserts.sh	/^testAssertNotEquals()$/;"	f
+testAssertNotEquals	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_macros.sh	/^testAssertNotEquals()$/;"	f
+testAssertNotNull	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_asserts.sh	/^testAssertNotNull()$/;"	f
+testAssertNotSame	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_asserts.sh	/^testAssertNotSame()$/;"	f
+testAssertNull	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_asserts.sh	/^testAssertNull()$/;"	f
+testAssertSame	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_asserts.sh	/^testAssertSame()$/;"	f
+testAssertTrue	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_asserts.sh	/^testAssertTrue()$/;"	f
+testAssertTrue	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_macros.sh	/^testAssertTrue()$/;"	f
+testEquality	modules/autosuggestions/external/test/shunit2-2.1.6/examples/equality_test.sh	/^testEquality()$/;"	f
+testEquality	modules/autosuggestions/external/test/shunit2-2.1.6/examples/party_test.sh	/^testEquality()$/;"	f
+testEscapeCharInStr	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_misc.sh	/^testEscapeCharInStr()$/;"	f
+testEscapeCharInStr_specialChars	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_misc.sh	/^testEscapeCharInStr_specialChars()$/;"	f
+testEscapeCommandPrefix	modules/autosuggestions/external/script/test.zsh	/^testEscapeCommandPrefix() {$/;"	f
+testExistingDirectoryCreationFails	modules/autosuggestions/external/test/shunit2-2.1.6/examples/mkdir_test.sh	/^testExistingDirectoryCreationFails()$/;"	f
+testExtractTestFunctions	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_misc.sh	/^testExtractTestFunctions()$/;"	f
+testFail	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_failures.sh	/^testFail()$/;"	f
+testFail	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_macros.sh	/^testFail()$/;"	f
+testFailNotEquals	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_failures.sh	/^testFailNotEquals()$/;"	f
+testFailNotEquals	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_macros.sh	/^testFailNotEquals()$/;"	f
+testFailNotSame	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_macros.sh	/^testFailNotSame()$/;"	f
+testFailSame	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_failures.sh	/^testFailSame()$/;"	f
+testFailSame	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_macros.sh	/^testFailSame()$/;"	f
+testHighlightApplyWithSuggestion	modules/autosuggestions/external/script/test.zsh	/^testHighlightApplyWithSuggestion() {$/;"	f
+testHighlightApplyWithoutSuggestion	modules/autosuggestions/external/script/test.zsh	/^testHighlightApplyWithoutSuggestion() {$/;"	f
+testHighlightDefaultStyle	modules/autosuggestions/external/script/test.zsh	/^testHighlightDefaultStyle() {$/;"	f
+testHighlightReset	modules/autosuggestions/external/script/test.zsh	/^testHighlightReset() {$/;"	f
+testIssue7	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_misc.sh	/^testIssue7()$/;"	f
+testLineNo	modules/autosuggestions/external/test/shunit2-2.1.6/examples/lineno_test.sh	/^testLineNo()$/;"	f
+testMissingDirectoryCreation	modules/autosuggestions/external/test/shunit2-2.1.6/examples/mkdir_test.sh	/^testMissingDirectoryCreation()$/;"	f
+testNotNull	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_macros.sh	/^testNotNull()$/;"	f
+testNotSame	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_macros.sh	/^testNotSame()$/;"	f
+testNull	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_macros.sh	/^testNull()$/;"	f
+testPartyLikeItIs1999	modules/autosuggestions/external/test/shunit2-2.1.6/examples/party_test.sh	/^testPartyLikeItIs1999()$/;"	f
+testPrepForSourcing	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_misc.sh	/^testPrepForSourcing()$/;"	f
+testRecursiveDirectoryCreation	modules/autosuggestions/external/test/shunit2-2.1.6/examples/mkdir_test.sh	/^testRecursiveDirectoryCreation()$/;"	f
+testSame	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_macros.sh	/^testSame()$/;"	f
+testStandalone	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_standalone.sh	/^testStandalone()$/;"	f
+testUnboundVariable	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test_misc.sh	/^testUnboundVariable()$/;"	f
+testWidgetAccept	modules/autosuggestions/external/script/test.zsh	/^testWidgetAccept() {$/;"	f
+testWidgetClear	modules/autosuggestions/external/script/test.zsh	/^testWidgetClear() {$/;"	f
+testWidgetFunctionAcceptCursorAtEnd	modules/autosuggestions/external/script/test.zsh	/^testWidgetFunctionAcceptCursorAtEnd() {$/;"	f
+testWidgetFunctionAcceptCursorNotAtEnd	modules/autosuggestions/external/script/test.zsh	/^testWidgetFunctionAcceptCursorNotAtEnd() {$/;"	f
+testWidgetFunctionClear	modules/autosuggestions/external/script/test.zsh	/^testWidgetFunctionClear() {$/;"	f
+testWidgetFunctionModify	modules/autosuggestions/external/script/test.zsh	/^testWidgetFunctionModify() {$/;"	f
+testWidgetFunctionPartialAcceptCursorMovesOutOfBuffer	modules/autosuggestions/external/script/test.zsh	/^testWidgetFunctionPartialAcceptCursorMovesOutOfBuffer() {$/;"	f
+testWidgetFunctionPartialAcceptCursorStaysInBuffer	modules/autosuggestions/external/script/test.zsh	/^testWidgetFunctionPartialAcceptCursorStaysInBuffer() {$/;"	f
+th_assertTrueWithNoOutput	modules/autosuggestions/external/test/shunit2-2.1.6/examples/mkdir_test.sh	/^th_assertTrueWithNoOutput()$/;"	f
+tmuxa	modules/tmux/init.zsh	/^alias tmuxa="tmux $_tmux_iterm_integration new-session -A"$/;"	a
+tmuxl	modules/tmux/init.zsh	/^alias tmuxl='tmux list-sessions'$/;"	a
+top	modules/utility/init.zsh	/^  alias top=htop$/;"	a
+topc	modules/utility/init.zsh	/^    alias topc='top -o %CPU'$/;"	a
+topc	modules/utility/init.zsh	/^    alias topc='top -o cpu'$/;"	a
+topm	modules/utility/init.zsh	/^    alias topm='top -o %MEM'$/;"	a
+topm	modules/utility/init.zsh	/^    alias topm='top -o vsize'$/;"	a
+type	modules/utility/init.zsh	/^alias type='type -a'$/;"	a
+ul.auto-toc	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^ul.auto-toc {$/;"	c
+ul.simple	modules/autosuggestions/external/test/shunit2-2.1.6/doc/rst2html.css	/^ol.simple, ul.simple {$/;"	c
+url	modules/prompt/external/pure/package.json	/^      "url": "github.com\/mafredri"$/;"	s	object:maintainers.0
+url	modules/prompt/external/pure/package.json	/^    "url": "sindresorhus.com"$/;"	s	object:author
+usage	modules/autosuggestions/external/test/shunit2-2.1.6/src/shunit2_test.sh	/^usage()$/;"	f
+version	modules/prompt/external/pure/package.json	/^  "version": "1.3.0",$/;"	s
+versions_main	modules/autosuggestions/external/test/shunit2-2.1.6/lib/versions	/^versions_main()$/;"	f
+versions_osName	modules/autosuggestions/external/test/shunit2-2.1.6/lib/versions	/^versions_osName()$/;"	f
+versions_osVersion	modules/autosuggestions/external/test/shunit2-2.1.6/lib/versions	/^versions_osVersion()$/;"	f
+versions_shellVersion	modules/autosuggestions/external/test/shunit2-2.1.6/lib/versions	/^versions_shellVersion()$/;"	f
+versions_shell_bash	modules/autosuggestions/external/test/shunit2-2.1.6/lib/versions	/^versions_shell_bash()$/;"	f
+versions_shell_dash	modules/autosuggestions/external/test/shunit2-2.1.6/lib/versions	/^versions_shell_dash()$/;"	f
+versions_shell_ksh	modules/autosuggestions/external/test/shunit2-2.1.6/lib/versions	/^versions_shell_ksh()$/;"	f
+versions_shell_pdksh	modules/autosuggestions/external/test/shunit2-2.1.6/lib/versions	/^versions_shell_pdksh()$/;"	f
+versions_shell_zsh	modules/autosuggestions/external/test/shunit2-2.1.6/lib/versions	/^versions_shell_zsh()$/;"	f
+vi-insert	modules/editor/init.zsh	/^function vi-insert {$/;"	f
+vi-insert-bol	modules/editor/init.zsh	/^function vi-insert-bol {$/;"	f
+vi-replace	modules/editor/init.zsh	/^function vi-replace  {$/;"	f
+x	modules/syntax-highlighting/external/highlighters/main/test-data/noglob-alias.zsh	/^alias x=command$/;"	a
+yumL	modules/yum/init.zsh	/^alias yumL='yum list installed'    # Lists installed packages.$/;"	a
+yumU	modules/yum/init.zsh	/^alias yumU='sudo yum upgrade'      # Upgrades packages.$/;"	a
+yumc	modules/yum/init.zsh	/^alias yumc='sudo yum clean all'    # Cleans the cache.$/;"	a
+yumh	modules/yum/init.zsh	/^alias yumh='yum history'           # Displays history.$/;"	a
+yumi	modules/yum/init.zsh	/^alias yumi='sudo yum install'      # Installs package(s).$/;"	a
+yuml	modules/yum/init.zsh	/^alias yuml='yum list'              # Lists packages.$/;"	a
+yumq	modules/yum/init.zsh	/^alias yumq='yum info'              # Displays package information.$/;"	a
+yumr	modules/yum/init.zsh	/^alias yumr='sudo yum remove'       # Removes package(s).$/;"	a
+yums	modules/yum/init.zsh	/^alias yums='yum search'            # Searches for a package.$/;"	a
+yumu	modules/yum/init.zsh	/^alias yumu='sudo yum update'       # Updates packages.$/;"	a
+zle-keymap-select	modules/editor/init.zsh	/^function zle-keymap-select {$/;"	f
+zle-line-finish	modules/editor/init.zsh	/^function zle-line-finish {$/;"	f
+zle-line-init	modules/editor/init.zsh	/^function zle-line-init {$/;"	f
+{	init.zsh	/^        function {$/;"	f
+{	init.zsh	/^  function {$/;"	f
