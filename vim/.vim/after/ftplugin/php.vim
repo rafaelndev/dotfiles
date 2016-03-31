@@ -1,11 +1,10 @@
 setlocal expandtab
 setlocal list
-setlocal listchars=tab:+\ ,eol:-
 setlocal formatprg=par\ -w80\ -T4
 setlocal tabstop=4
 setlocal shiftwidth=4
 setlocal softtabstop=4
-let php_htmlInStrings = 1
+let php_html_in_strings= 1
 let php_sql_query = 1
 UltiSnipsAddFiletypes php
 
