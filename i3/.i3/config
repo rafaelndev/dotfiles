@@ -212,13 +212,13 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightnes
 # Touchpad controls
 bindsym $mod+t exec /opt/scripts/toggletouchpad.sh
 bindsym XF86TouchpadToggle exec /opt/scripts/toggletouchpad.sh # toggle touchpad
-bindcode 199 exec /opt/scripts/toggletouchpad.sh
+# bindcode 199 exec /opt/scripts/toggletouchpad.sh
 bindcode 200 exec /opt/scripts/toggletouchpad.sh
 
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec /opt/scripts/playercontrol toggle
+bindsym XF86AudioNext exec /opt/scripts/playercontrol next
+bindsym XF86AudioPrev exec /opt/scripts/playercontrol previous
 
 bindsym Print exec xfce4-screenshooter
 bindsym Control+Print exec xfce4-screenshooter -f
@@ -240,12 +240,15 @@ exec killall -q notify-osd # Remover o notify-osd do xfce
 exec udiskie --smart-tray # Automounter
 exec_always --no-startup-id synapse -s # Launcher synapse
 exec syndaemon -d -t -i 3 # Desabilitar mouse enquanto digita
+exec xset dpms 300 600 0
 exec sh -c 'sleep 15; unclutter' # Desabilitar cursor se não usado
 exec sh -c 'sleep 15; exec caffeine' # Evita que a tela se desligue caso exista programas em fullscreen
 exec sh -c 'sleep 15; dropbox'
 exec sh -c 'sleep 15; smbnetfs ~/sambashare' # Montar pastas da rede 
-exec sh -c 'sleep 15; clipit' # Gerenciador de Clipboard
-exec sh -c 'sleep 30; system-config-printer-applet' # Applet de impressão
+# exec sh -c 'sleep 15; clipit' # Gerenciador de Clipboard
+# exec sh -c 'sleep 30; system-config-printer-applet' # Applet de impressão
+exec sh -c 'sleep 15; autocutsel -fork'
+exec sh -c 'sleep 15; autocutsel -selection PRIMARY -fork'
 
 # Firefox Suspender
 # exec screen -S firefox_suspender -d -m /opt/scripts/firefox_suspender.sh
@@ -256,11 +259,12 @@ assign [class="Pidgin"] $work4
 assign [class="Hexchat"] $work4
 
 for_window [window_type="dialog"] floating enable
+for_window [window_role="pop-up"] floating enable
 for_window [class="Yad"]          floating enable
 for_window [class="Yad"]          border normal 2
 for_window [title="^Terminology"] border normal 2
-for_window [title="urxvt"]        border toggle
-for_window [class="Termite"]      border toggle
+for_window [title="urxvt"]        border normal 2
+for_window [class="Termite"]      border normal 2
 for_window [title="sakura"]       border normal 2
 for_window [title="xterm"]        border normal 2
 for_window [title="galculator"]   floating enable
@@ -268,10 +272,12 @@ for_window [title="galculator"]   border normal 2
 for_window [title="Cobrança CAIXA^"] floating disable
 for_window [title="Cobrança CAIXA^"] border normal 2
 for_window [class="Spotify"]      move to workspace $work5
+for_window [class="Gmpc"]      move to workspace $work5
 for_window [class="Pavucontrol"]  floating enable
 for_window [class="Pavucontrol"]  border normal 2
 for_window [class="i3-frame"] floating enable
 for_window [class="i3-frame"] border normal 2
+for_window [class="__extract"]   floating enable
 
 # Custom i3exit
 set $i3exit /opt/scripts/i3lock/i3exit

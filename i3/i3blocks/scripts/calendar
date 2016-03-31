@@ -1,3 +1,4 @@
+#!/bin/bash
 DATE="$(date '+%H:%M - %a, %d de %b %Y')"
 
 if [ $BLOCK_BUTTON = 1 ]; then
