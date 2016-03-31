@@ -33,4 +33,13 @@
 	<text-files/>
 	<video-files/>
 </action>
+<action>
+	<icon>extract-archive</icon>
+	<name>Extrair detectando subpasta</name>
+	<unique-id>1457099609466365-3</unique-id>
+	<command>termite -e &quot;bash -c &apos;/usr/bin/aunpack %f;$SHELL&apos;&quot; --class &quot;__extract&quot;</command>
+	<description>Extrair arquivos detectando sua subpasta</description>
+	<patterns>*.zip;*.rar;*.gz;*.7z;*.gzip;*.bzip2;*.tar</patterns>
+	<other-files/>
+</action>
 </actions>
