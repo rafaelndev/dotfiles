@@ -1,10 +1,11 @@
 [options]
 ; font = Source Code Pro for Powerline Medium 10
 font = Fira Mono Medium for Powerline Medium 10
+; font = Hack 10
 allow_bold = true
 dynamic_title = true
 clickable_url = true
-browser = firefox
+; browser = firefox
 scrollback_lines = 10000
 resize_grip = false
 scroll_on_output = false
