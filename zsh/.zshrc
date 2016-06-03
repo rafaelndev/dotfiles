@@ -27,21 +27,27 @@ man() {
 
 # vim superman
 vman() {
-  vim -c "SuperMan $*"
+  nvim "+Man $*"
 
   if [ "$?" != "0" ]; then
     echo "No manual entry for $*"
   fi
 }
 
+
+open_legenda() {
+  aunpack $(ls -Art | grep legendas_tv | tail -n 1) && thunar $(ls -Atrd */ | grep legendas_tv | tail -n 1)
+}
+
 # man autocomplete > vman
-# compdef vman="man"
+compdef vman="man"
 
 stty -ixon
 
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/lib/eclipse/
+export PATH=$PATH:~/.composer/vendor/bin
 
 PATH="/home/rafael/perl5/bin${PATH+:}${PATH}"; export PATH;
 PERL5LIB="/home/rafael/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
@@ -57,12 +63,12 @@ alias extract="aunpack"
 alias clipboard='xclip -sel clip'
 export EDITOR="nvim"
 export BROWSER="firefox"
-export LIBVA_DRIVER_NAME=vdpau
+# export LIBVA_DRIVER_NAME=i965
 alias note='nvim "/home/rafael/Documentos/Notes/$(ls ~/Documentos/Notes/ | fzf)"'
 
 source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='ag -g ""'
-export FZF_DEFAULT_OPTS="-i"
+export FZF_DEFAULT_OPTS="-e"
 export FZF_COMPLETION_TRIGGER='--'
 
 ulimit -n 2048
@@ -74,8 +80,8 @@ setopt HIST_EXPIRE_DUPS_FIRST
 eval `dircolors ~/dircolors.default`
 
 source ~/.zsh/plugins/alias-tips/alias-tips.plugin.zsh
-# source ~/.bin/tmuxinator.zsh
 export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Dica: "
 
-# fpath=(~/.zsh/completions $fpath)
-# autoload -Uz compinit && compinit -i
+# Iniciar auto completion
+fpath=(~/.zsh/completion $fpath)
+autoload -Uz compinit && compinit -i
