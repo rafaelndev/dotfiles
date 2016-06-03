@@ -26,3 +26,5 @@
 	d = difftool
 [push]
 	default = simple
+[rerere]
+	enabled = true
