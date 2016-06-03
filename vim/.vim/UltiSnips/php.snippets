@@ -3,7 +3,7 @@ snippet php "Tag do PHP"
 endsnippet
 
 snippet find "CakePHP Find"
-$this->${1}->find('${1:all}', array(
+$this->${1}->find('${2:all}', array(
     ${3:'recursive' => -1,}
     'conditions' => array(
         ${4}
@@ -14,4 +14,9 @@ endsnippet
 snippet fredir "Flash e Redirect"
 $this->Session->setFlash("${1}");
 $this->redirect(array(${2:'controller' => '${3}', }'action' => '${4}'));
+endsnippet
+
+snippet ar "Valor da array php"
+'${1}' => ${2},
+${0}
 endsnippet

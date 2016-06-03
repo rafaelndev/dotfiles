@@ -7,6 +7,7 @@ setlocal softtabstop=4
 let php_html_in_strings= 1
 let php_sql_query = 1
 UltiSnipsAddFiletypes php
+set iskeyword-=-
 
 nnoremap <Leader>prlv :call PhpRenameLocalVariable()<CR>
 nnoremap <Leader>prcv :call PhpRenameClassVariable()<CR>
@@ -21,5 +22,6 @@ vnoremap <Leader>p== :call PhpAlignAssigns()<CR>
 nnoremap <Leader>psg :call PhpCreateSettersAndGetters()<CR>
 nnoremap <Leader>pda :call PhpDocAll()<CR>
 nnoremap <Leader>pdf :call pdv#DocumentWithSnip()<CR>
-nnoremap <silent><leader>pcf :Dispatch php-cs-fixer fix % -v --ansi<CR>:e<CR>:w<CR>
+" nnoremap <silent><leader>pcf :Dispatch php-cs-fixer fix % -v --level=psr2 --ansi<CR>:e<CR>:w<CR>
 nmap <Leader>pau <Plug>(phpcomplete-extended-add-use)
+
