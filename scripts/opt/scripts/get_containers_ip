@@ -1,0 +1,11 @@
+#!/bin/bash
+
+function get_containers_ip {
+  docker ps --format '{{.ID}}:{{.Names}}' | while IFS=: read id nome
+  do
+    IP="$(docker inspect --format '{{ .NetworkSettings.Networks.projetovideointerativo_default.IPAddress }}' $id)"
+    echo "$nome - ${IP}"
+  done
+}
+
+get_containers_ip

@@ -1,0 +1,12 @@
+#!/bin/bash
+acpi -b | awk -F'[,:%]' '{print $2, $3}' | {
+  read -r status capacity
+
+  if [ "$status" = Discharging -a "$capacity" -lt 10 ]; then
+    notify-send -i battery "Descarga da Bateria" "Bateria com menos de 10%, hibernação recomendada."
+  elif [ "$status" = Discharging -a "$capacity" -lt 25 ]; then
+    notify-send -i battery "Descarga da Bateria" "Bateria com menos de 25%, conecte ao carregador."
+  fi
+
+
+}

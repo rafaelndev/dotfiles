@@ -9,15 +9,24 @@ VM_Password=123
 # Iniciar a virtual machine
 VBoxManage startvm "$VM_Name" --type headless
 
+echo "Esperando SSH.."
+# while [[ -z $(nc -v -z 127.0.0.1 3022 2>&1 | grep succeeded) ]]; do
+while [[ -n "$(plink -P 3022 -batch -v rafael@127.0.0.1 2>&1 | grep refused)" ]]; do
+  echo "Conexão com SSH, falhou."
+  sleep 5
+done
+
+sleep 5
+
+echo "Iniciando Firefox.."
 # Conectar a maquina e iniciar o firefox na página do itaú
 plink -P 3022 -batch -X -l $VM_Login 127.0.0.1 -pw $VM_Password "/usr/bin/firefox --new-instance 'https://itau.com.br' && exit" &
 
 # Esperar 1 min, mais ou menos o tempo até que o firefox abra
-sleep 60
+sleep 30
 
 # Loop infinito para verificar se a janela do firefox da maquina virtual está aberta.
-while [[ -n $(wmctrl -l | grep "Mozilla Firefox" | grep "$VM_User") ]]; do
-  sleep 1
+while [[ -n $(wmctrl -l | grep "Mozilla Firefox" | grep "$VM_User") ]]; do sleep 1
 done
 
 # Se o firefox for fechado desliga a maquina virtual.
