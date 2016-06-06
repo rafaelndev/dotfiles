@@ -14,27 +14,32 @@ command -v fzf >/dev/null 2>&1 || { echo "O fzf não foi encontrado, instale o p
 
 # Iniciando o fzf (fuzzy-finder) para buscar o nome da vídeo no mega
 function buscar_video_mega (){
-  MEGA_VIDEO=$(megals | grep -E ".mp4|.mkv|.flv|.rmvb|.avi" | grep "/Root/" | sed 's/\/Root\/*//' | fzf -i +s)
+  # MEGA_VIDEO=$(megals | grep -E ".mp4|.mkv|.flv|.rmvb|.avi" | grep "/Root/" | sed 's/\/Root\/*//' | fzf -i +s)
+  MEGA_VIDEO=$(megals | grep -E ".mp4|.mkv|.flv|.rmvb|.avi" | grep "/Root/" | sed 's/\/Root\/*//' | fzf -i +s -m )
 
   if [[ -z $MEGA_VIDEO ]]; then
     echo "Nenhum vídeo foi selecionado.";
     exit 0;
   fi
 
-  echo "Começando download do Vídeo...";
-  # Começa a baixar o vídeo e diretamente para o buffer do stdin
-  $MEGAGET "/Root/$MEGA_VIDEO" --path=- | $PLAYER - &
+  IFS=$'\n'
+  for video in ${MEGA_VIDEO[@]};do
+    unset PROC_ID
+    echo "Começando stream do vídeo: \"$video\"";
+    # Começa a baixar o vídeo e diretamente para o buffer do stdin
+    $MEGAGET "/Root/$video" --path=- | ($PLAYER - &> /dev/null) &
 
-  # Pegar o ID do ultimo processo
-  PROC_ID=$!
+    # Pegar o ID do ultimo processo
+    PROC_ID=$!
 
-  # Enquanto o processo estiver executando, continue.
-  while kill -0 "$PROC_ID" >/dev/null 2>&1; do
-    sleep 1
+    # Enquanto o processo estiver executando, continue.
+    while kill -0 "$PROC_ID" >/dev/null 2>&1; do
+      sleep 1
+    done
+
+    # Fechando o processo do $MEGAGET, evitando que ele continue rodando em background
+    kill "$(pidof $MEGAGET)"
   done
-
-  # Fechando o processo do $MEGAGET, evitando que ele continue rodando em background
-  kill "$(pidof $MEGAGET)"
 
   read -p "Deseja procurar outro vídeo ? [s/N]" -n 1 -r
 
