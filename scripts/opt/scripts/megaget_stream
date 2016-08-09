@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PLAYER=mpv
+PLAYER=vlc
 MEGAGET=megaget
 
 # Verificando se o executável megaget foi encontrado.
@@ -14,7 +14,6 @@ command -v fzf >/dev/null 2>&1 || { echo "O fzf não foi encontrado, instale o p
 
 # Iniciando o fzf (fuzzy-finder) para buscar o nome da vídeo no mega
 function buscar_video_mega (){
-  # MEGA_VIDEO=$(megals | grep -E ".mp4|.mkv|.flv|.rmvb|.avi" | grep "/Root/" | sed 's/\/Root\/*//' | fzf -i +s)
   MEGA_VIDEO=$(megals | grep -E ".mp4|.mkv|.flv|.rmvb|.avi" | grep "/Root/" | sed 's/\/Root\/*//' | fzf -i +s -m )
 
   if [[ -z $MEGA_VIDEO ]]; then
@@ -26,8 +25,8 @@ function buscar_video_mega (){
   for video in ${MEGA_VIDEO[@]};do
     unset PROC_ID
     echo "Começando stream do vídeo: \"$video\"";
-    # Começa a baixar o vídeo e diretamente para o buffer do stdin
-    $MEGAGET "/Root/$video" --path=- | ($PLAYER - &> /dev/null) &
+    # Começa a baixar o vídeo diretamente para o buffer do stdin
+    $MEGAGET "/Root/$video" --path=- | ($PLAYER -) &
 
     # Pegar o ID do ultimo processo
     PROC_ID=$!

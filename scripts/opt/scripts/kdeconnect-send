@@ -11,7 +11,7 @@ fi
 DEVICE_LIST=()
 while IFS= read -r ROW; do
   DEVICE_LIST+=("$ROW")
-done <<<$(kdeconnect-cli -a | awk -F ":" '{print $1}')
+done <<<$(kdeconnect-cli -a | head -n -1 |awk -F ":" '{print $1}')
 
 escolha=$(yad --width 300 --entry --title "Enviar Arquivo" \
 --button="Enviar" \
