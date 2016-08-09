@@ -5,6 +5,8 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+fpath=(~/.zsh/completion $fpath)
+
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -34,10 +36,26 @@ vman() {
   fi
 }
 
-
 open_legenda() {
   aunpack $(ls -Art | grep legendas_tv | tail -n 1) && thunar $(ls -Atrd */ | grep legendas_tv | tail -n 1)
 }
+
+start_docker(){
+  if [[ $(systemctl is-active docker) == "active" ]]; then
+    sudo systemctl start docker
+  fi
+
+  docker-compose build && docker-compose up
+}
+
+pac_find_exe() {
+  for ARG in $(pacman -Qql $1); do
+    [ ! -d $ARG ] && [ -x $ARG ] && echo $ARG;
+  done
+}
+lso() { ls -alG "$@" | awk '{k=0;for(i=0;i<=8;i++)k+=((substr($1,i+2,1)~/[rwx]/)*2^(8-i));if(k)printf(" %0o ",k);print}'; }
+
+compdef pac_find_exe="yaourt"
 
 # man autocomplete > vman
 compdef vman="man"
@@ -45,9 +63,13 @@ compdef vman="man"
 stty -ixon
 
 export GOPATH=~/go
+export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/lib/eclipse/
 export PATH=$PATH:~/.composer/vendor/bin
+export PATH=$PATH:~/bin/
+export PATH=$PATH:~/.cargo/bin
+export RUST_SRC_PATH=~/.rust/src
 
 PATH="/home/rafael/perl5/bin${PATH+:}${PATH}"; export PATH;
 PERL5LIB="/home/rafael/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
@@ -62,13 +84,15 @@ alias CMD_ENVIAR_PHONE="/opt/scripts/kdeconnect-send"
 alias extract="aunpack"
 alias clipboard='xclip -sel clip'
 export EDITOR="nvim"
-export BROWSER="firefox"
-# export LIBVA_DRIVER_NAME=i965
+export BROWSER="xdg-open"
+export LIBVA_DRIVER_NAME=i965
+export VDPAU_DRIVER=va_gl
 alias note='nvim "/home/rafael/Documentos/Notes/$(ls ~/Documentos/Notes/ | fzf)"'
 
+bindkey -e
 source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='ag -g ""'
-export FZF_DEFAULT_OPTS="-e"
+export FZF_DEFAULT_OPTS=""
 export FZF_COMPLETION_TRIGGER='--'
 
 ulimit -n 2048
@@ -81,7 +105,3 @@ eval `dircolors ~/dircolors.default`
 
 source ~/.zsh/plugins/alias-tips/alias-tips.plugin.zsh
 export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Dica: "
-
-# Iniciar auto completion
-fpath=(~/.zsh/completion $fpath)
-autoload -Uz compinit && compinit -i
