@@ -14,7 +14,7 @@ lock() {
 
 case "$1" in
     lock)
-        lock
+      lock `sleep 1 && xset dpms force off`
         ;;
     logout)
         i3-msg exit
