@@ -1,0 +1,50 @@
+snippet bcan
+	@can('${1}', ${2:$model})
+		${0}
+	@endcan
+
+snippet bcane
+	@can('${1}', ${2:$model})
+		${3}
+	@else
+		${0}
+	@endcan
+
+snippet bif
+	@if(${1})
+		${0}
+	@endif
+
+snippet bife
+	@if(${1})
+		${2}
+	@else
+		${0}
+	@endif
+
+snippet bfor
+	@for ($i = 0; $i < ${1}; $i++)
+			${0}
+	@endfor
+
+snippet bforeach
+	@foreach (${1} as ${2})
+			${0}
+	@endforeach
+
+snippet bwhile
+	@while (${1})
+			${0}
+	@endwhile
+
+snippet crsf
+	{{ csrf_field() }}
+
+snippet new_blade
+	@extends('${1:layouts.app}')
+
+	@section('title', '${2}')
+
+	@section('${3:content}')
+		${0}
+	@endsection

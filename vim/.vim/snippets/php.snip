@@ -1,0 +1,64 @@
+snippet php
+	<?php ${1} ?>
+snippet find
+	$this->${1}->find('${2:all}', array(
+			${3:'recursive' => -1,}
+			'conditions' => array(
+					${4}
+			)
+	));
+snippet fredir
+	$this->Session->setFlash("${1}");
+	$this->redirect(array(${2:'controller' => '${3}', }'action' => '${4}'));
+snippet ar
+	'${1}' => ${2},
+	${0}
+
+snippet new_controller
+	<?php
+
+	namespace App\Http\Controllers${1};
+
+	use App\Http\Controllers\Controller;
+
+	class ${1:`vim_snippets#Filename()`} extends Controller
+	{
+			${0}
+	}
+
+snippet new_model
+	<?php
+
+	namespace App;
+
+	use Illuminate\Database\Eloquent\Model;
+
+	class ${1:`vim_snippets#Filename()`} extends Model
+	{
+			${0}
+	}
+
+snippet route_group_can
+	Route::group(['${1:middleware}' => '${can:${2}}'], function () {
+			${0}
+	});
+
+snippet route_group_prefix
+	Route::group(['${1:prefix}' => '${${2:admin}}'], function () {
+			${0}
+	});
+
+snippet route_get
+	Route::get('${1}', '${0}');
+
+snippet route_post
+	Route::post('${1}', '${0}');
+
+snippet eloquent_relation
+	/**
+	* @return $2
+	*/
+	public function ${1}()
+	{
+		return $this->${3:hasMany}('${2}');
+	}

@@ -6,5 +6,3 @@ setlocal expandtab
 setlocal autoindent
 setlocal fileformat=unix
 setlocal commentstring=#\ %s
-UltiSnipsAddFiletypes python
-

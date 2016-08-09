@@ -73,18 +73,17 @@ endfunction
 function! g:utils#CloseSplitOrDeleteBuffer() abort
   let l:curNr = winnr()
   let l:curBuf = bufnr('%')
-  wincmd w                    " try to move on next split
-  if winnr() ==# l:curNr         " there is no split"
+  wincmd w                    " Tenta ir para o proximo split
+  if winnr() ==# l:curNr         " Não existe mais splits
     exe 'bdelete'
-  elseif l:curBuf != bufnr('%') " there is split with another buffer
+  elseif l:curBuf != bufnr('%') " Existe um split em outro buffer
     wincmd W                  " move back"
     exe 'bdelete'
-  else                        " there is split with same buffer"
+  else                        " Existe um split no mesmo buffer
     wincmd W
     wincmd c
   endif
 endfunction
-
 
 " Função para salvar o buffer
 function! g:utils#AutoSave() abort

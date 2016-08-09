@@ -1,1 +1,1 @@
-Guifont Fira Mono Medium for Powerline:h10
+FuraMonoForPowerline Nerd Font Medium:h10

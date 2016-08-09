@@ -6,8 +6,9 @@ setlocal shiftwidth=4
 setlocal softtabstop=4
 let php_html_in_strings= 1
 let php_sql_query = 1
-UltiSnipsAddFiletypes php
+" UltiSnipsAddFiletypes php
 set iskeyword-=-
+set iskeyword+=:
 
 nnoremap <Leader>prlv :call PhpRenameLocalVariable()<CR>
 nnoremap <Leader>prcv :call PhpRenameClassVariable()<CR>
@@ -22,6 +23,19 @@ vnoremap <Leader>p== :call PhpAlignAssigns()<CR>
 nnoremap <Leader>psg :call PhpCreateSettersAndGetters()<CR>
 nnoremap <Leader>pda :call PhpDocAll()<CR>
 nnoremap <Leader>pdf :call pdv#DocumentWithSnip()<CR>
-" nnoremap <silent><leader>pcf :Dispatch php-cs-fixer fix % -v --level=psr2 --ansi<CR>:e<CR>:w<CR>
-nmap <Leader>pau <Plug>(phpcomplete-extended-add-use)
+nnoremap <Leader>pdoc :call PhpDocSingle()<CR>
 
+" nnoremap <silent><leader>pcf :Dispatch php-cs-fixer fix % -v --level=psr2 --ansi<CR>:e<CR>:w<CR>
+function! IPhpInsertUse()
+    call PhpInsertUse()
+    call feedkeys('a',  'n')
+endfunction
+autocmd FileType php inoremap <Leader>piu <Esc>:call IPhpInsertUse()<CR>
+autocmd FileType php noremap <Leader>piu :call PhpInsertUse()<CR>
+
+silent! nnoremap <silent> <unique> <buffer> <C-]>
+			\ :<C-u>call phpcd#JumpToDefinition('normal')<CR>
+silent! nnoremap <silent> <unique> <buffer> <C-W><C-]>
+			\ :<C-u>call phpcd#JumpToDefinition('split')<CR>
+silent! nnoremap <silent> <unique> <buffer> <C-W><C-\>
+			\ :<C-u>call phpcd#JumpToDefinition('vsplit')<CR>
