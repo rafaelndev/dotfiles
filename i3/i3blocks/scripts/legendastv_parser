@@ -8,8 +8,6 @@ URL = "http://legendas.tv/legenda/carrega_destaques"
 
 d = PyQuery(URL)
 pag = d("div.galery")
-clearfix = pag.find("div.clearfix")
-
 
 SERIES = ['The Flash', 'Arrow', 'Gotham', 'Agents of S.H.I.E.L.D',
           'Supernatural', 'Ash vs Evil', 'Vikings', 'Lucifer', 'Legends of Tomorrow', 'Marvel\'s Agent Carter']
