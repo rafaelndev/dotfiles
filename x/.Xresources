@@ -38,11 +38,12 @@ Xcursor.theme: Oxygen Zion
 xft.dpi:                    96
 xft.hinting:                true
 
-! xterm*faceName: Dejavu Sans Mono for Powerline:size=10:antialias=true
-xterm*faceName: Source Code Pro for Powerline:size=10:antialias=true
+xterm*faceName: Dejavu Sans Mono for Powerline:size=10:antialias=true
+! xterm*faceName: xft:FuraMonoForPowerline Nerd Font:Medium:size=10:antialias=true
 xterm*faceNameDoublesize: Dejavu Sans Mono for Powerline:size=10:antialias=true
 xterm*font: 7x13
-URxvt*font:  xft:Source Code Pro for Powerline:Medium:size=10:antialias=true, \
+
+URxvt*font:  xft:FuraMonoForPowerline Nerd Font:Medium:size=10:antialias=true, \
              xft:Dejavu Sans Mono for Powerline:size=10:antialias=true
 URxvt.cursorBlink: false
 ! URxvt*termName: screen-256color
