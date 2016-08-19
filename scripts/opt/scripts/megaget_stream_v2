@@ -1,0 +1,120 @@
+#!/bin/bash
+
+
+PLAYER=vlc
+MEGAGET=megaget
+
+HEIGHT=100
+WIDTH=200
+CHOICE_HEIGHT=100
+BACKTITLE="Mega Laracast"
+TITLE=""
+SERIE=""
+MENU="Você deseja assistir uma uma série ou uma lição?"
+MEGA=$(megals)
+MEGA_VIDEO=$(echo "$MEGA" | grep -E ".mp4|.mkv|.flv|.rmvb|.avi" | grep "/Root/" | sed 's/\/Root\/*//')
+
+videos=()
+series=()
+let n=0
+
+IFS=$'\n'
+for video in ${MEGA_VIDEO[@]};do
+  if echo "$video" | grep -q "series/"
+  then
+    serie=$( echo "$video" | grep -o -P '(?<=series/).*(?=/)' )
+    if [[ ! "${series[@]}" =~ "${serie}"  ]]; then
+      series+=("$serie" "")
+    fi
+    let n=$n+1
+    videos+=("$video")
+  fi
+done
+
+
+
+serie_choice (){
+  SERIE=""
+  SERIE=$(dialog --clear \
+    --backtitle "$BACKTITLE" \
+    --title "$TITLE" \
+    --menu "Selecione a Série" \
+    $HEIGHT $WIDTH $CHOICE_HEIGHT \
+    "${series[@]}" \
+    2>&1 >/dev/tty)
+  clear
+
+  if [ ! -z "$SERIE" ]; then
+    episodio_choice
+  else
+    tipo_choice
+  fi
+}
+
+episodio_choice() {
+  EPISODIO=""
+  episodios=()
+  for episodio in ${videos[@]};do
+    if [[ "$episodio" =~ "series/$SERIE"  ]]; then
+      serie_ep=$( echo "$episodio" | grep -o -P "(?<=series/$SERIE/).*(?=.mp4)" )
+      episodios+=("$serie_ep" "")
+    fi
+  done
+
+  EPISODIO=$(dialog --clear \
+    --backtitle "$BACKTITLE" \
+    --title "TITLE" \
+    --menu "Selecione o Episodio" \
+    $HEIGHT $WIDTH $CHOICE_HEIGHT \
+    "${episodios[@]}" \
+    2>&1 >/dev/tty)
+
+  if [ ! -z "$EPISODIO" ]; then
+    $MEGAGET "/Root/series/$SERIE/$EPISODIO.mp4" --path=- | (vlc -) &
+
+    PROC_ID=$!
+
+    # Enquanto o processo estiver executando, continue.
+    while kill -0 "$PROC_ID" >/dev/null 2>&1; do
+      sleep 1
+    done
+
+    kill "$(pidof $MEGAGET)"
+    episodio_choice
+  else
+    serie_choice
+  fi
+
+}
+
+
+tipo_choice() {
+  OPTIONS=(1 "Série"
+           2 "Lição")
+
+  CHOICE=$(dialog --clear \
+    --backtitle "$BACKTITLE" \
+    --title "$TITLE" \
+    --menu "$MENU" \
+    $HEIGHT $WIDTH $CHOICE_HEIGHT \
+    "${OPTIONS[@]}" \
+    2>&1 >/dev/tty)
+
+  case "$CHOICE" in
+    1)
+      serie_choice
+      episodio_choice
+
+      ;;
+    2)
+      echo "Lição"
+      ;;
+    *)
+      exit
+      ;;
+  esac
+
+  clear
+}
+
+tipo_choice
