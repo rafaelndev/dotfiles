@@ -4,7 +4,6 @@ set nocompatible
 if has('nvim')
   set termguicolors
 endif
-filetype off
 
 " ================  Instalação do Vim-Plug  ================ {{{
 if has('unix')
@@ -33,6 +32,7 @@ Plug 'ryanoasis/vim-devicons', { 'on': [ 'NERDTreeToggle', 'NERDTreeFind', 'Star
 Plug 'itchyny/lightline.vim'
 Plug 'benekastah/neomake', { 'on': ['Neomake'] }
 Plug 'majutsushi/tagbar' | Plug 'vim-php/tagbar-phpctags.vim', { 'for': ['php'] }
+Plug 'wincent/ferret'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'tpope/vim-repeat'
 Plug 'xolox/vim-misc'
@@ -63,6 +63,7 @@ Plug 'Rip-Rip/clang_complete', { 'for': ['c', 'cpp', 'h'] }
 Plug 'zef/vim-cycle'
 Plug 'Shougo/vimproc.vim'
 Plug 'phpvim/phpcd.vim', { 'for': 'php' , 'do': 'composer update' }
+Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' }
 Plug 'vim-scripts/progressbar-widget'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'suan/vim-instant-markdown'
@@ -89,7 +90,6 @@ Plug 'osyo-manga/vim-over'
 Plug 'docunext/closetag.vim', { 'for': ['html', 'xml', 'php', 'blade']}
 Plug 'triglav/vim-visual-increment'
 Plug 'matze/vim-move'
-Plug 'wincent/ferret'
 Plug 'dyng/ctrlsf.vim'
 let g:ctrlsf_default_root = 'project'
 let g:ctrlsf_mapping = {
@@ -113,10 +113,14 @@ let g:zv_file_types = {
       \   'php'                      : 'laravel',
       \   '.blade.php'               : 'laravel',
       \ }
+Plug 'embear/vim-localvimrc'
+let g:localvimrc_sandbox = 0
 
 " Syntax
 Plug 'Chiel92/vim-autoformat'
 " Plug 'sheerun/vim-polyglot'
+" Plug 'hdima/python-syntax', { 'for': 'python' }
+Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
 Plug 'othree/html5.vim', { 'for': ['html', 'blade', 'php'] }
@@ -155,8 +159,8 @@ call plug#end()
 " }}}
 
 " ================   Configurações Gerais   ================ {{{
-filetype plugin indent on
-syntax enable
+" filetype plugin indent on
+" syntax enable
 
 " Configurações gerais do arquivo
 set autoindent
@@ -399,6 +403,9 @@ inoremap <C-X><C-S> <C-O>:Snippets<CR>
 
 " Completar tags manualmente
 inoremap <silent> <expr> <C-]> utils#manualTagComplete()
+
+" Selecionar palavra sem pular
+nnoremap * *``
 
 
 augroup load_insert_plugin
@@ -876,11 +883,11 @@ augroup END
 augroup pencil
   autocmd!
   autocmd FileType markdown,mkd
-        \ | setl spell spelllang=pt,en_us fdl=4 noru nonu nornu
+        \ | setl spelllang=pt,en_us fdl=4 noru nonu nornu
         \ | setl fdo+=search
 
   autocmd Filetype mail
-        \ | setl spell spelllang=pt,en_us et sw=2 ts=2 noai nonu nornu
+        \ | setl spelllang=pt,en_us et sw=2 ts=2 noai nonu nornu
 augroup END
 
 " Voltar para posição anterior
