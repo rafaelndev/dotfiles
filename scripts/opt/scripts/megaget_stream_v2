@@ -8,9 +8,11 @@ HEIGHT=100
 WIDTH=200
 CHOICE_HEIGHT=100
 BACKTITLE="Mega Laracast"
-TITLE=""
-SERIE=""
+TITLE="Mega Laracast"
 MENU="Você deseja assistir uma uma série ou uma lição?"
+SERIE=""
+
+echo "Carregando informações do mega..."
 MEGA=$(megals)
 MEGA_VIDEO=$(echo "$MEGA" | grep -E ".mp4|.mkv|.flv|.rmvb|.avi" | grep "/Root/" | sed 's/\/Root\/*//')
 
@@ -34,10 +36,17 @@ done
 
 
 serie_choice (){
+  DEFAULT_SERIE=$series
+
+  if [ ! -z $SERIE ]; then
+    DEFAULT_SERIE=$SERIE
+  fi
+
   SERIE=""
   SERIE=$(dialog --clear \
     --backtitle "$BACKTITLE" \
     --title "$TITLE" \
+    --default-item "$DEFAULT_SERIE" \
     --menu "Selecione a Série" \
     $HEIGHT $WIDTH $CHOICE_HEIGHT \
     "${series[@]}" \
@@ -52,6 +61,13 @@ serie_choice (){
 }
 
 episodio_choice() {
+
+  DEFAULT_EPISODIO=$series
+
+  if [ ! -z $EPISODIO ]; then
+    DEFAULT_EPISODIO=$EPISODIO
+  fi
+
   EPISODIO=""
   episodios=()
   for episodio in ${videos[@]};do
@@ -64,6 +80,7 @@ episodio_choice() {
   EPISODIO=$(dialog --clear \
     --backtitle "$BACKTITLE" \
     --title "TITLE" \
+    --default-item "$DEFAULT_EPISODIO" \
     --menu "Selecione o Episodio" \
     $HEIGHT $WIDTH $CHOICE_HEIGHT \
     "${episodios[@]}" \
