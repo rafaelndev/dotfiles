@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 PLAYER=vlc
 MEGAGET=megaget
 
@@ -79,7 +78,7 @@ episodio_choice() {
 
   EPISODIO=$(dialog --clear \
     --backtitle "$BACKTITLE" \
-    --title "TITLE" \
+    --title "$TITLE" \
     --default-item "$DEFAULT_EPISODIO" \
     --menu "Selecione o Episodio" \
     $HEIGHT $WIDTH $CHOICE_HEIGHT \

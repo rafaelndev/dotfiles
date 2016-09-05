@@ -7,12 +7,12 @@ VOLUME=$(amixer get Master | grep % | awk '{print $5}'|sed 's/[^0-9]//g' | head 
 SOM=$(amixer get Master | grep % | awk '{print $6}'|sed 's/[^on/off]//g' | head -1
 on)
 
-# Se o volume for mutado mostra outra imagem
-if [[ $SOM = 'off' ]]; then
-  volnoti-show -n -m 0 -s /usr/share/pixmaps/volnoti/volume_muted.svg &
-else
-  volnoti-show "$VOLUME" &
-fi
+# # Se o volume for mutado mostra outra imagem
+# if [[ $SOM = 'off' ]]; then
+#   volnoti-show -n -m 0 -s /usr/share/pixmaps/volnoti/volume_muted.svg &
+# else
+#   volnoti-show "$VOLUME" &
+# fi
 # echo $VOLUME;
 # notify-send " " -i notification-audio-volume-medium -h int:value:$VOLUME -h string:x-canonical-private-synchronous:volume &
 # echo $VOLUME
