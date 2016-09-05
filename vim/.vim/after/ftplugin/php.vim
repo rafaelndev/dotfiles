@@ -1,4 +1,6 @@
 setlocal expandtab
+setlocal autoindent
+setlocal smartindent
 setlocal list
 setlocal formatprg=par\ -w80\ -T4
 setlocal tabstop=4
@@ -8,7 +10,7 @@ let php_html_in_strings= 1
 let php_sql_query = 1
 " UltiSnipsAddFiletypes php
 set iskeyword-=-
-set iskeyword+=:
+set iskeyword-=:
 
 nnoremap <Leader>prlv :call PhpRenameLocalVariable()<CR>
 nnoremap <Leader>prcv :call PhpRenameClassVariable()<CR>
@@ -33,9 +35,12 @@ endfunction
 autocmd FileType php inoremap <Leader>piu <Esc>:call IPhpInsertUse()<CR>
 autocmd FileType php noremap <Leader>piu :call PhpInsertUse()<CR>
 
+unmap <unique> <buffer> <C-]>
 silent! nnoremap <silent> <unique> <buffer> <C-]>
-			\ :<C-u>call phpcd#JumpToDefinition('normal')<CR>
+			\ :<C-U>call g:utils#JumpToDefinition('normal')<CR>
+unmap <unique> <buffer> <C-W><C-]>
 silent! nnoremap <silent> <unique> <buffer> <C-W><C-]>
-			\ :<C-u>call phpcd#JumpToDefinition('split')<CR>
+      \ :<C-U>call g:utils#JumpToDefinition('split')<CR>
+unmap <unique> <buffer> <C-W><C-\>
 silent! nnoremap <silent> <unique> <buffer> <C-W><C-\>
-			\ :<C-u>call phpcd#JumpToDefinition('vsplit')<CR>
+      \ :<C-U>call g:utils#JumpToDefinition('vsplit')<CR>

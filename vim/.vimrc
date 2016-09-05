@@ -28,14 +28,13 @@ Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-surround'
 Plug 'Shougo/neosnippet.vim' | Plug 'Shougo/neosnippet-snippets' | Plug 'chrisgillis/vim-bootstrap3-snippets'
 Plug 'tpope/vim-dispatch'
-Plug 'ryanoasis/vim-devicons', { 'on': [ 'NERDTreeToggle', 'NERDTreeFind', 'Startify']}
+Plug 'ryanoasis/vim-devicons', { 'on': [ 'NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'itchyny/lightline.vim'
 Plug 'benekastah/neomake', { 'on': ['Neomake'] }
 Plug 'majutsushi/tagbar' | Plug 'vim-php/tagbar-phpctags.vim', { 'for': ['php'] }
 Plug 'wincent/ferret'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'tpope/vim-repeat'
-Plug 'xolox/vim-misc'
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdtree' , { 'on':  [ 'NERDTreeToggle', 'NERDTreeFind' ] }
 Plug 'tommcdo/vim-exchange'
@@ -43,7 +42,6 @@ Plug 'tomtom/tcomment_vim'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'mattn/emmet-vim'
 Plug 'cohama/lexima.vim', { 'on': []}
-Plug 'terryma/vim-expand-region'
 Plug 'simnalamburt/vim-mundo' , { 'on': ['MundoToggle'] }
 Plug 'tpope/vim-fugitive'
 Plug 'lervag/vimtex', { 'for': ['tex', 'bib'] }
@@ -52,17 +50,16 @@ Plug 'Konfekt/FastFold'
 if has('nvim')
   Plug 'Shougo/deoplete.nvim'
   Plug 'carlitux/deoplete-ternjs', { 'for': ['js'] }
-  Plug 'Shougo/context_filetype.vim'
   Plug 'zchee/deoplete-jedi', { 'for': 'python' }
-  Plug 'zchee/deoplete-go', { 'do': 'make'}
+  Plug 'zchee/deoplete-go', { 'do': 'make' }
+  Plug 'pbogut/deoplete-padawan'
 endif
 
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install', 'for': ['js'] }
 Plug 'Rip-Rip/clang_complete', { 'for': ['c', 'cpp', 'h'] }
 
 Plug 'zef/vim-cycle'
-Plug 'Shougo/vimproc.vim'
-Plug 'phpvim/phpcd.vim', { 'for': 'php' , 'do': 'composer update' }
+" Plug 'phpvim/phpcd.vim', { 'do': 'composer update' }
 Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' }
 Plug 'vim-scripts/progressbar-widget'
 Plug 'ludovicchabant/vim-gutentags'
@@ -71,8 +68,6 @@ Plug 'dhruvasagar/vim-table-mode'
 Plug 'mhinz/vim-startify'
 Plug 'arnaud-lb/vim-php-namespace'
 
-Plug 'tobyS/vmustache'
-Plug 'tobyS/pdv'
 Plug 'mikehaertl/pdv-standalone'
 Plug 'adoy/vim-php-refactoring-toolbox', { 'for': ['php'] }
 Plug 'kana/vim-operator-user'
@@ -81,7 +76,6 @@ Plug 'mhinz/vim-grepper'
 Plug 'Numkil/ag.nvim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install --all' }
 Plug 'junegunn/fzf.vim'
-Plug '1995eaton/vim-better-javascript-completion'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'jszakmeister/vim-togglecursor'
@@ -90,16 +84,10 @@ Plug 'osyo-manga/vim-over'
 Plug 'docunext/closetag.vim', { 'for': ['html', 'xml', 'php', 'blade']}
 Plug 'triglav/vim-visual-increment'
 Plug 'matze/vim-move'
-Plug 'dyng/ctrlsf.vim'
-let g:ctrlsf_default_root = 'project'
-let g:ctrlsf_mapping = {
-    \ "next": "n",
-    \ "prev": "N",
-    \ }
-let g:ctrlsf_position = 'bottom'
 Plug 'justinmk/vim-sneak'
 Plug 'wsdjeg/vim-cheat'
-Plug 'wincent/loupe'
+Plug 'junegunn/vim-pseudocl'
+Plug 'junegunn/vim-oblique'
 Plug 'airblade/vim-gitgutter'
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
@@ -115,30 +103,28 @@ let g:zv_file_types = {
       \ }
 Plug 'embear/vim-localvimrc'
 let g:localvimrc_sandbox = 0
+let g:localvimrc_ask = '0'
+Plug 'evidanary/grepg.vim'
 
 " Syntax
 Plug 'Chiel92/vim-autoformat'
-" Plug 'sheerun/vim-polyglot'
-" Plug 'hdima/python-syntax', { 'for': 'python' }
 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
-Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
+Plug 'jelera/vim-javascript-syntax', { 'for': ['javascript', 'html', 'php']}
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'html', 'php'] }
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
 Plug 'othree/html5.vim', { 'for': ['html', 'blade', 'php'] }
 Plug 'stephpy/vim-php-cs-fixer', { 'for': ['php'] }
 Plug 'posva/vim-vue', { 'for': 'vue'}
 Plug 'xolox/vim-notes', { 'for': 'notes' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'cespare/vim-toml'
-Plug 'aklt/plantuml-syntax'
+Plug 'cespare/vim-toml', { 'for': 'toml'}
+Plug 'aklt/plantuml-syntax', { 'for': 'uml'}
 Plug 'Valloric/MatchTagAlways', { 'for': ['html', 'xml', 'php', 'blade' ]}
-Plug 'StanAngeloff/php.vim', { 'for': ['php'] }
+Plug 'StanAngeloff/php.vim', { 'for': ['php', 'html'] }
 Plug 'jwalton512/vim-blade', { 'for': 'blade' }
 
 " Color Schemes
 Plug 'morhetz/gruvbox'
-Plug 'flazz/vim-colorschemes'
-Plug 'tomasr/molokai'
-Plug '0ax1/lxvc'
 
 " Custom TextObjects
 Plug 'kana/vim-textobj-user'
@@ -149,9 +135,10 @@ Plug 'rbonvall/vim-textobj-latex'
 Plug 'saaguero/vim-textobj-pastedtext'
 
 
-" Plug 'rafaelndev/deoplete-laravel-plugin', {'for': ['php'], 'do': 'composer update'}
+Plug 'rafaelndev/deoplete-laravel-plugin', {'for': ['php'], 'do': 'composer update'}
 
-Plug 'joonty/vdebug'
+Plug 'joonty/vdebug', { 'on': ['VdebugStart']}
+noremap <F5> :VdebugStart<CR>
 " Plug 'kana/vim-textobj-indent'
 "
 call plug#end()
@@ -270,7 +257,7 @@ set noswapfile
 set fileformats=unix,dos,mac
 
 " Configuração de auto completar para funcionar com o YCM
-set completeopt=menu,menuone,longest,preview
+set completeopt=menu,menuone,longest
 " S-k abre a ajuda para a palavra selecionada
 set keywordprg=":help"
 
@@ -312,6 +299,9 @@ iabbrev dockerip 172.17.0.1
 
 " ================         Keybinds         ================ {{{
 
+" Disable Ex Mode
+nnoremap Q <nop>
+
 " Toggle Paste mode
 set pastetoggle=<F2>
 
@@ -338,7 +328,7 @@ map Y y$
 nnoremap \ :
 
 " <leader>h limpa as buscas
-nmap <leader>h <Plug>(LoupeClearHighlight)
+nmap <leader>h :nohlsearch<CR>
 
 " Abreviações nos comandos
 cnoreabbrev W w
@@ -398,7 +388,6 @@ inoremap <C-s> <Esc>[s1z=gi
 nnoremap <leader>s :w<cr>
 
 nnoremap <leader>how :Dispatch howdoi -n 5
-nnoremap <C-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 inoremap <C-X><C-S> <C-O>:Snippets<CR>
 
 " Completar tags manualmente
@@ -414,6 +403,8 @@ augroup load_insert_plugin
                      \| autocmd! load_insert_plugin
 augroup END
 
+" Visual AT
+xnoremap @ :<C-u>call utils#ExecuteMacroOverVisualRange()<CR>
 
 function! StartInsertPlugins() abort
   if !has('NeoSnippetsList')
@@ -441,7 +432,7 @@ let g:vdebug_options= {
       \    "on_close":           'detach',
       \    "break_on_open":      1,
       \    "ide_key":            'netbeans-xdebug',
-      \    "path_maps":          {"/var/www": "/home/rafael/Documentos/monografia-node.js/Projeto-Video-Interativo/www"},
+      \    "path_maps":          {"/var/www": "/home/rafael/Projetos/monografia-node.js/Projeto-Video-Interativo/www"},
       \    "debug_window_level": 0,
       \    "debug_file_level":   0,
       \    "debug_file":         "",
@@ -450,7 +441,6 @@ let g:vdebug_options= {
       \    "marker_closed_tree": '▸',
       \    "marker_open_tree":   '▾'
       \}
-
 
 " Vim-Markdown
 let g:vim_markdown_folding_disabled = 1
@@ -473,13 +463,13 @@ let g:mta_filetypes = {
       \}
 
 " Gutentags
-" let g:gutentags_cache_dir = "~/.vim_project_tags"
 let g:gutentags_project_info = []
 let g:gutentags_define_advanced_commands = 1
 let g:gutentags_project_root = ['.git', 'composer.json']
 let g:gutentags_exclude = ['*.css', '*.html', '*.js']
 let g:gutentags_generate_on_write = 1
 let g:gutentags_auto_set_tags = 0
+let g:gutentags_generate_on_missing = 0
 call add(g:gutentags_project_info, {'type': 'python', 'file': 'setup.py'})
 call add(g:gutentags_project_info, {'type': 'ruby', 'file': 'Gemfile'})
 call add(g:gutentags_project_info, {'type': 'php', 'file': 'composer.json'})
@@ -488,8 +478,14 @@ call add(g:gutentags_project_info, {'type': 'php', 'file': 'composer.json'})
 autocmd! BufWritePost * Neomake
 let g:neomake_php_jshint_maker = {
       \ 'exe': 'jshint',
-      \ 'args': ['--verbose --extract=always'],
+      \ 'args': ['--verbose', '--extract=always'],
       \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
+      \ }
+
+let g:neomake_php_tidy_maker = {
+      \ 'exe': 'tidy',
+      \ 'args': ['-e', '-q', '--gnu-emacs', 'true', '--doctype', 'omit'],
+      \ 'errorformat': '%A%f:%l:%c: Warning: %m',
       \ }
 
 let g:neomake_blade_tidy_maker = {
@@ -501,6 +497,8 @@ let g:neomake_blade_enabled_makers      = ['tidy']
 let g:neomake_verbose                 = 0
 let g:neomake_php_phpcs_args_standard = 'PSR2'
 let g:neomake_php_enabled_makers      = ['php']
+" let g:neomake_verbose = 3
+" let g:neomake_logfile = 'neomake.log'
 
 " Vim Surround
 let g:surround_indent = 1
@@ -562,8 +560,8 @@ xmap <C-j>     <Plug>(neosnippet_expand_target)
 
 let g:neosnippet#enable_snipmate_compatibility = 1
 let g:neosnippet#snippets_directory='~/.vim/snippets/'
-let g:neosnippet#enable_auto_clear_markers = 0
-let g:neosnippet#enable_conceal_markers = 0
+let g:neosnippet#enable_auto_clear_markers = 1
+" let g:neosnippet#enable_conceal_markers = 0
 
 " Lightline
 let g:lightline = {
@@ -608,19 +606,22 @@ endfunction
 let s:fugitive_head_timer = timer_start(10000, 'GetFugitiveHead', {'repeat': -1})
 
 let s:tagbar_last_lookup_val = ''
+let s:tagbar_need_update = 1
 function! GetTagbarCurrentTag(timer)
-  let s:tagbar_last_lookup_val = tagbar#currenttag('%s ', '')
+  if s:tagbar_need_update == 1
+      let s:tagbar_last_lookup_val = tagbar#currenttag('%s ', '')
+  endif
 endfunction
 
+function! TagBarCurrentTag()
+  if !exists('s:tagbar_lookup_timer')
+    let s:tagbar_lookup_timer = timer_start(1000, 'GetTagbarCurrentTag', {'repeat': -1})
+  endif
+  return s:tagbar_last_lookup_val
+endfunction
 
-  function! TagBarCurrentTag()
-    if exists('s:tagbar_lookup_timer')
-      call timer_stop(s:tagbar_lookup_timer)
-    endif
-    let s:tagbar_lookup_timer = timer_start(500, 'GetTagbarCurrentTag')
-    return s:tagbar_last_lookup_val
-  endfunction
-
+au CursorMoved * let s:tagbar_need_update = 1
+au CursorHold * let s:tagbar_need_update = 0
 
 " Emmet
 let g:user_emmet_leader_key='<C-e>'
@@ -720,7 +721,7 @@ endif
 autocmd FileType css           setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType xml           setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType php           setlocal omnifunc=phpcd#CompletePHP
+" autocmd FileType php           setlocal omnifunc=phpcd#CompletePHP
 autocmd FileType javascript setlocal omnifunc=tern#Complete
 autocmd FileType vim setlocal omnifunc=syntaxcomplete#Complete
 autocmd FileType vim setlocal foldenable
@@ -728,19 +729,6 @@ autocmd FileType vim setlocal foldenable
 " Easy EasyAlign
 vmap <leader>a <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
-
-" " Multiple Cursor
-" function! Multiple_cursors_before()
-"     let b:ycm_auto_trigger = 0
-"     " let b:deoplete_disable_auto_complete = 1
-"     let g:deoplete#disable_auto_complete = 1
-" endfunction
-"
-" function! Multiple_cursors_after()
-"     let b:ycm_auto_trigger = 1
-"     " let b:deoplete_disable_auto_complete = 0
-"     let g:deoplete#disable_auto_complete = 0
-" endfunction
 
 " Vim Grepper
 let g:grepper = {
@@ -809,11 +797,11 @@ let g:vim_php_refactoring_use_default_mapping = 0
 let g:vim_php_refactoring_phpdoc = 'pdv#DocumentWithSnip'
 let g:pdv_template_dir = $HOME ."/.vim/plugged/pdv/templates_snip"
 
-
 " Tagbar PHP
 let g:tagbar_phpctags_bin='/opt/scripts/phpctags'
 
 " Startify
+let g:startify_custom_header = []
 let g:startify_session_dir         = '~/.vim/sessions'
 let g:startify_session_persistence = 1
 let g:startify_enable_unsafe = 1
@@ -872,6 +860,7 @@ augroup configgroup
   " au FileType markdown,mkd UltiSnipsAddFiletypes markdown
 
   au BufNewFile,BufRead *.ctp set filetype=php
+  au BufNewFile,BufRead *.ctp let b:neomake_php_enabled_makers = ['php', 'jshint', 'tidy']
 
   au BufNewFile,BufRead *.blade.php set filetype=blade.php.html
   au BufNewFile,BufRead *.vue set filetype=html.javascript.vue
@@ -896,11 +885,6 @@ augroup resCur
   autocmd BufReadPost * call setpos(".", getpos("'\""))
 augroup END
 
-augroup reload_vimrc " {
-    autocmd!
-    autocmd BufWritePost $MYVIMRC source $MYVIMRC
-augroup END " }
-
 " Salvar arquivos quando perder o foco do buffer ou do vim
 set autowrite
 au FocusLost * update
@@ -912,14 +896,15 @@ autocmd WinEnter * if exists('b:NERDTree') | execute 'normal R' | endif
 " Fix QuickFix
 au WinEnter,BufEnter * if &filetype == "qf" | call utils#AdjustWindowHeight(3, 10)
 
-" Salvar quando sair do insert mode
-au InsertLeave * nested call utils#AutoSave()
+" Salvar quando sair do insert mode, usando delay com timer_start
+au InsertLeave * nested call timer_start(250, 'SaveFile', {'repeat': 1})
 
-" F5 Remove espaços em branco
-nmap <f5> :%s/\s\+$//e <CR>
-
-" Visual AT
-xnoremap @ :<C-u>call utils#ExecuteMacroOverVisualRange()<CR>
+function! SaveFile() abort
+  " Não tenta salvar caso esteja no modo expand do neosnippet
+  if !neosnippet#expandable_or_jumpable()
+    call utils#AutoSave()
+  endif
+endfunction
 
 " }}}
 

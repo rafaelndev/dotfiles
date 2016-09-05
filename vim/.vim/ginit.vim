@@ -1,1 +1,1 @@
-FuraMonoForPowerline Nerd Font Medium:h10
+Guifont! FuraMonoForPowerline Nerd Font:h10:style=Medium

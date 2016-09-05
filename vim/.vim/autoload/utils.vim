@@ -92,7 +92,6 @@ function! g:utils#AutoSave() abort
   endif
 endfunction
 
-
 " Função para ajustar o tamanho da janela atual
 function! g:utils#AdjustWindowHeight(minheight, maxheight) abort
   exe max([min([line('$'), a:maxheight]), a:minheight]) . 'wincmd _'
@@ -145,4 +144,18 @@ function! g:utils#manualTagComplete() abort
   endif
 endfunction
 
-
+function! g:utils#JumpToDefinition(split) abort
+  try
+    call phpcd#JumpToDefinition(a:split)
+  catch
+    if a:split == "normal"
+      exec("tag ".expand("<cword>"))
+    elseif a:split == "split"
+      sp
+      exec("tag ".expand("<cword>"))
+    elseif a:split == "vsplit"
+      vsp
+      exec("tag ".expand("<cword>"))
+    endif
+  endtry
+endfunction
