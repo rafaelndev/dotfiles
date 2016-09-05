@@ -250,7 +250,8 @@ exec syndaemon -d -t -i 3 # Desabilitar mouse enquanto digita
 exec synclient TapButton1=1 TapButton2=3 TapButton3=2
 exec xset dpms 300 600 0 # Tempo para desligar/suspender e hibernar
 exec xset r rate 200 25 # Delay do keyboard
-exec volnoti # Notificação de controle de volume
+# exec volnoti # Notificação de controle de volume
+exec xfce4-volumed-pulse
 exec sh -c 'sleep 15; unclutter' # Desabilitar cursor se não usado
 exec sh -c 'sleep 15; /usr/lib/xfce-polkit/xfce-polkit' # Polkit
 exec sh -c 'sleep 30; system-config-printer-applet' # Applet de impressão
