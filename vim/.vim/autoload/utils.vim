@@ -159,3 +159,7 @@ function! g:utils#JumpToDefinition(split) abort
     endif
   endtry
 endfunction
+
+function! g:utils#CompletePHP(findstart, base) abort
+  call phpcd#CompletePHP(a:findstart, a:base)
+endfunction

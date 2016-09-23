@@ -46,20 +46,21 @@ Plug 'simnalamburt/vim-mundo' , { 'on': ['MundoToggle'] }
 Plug 'tpope/vim-fugitive'
 Plug 'lervag/vimtex', { 'for': ['tex', 'bib'] }
 Plug 'Konfekt/FastFold'
+Plug 'AndrewRadev/splitjoin.vim'
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim'
   Plug 'carlitux/deoplete-ternjs', { 'for': ['js'] }
   Plug 'zchee/deoplete-jedi', { 'for': 'python' }
   Plug 'zchee/deoplete-go', { 'do': 'make' }
-  Plug 'pbogut/deoplete-padawan'
+  " Plug 'pbogut/deoplete-padawan'
 endif
 
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install', 'for': ['js'] }
 Plug 'Rip-Rip/clang_complete', { 'for': ['c', 'cpp', 'h'] }
 
 Plug 'zef/vim-cycle'
-" Plug 'phpvim/phpcd.vim', { 'do': 'composer update' }
+Plug 'phpvim/phpcd.vim', { 'do': 'composer update' }
 Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' }
 Plug 'vim-scripts/progressbar-widget'
 Plug 'ludovicchabant/vim-gutentags'
@@ -105,6 +106,7 @@ Plug 'embear/vim-localvimrc'
 let g:localvimrc_sandbox = 0
 let g:localvimrc_ask = '0'
 Plug 'evidanary/grepg.vim'
+Plug 'jreybert/vimagit'
 
 " Syntax
 Plug 'Chiel92/vim-autoformat'
@@ -125,6 +127,8 @@ Plug 'jwalton512/vim-blade', { 'for': 'blade' }
 
 " Color Schemes
 Plug 'morhetz/gruvbox'
+" Plug 'frankier/neovim-colors-solarized-truecolor-only'
+Plug 'lifepillar/vim-solarized8'
 
 " Custom TextObjects
 Plug 'kana/vim-textobj-user'
@@ -135,7 +139,7 @@ Plug 'rbonvall/vim-textobj-latex'
 Plug 'saaguero/vim-textobj-pastedtext'
 
 
-Plug 'rafaelndev/deoplete-laravel-plugin', {'for': ['php'], 'do': 'composer update'}
+" Plug 'rafaelndev/deoplete-laravel-plugin', {'for': ['php'], 'do': 'composer update'}
 
 Plug 'joonty/vdebug', { 'on': ['VdebugStart']}
 noremap <F5> :VdebugStart<CR>
@@ -339,14 +343,14 @@ nmap <leader>lb i<cr><esc>
 
 " Mover pela janelas
 " Tentar fazer uso adequado do nosso inimigo arrow keys
-map <up>      :wincmd k<CR>
-map <down>    :wincmd j<CR>
-map <right>   :wincmd l<CR>
-map <left>    :wincmd h<CR>
-
-" Mover pelos buffers, nem uso muito prefiro <leader>Number
-map <C-right> :bnext<CR>
-map <C-left>  :bprevious<CR>
+nnoremap <up>      :wincmd k<CR>
+nnoremap <down>    :wincmd j<CR>
+nnoremap <right>   :wincmd l<CR>
+nnoremap <left>    :wincmd h<CR>
+nnoremap <leader><left> :vertical resize -5<cr>
+nnoremap <leader><down> :resize +5<cr>
+nnoremap <leader><up> :resize -5<cr>
+nnoremap <leader><right> :vertical resize +5<cr>
 
 " Faz com que < e > continue com a seleção
 vnoremap < <gv
@@ -395,7 +399,6 @@ inoremap <silent> <expr> <C-]> utils#manualTagComplete()
 
 " Selecionar palavra sem pular
 nnoremap * *``
-
 
 augroup load_insert_plugin
   autocmd!
@@ -528,7 +531,7 @@ let g:used_javascript_libs = 'underscore,jquery,requirejs'
 
 " VimTex
 let g:vimtex_latexmk_continuous           = 1
-let g:vimtex_latexmk_options              = '-pdf'
+" let g:vimtex_latexmk_options              = '-pdf'
 let g:vimtex_view_method                  = 'zathura'
 let g:vimtex_fold_enabled                 = 0
 let g:vimtex_latexmk_background           = 1
@@ -578,6 +581,7 @@ let g:lightline = {
       \   'readonly': '%{&readonly?"\ue0a2":""}',
       \ },
       \ 'component_function': {
+      \   'mode': 'LightLineMode',
       \   'fugitive': 'LightLineFugitive',
       \   'tagbar': 'TagBarCurrentTag',
       \   'gutentags': '%{gutentags#statusline("[Generating...]")}'
@@ -585,6 +589,19 @@ let g:lightline = {
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '' }
       \ }
+
+function! LightLineMode()
+  let fname = expand('%:t')
+  return fname == '__Tagbar__' ? 'Tagbar' :
+        \ fname == 'ControlP' ? 'CtrlP' :
+        \ fname == '__Gundo__' ? 'Gundo' :
+        \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
+        \ fname =~ 'NERD_tree' ? 'NERDTree' :
+        \ &ft == 'unite' ? 'Unite' :
+        \ &ft == 'vimfiler' ? 'VimFiler' :
+        \ &ft == 'vimshell' ? 'VimShell' :
+        \ winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
 
 
 let s:fugitive_head = ''
@@ -721,7 +738,7 @@ endif
 autocmd FileType css           setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType xml           setlocal omnifunc=xmlcomplete#CompleteTags
-" autocmd FileType php           setlocal omnifunc=phpcd#CompletePHP
+autocmd FileType php           setlocal omnifunc=phpcd#CompletePHP
 autocmd FileType javascript setlocal omnifunc=tern#Complete
 autocmd FileType vim setlocal omnifunc=syntaxcomplete#Complete
 autocmd FileType vim setlocal foldenable
@@ -736,7 +753,8 @@ let g:grepper = {
       \ 'agnew': {
       \   'grepprg':    'ag --vimgrep -F',
       \ }}
-nnoremap <leader>ag :Grepper -tool agnew  -open -switch<cr>
+
+nnoremap <leader>ag :Grepper -tool agnew  -open -switch -highlight<cr>
 
 " Nerdtree
 map <leader>n :NERDTreeToggle<CR>
@@ -788,9 +806,12 @@ let g:gruvbox_bold          = 1
 let g:gruvbox_contrast_dark = 'medium'
 let g:gruvbox_invert_selection = 0
 
+" Solarized
+let g:solarized_termcolors=256
+
 " PHP Complete
 let g:phpcomplete_cache_taglists = 1
-" let g:phpcomplete_parse_docblock_comments = 1
+let g:phpcomplete_parse_docblock_comments = 1
 
 " Php Refactoring
 let g:vim_php_refactoring_use_default_mapping = 0
@@ -862,7 +883,7 @@ augroup configgroup
   au BufNewFile,BufRead *.ctp set filetype=php
   au BufNewFile,BufRead *.ctp let b:neomake_php_enabled_makers = ['php', 'jshint', 'tidy']
 
-  au BufNewFile,BufRead *.blade.php set filetype=blade.php.html
+  au BufNewFile,BufRead *.blade.php set filetype=blade
   au BufNewFile,BufRead *.vue set filetype=html.javascript.vue
   au BufNewFile,BufRead *.note set filetype=notes
 
@@ -932,6 +953,37 @@ command! -nargs=0 -bar Qargs execute 'args ' . utils#QuickfixFilenames()
 " Profile
 command! Profile call utils#profile()<CR>
 
+" Files + devicons
+function! Fzf_dev()
+  function! s:files()
+    let files = split(system($FZF_DEFAULT_COMMAND), '\n')
+    return s:prepend_icon(files)
+  endfunction
+
+  function! s:prepend_icon(candidates)
+    let result = []
+    for candidate in a:candidates
+      let filename = fnamemodify(candidate, ':p:t')
+      let icon = WebDevIconsGetFileTypeSymbol(filename, isdirectory(filename))
+      call add(result, printf("%s %s", icon, candidate))
+    endfor
+
+    return result
+  endfunction
+
+  function! s:edit_file(item)
+    let parts = split(a:item, ' ')
+    let file_path = get(parts, 1, '')
+    execute 'silent e' file_path
+  endfunction
+
+  call fzf#run({
+        \ 'source': <sid>files(),
+        \ 'sink':   function('s:edit_file'),
+        \ 'options': '-m -x +s',
+        \ 'down':    '40%' })
+endfunction
+
 " }}}
 
 " ================        Arco-Iris         ================ {{{
@@ -943,16 +995,13 @@ if has('nvim')
 endif
 
 colorscheme gruvbox
+" colorscheme solarized8_dark_high
 
-" map  <silent> <F4> :call gruvbox#hls_toggle()<CR>
-" imap <silent> <F4> <ESC>:call gruvbox#hls_toggle()<CR>a
-" vmap <silent> <F4> <ESC>:call gruvbox#hls_toggle()<CR>gv
+map  <silent> <F4> :call gruvbox#hls_toggle()<CR>
+imap <silent> <F4> <ESC>:call gruvbox#hls_toggle()<CR>a
+vmap <silent> <F4> <ESC>:call gruvbox#hls_toggle()<CR>gv
 
 nnoremap <silent> <CR> :call gruvbox#hls_hide()<CR><CR>
-
-nnoremap * :let @/ = ""<CR>:call gruvbox#hls_show()<CR>*
-nnoremap / :let @/ = ""<CR>:call gruvbox#hls_show()<CR>/
-nnoremap ? :let @/ = ""<CR>:call gruvbox#hls_show()<CR>?
 
 " Cor de palavras erradas
 hi SpellBad cterm=underline ctermfg=red

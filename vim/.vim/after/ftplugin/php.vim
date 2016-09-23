@@ -35,10 +35,10 @@ endfunction
 autocmd FileType php inoremap <Leader>piu <Esc>:call IPhpInsertUse()<CR>
 autocmd FileType php noremap <Leader>piu :call PhpInsertUse()<CR>
 
-unmap <unique> <buffer> <C-]>
+silent! unmap <unique> <buffer> <C-]>
 silent! nnoremap <silent> <unique> <buffer> <C-]>
 			\ :<C-U>call g:utils#JumpToDefinition('normal')<CR>
-unmap <unique> <buffer> <C-W><C-]>
+silent! unmap <unique> <buffer> <C-W><C-]>
 silent! nnoremap <silent> <unique> <buffer> <C-W><C-]>
       \ :<C-U>call g:utils#JumpToDefinition('split')<CR>
 unmap <unique> <buffer> <C-W><C-\>
