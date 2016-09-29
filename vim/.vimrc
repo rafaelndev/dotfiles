@@ -6,93 +6,112 @@ if has('nvim')
 endif
 
 " ================  Instalação do Vim-Plug  ================ {{{
-if has('unix')
-  if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-          \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall | source $MYVIMRC
-  endif
-else
-  if has('win32')
-    md ~\vimfiles\autoload
-
-    $uri = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-    (New-Object Net.WebClient).DownloadFile($uri, (Resolve-Path ~\vimfiles\autoload\plug.vim))
-  endif
-endif
+" if has('unix')
+"   if empty(glob('~/.vim/autoload/plug.vim'))
+"     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+"           \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"     autocmd VimEnter * PlugInstall | source $MYVIMRC
+"   endif
+" else
+"   if has('win32')
+"     md ~\vimfiles\autoload
+"
+"     $uri = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+"     (New-Object Net.WebClient).DownloadFile($uri, (Resolve-Path ~\vimfiles\autoload\plug.vim))
+"   endif
+" endif
 " }}}
 
 " ================         Plugins          ================ {{{
-call plug#begin('~/.vim/plugged')
-Plug 'tmhedberg/matchit'
-Plug 'tpope/vim-surround'
-Plug 'Shougo/neosnippet.vim' | Plug 'Shougo/neosnippet-snippets' | Plug 'chrisgillis/vim-bootstrap3-snippets'
-Plug 'tpope/vim-dispatch'
-Plug 'ryanoasis/vim-devicons', { 'on': [ 'NERDTreeToggle', 'NERDTreeFind'] }
-Plug 'itchyny/lightline.vim'
-Plug 'benekastah/neomake', { 'on': ['Neomake'] }
-Plug 'majutsushi/tagbar' | Plug 'vim-php/tagbar-phpctags.vim', { 'for': ['php'] }
-Plug 'wincent/ferret'
-Plug 'nelstrom/vim-visual-star-search'
-Plug 'tpope/vim-repeat'
-Plug 'junegunn/vim-easy-align'
-Plug 'scrooloose/nerdtree' , { 'on':  [ 'NERDTreeToggle', 'NERDTreeFind' ] }
-Plug 'tommcdo/vim-exchange'
-Plug 'tomtom/tcomment_vim'
-Plug 'vim-scripts/ReplaceWithRegister'
-Plug 'mattn/emmet-vim'
-Plug 'cohama/lexima.vim', { 'on': []}
-Plug 'simnalamburt/vim-mundo' , { 'on': ['MundoToggle'] }
-Plug 'tpope/vim-fugitive'
-Plug 'lervag/vimtex', { 'for': ['tex', 'bib'] }
-Plug 'Konfekt/FastFold'
-Plug 'AndrewRadev/splitjoin.vim'
+" call plug#begin('~/.vim/plugged')
+set runtimepath+=~/.vim/autoload/dein.vim
+call dein#begin(expand('~/.vim/plugged/'))
+
+call dein#add('tmhedberg/matchit')
+call dein#add('wellle/targets.vim')
+call dein#add('tpope/vim-surround')
+call dein#add('Shougo/neosnippet.vim', {'on_i': 1})
+call dein#add('Shougo/neosnippet-snippets', {'on_i': 1})
+call dein#add('chrisgillis/vim-bootstrap3-snippets', {'on_i': 1})
+call dein#add('tpope/vim-dispatch')
+call dein#add('ryanoasis/vim-devicons', { 'on_cmd': [ 'NERDTreeToggle', 'NERDTreeFind'] })
+call dein#add('itchyny/lightline.vim')
+call dein#add('benekastah/neomake', { 'on_cmd': ['Neomake'] })
+call dein#add('majutsushi/tagbar')
+call dein#add('vim-php/tagbar-phpctags.vim', { 'on_ft': ['php'] })
+call dein#add('wincent/ferret')
+call dein#add('nelstrom/vim-visual-star-search')
+call dein#add('tpope/vim-repeat')
+call dein#add('junegunn/vim-easy-align')
+call dein#add('scrooloose/nerdtree' , { 'on_cmd':  [ 'NERDTreeToggle', 'NERDTreeFind' ] })
+call dein#add('tommcdo/vim-exchange')
+call dein#add('tomtom/tcomment_vim')
+call dein#add('vim-scripts/ReplaceWithRegister')
+call dein#add('mattn/emmet-vim')
+
+function! s:lexima_start() abort
+  call lexima#init()
+  inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : lexima#expand('<LT>CR>', 'i')
+  call lexima#add_rule({'char': '}', 'at': '\%#\n\s*}', 'leave': '}'})
+  call lexima#add_rule({'char': ']', 'at': '\%#\n\s*]', 'leave': ']'})
+  call lexima#add_rule({'char': ')', 'at': '\%#\n\s*)', 'leave': ')'})
+endfunction
+
+call dein#add('cohama/lexima.vim', {
+      \ 'on_i': 1,
+      \ 'hook_post_source': function('s:lexima_start')
+      \ })
+call dein#add('simnalamburt/vim-mundo' , { 'on_cmd': ['MundoToggle'] })
+call dein#add('tpope/vim-fugitive')
+call dein#add('lervag/vimtex', { 'on_ft': ['tex', 'bib'] })
+call dein#add('Konfekt/FastFold')
 
 if has('nvim')
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'carlitux/deoplete-ternjs', { 'for': ['js'] }
-  Plug 'zchee/deoplete-jedi', { 'for': 'python' }
-  Plug 'zchee/deoplete-go', { 'do': 'make' }
-  " Plug 'pbogut/deoplete-padawan'
+  call dein#add('Shougo/deoplete.nvim')
+  call dein#add('carlitux/deoplete-ternjs', { 'on_ft': ['js'] })
+  call dein#add('zchee/deoplete-jedi', { 'on_ft': 'python' })
+  call dein#add('zchee/deoplete-go', { 'build': 'make' })
+  call dein#add('rafaelndev/deoplete-laravel-plugin', {'on_ft': ['php'], 'build': 'composer update'})
+  " call dein#add('pbogut/deoplete-padawan')
 endif
 
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install', 'for': ['js'] }
-Plug 'Rip-Rip/clang_complete', { 'for': ['c', 'cpp', 'h'] }
+call dein#add('ternjs/tern_for_vim', { 'build': 'npm install', 'on_ft': ['js'] })
+call dein#add('Rip-Rip/clang_complete', { 'on_ft': ['c', 'cpp', 'h'] })
 
-Plug 'zef/vim-cycle'
-Plug 'phpvim/phpcd.vim', { 'do': 'composer update' }
-Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' }
-Plug 'vim-scripts/progressbar-widget'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'suan/vim-instant-markdown'
-Plug 'dhruvasagar/vim-table-mode'
-Plug 'mhinz/vim-startify'
-Plug 'arnaud-lb/vim-php-namespace'
+call dein#add('zef/vim-cycle')
+call dein#add('phpvim/phpcd.vim', { 'build': 'composer update' })
+call dein#add('shawncplus/phpcomplete.vim', { 'on_ft': 'php' })
+call dein#add('vim-scripts/progressbar-widget')
+call dein#add('ludovicchabant/vim-gutentags')
+call dein#add('suan/vim-instant-markdown')
+call dein#add('dhruvasagar/vim-table-mode')
+call dein#add('mhinz/vim-startify')
+call dein#add('arnaud-lb/vim-php-namespace')
 
-Plug 'mikehaertl/pdv-standalone'
-Plug 'adoy/vim-php-refactoring-toolbox', { 'for': ['php'] }
-Plug 'kana/vim-operator-user'
-Plug 'haya14busa/vim-operator-flashy'
-Plug 'mhinz/vim-grepper'
-Plug 'Numkil/ag.nvim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'jszakmeister/vim-togglecursor'
-Plug 'davidhalter/jedi', { 'for': 'python' }
-Plug 'osyo-manga/vim-over'
-Plug 'docunext/closetag.vim', { 'for': ['html', 'xml', 'php', 'blade']}
-Plug 'triglav/vim-visual-increment'
-Plug 'matze/vim-move'
-Plug 'justinmk/vim-sneak'
-Plug 'wsdjeg/vim-cheat'
-Plug 'junegunn/vim-pseudocl'
-Plug 'junegunn/vim-oblique'
-Plug 'airblade/vim-gitgutter'
+call dein#add('mikehaertl/pdv-standalone')
+call dein#add('adoy/vim-php-refactoring-toolbox', { 'on_ft': ['php'] })
+call dein#add('kana/vim-operator-user')
+call dein#add('haya14busa/vim-operator-flashy')
+call dein#add('mhinz/vim-grepper')
+call dein#add('Numkil/ag.nvim')
+call dein#add('junegunn/fzf', { 'dir': '~/.fzf', 'build': './install --all', 'merged': 0 })
+call dein#add('junegunn/fzf.vim', { 'depends': 'fzf'})
+call dein#add('tmux-plugins/vim-tmux-focus-events')
+call dein#add('christoomey/vim-tmux-navigator')
+call dein#add('jszakmeister/vim-togglecursor')
+call dein#add('davidhalter/jedi', { 'on_ft': 'python' })
+call dein#add('osyo-manga/vim-over')
+call dein#add('docunext/closetag.vim', { 'on_ft': ['html', 'xml', 'php', 'blade']})
+call dein#add('triglav/vim-visual-increment')
+call dein#add('matze/vim-move')
+call dein#add('justinmk/vim-sneak')
+call dein#add('wsdjeg/vim-cheat')
+call dein#add('junegunn/vim-pseudocl')
+call dein#add('junegunn/vim-oblique')
+call dein#add('airblade/vim-gitgutter')
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
-Plug 'KabbAmine/zeavim.vim'
+call dein#add('KabbAmine/zeavim.vim')
 let g:zv_file_types = {
       \   'css'                      : 'css,foundation,bootstrap_4',
       \   '.htaccess'                : 'apache_http_server',
@@ -102,56 +121,56 @@ let g:zv_file_types = {
       \   'php'                      : 'laravel',
       \   '.blade.php'               : 'laravel',
       \ }
-Plug 'embear/vim-localvimrc'
+call dein#add('embear/vim-localvimrc')
 let g:localvimrc_sandbox = 0
 let g:localvimrc_ask = '0'
-Plug 'evidanary/grepg.vim'
-Plug 'jreybert/vimagit'
+call dein#add('evidanary/grepg.vim')
+call dein#add('jreybert/vimagit')
+call dein#add('haya14busa/dein-command.vim')
+call dein#add('AndrewRadev/splitjoin.vim')
 
 " Syntax
-Plug 'Chiel92/vim-autoformat'
-Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
-Plug 'jelera/vim-javascript-syntax', { 'for': ['javascript', 'html', 'php']}
-Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'html', 'php'] }
-Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
-Plug 'othree/html5.vim', { 'for': ['html', 'blade', 'php'] }
-Plug 'stephpy/vim-php-cs-fixer', { 'for': ['php'] }
-Plug 'posva/vim-vue', { 'for': 'vue'}
-Plug 'xolox/vim-notes', { 'for': 'notes' }
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'cespare/vim-toml', { 'for': 'toml'}
-Plug 'aklt/plantuml-syntax', { 'for': 'uml'}
-Plug 'Valloric/MatchTagAlways', { 'for': ['html', 'xml', 'php', 'blade' ]}
-Plug 'StanAngeloff/php.vim', { 'for': ['php', 'html'] }
-Plug 'jwalton512/vim-blade', { 'for': 'blade' }
+call dein#add('Chiel92/vim-autoformat')
+call dein#add('hynek/vim-python-pep8-indent', { 'on_ft': 'python' })
+call dein#add('jelera/vim-javascript-syntax', { 'on_ft': ['javascript', 'html', 'php']})
+call dein#add('pangloss/vim-javascript', { 'on_ft': ['javascript', 'html', 'php'] })
+call dein#add('ekalinin/Dockerfile.vim', { 'on_ft': 'Dockerfile' })
+call dein#add('othree/html5.vim', { 'on_ft': ['html', 'blade', 'php'] })
+call dein#add('stephpy/vim-php-cs-fixer', { 'on_ft': ['php'] })
+call dein#add('posva/vim-vue', { 'on_ft': 'vue'})
+call dein#add('xolox/vim-notes', { 'on_ft': 'notes' })
+call dein#add('plasticboy/vim-markdown', { 'on_ft': 'markdown' })
+call dein#add('cespare/vim-toml', { 'on_ft': 'toml'})
+call dein#add('aklt/plantuml-syntax', { 'on_ft': 'uml'})
+call dein#add('Valloric/MatchTagAlways', { 'on_ft': ['html', 'xml', 'php', 'blade' ]})
+call dein#add('StanAngeloff/php.vim', { 'on_ft': ['php', 'html'] })
+call dein#add('jwalton512/vim-blade', { 'on_ft': 'blade' })
+call dein#add('evanmiller/nginx-vim-syntax')
 
 " Color Schemes
-Plug 'morhetz/gruvbox'
-" Plug 'frankier/neovim-colors-solarized-truecolor-only'
-Plug 'lifepillar/vim-solarized8'
+call dein#add('morhetz/gruvbox')
+call dein#add('iCyMind/NeoSolarized')
 
 " Custom TextObjects
-Plug 'kana/vim-textobj-user'
-Plug 'kana/vim-textobj-function', { 'do': 'mkdir ./after/ftplugin/php; cp ./after/ftplugin/java/textobj-function.vim ./after/ftplugin/php/'}
-Plug 'thinca/vim-textobj-function-javascript'
-Plug 'kana/vim-textobj-line'
-Plug 'rbonvall/vim-textobj-latex'
-Plug 'saaguero/vim-textobj-pastedtext'
+call dein#add('kana/vim-textobj-user')
+call dein#add('kana/vim-textobj-function', { 'build': 'mkdir ./after/ftplugin/php; cp ./after/ftplugin/java/textobj-function.vim ./after/ftplugin/php/'})
+call dein#add('thinca/vim-textobj-function-javascript')
+call dein#add('kana/vim-textobj-line')
+call dein#add('rbonvall/vim-textobj-latex')
+call dein#add('saaguero/vim-textobj-pastedtext')
 
 
-" Plug 'rafaelndev/deoplete-laravel-plugin', {'for': ['php'], 'do': 'composer update'}
-
-Plug 'joonty/vdebug', { 'on': ['VdebugStart']}
+call dein#add('joonty/vdebug', { 'on_cmd': ['VdebugStart']})
 noremap <F5> :VdebugStart<CR>
-" Plug 'kana/vim-textobj-indent'
+" dein#add 'kana/vim-textobj-indent'
 "
-call plug#end()
+call dein#end()
 
 " }}}
 
 " ================   Configurações Gerais   ================ {{{
-" filetype plugin indent on
-" syntax enable
+filetype plugin indent on
+syntax enable
 
 " Configurações gerais do arquivo
 set autoindent
@@ -289,9 +308,9 @@ set sessionoptions-=help
 
 " set shell=/usr/bin/zsh\ -l
 
-if executable("ag")
-    let g:ag_prg="ag --vimgrep --smart-case -F -U"
-    let g:ackprg = 'ag --nogroup --nocolor --column -U'
+if executable("rg")
+    let g:ag_prg="rg --vimgrep --smart-case -F -U"
+    let g:ackprg = 'rg --nogroup --nocolor --column -U'
 endif
 
 set noshowmode
@@ -410,11 +429,6 @@ augroup END
 xnoremap @ :<C-u>call utils#ExecuteMacroOverVisualRange()<CR>
 
 function! StartInsertPlugins() abort
-  if !has('NeoSnippetsList')
-    call plug#load('neosnippet.vim', 'lexima.vim')
-    call lexima#init()
-    inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : lexima#expand('<LT>CR>', 'i')
-endif
 endfunction
 
 " }}}
@@ -423,6 +437,13 @@ endfunction
 
 " vim-plug
 let g:plug_timeout = 5000 "Necessário por causa das compilações
+
+" vim-dein
+let g:dein#enable_notification = 1
+let g:dein#notification_time = 10
+let g:dein#install_max_processes = 4
+let g:dein#install_log_filename = '~/dein.log'
+let g:dein#types#git#pull_command = 'pull --ff --ff-only && git reflog expire --expire=now --all && git gc --prune=now --aggressive'
 
 " Lexima
 let g:lexima_enable_space_rules = 0
@@ -749,12 +770,12 @@ nmap ga <Plug>(EasyAlign)
 
 " Vim Grepper
 let g:grepper = {
-      \ 'tools': ['agnew'],
-      \ 'agnew': {
-      \   'grepprg':    'ag --vimgrep -F',
+      \ 'tools': ['rgnew'],
+      \ 'rgnew': {
+      \   'grepprg':    'rg --vimgrep -F --no-heading',
       \ }}
 
-nnoremap <leader>ag :Grepper -tool agnew  -open -switch -highlight<cr>
+nnoremap <leader>fi :Grepper -tool rgnew  -open -switch -highlight<cr>
 
 " Nerdtree
 map <leader>n :NERDTreeToggle<CR>
@@ -983,6 +1004,13 @@ function! Fzf_dev()
         \ 'options': '-m -x +s',
         \ 'down':    '40%' })
 endfunction
+
+function! Set( optionName )
+  set verbose=1
+  execute 'set ' . a:optionName . '?'
+  set verbose=0
+endfunction
+com! -nargs=1 Set call Set( <q-args> )
 
 " }}}
 
