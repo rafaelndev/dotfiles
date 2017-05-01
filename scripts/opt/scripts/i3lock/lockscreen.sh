@@ -13,5 +13,14 @@ convert $TMPBG $ICON -gravity center -composite -matte $TMPBG
 convert $TMPBG -fill white -pointsize 30 -gravity center -annotate +0+160 "$TEXT" $TMPBG
 
 /opt/scripts/playercontrol pause &
-i3lock -i $TMPBG
-conky -w $(xwininfo -name i3lock | awk '/xwininfo/ {print $4}')
+i3lock -t -i $TMPBG &
+
+isViewable="0"
+
+function xwait(){
+  while ! xwininfo -name $1 | grep 'Map State: IsViewable'; do sleep 1; done
+}
+
+xwait i3lock
+
+conky -w $(xwininfo -name i3lock | awk '/xwininfo/ {print $4}') &

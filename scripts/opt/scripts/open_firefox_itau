@@ -20,7 +20,7 @@ sleep 5
 
 echo "Iniciando Firefox.."
 # Conectar a maquina e iniciar o firefox na página do itaú
-plink -P 3022 -batch -X -l $VM_Login 127.0.0.1 -pw $VM_Password "/usr/bin/firefox --new-instance 'https://itau.com.br' && exit" &
+plink -P 3022 -batch -X -l $VM_Login 127.0.0.1 -pw $VM_Password "/usr/bin/firefox --new-instance --no-remote 'https://itau.com.br' && exit" &
 
 # Esperar 1 min, mais ou menos o tempo até que o firefox abra
 sleep 30

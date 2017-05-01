@@ -12,19 +12,19 @@
 # Modifique para o nome do seu usuário principal (O usuário que usa o cups-pdf)
 USUARIO="rafael"
 
-ARQUIVO=`basename $1`
-PASTA=`dirname $1`
+ARQUIVO=`basename "$1"`
+PASTA=`dirname "$1"`
 DATA=`date +"%Y-%m-%d_%H:%M"`
 FINAL="$PASTA/$ARQUIVO-$DATA.pdf"
 
 # Função para executar notificações para o usuário
 notify(){
-  sudo -u $USUARIO DISPLAY=:0 /usr/bin/notify-send $@
+  sudo -H -u $USUARIO DISPLAY=:0 /usr/bin/notify-send $@
 }
 
 # Função para executar xdg-open para o usuário
 exec_xdg(){
-  sudo -u $USUARIO DISPLAY=:0 /usr/bin/xdg-open "$1"
+  sudo -H -u $USUARIO DISPLAY=:0 /usr/bin/xdg-open "$1"
 }
 
 # Caso o usuário não exista, sai do script
@@ -34,22 +34,22 @@ if ! id -u $USUARIO > /dev/null 2>&1; then
 fi
 
 # Cria o novo arquivo
-mv $1 $PASTA"/"$ARQUIVO-$DATA".pdf"
+mv "$1" "$PASTA/$ARQUIVO-$DATA.pdf"
 
 # Abre a notificação do dunstify com as escolhas
-RESPOSTA=`sudo -u $USUARIO DISPLAY=:0 /usr/bin/dunstify -A open_folder,"Abrir Pasta" -A open_file,"Abrir Arquivo" -A renomear,"Renomear" "PDF Impresso com sucesso" "$FINAL" -i gnome-mime-application-pdf`
+RESPOSTA=$(sudo -H -u $USUARIO DISPLAY=:0 dbus-launch /usr/bin/dunstify -A open_folder,"Abrir Pasta" -A open_file,"Abrir Arquivo" -A renomear,"Renomear" "PDF Impresso com sucesso" "$FINAL" -i gnome-mime-application-pdf)
 
-if [ $RESPOSTA == 'open_folder' ]; then # Abrir Pasta
+if [[ $RESPOSTA == 'open_folder' ]]; then # Abrir Pasta
   exec_xdg "$PASTA"
-elif [ $RESPOSTA == 'open_file' ]; then # Abrir o arquivo
+elif [[ $RESPOSTA == 'open_file' ]]; then # Abrir o arquivo
   exec_xdg "$FINAL"
-elif [ $RESPOSTA == 'renomear' ]; then # Abrir a janela de escolha da pasta a ser salvo
-  cd /home/$USUARIO
+elif [[ $RESPOSTA == 'renomear' ]]; then # Abrir a janela de escolha da pasta a ser salvo
+  cd "/home/$USUARIO"
   # Abre a janela de file-selection do zenity (Também funciona com o yad)
-  NOVO_NOME=`sudo -u $USUARIO DISPLAY=:0 zenity --file-selection --save`
+  NOVO_NOME=`sudo -H -u $USUARIO DISPLAY=:0 zenity --file-selection --save`
   if [ $NOVO_NOME ]; then
     mv "$FINAL" "$NOVO_NOME"
-    exec_xdg $NOVO_NOME
+    exec_xdg "$NOVO_NOME"
   fi
 fi
 

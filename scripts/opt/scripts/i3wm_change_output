@@ -1,0 +1,55 @@
+#!/bin/python
+
+import i3
+import sys
+import pprint
+
+activeOutputs = list(filter(
+    lambda x: x[u'active'],
+    i3.get_outputs()
+))
+
+externalOutput = list(filter(
+    lambda x: x[u'primary'] == False,
+    activeOutputs
+))[0]
+
+primaryOutput = list(filter(
+    lambda x: x[u'primary'],
+    activeOutputs
+))[0]
+
+pprint.pprint(primaryOutput)
+
+currentWorkspace = list(filter(
+    lambda x: x[u'focused'],
+    i3.get_workspaces()))[0]
+
+pprint.pprint(externalOutput)
+if currentWorkspace[u'output'] != externalOutput[u'name']:
+    i3.move('workspace to output', externalOutput[u'name'])
+else:
+    i3.move('workspace to output', primaryOutput[u'name'])
+
+# try:
+#     primaryOutput = filter(
+#         lambda x: x[u'primary'],
+#         activeOutputs)[0]
+# except IndexError:
+#     primaryOutput = None
+# currentWorkspace = filter(
+#     lambda x: x[u'focused'],
+#     i3.get_workspaces())[0]
+# currentOutput = filter(
+#     lambda x: x[u'current_workspace'] == currentWorkspace[u'name'], 
+#     activeOutputs)[0]
+# otherOutputs = filter(
+#     lambda x: x[u'name'] != currentOutput[u'name'], 
+#     activeOutputs)
+#
+# # if there is a primary screen move to it, 
+# # else move to the first other output (if there is one)
+# if primaryOutput:
+#     i3.move('workspace to output', primaryOutput[u'name']
+# elif len(otherOutputs) > 0:
+#     i3.move('workspace to output', otherOutputs[0][u'name']

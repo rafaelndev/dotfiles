@@ -1,0 +1,6 @@
+#!/bin/bash
+input=$1    # get the argument passed to the script
+clean_input="${input/https/http}"   # youtube-dl doesn't handle https, so convert "https" to "http"
+url=$(youtube-dl --prefer-insecure -f140 -g $clean_input) # get the stream url, with the -g option. -f140 is to get the audio only
+clean_url="${url/https/http}"   # mpd doesn't handle https, so convert "https" to "http"
+mpc add $clean_url  # add the url to the mpc play list 
