@@ -62,3 +62,12 @@ snippet eloquent_relation
 	{
 		return $this->${3:hasMany}('${2}');
 	}
+
+
+snippet new_class
+	<?php
+
+	class ${1:`vim_snippets#Filename()`} ${2:extends} ${3}
+	{
+			${0}
+	}

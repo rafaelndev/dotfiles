@@ -160,6 +160,16 @@ function! g:utils#JumpToDefinition(split) abort
   endtry
 endfunction
 
-function! g:utils#CompletePHP(findstart, base) abort
-  call phpcd#CompletePHP(a:findstart, a:base)
+function! g:utils#GetSnippets() abort
+  let snippets = map(values(neosnippet#helpers#get_snippets()), 'v:val.word')
+  return snippets
+endfunction
+
+function! s:strip(str)
+  return substitute(a:str, '^\s*\|\s*$', '', 'g')
+endfunction
+
+function! s:snippets_sink(line)
+  let snip = split(a:line, "\t")[0]
+  execute 'normal! a'.s:strip(snip)."\<c-r>=neosnippet#expand('". snip ."')\<cr>"
 endfunction

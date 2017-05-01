@@ -5,166 +5,138 @@ if has('nvim')
   set termguicolors
 endif
 
-" ================  Instalação do Vim-Plug  ================ {{{
-" if has('unix')
-"   if empty(glob('~/.vim/autoload/plug.vim'))
-"     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-"           \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-"     autocmd VimEnter * PlugInstall | source $MYVIMRC
-"   endif
-" else
-"   if has('win32')
-"     md ~\vimfiles\autoload
-"
-"     $uri = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-"     (New-Object Net.WebClient).DownloadFile($uri, (Resolve-Path ~\vimfiles\autoload\plug.vim))
-"   endif
-" endif
-" }}}
-
 " ================         Plugins          ================ {{{
-" call plug#begin('~/.vim/plugged')
+
 set runtimepath+=~/.vim/autoload/dein.vim
+command! -nargs=+ -bar Dein call dein#add(<args>)
 call dein#begin(expand('~/.vim/plugged/'))
 
-call dein#add('tmhedberg/matchit')
-call dein#add('wellle/targets.vim')
-call dein#add('tpope/vim-surround')
-call dein#add('Shougo/neosnippet.vim', {'on_i': 1})
-call dein#add('Shougo/neosnippet-snippets', {'on_i': 1})
-call dein#add('chrisgillis/vim-bootstrap3-snippets', {'on_i': 1})
-call dein#add('tpope/vim-dispatch')
-call dein#add('ryanoasis/vim-devicons', { 'on_cmd': [ 'NERDTreeToggle', 'NERDTreeFind'] })
-call dein#add('itchyny/lightline.vim')
-call dein#add('benekastah/neomake', { 'on_cmd': ['Neomake'] })
-call dein#add('majutsushi/tagbar')
-call dein#add('vim-php/tagbar-phpctags.vim', { 'on_ft': ['php'] })
-call dein#add('wincent/ferret')
-call dein#add('nelstrom/vim-visual-star-search')
-call dein#add('tpope/vim-repeat')
-call dein#add('junegunn/vim-easy-align')
-call dein#add('scrooloose/nerdtree' , { 'on_cmd':  [ 'NERDTreeToggle', 'NERDTreeFind' ] })
-call dein#add('tommcdo/vim-exchange')
-call dein#add('tomtom/tcomment_vim')
-call dein#add('vim-scripts/ReplaceWithRegister')
-call dein#add('mattn/emmet-vim')
+" ===============          Geral            ================ {{{
+Dein 'Shougo/neosnippet.vim', {'lazy': 1, 'on_event': 'InsertCharPre'}
+Dein 'Shougo/neosnippet-snippets', {'lazy': 1, 'on_event': 'InsertCharPre'}
+Dein 'tpope/vim-dispatch'
+Dein 'skywind3000/asyncrun.vim'
+Dein 'itchyny/lightline.vim'
+Dein 'benekastah/neomake', { 'on_cmd': ['Neomake'] }
+Dein 'majutsushi/tagbar'
+Dein 'vim-php/tagbar-phpctags.vim', { 'on_ft': ['php'] }
+Dein 'scrooloose/nerdtree' , { 'on_cmd':  [ 'NERDTreeToggle', 'NERDTreeFind' ] }
+Dein 'embear/vim-localvimrc'
+Dein 'Konfekt/FastFold'
+Dein 'ludovicchabant/vim-gutentags'
+Dein 'vim-scripts/progressbar-widget'
+Dein 'suan/vim-instant-markdown'
+Dein 'dhruvasagar/vim-table-mode'
+Dein 'machakann/vim-highlightedyank'
+Dein 'mhinz/vim-grepper'
+" Dein 'junegunn/fzf', { 'dir': '~/.fzf', 'build': './install --all', 'merged': 0 }
+Dein 'junegunn/fzf.vim'
+Dein 'christoomey/vim-tmux-navigator'
+Dein 'jszakmeister/vim-togglecursor'
+Dein 'joonty/vdebug', { 'on_cmd': ['VdebugStart']}
+Dein 'ryanoasis/vim-devicons', { 'on_cmd': [ 'NERDTreeToggle', 'NERDTreeFind'], 'rtp': ''}
+Dein 'sgur/vim-editorconfig', { 'lazy': 1, 'on_event': 'InsertCharPre' }
+Dein 'wincent/ferret'
+Dein 'mikehaertl/pdv-standalone', { 'on_ft': ['php']}
+Dein 'adoy/vim-php-refactoring-toolbox', { 'on_ft': ['php'] }
+Dein 'mhinz/vim-startify'
+Dein 'arnaud-lb/vim-php-namespace'
+Dein 'davidhalter/jedi', { 'on_ft': ['python'] }
+Dein 'osyo-manga/vim-over'
+Dein 'justinmk/vim-sneak'
+Dein 'pgdouyon/vim-evanesco'
+Dein 'irrationalistic/vim-tasks'
+Dein 'bfredl/nvim-miniyank'
+" }}}
 
+" ===============  Manipulação de Texto/Objetos  ============= {{{
+Dein 'kana/vim-operator-user'
+Dein 'tmhedberg/matchit'
+Dein 'wellle/targets.vim', {'on_event': 'CursorHold'}
+Dein 'tpope/vim-surround'
+Dein 'tpope/vim-repeat'
+Dein 'junegunn/vim-easy-align'
+Dein 'tomtom/tcomment_vim'
+Dein 'vim-scripts/ReplaceWithRegister'
+Dein 'mattn/emmet-vim'
 function! s:lexima_start() abort
   call lexima#init()
   inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : lexima#expand('<LT>CR>', 'i')
   call lexima#add_rule({'char': '}', 'at': '\%#\n\s*}', 'leave': '}'})
   call lexima#add_rule({'char': ']', 'at': '\%#\n\s*]', 'leave': ']'})
   call lexima#add_rule({'char': ')', 'at': '\%#\n\s*)', 'leave': ')'})
+  call lexima#add_rule({'char': '<?php', 'at': '\%#\n\s*)', 'leave': '?>'})
 endfunction
-
-call dein#add('cohama/lexima.vim', {
-      \ 'on_i': 1,
+Dein 'cohama/lexima.vim', {
+      \ 'lazy': 1,
+      \ 'on_event': 'InsertCharPre',
       \ 'hook_post_source': function('s:lexima_start')
-      \ })
-call dein#add('simnalamburt/vim-mundo' , { 'on_cmd': ['MundoToggle'] })
-call dein#add('tpope/vim-fugitive')
-call dein#add('lervag/vimtex', { 'on_ft': ['tex', 'bib'] })
-call dein#add('Konfekt/FastFold')
-
-if has('nvim')
-  call dein#add('Shougo/deoplete.nvim')
-  call dein#add('carlitux/deoplete-ternjs', { 'on_ft': ['js'] })
-  call dein#add('zchee/deoplete-jedi', { 'on_ft': 'python' })
-  call dein#add('zchee/deoplete-go', { 'build': 'make' })
-  call dein#add('rafaelndev/deoplete-laravel-plugin', {'on_ft': ['php'], 'build': 'composer update'})
-  " call dein#add('pbogut/deoplete-padawan')
-endif
-
-call dein#add('ternjs/tern_for_vim', { 'build': 'npm install', 'on_ft': ['js'] })
-call dein#add('Rip-Rip/clang_complete', { 'on_ft': ['c', 'cpp', 'h'] })
-
-call dein#add('zef/vim-cycle')
-call dein#add('phpvim/phpcd.vim', { 'build': 'composer update' })
-call dein#add('shawncplus/phpcomplete.vim', { 'on_ft': 'php' })
-call dein#add('vim-scripts/progressbar-widget')
-call dein#add('ludovicchabant/vim-gutentags')
-call dein#add('suan/vim-instant-markdown')
-call dein#add('dhruvasagar/vim-table-mode')
-call dein#add('mhinz/vim-startify')
-call dein#add('arnaud-lb/vim-php-namespace')
-
-call dein#add('mikehaertl/pdv-standalone')
-call dein#add('adoy/vim-php-refactoring-toolbox', { 'on_ft': ['php'] })
-call dein#add('kana/vim-operator-user')
-call dein#add('haya14busa/vim-operator-flashy')
-call dein#add('mhinz/vim-grepper')
-call dein#add('Numkil/ag.nvim')
-call dein#add('junegunn/fzf', { 'dir': '~/.fzf', 'build': './install --all', 'merged': 0 })
-call dein#add('junegunn/fzf.vim', { 'depends': 'fzf'})
-call dein#add('tmux-plugins/vim-tmux-focus-events')
-call dein#add('christoomey/vim-tmux-navigator')
-call dein#add('jszakmeister/vim-togglecursor')
-call dein#add('davidhalter/jedi', { 'on_ft': 'python' })
-call dein#add('osyo-manga/vim-over')
-call dein#add('docunext/closetag.vim', { 'on_ft': ['html', 'xml', 'php', 'blade']})
-call dein#add('triglav/vim-visual-increment')
-call dein#add('matze/vim-move')
-call dein#add('justinmk/vim-sneak')
-call dein#add('wsdjeg/vim-cheat')
-call dein#add('junegunn/vim-pseudocl')
-call dein#add('junegunn/vim-oblique')
-call dein#add('airblade/vim-gitgutter')
-let g:gitgutter_realtime = 0
-let g:gitgutter_eager = 0
-call dein#add('KabbAmine/zeavim.vim')
-let g:zv_file_types = {
-      \   'css'                      : 'css,foundation,bootstrap_4',
-      \   '.htaccess'                : 'apache_http_server',
-      \   '\v^(G|g)runt\.'           : 'gulp,javascript,nodejs',
-      \   '\v^(G|g)ulpfile\.'        : 'grunt',
-      \   '\v^(md|mdown|mkd|mkdn)$'  : 'markdown',
-      \   'php'                      : 'laravel',
-      \   '.blade.php'               : 'laravel',
       \ }
-call dein#add('embear/vim-localvimrc')
-let g:localvimrc_sandbox = 0
-let g:localvimrc_ask = '0'
-call dein#add('evidanary/grepg.vim')
-call dein#add('jreybert/vimagit')
-call dein#add('haya14busa/dein-command.vim')
-call dein#add('AndrewRadev/splitjoin.vim')
+Dein 'haya14busa/dein-command.vim'
+Dein 'kana/vim-textobj-user'
+Dein 'kana/vim-textobj-function', { 'build': 'mkdir ./after/ftplugin/php; cp ./after/ftplugin/java/textobj-function.vim ./after/ftplugin/php/'}
+Dein 'thinca/vim-textobj-function-javascript'
+Dein 'kana/vim-textobj-line'
+Dein 'rbonvall/vim-textobj-latex'
+Dein 'saaguero/vim-textobj-pastedtext'
+Dein 'docunext/closetag.vim', { 'on_ft': ['html', 'xml', 'php', 'blade']}
+Dein 'matze/vim-move'
+" }}}
 
-" Syntax
-call dein#add('Chiel92/vim-autoformat')
-call dein#add('hynek/vim-python-pep8-indent', { 'on_ft': 'python' })
-call dein#add('jelera/vim-javascript-syntax', { 'on_ft': ['javascript', 'html', 'php']})
-call dein#add('pangloss/vim-javascript', { 'on_ft': ['javascript', 'html', 'php'] })
-call dein#add('ekalinin/Dockerfile.vim', { 'on_ft': 'Dockerfile' })
-call dein#add('othree/html5.vim', { 'on_ft': ['html', 'blade', 'php'] })
-call dein#add('stephpy/vim-php-cs-fixer', { 'on_ft': ['php'] })
-call dein#add('posva/vim-vue', { 'on_ft': 'vue'})
-call dein#add('xolox/vim-notes', { 'on_ft': 'notes' })
-call dein#add('plasticboy/vim-markdown', { 'on_ft': 'markdown' })
-call dein#add('cespare/vim-toml', { 'on_ft': 'toml'})
-call dein#add('aklt/plantuml-syntax', { 'on_ft': 'uml'})
-call dein#add('Valloric/MatchTagAlways', { 'on_ft': ['html', 'xml', 'php', 'blade' ]})
-call dein#add('StanAngeloff/php.vim', { 'on_ft': ['php', 'html'] })
-call dein#add('jwalton512/vim-blade', { 'on_ft': 'blade' })
-call dein#add('evanmiller/nginx-vim-syntax')
+" ===============          Completion          ============== {{{
+if has('nvim')
+Dein 'Shougo/deoplete.nvim', { 'hook_source': 'call deoplete#enable()'}
+Dein 'carlitux/deoplete-ternjs', { 'depends': 'deoplete.nvim', 'on_ft': ['javascript'] }
+Dein 'zchee/deoplete-jedi', { 'depends': 'deoplete.nvim',  'on_ft': 'python' }
+Dein 'zchee/deoplete-go', { 'depends': 'deoplete.nvim', 'build': 'make', 'on_ft': ['go'] }
+Dein 'rafaelndev/deoplete-laravel-plugin', {'depends': 'deoplete.nvim','on_ft': ['php'], 'build': 'composer update'}
+" Dein 'pbogut/deoplete-padawan', {'depends': 'deoplete.nvim'}
+endif
+Dein 'Rip-Rip/clang_complete', { 'on_ft': ['c', 'cpp', 'h'] }
 
-" Color Schemes
-call dein#add('morhetz/gruvbox')
-call dein#add('iCyMind/NeoSolarized')
+Dein 'lvht/phpcd.vim', { 'build': 'composer install', 'on_ft': ['php']}
+Dein 'shawncplus/phpcomplete.vim', { 'on_ft': 'php' }
+Dein 'KabbAmine/zeavim.vim'
+" }}}
 
-" Custom TextObjects
-call dein#add('kana/vim-textobj-user')
-call dein#add('kana/vim-textobj-function', { 'build': 'mkdir ./after/ftplugin/php; cp ./after/ftplugin/java/textobj-function.vim ./after/ftplugin/php/'})
-call dein#add('thinca/vim-textobj-function-javascript')
-call dein#add('kana/vim-textobj-line')
-call dein#add('rbonvall/vim-textobj-latex')
-call dein#add('saaguero/vim-textobj-pastedtext')
+" ===============            Syntax          ============== {{{
+Dein 'lervag/vimtex', { 'on_ft': ['tex', 'bib'] }
+Dein 'Chiel92/vim-autoformat'
+Dein 'hynek/vim-python-pep8-indent', { 'on_ft': 'python' }
+Dein 'jelera/vim-javascript-syntax', { 'on_ft': ['javascript', 'html', 'php']}
+Dein 'pangloss/vim-javascript', { 'on_ft': ['javascript', 'html', 'php'] }
+Dein 'ekalinin/Dockerfile.vim', { 'on_ft': 'Dockerfile' }
+Dein 'othree/html5.vim', { 'on_ft': ['html', 'blade', 'php'] }
+Dein 'stephpy/vim-php-cs-fixer', { 'on_ft': ['php'] }
+Dein 'posva/vim-vue', { 'on_ft': 'vue'}
+Dein 'xolox/vim-misc'
+Dein 'xolox/vim-notes', { 'depends': 'vim-misc', 'on_ft': 'notes' }
+Dein 'plasticboy/vim-markdown', { 'on_ft': 'markdown' }
+Dein 'cespare/vim-toml', { 'on_ft': 'toml'}
+Dein 'aklt/plantuml-syntax', { 'on_ft': 'uml'}
+Dein 'Valloric/MatchTagAlways', { 'on_ft': ['html', 'xml', 'php', 'blade' ]}
+Dein 'StanAngeloff/php.vim', { 'on_ft': ['php', 'html'] }
+Dein 'jwalton512/vim-blade', { 'on_ft': 'blade' }
+Dein 'evanmiller/nginx-vim-syntax'
+Dein 'captbaritone/better-indent-support-for-php-with-html'
+Dein 'nelsyeung/twig.vim'
+"}}
 
 
-call dein#add('joonty/vdebug', { 'on_cmd': ['VdebugStart']})
-noremap <F5> :VdebugStart<CR>
-" dein#add 'kana/vim-textobj-indent'
-"
+" ===============            GIT          ============== {{{
+Dein 'airblade/vim-gitgutter'
+Dein 'tpope/vim-fugitive'
+Dein 'rhysd/committia.vim'
+"}}}
+
+" }}}
+
+" ===============        Color Schemes        ============== {{{
+Dein 'morhetz/gruvbox'
+"}}}
+
 call dein#end()
+call dein#call_hook('source')
 
 " }}}
 
@@ -180,7 +152,6 @@ set breakindent
 set showbreak=\ \
 set backspace=indent,eol,start
 set linebreak
-set nolist
 set whichwrap+=<,>,h,l
 set complete+=t,i
 set complete-=k,kspell
@@ -190,6 +161,7 @@ set showmode
 set smarttab
 set nrformats-=octal
 set shiftround
+set path+=**
 if !has('nvim')
   set encoding=utf-8 nobomb
 endif
@@ -214,7 +186,7 @@ set undodir=~/.vim/undo
 set noautochdir
 
 " Conceal Level
-set conceallevel=2 concealcursor=niv
+" set conceallevel=2 concealcursor=niv
 
 " Novas janelas divididas sempre aparecem do lado direito ou embaixo
 set splitright
@@ -226,10 +198,9 @@ set hlsearch
 set magic
 
 " Configurações da commandline
-" set laststatus=2
 set ruler
-" set showcmd
 set wildmenu
+
 " Não resetar o cursor para o inicio da linha
 set nostartofline
 
@@ -237,21 +208,19 @@ set nostartofline
 set autoread
 
 " Mudar versão do Regex para 0 (Automatico)
-set regexpengine=1
+set regexpengine=0
 
 " Realça linha atual
 set cursorline
-
-" Numeros relativos
-" set relativenumber
 
 " Melhorar performance
 set nocursorcolumn
 syntax sync minlines=256
 set synmaxcol=256
 set lazyredraw
-set ttyfast
-" set ttyscroll=3
+if !has('nvim')
+  set ttyfast
+endif
 
 " Definições padrões de identação
 set tabstop=2 shiftwidth=2 expandtab
@@ -291,7 +260,7 @@ set clipboard=unnamedplus
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
 
 " Ignorar Imagens e arquivos de Log
-set wildignore+=*.gif,*.jpg,*.png,*.log
+set wildignore+=*.gif,*.jpg,*.png
 
 " Ignorar zip e irmãos
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
@@ -306,17 +275,20 @@ set tags=tags
 set sessionoptions-=options
 set sessionoptions-=help
 
-" set shell=/usr/bin/zsh\ -l
-
 if executable("rg")
     let g:ag_prg="rg --vimgrep --smart-case -F -U"
     let g:ackprg = 'rg --nogroup --nocolor --column -U'
+    set grepprg=rg\ --vimgrep\ --no-heading
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 
 set noshowmode
 
-" ABBREV
+if exists('&inccommand')
+  set inccommand=split
+endif
 
+" ABBREV
 iabbrev dockerip 172.17.0.1
 " }}}
 
@@ -353,6 +325,8 @@ nnoremap \ :
 " <leader>h limpa as buscas
 nmap <leader>h :nohlsearch<CR>
 
+noremap <F5> :VdebugStart<CR>
+
 " Abreviações nos comandos
 cnoreabbrev W w
 cnoreabbrev Q q
@@ -376,7 +350,7 @@ vnoremap < <gv
 vnoremap > >gv
 
 " Mapeando jj para ESC
-inoremap jj <ESC>
+inoremap jk <ESC>
 
 " Auto completar html tags com espaço
 iabbrev </ </<C-X><C-O>
@@ -410,7 +384,7 @@ inoremap <C-s> <Esc>[s1z=gi
 " Salvar arquivo com <leader>s
 nnoremap <leader>s :w<cr>
 
-nnoremap <leader>how :Dispatch howdoi -n 5
+nnoremap <leader>how :AsyncRun howdoi -n 5
 inoremap <C-X><C-S> <C-O>:Snippets<CR>
 
 " Completar tags manualmente
@@ -442,7 +416,7 @@ let g:plug_timeout = 5000 "Necessário por causa das compilações
 let g:dein#enable_notification = 1
 let g:dein#notification_time = 10
 let g:dein#install_max_processes = 4
-let g:dein#install_log_filename = '~/dein.log'
+let g:dein#install_log_filename = '/home/rafael/dein.log'
 let g:dein#types#git#pull_command = 'pull --ff --ff-only && git reflog expire --expire=now --all && git gc --prune=now --aggressive'
 
 " Lexima
@@ -490,9 +464,9 @@ let g:mta_filetypes = {
 let g:gutentags_project_info = []
 let g:gutentags_define_advanced_commands = 1
 let g:gutentags_project_root = ['.git', 'composer.json']
-let g:gutentags_exclude = ['*.css', '*.html', '*.js']
+let g:gutentags_ctags_exclude = ['*.js', '*.html', '*.css', 'node_modules/*']
 let g:gutentags_generate_on_write = 1
-let g:gutentags_auto_set_tags = 0
+let g:gutentags_ctags_auto_set_tags = 0
 let g:gutentags_generate_on_missing = 0
 call add(g:gutentags_project_info, {'type': 'python', 'file': 'setup.py'})
 call add(g:gutentags_project_info, {'type': 'ruby', 'file': 'Gemfile'})
@@ -552,7 +526,6 @@ let g:used_javascript_libs = 'underscore,jquery,requirejs'
 
 " VimTex
 let g:vimtex_latexmk_continuous           = 1
-" let g:vimtex_latexmk_options              = '-pdf'
 let g:vimtex_view_method                  = 'zathura'
 let g:vimtex_fold_enabled                 = 0
 let g:vimtex_latexmk_background           = 1
@@ -577,7 +550,6 @@ nnoremap <leader>b :Buffers<CR>
 nnoremap <C-p> :FZF<CR>
 
 " Neosnippets
-" Plugin key-mappings.
 imap <C-j>     <Plug>(neosnippet_expand_or_jump)
 smap <C-j>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-j>     <Plug>(neosnippet_expand_target)
@@ -624,7 +596,6 @@ function! LightLineMode()
         \ winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
-
 let s:fugitive_head = ''
 function! GetFugitiveHead(timer)
   if exists('*fugitive#head')
@@ -660,9 +631,6 @@ endfunction
 
 au CursorMoved * let s:tagbar_need_update = 1
 au CursorHold * let s:tagbar_need_update = 0
-
-" Emmet
-let g:user_emmet_leader_key='<C-e>'
 
 " TagBar
 nmap <C-t> :TagbarToggle<CR>
@@ -710,13 +678,10 @@ let g:tagbar_type_go = {
 " Deoplete
 if has('nvim')
   let g:deoplete#auto_complete_start_length = 2
-  let g:deoplete#enable_at_startup = 1
   let g:deoplete#file#enable_buffer_path = 1
   " let g:deoplete#enable_refresh_always = 1
   let g:deoplete#delimiters = ['/', '.', '::', ':', '#']
   let g:deoplete#sources={}
-  " let g:deoplete#sources._=['buffer', 'member', 'ultisnips', 'file']
-  " let g:deoplete#sources._=['buffer', 'member', 'ultisnips', 'file']
 
   call deoplete#custom#set('_', 'matchers', ['matcher_full_fuzzy'])
   call deoplete#custom#set('_', 'converters',
@@ -724,20 +689,19 @@ if has('nvim')
   let g:deoplete#omni_patterns = get(g:,'deoplete#omni_patters',{})
     let g:deoplete#keyword_patterns = {}
 
-    " let g:deoplete#keyword_patterns._ = '[a-zA-Z_]\k*\(?'
-    " let g:deoplete#keyword_patterns.php = '.@'
-
-
     let g:deoplete#omni_patterns.cpp = '[^. *\t]\.\w*|[^. *\t]\::\w*|[^. *\t]\->\w*|#include\s*[<"][^>"]*'
     let g:deoplete#omni#input_patterns={}
     let g:deoplete#omni#input_patterns.cpp = ['[^. *\t]\.\w*','[^. *\t]\::\w*','[^. *\t]\->\w*','#include\s*[<"][^>"]*']
     let g:neoinclude#exts          = {'php': ['php', 'inc', 'tpl', 'blade.php']}
     let g:neoinclude#max_processes = 5
+    let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
+    let g:deoplete#ignore_sources.php = ['omni']
 
     " call deoplete#util#set_pattern(
     "       \ g:deoplete#omni#input_patterns,
     "       \ 'php', [g:deoplete#keyword_patterns.php])
 
+    " let g:deoplete#enable_profile = 1
     " autocmd VimEnter * call deoplete#enable_logging('DEBUG', '/tmp/deoplete.log')
 
     let g:clang_complete_auto = 0
@@ -757,9 +721,7 @@ endif
 
 " Enable omni completion.
 autocmd FileType css           setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType xml           setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType php           setlocal omnifunc=phpcd#CompletePHP
 autocmd FileType javascript setlocal omnifunc=tern#Complete
 autocmd FileType vim setlocal omnifunc=syntaxcomplete#Complete
 autocmd FileType vim setlocal foldenable
@@ -789,6 +751,10 @@ let NERDTreeDirArrows  = 1
 let NERDTreeQuitOnOpen = 0
 let NERDTreeHijackNetrw = 1
 
+" Netrw
+let g:netrw_liststyle = 3
+let g:netrw_write_AsyncRun = 1
+
 " Vim Fugitive
 nnoremap <Leader>gs  :Gstatus<CR>
 nnoremap <Leader>gr  :Gremove<CR>
@@ -817,18 +783,11 @@ if has('gui_running')
   set guiheadroom=0
 endif
 
-" Vim-expand-region
-vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
-
 " Gruvbox
 let g:gruvbox_italic        = 0
 let g:gruvbox_bold          = 1
 let g:gruvbox_contrast_dark = 'medium'
 let g:gruvbox_invert_selection = 0
-
-" Solarized
-let g:solarized_termcolors=256
 
 " PHP Complete
 let g:phpcomplete_cache_taglists = 1
@@ -858,10 +817,6 @@ let g:startify_list_order = [
       \ 'bookmarks',
       \ ]
 
-" Ternjs
-let g:tern_show_argument_hints = 'on_hold'
-let g:tern_show_signature_in_pum = 1
-
 " Togglecursor
 let g:togglecursor_default = 'block'
 let g:togglecursor_insert = 'line'
@@ -872,13 +827,13 @@ vnoremap <C-F> :'<,'>OverCommandLine s/<CR>
 nmap <leader>sw :OverCommandLine %s/\(<c-r>=expand("<cword>")<cr>\)/<CR>/g<left><left>
 
 " Ferret
-let g:FerretDispatch = 1
+let g:FerretDispatch = 0
 let g:FerretQFMap = 1
 
-" Vim-operator-flashy
-map y <Plug>(operator-flashy)
-nmap Y <Plug>(operator-flashy)$
-let g:operator#flashy#flash_time = 250
+" Vim Highlight Yank
+if !has('nvim')
+  map y <Plug>(highlightedyank)
+endif
 
 " PHP-CS-FIXER
 let g:php_cs_fixer_level                  = "psr2"              " which level ?
@@ -892,9 +847,44 @@ let g:php_cs_fixer_verbose                = 1                    " Return the ou
 " Vim-Sneak
 let g:sneak#use_ic_scs = 1
 
+" EditorConfig
+let g:EditorConfig_core_mode = 'external_command'
+
+" Local Vim RC
+let g:localvimrc_sandbox = 0
+let g:localvimrc_ask = '0'
+
+" Gitgutter
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
+
+" ZeaVim
+let g:zv_file_types = {
+      \   'css'                      : 'css,foundation,bootstrap_4',
+      \   '.htaccess'                : 'apache_http_server',
+      \   '\v^(G|g)runt\.'           : 'gulp,javascript,nodejs',
+      \   '\v^(G|g)ulpfile\.'        : 'grunt',
+      \   '\v^(md|mdown|mkd|mkdn)$'  : 'markdown',
+      \   'php'                      : 'laravel',
+      \   '.blade.php'               : 'laravel',
+      \ }
+
+" AsyncRun
+let g:asyncrun_exit = "silent doautocmd QuickFixCmdPost make"
+
+" MiniYank
+map p <Plug>(miniyank-autoput)
+map P <Plug>(miniyank-autoPut)
+map <leader>c <Plug>(miniyank-cycle)
+
 " }}}
 
 " ================       Auto Grupos        ================ {{{
+
+augroup OpenQuickfixWindowAfterMake
+    autocmd QuickFixCmdPost [^l]* nested cwindow
+    autocmd QuickFixCmdPost    l* nested lwindow
+augroup END
 
 augroup configgroup
   autocmd!
@@ -905,7 +895,6 @@ augroup configgroup
   au BufNewFile,BufRead *.ctp let b:neomake_php_enabled_makers = ['php', 'jshint', 'tidy']
 
   au BufNewFile,BufRead *.blade.php set filetype=blade
-  au BufNewFile,BufRead *.vue set filetype=html.javascript.vue
   au BufNewFile,BufRead *.note set filetype=notes
 
 augroup END
@@ -953,7 +942,7 @@ endfunction
 " ================   Configurações Extras   ================ {{{
 
 " Tig
-command! Tig :Dispatch tig
+command! Tig :AsyncRun tig
 let g:python_host_skip_check = 1
 let g:python3_host_skip_check = 1
 
@@ -965,7 +954,6 @@ onoremap <silent>ii :<C-U>call utils#IndTxtObj(1)<CR>
 vnoremap <silent>ai :<C-U>call utils#IndTxtObj(0)<CR><Esc>gv
 vnoremap <silent>ii :<C-U>call utils#IndTxtObj(1)<CR><Esc>gv
 
-
 " Abrir a configuração
 command! Config call utils#config()
 
@@ -974,43 +962,19 @@ command! -nargs=0 -bar Qargs execute 'args ' . utils#QuickfixFilenames()
 " Profile
 command! Profile call utils#profile()<CR>
 
-" Files + devicons
-function! Fzf_dev()
-  function! s:files()
-    let files = split(system($FZF_DEFAULT_COMMAND), '\n')
-    return s:prepend_icon(files)
-  endfunction
-
-  function! s:prepend_icon(candidates)
-    let result = []
-    for candidate in a:candidates
-      let filename = fnamemodify(candidate, ':p:t')
-      let icon = WebDevIconsGetFileTypeSymbol(filename, isdirectory(filename))
-      call add(result, printf("%s %s", icon, candidate))
-    endfor
-
-    return result
-  endfunction
-
-  function! s:edit_file(item)
-    let parts = split(a:item, ' ')
-    let file_path = get(parts, 1, '')
-    execute 'silent e' file_path
-  endfunction
-
-  call fzf#run({
-        \ 'source': <sid>files(),
-        \ 'sink':   function('s:edit_file'),
-        \ 'options': '-m -x +s',
-        \ 'down':    '40%' })
-endfunction
-
 function! Set( optionName )
   set verbose=1
   execute 'set ' . a:optionName . '?'
   set verbose=0
 endfunction
 com! -nargs=1 Set call Set( <q-args> )
+
+command! NeoSnippetsList call fzf#run({
+  \ 'source':  g:utils#GetSnippets(),
+  \ 'down':    '40%',
+  \ 'sink':    function('s:snippets_sink')})
+
+imap <f7> <C-o>:NeoSnippetsList<cr>
 
 " }}}
 
@@ -1023,7 +987,6 @@ if has('nvim')
 endif
 
 colorscheme gruvbox
-" colorscheme solarized8_dark_high
 
 map  <silent> <F4> :call gruvbox#hls_toggle()<CR>
 imap <silent> <F4> <ESC>:call gruvbox#hls_toggle()<CR>a
@@ -1035,31 +998,8 @@ nnoremap <silent> <CR> :call gruvbox#hls_hide()<CR><CR>
 hi SpellBad cterm=underline ctermfg=red
 hi SpellBad gui=undercurl guisp=red guifg=red
 
-
-if has('nvim')
-  hi StartifyHeader ctermfg=40 guifg=40
-endif
-
-function! GetSnippets() abort
-  let snippets = map(values(neosnippet#helpers#get_snippets()), 'v:val.word')
-  return snippets
-endfunction
-
-function! s:strip(str)
-  return substitute(a:str, '^\s*\|\s*$', '', 'g')
-endfunction
-
-function! s:snippets_sink(line)
-  let snip = split(a:line, "\t")[0]
-  execute 'normal! a'.s:strip(snip)."\<c-r>=neosnippet#expand('". snip ."')\<cr>"
-endfunction
-
-command! NeoSnippetsList call fzf#run({
-  \ 'source':  GetSnippets(),
-  \ 'down':    '40%',
-  \ 'sink':    function('s:snippets_sink')})
-
-imap <f7> <C-o>:NeoSnippetsList<cr>
+hi StartifyHeader ctermfg=40 guifg=40
 
 " MATCH YIELD LARAVEL
 " let t=[] | %s/\v\@yield\(\'\zs.*\w/\=add(t,submatch(0))[-1]/g:
+"
