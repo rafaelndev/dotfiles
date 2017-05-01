@@ -66,7 +66,16 @@ case $BLOCK_BUTTON in
   3) echo -n "$IPADDR" | xclip -q -se c ;;
 esac
 
+
+#------------------------------------------------------------------------
+# CHECK INTERNET STATUS
+if fping -c1 -t500 www.google.com &> /dev/null; then
+  INTERNET_STATUS=""
+else
+  INTERNET_STATUS="<span color='orange' font='10.5'> </span>"
+fi
+
 #------------------------------------------------------------------------
 
-echo "$IPADDR" # full text
-echo "$IPADDR" # short text
+echo "$INTERNET_STATUS $IPADDR" # full text
+echo "$INTERNET_STATUS $IPADDR" # short text
