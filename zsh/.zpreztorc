@@ -37,10 +37,6 @@ zstyle ':prezto:load' pmodule \
   'pacman' \
   'syntax-highlighting' \
   'autosuggestions' \
-  'systemd' \
-  'sudo' \
-  'zsh-background-notify' \
-  'tmux-complete' \
   'tmux'
   # 'docker-compose' \
 

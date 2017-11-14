@@ -17,7 +17,7 @@ Dein 'Shougo/neosnippet-snippets', {'lazy': 1, 'on_event': 'InsertCharPre'}
 Dein 'tpope/vim-dispatch'
 Dein 'skywind3000/asyncrun.vim'
 Dein 'itchyny/lightline.vim'
-Dein 'benekastah/neomake', { 'on_cmd': ['Neomake'] }
+Dein 'w0rp/ale'
 Dein 'majutsushi/tagbar'
 Dein 'vim-php/tagbar-phpctags.vim', { 'on_ft': ['php'] }
 Dein 'scrooloose/nerdtree' , { 'on_cmd':  [ 'NERDTreeToggle', 'NERDTreeFind' ] }
@@ -29,7 +29,7 @@ Dein 'suan/vim-instant-markdown'
 Dein 'dhruvasagar/vim-table-mode'
 Dein 'machakann/vim-highlightedyank'
 Dein 'mhinz/vim-grepper'
-" Dein 'junegunn/fzf', { 'dir': '~/.fzf', 'build': './install --all', 'merged': 0 }
+Dein 'junegunn/fzf', { 'dir': '~/.fzf', 'build': './install --all', 'merged': 0 }
 Dein 'junegunn/fzf.vim'
 Dein 'christoomey/vim-tmux-navigator'
 Dein 'jszakmeister/vim-togglecursor'
@@ -409,6 +409,30 @@ endfunction
 
 " ================ Configuração dos Plugins ================ {{{
 
+" Default
+let g:loaded_2html_plugin      = 1 "$VIMRUNTIME/plugin/tohtml.vim
+let g:loaded_getscript         = 1 "$VIMRUNTIME/autoload/getscript.vim
+let g:loaded_getscriptPlugin   = 1 "$VIMRUNTIME/plugin/getscriptPlugin.vim
+let g:loaded_gzip              = 1 "$VIMRUNTIME/plugin/gzip.vim
+let g:loaded_logipat           = 1 "$VIMRUNTIME/plugin/logiPat.vim
+let g:loaded_logiPat           = 1 "$VIMRUNTIME/plugin/logiPat.vim
+let g:loaded_matchparen        = 1 "$VIMRUNTIME/plugin/matchparen.vim
+let g:loaded_netrw             = 1 "$VIMRUNTIME/autoload/netrw.vim
+let g:loaded_netrwFileHandlers = 1 "$VIMRUNTIME/autoload/netrwFileHandlers.vim
+let g:loaded_netrwPlugin       = 1 "$VIMRUNTIME/plugin/netrwPlugin.vim
+let g:loaded_netrwSettings     = 1 "$VIMRUNTIME/autoload/netrwSettings.vim
+let g:loaded_rrhelper          = 1 "$VIMRUNTIME/plugin/rrhelper.vim
+let g:loaded_spellfile_plugin  = 1 "$VIMRUNTIME/plugin/spellfile.vim
+let g:loaded_sql_completion    = 1 "$VIMRUNTIME/autoload/sqlcomplete.vim
+let g:loaded_syntax_completion = 1 "$VIMRUNTIME/autoload/syntaxcomplete.vim
+let g:loaded_tar               = 1 "$VIMRUNTIME/autoload/tar.vim
+let g:loaded_tarPlugin         = 1 "$VIMRUNTIME/plugin/tarPlugin.vim
+let g:loaded_vimball           = 1 "$VIMRUNTIME/autoload/vimball.vim
+let g:loaded_vimballPlugin     = 1 "$VIMRUNTIME/plugin/vimballPlugin.vim
+let g:loaded_zip               = 1 "$VIMRUNTIME/autoload/zip.vim
+let g:loaded_zipPlugin         = 1 "$VIMRUNTIME/plugin/zipPlugin.vim
+let g:vimsyn_embed = 1 "$VIMRUNTIME/syntax/vim.vim
+
 " vim-plug
 let g:plug_timeout = 5000 "Necessário por causa das compilações
 
@@ -472,31 +496,40 @@ call add(g:gutentags_project_info, {'type': 'python', 'file': 'setup.py'})
 call add(g:gutentags_project_info, {'type': 'ruby', 'file': 'Gemfile'})
 call add(g:gutentags_project_info, {'type': 'php', 'file': 'composer.json'})
 
+" Ale
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
+let g:ale_fixers = {
+      \   'sh': [
+      \       'shfmt',
+      \   ],
+      \}
+
 " Neomake
-autocmd! BufWritePost * Neomake
-let g:neomake_php_jshint_maker = {
-      \ 'exe': 'jshint',
-      \ 'args': ['--verbose', '--extract=always'],
-      \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
-      \ }
-
-let g:neomake_php_tidy_maker = {
-      \ 'exe': 'tidy',
-      \ 'args': ['-e', '-q', '--gnu-emacs', 'true', '--doctype', 'omit'],
-      \ 'errorformat': '%A%f:%l:%c: Warning: %m',
-      \ }
-
-let g:neomake_blade_tidy_maker = {
-      \ 'exe': 'tidy',
-      \ 'args': ['-e', '-q', '--gnu-emacs', 'true'],
-      \ 'errorformat': '%A%f:%l:%c: Warning: %m',
-      \ }
-let g:neomake_blade_enabled_makers      = ['tidy']
-let g:neomake_verbose                 = 0
-let g:neomake_php_phpcs_args_standard = 'PSR2'
-let g:neomake_php_enabled_makers      = ['php']
-" let g:neomake_verbose = 3
-" let g:neomake_logfile = 'neomake.log'
+" autocmd! BufWritePost * Neomake
+" let g:neomake_php_jshint_maker = {
+"       \ 'exe': 'jshint',
+"       \ 'args': ['--verbose', '--extract=always'],
+"       \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
+"       \ }
+"
+" let g:neomake_php_tidy_maker = {
+"       \ 'exe': 'tidy',
+"       \ 'args': ['-e', '-q', '--gnu-emacs', 'true', '--doctype', 'omit'],
+"       \ 'errorformat': '%A%f:%l:%c: Warning: %m',
+"       \ }
+"
+" let g:neomake_blade_tidy_maker = {
+"       \ 'exe': 'tidy',
+"       \ 'args': ['-e', '-q', '--gnu-emacs', 'true'],
+"       \ 'errorformat': '%A%f:%l:%c: Warning: %m',
+"       \ }
+" let g:neomake_blade_enabled_makers      = ['tidy']
+" let g:neomake_verbose                 = 0
+" let g:neomake_php_phpcs_args_standard = 'PSR2'
+" let g:neomake_php_enabled_makers      = ['php']
+" " let g:neomake_verbose = 3
+" " let g:neomake_logfile = 'neomake.log'
 
 " Vim Surround
 let g:surround_indent = 1
@@ -930,7 +963,7 @@ au WinEnter,BufEnter * if &filetype == "qf" | call utils#AdjustWindowHeight(3, 1
 " Salvar quando sair do insert mode, usando delay com timer_start
 au InsertLeave * nested call timer_start(250, 'SaveFile', {'repeat': 1})
 
-function! SaveFile() abort
+function! SaveFile(timer) abort
   " Não tenta salvar caso esteja no modo expand do neosnippet
   if !neosnippet#expandable_or_jumpable()
     call utils#AutoSave()

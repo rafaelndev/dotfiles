@@ -16,17 +16,6 @@ fi
 
 xrdb ~/.Xresources
 
-man() {
-    env LESS_TERMCAP_mb=$'\E[01;31m' \
-    LESS_TERMCAP_md=$'\E[01;38;5;74m' \
-    LESS_TERMCAP_me=$'\E[0m' \
-    LESS_TERMCAP_se=$'\E[0m' \
-    LESS_TERMCAP_so=$'\E[38;5;246m' \
-    LESS_TERMCAP_ue=$'\E[0m' \
-    LESS_TERMCAP_us=$'\E[04;38;5;146m' \
-    man "$@"
-}
-
 # vim superman
 vman() {
   nvim "+Man $*"
@@ -55,8 +44,6 @@ pac_find_exe() {
 }
 lso() { ls -alG "$@" | awk '{k=0;for(i=0;i<=8;i++)k+=((substr($1,i+2,1)~/[rwx]/)*2^(8-i));if(k)printf(" %0o ",k);print}'; }
 
-compdef pac_find_exe="yaourt"
-
 # man autocomplete > vman
 compdef vman="man"
 
@@ -70,6 +57,7 @@ export PATH=$PATH:~/.composer/vendor/bin
 export PATH=$PATH:~/bin/
 export PATH=$PATH:~/.cargo/bin
 export RUST_SRC_PATH=~/.rust/src
+export ANDROID_HOME=/opt/android-sdk
 
 PATH="/home/rafael/perl5/bin${PATH+:}${PATH}"; export PATH;
 PERL5LIB="/home/rafael/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
@@ -88,9 +76,12 @@ export BROWSER="xdg-open"
 export LIBVA_DRIVER_NAME=i965
 export VDPAU_DRIVER=va_gl
 alias note='nvim "/home/rafael/Documentos/Notes/$(ls ~/Documentos/Notes/ | fzf)"'
+alias pac="yaourt"
+alias vim='nvim'
+alias v='nvim'
+alias _="sudo"
 
 bindkey -e
-source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_DEFAULT_OPTS=""
 export FZF_COMPLETION_TRIGGER='--'
@@ -101,7 +92,20 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_EXPIRE_DUPS_FIRST
 
-eval `dircolors ~/dircolors.default`
+#eval `dircolors ~/dircolors.default`
 
 source ~/.zsh/plugins/alias-tips/alias-tips.plugin.zsh
 export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Dica: "
+
+source ~/.zsh/plugins/zsh-systemd/zsh-systemd.plugin.zsh
+source ~/.zsh/plugins/zsh-background-notify/bgnotify.plugin.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+eval "$(fasd --init auto)"
+
+###-tns-completion-start-###
+if [ -f /home/rafael/.tnsrc ]; then 
+    source /home/rafael/.tnsrc 
+fi
+###-tns-completion-end-###

@@ -30,3 +30,5 @@
 	default = simple
 [rerere]
 	enabled = true
+[cola]
+	spellcheck = false

@@ -4,12 +4,12 @@ lock() {
   # Iniciando o processo de bloqueio de tela
   /opt/scripts/i3lock/lockscreen.sh &
   # Enquanto o bloqueio de tela não for executado não executa o commando suspender/hibernar
-  while :; do
-    if [[ $(xdotool search -sync -all -onlyvisible --name i3lock) ]]; then
-      $@
-      exit
-    fi
-  done
+#  while :; do
+#    if [[ $(xdotool search -sync -all -onlyvisible --name i3lock) ]]; then
+#      $@
+#      exit
+#    fi
+#  done
 }
 
 case "$1" in
@@ -24,7 +24,7 @@ case "$1" in
 	;;
     suspend)
 	if [ $(cat /proc/1/comm) = "systemd" ]; then 
-	lock systemctl suspend
+	systemctl suspend
 
 	else
 	  lock dbus-send --system --print-reply --type=method_call --reply-timeout=2000 --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Suspend
@@ -32,9 +32,9 @@ case "$1" in
         ;;
     hibernate)
 	if [ $(cat /proc/1/comm) = "systemd" ]; then
-	lock systemctl hibernate
+	systemctl hibernate
 	else
-	lock dbus-send --system --print-reply --type=method_call --reply-timeout=2000 --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Hibernate
+	dbus-send --system --print-reply --type=method_call --reply-timeout=2000 --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Hibernate
 	fi
         ;;
     reboot)

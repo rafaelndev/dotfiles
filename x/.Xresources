@@ -11,7 +11,7 @@ rofi.opacity:               90
 rofi.width:                 1366
 rofi.lines:                 10
 rofi.columns:               1
-rofi.font:                  SourceCodePro 10
+rofi.font:                  mononokiNerdFontMono 10
 rofi.fg:                    #1aa
 rofi.bg:                    #333
 rofi.hlfg:                  #333
