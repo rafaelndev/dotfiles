@@ -2,7 +2,7 @@
 	email = rafaeln.dev@gmail.com
 	name = Rafael Nascimento
 [core]
-	editor = vim
+	editor = nvim
 	askpass = 
 	compression = 9
 	preloadindex = true

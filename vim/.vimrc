@@ -7,23 +7,24 @@ endif
 
 " ================         Plugins          ================ {{{
 
-set runtimepath+=~/.vim/autoload/dein.vim
+set runtimepath+=~/.vim/plugged/repos/github.com/Shougo/dein.vim/
 command! -nargs=+ -bar Dein call dein#add(<args>)
 call dein#begin(expand('~/.vim/plugged/'))
 
 " ===============          Geral            ================ {{{
-Dein 'Shougo/neosnippet.vim', {'lazy': 1, 'on_event': 'InsertCharPre'}
-Dein 'Shougo/neosnippet-snippets', {'lazy': 1, 'on_event': 'InsertCharPre'}
+Dein 'Shougo/dein.vim'
+Dein 'Shougo/neosnippet-snippets', { 'on_event': 'InsertCharPre' }
+Dein 'Shougo/neosnippet.vim', { 'on_event': 'InsertCharPre'}
 Dein 'tpope/vim-dispatch'
 Dein 'skywind3000/asyncrun.vim'
-Dein 'itchyny/lightline.vim'
-Dein 'w0rp/ale'
+Dein 'itchyny/lightline.vim', { 'on_event': 'CursorHold'}
+Dein 'w0rp/ale', { 'on_event': 'BufWritePre'}
 Dein 'majutsushi/tagbar'
 Dein 'vim-php/tagbar-phpctags.vim', { 'on_ft': ['php'] }
 Dein 'scrooloose/nerdtree' , { 'on_cmd':  [ 'NERDTreeToggle', 'NERDTreeFind' ] }
 Dein 'embear/vim-localvimrc'
 Dein 'Konfekt/FastFold'
-Dein 'ludovicchabant/vim-gutentags'
+Dein 'ludovicchabant/vim-gutentags', { 'on_event': 'BufWritePre'}
 Dein 'vim-scripts/progressbar-widget'
 Dein 'suan/vim-instant-markdown'
 Dein 'dhruvasagar/vim-table-mode'
@@ -35,7 +36,7 @@ Dein 'christoomey/vim-tmux-navigator'
 Dein 'jszakmeister/vim-togglecursor'
 Dein 'joonty/vdebug', { 'on_cmd': ['VdebugStart']}
 Dein 'ryanoasis/vim-devicons', { 'on_cmd': [ 'NERDTreeToggle', 'NERDTreeFind'], 'rtp': ''}
-Dein 'sgur/vim-editorconfig', { 'lazy': 1, 'on_event': 'InsertCharPre' }
+Dein 'sgur/vim-editorconfig', { 'on_event': 'InsertCharPre' }
 Dein 'wincent/ferret'
 Dein 'mikehaertl/pdv-standalone', { 'on_ft': ['php']}
 Dein 'adoy/vim-php-refactoring-toolbox', { 'on_ft': ['php'] }
@@ -47,11 +48,11 @@ Dein 'justinmk/vim-sneak'
 Dein 'pgdouyon/vim-evanesco'
 Dein 'irrationalistic/vim-tasks'
 Dein 'bfredl/nvim-miniyank'
+Dein 'equalsraf/neovim-gui-shim'
 " }}}
 
 " ===============  Manipulação de Texto/Objetos  ============= {{{
 Dein 'kana/vim-operator-user'
-Dein 'tmhedberg/matchit'
 Dein 'wellle/targets.vim', {'on_event': 'CursorHold'}
 Dein 'tpope/vim-surround'
 Dein 'tpope/vim-repeat'
@@ -85,17 +86,22 @@ Dein 'matze/vim-move'
 
 " ===============          Completion          ============== {{{
 if has('nvim')
-Dein 'Shougo/deoplete.nvim', { 'hook_source': 'call deoplete#enable()'}
-Dein 'carlitux/deoplete-ternjs', { 'depends': 'deoplete.nvim', 'on_ft': ['javascript'] }
-Dein 'zchee/deoplete-jedi', { 'depends': 'deoplete.nvim',  'on_ft': 'python' }
-Dein 'zchee/deoplete-go', { 'depends': 'deoplete.nvim', 'build': 'make', 'on_ft': ['go'] }
-Dein 'rafaelndev/deoplete-laravel-plugin', {'depends': 'deoplete.nvim','on_ft': ['php'], 'build': 'composer update'}
-" Dein 'pbogut/deoplete-padawan', {'depends': 'deoplete.nvim'}
-endif
-Dein 'Rip-Rip/clang_complete', { 'on_ft': ['c', 'cpp', 'h'] }
+  function! s:deoplete_start() abort
+    call deoplete#enable()
 
-Dein 'lvht/phpcd.vim', { 'build': 'composer install', 'on_ft': ['php']}
-Dein 'shawncplus/phpcomplete.vim', { 'on_ft': 'php' }
+    call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
+    call deoplete#custom#source('_', 'converters',
+          \ ['converter_remove_paren', 'converter_auto_delimiter', 'converter_remove_overlap', 'converter_truncate_abbr', 'converter_truncate_menu'])
+  endfunction
+  Dein 'Shougo/deoplete.nvim', { 'on_event': 'InsertCharPre', 'hook_source': function('s:deoplete_start') }
+  Dein 'carlitux/deoplete-ternjs', { 'depends': 'deoplete.nvim', 'on_ft': ['javascript'] }
+  Dein 'zchee/deoplete-jedi', { 'depends': 'deoplete.nvim',  'on_ft': 'python' }
+  Dein 'zchee/deoplete-go', { 'depends': 'deoplete.nvim', 'build': 'make', 'on_ft': ['go'] }
+  Dein 'rafaelndev/deoplete-laravel-plugin', {'depends': 'deoplete.nvim','on_ft': ['php'], 'build': 'composer update'}
+endif
+Dein 'Rip-Rip/clang_complete', { 'depends': 'deoplete.nvim', 'on_ft': ['c', 'cpp', 'h'] }
+Dein 'lvht/phpcd.vim', { 'hook_post_update': 'composer install', 'on_ft': ['php']}
+" Dein 'shawncplus/phpcomplete.vim', { 'on_ft': 'php' }
 Dein 'KabbAmine/zeavim.vim'
 " }}}
 
@@ -173,6 +179,7 @@ set ttimeoutlen=10
 set copyindent
 set cpoptions+=$
 set nofoldenable
+set updatetime=750
 " Sem VisualBells
 set novb
 let &t_Co = 256
@@ -290,6 +297,11 @@ endif
 
 " ABBREV
 iabbrev dockerip 172.17.0.1
+
+" GoNvim
+let g:gonvim_draw_statusline = 0
+let g:gonvim_draw_tabline = 0
+let g:gonvim_start_fullscreen = 0
 " }}}
 
 " ================         Keybinds         ================ {{{
@@ -563,7 +575,7 @@ let g:vimtex_view_method                  = 'zathura'
 let g:vimtex_fold_enabled                 = 0
 let g:vimtex_latexmk_background           = 1
 let g:vimtex_quickfix_ignore_all_warnings = 1
-let g:vimtex_quickfix_open_on_warning     = 0
+let g:vimtex_quickfix_open_on_warning     = 1
 let g:vimtex_latexmk_progname             = 'nvr'
 let g:vimtex_quickfix_autojump = 0
 let g:vimtex_quickfix_mode = 0
@@ -710,15 +722,13 @@ let g:tagbar_type_go = {
 
 " Deoplete
 if has('nvim')
+  let g:deoplete#enable_at_startup = 0
   let g:deoplete#auto_complete_start_length = 2
   let g:deoplete#file#enable_buffer_path = 1
   " let g:deoplete#enable_refresh_always = 1
   let g:deoplete#delimiters = ['/', '.', '::', ':', '#']
   let g:deoplete#sources={}
 
-  call deoplete#custom#set('_', 'matchers', ['matcher_full_fuzzy'])
-  call deoplete#custom#set('_', 'converters',
-        \ ['converter_remove_paren', 'converter_auto_delimiter', 'converter_remove_overlap', 'converter_truncate_abbr', 'converter_truncate_menu'])
   let g:deoplete#omni_patterns = get(g:,'deoplete#omni_patters',{})
     let g:deoplete#keyword_patterns = {}
 
@@ -805,6 +815,7 @@ nnoremap <Leader>gco :Gcommit<CR>
 let g:notes_directories = ['~/Documentos/Notes', '~/Dropbox/Shared Notes']
 let g:notes_suffix = '.note'
 
+
 " Configurações do GVIM
 if has('gui_running')
   " set guifont=Dejavu\ Sans\ Mono\ for\ Powerline\ 10
@@ -814,7 +825,10 @@ if has('gui_running')
   set guioptions-=r  "remove right-hand scroll bar
   set guicursor+=a:blinkon0
   set guiheadroom=0
+else
+  set guioptions=M
 endif
+
 
 " Gruvbox
 let g:gruvbox_italic        = 0

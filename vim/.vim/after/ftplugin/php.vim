@@ -36,11 +36,11 @@ autocmd FileType php inoremap <Leader>piu <Esc>:call IPhpInsertUse()<CR>
 autocmd FileType php noremap <Leader>piu :call PhpInsertUse()<CR>
 
 silent! unmap <unique> <buffer> <C-]>
-silent! nnoremap <silent> <unique> <buffer> <C-]>
-			\ :<C-U>call g:utils#JumpToDefinition('normal')<CR>
-silent! unmap <unique> <buffer> <C-W><C-]>
-silent! nnoremap <silent> <unique> <buffer> <C-W><C-]>
-      \ :<C-U>call g:utils#JumpToDefinition('split')<CR>
-unmap <unique> <buffer> <C-W><C-\>
-silent! nnoremap <silent> <unique> <buffer> <C-W><C-\>
-      \ :<C-U>call g:utils#JumpToDefinition('vsplit')<CR>
+" silent! nnoremap <silent> <unique> <buffer> <C-]>
+" 			\ :<C-U>call g:utils#JumpToDefinition('normal')<CR>
+" silent! unmap <unique> <buffer> <C-W><C-]>
+" silent! nnoremap <silent> <unique> <buffer> <C-W><C-]>
+"       \ :<C-U>call g:utils#JumpToDefinition('split')<CR>
+" unmap <unique> <buffer> <C-W><C-\>
+" silent! nnoremap <silent> <unique> <buffer> <C-W><C-\>
+"       \ :<C-U>call g:utils#JumpToDefinition('vsplit')<CR>
