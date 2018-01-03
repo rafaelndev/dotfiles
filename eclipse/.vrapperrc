@@ -1,0 +1,33 @@
+" vim: set syntax=vim:
+set autoindent
+set smartcase
+set hlsearch
+
+" Configurações especificas do vrapper
+set clipboard=unnamedplus
+set contentassistmode
+set startnormalmode
+
+let mapleader=" "
+
+eclipseaction generateGetSet org.eclipse.jdt.ui.edit.text.java.create.getter.setter
+eclipseaction shiftLeft org.eclipse.ui.edit.text.shiftLeft
+eclipseaction shiftRight org.eclipse.ui.edit.text.shiftRight
+eclipseaction eclipsecmdsearch org.eclipse.ui.window.quickAccess
+eclipseaction opentermhere com.tetrade.eclipse.plugins.easyshell.command.shellOpen
+"definition ID of the source -> format action 
+eclipseaction Format org.eclipse.jdt.ui.edit.text.java.format
+"definition ID of the source -> toggle comment action 
+eclipseaction ToggleComment org.eclipse.jdt.ui.edit.text.java.toggle.comment
+
+nmap <space>gs :generateGetSet<cr>
+nmap <space>t :opentermhere<cr>
+
+map < :shiftLeft<cr>
+map > :shiftRight<cr>
+vmap < :shiftLeft<cr>gv
+vmap > :shiftRight<cr>gv
+
+nnoremap <c-p> :eclipsecmdsearch<cr>
+
+vnoremap = :Format<CR>
