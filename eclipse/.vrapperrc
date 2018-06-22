@@ -13,21 +13,61 @@ let mapleader=" "
 eclipseaction generateGetSet org.eclipse.jdt.ui.edit.text.java.create.getter.setter
 eclipseaction shiftLeft org.eclipse.ui.edit.text.shiftLeft
 eclipseaction shiftRight org.eclipse.ui.edit.text.shiftRight
-eclipseaction eclipsecmdsearch org.eclipse.ui.window.quickAccess
 eclipseaction opentermhere com.tetrade.eclipse.plugins.easyshell.command.shellOpen
 "definition ID of the source -> format action 
 eclipseaction Format org.eclipse.jdt.ui.edit.text.java.format
+
 "definition ID of the source -> toggle comment action 
 eclipseaction ToggleComment org.eclipse.jdt.ui.edit.text.java.toggle.comment
 
-nmap <space>gs :generateGetSet<cr>
-nmap <space>t :opentermhere<cr>
+" Omnibox
+eclipseaction eclipsecmdsearch org.eclipse.ui.window.quickAccess
+
+" Menu de gerar codigo do Java
+eclipseaction eclipsesrcgenmenu org.eclipse.jdt.ui.edit.text.java.source.quickMenu
+
+" Menu para refatorar código Java
+eclipseaction eclipserefactormenu org.eclipse.jdt.ui.edit.text.java.refactor.quickMenu
+
+" Abrir Resource
+eclipseaction eclipseopenresource org.eclipse.ui.navigate.openResource
+
+" Java quickfix
+eclipseuiaction eclipsequickfix org.eclipse.jdt.ui.edit.text.java.correction.assist.proposals
+eclipseaction eclipsegotodef org.eclipse.jdt.ui.edit.text.java.open.editor
+
+" Go to Implementation
+eclipseuiaction eclipsegotoimpl org.eclipse.jdt.ui.edit.text.java.open.implementation
+
+eclipseaction eclipsepaste org.eclipse.ui.edit.paste
+
+nnoremap <space>gs :generateGetSet<cr>
+nnoremap <space>t :opentermhere<cr>
+nnoremap <space>jr :eclipserefactormenu<cr>
+nnoremap <space>jcg :eclipsesrcgenmenu<cr>
+nnoremap <space>jf :eclipsequickfix<cr>
+nnoremap <space>jd :eclipsegotodef<cr>
+nnoremap <space>ji :eclipsegotoimpl<cr>
+
+imap <c-v> <ESC>:eclipsepaste<cr>a
 
 map < :shiftLeft<cr>
 map > :shiftRight<cr>
 vmap < :shiftLeft<cr>gv
 vmap > :shiftRight<cr>gv
+nnoremap <Esc><Esc> :let @/ = ""<cr>
+vnoremap grr "_d"0P
+nmap <space>q :q<cr>
+nmap Y y$
+" Selecionar ultimo texto inserido
+nnoremap gV `[v`]
 
 nnoremap <c-p> :eclipsecmdsearch<cr>
 
 vnoremap = :Format<CR>
+
+au "XML Editor" eclipseaction eclipsegotomatch org.eclipse.wst.xml.ui.gotoMatchingTag
+au "ZUL Editor" eclipseaction eclipsegotomatch org.eclipse.wst.xml.ui.gotoMatchingTag
+au "Java Editor" eclipseaction eclipsegotomatch org.eclipse.jdt.ui.edit.text.java.goto.matching.bracket
+
+nmap % :eclipsegotomatch<cr>
