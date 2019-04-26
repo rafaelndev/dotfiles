@@ -173,3 +173,27 @@ function! s:snippets_sink(line)
   let snip = split(a:line, "\t")[0]
   execute 'normal! a'.s:strip(snip)."\<c-r>=neosnippet#expand('". snip ."')\<cr>"
 endfunction
+
+let g:deferredPlugins = []
+
+function! g:utils#DeferPluginLoad(name, ...)
+    " echo a:000
+    if !has("vim_starting")
+        return
+    endif
+    let opts = get(a:000, 0, {})
+    let cond = 1
+    if has_key(opts, 'cond')
+        let cond = opts['cond']
+    endif
+    let opts = extend(opts, { 'on': [], 'for': [] })
+    call timer_start(250, {tid -> execute(s:plug_install(a:name, opts))}, {'repeat': 1})
+    " Plug a:name, opts
+    if cond
+        let g:deferredPlugins = g:deferredPlugins + split(a:name, '/')[1:]
+    endif
+endfunction
+
+function! s:plug_install(name, opts)
+  Plug a:name, a:opts
+endfunction

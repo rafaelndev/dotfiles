@@ -2,148 +2,117 @@
 set nocompatible
 
 if has('nvim')
-  set termguicolors
+  set  termguicolors
 endif
 
 " ================         Plugins          ================ {{{
-
-set runtimepath+=~/.vim/plugged/repos/github.com/Shougo/dein.vim/
-command! -nargs=+ -bar Dein call dein#add(<args>)
-call dein#begin(expand('~/.vim/plugged/'))
-
+command! -nargs=* DeferPlug call g:utils#DeferPluginLoad(<args>)
+call plug#begin('~/.vim/plugged')
 " ===============          Geral            ================ {{{
-Dein 'Shougo/dein.vim'
-Dein 'Shougo/neosnippet-snippets', { 'on_event': 'InsertCharPre' }
-Dein 'Shougo/neosnippet.vim', { 'on_event': 'InsertCharPre'}
-Dein 'tpope/vim-dispatch'
-Dein 'skywind3000/asyncrun.vim'
-Dein 'itchyny/lightline.vim', { 'on_event': 'CursorHold'}
-Dein 'w0rp/ale', { 'on_event': 'BufWritePre'}
-Dein 'majutsushi/tagbar'
-Dein 'vim-php/tagbar-phpctags.vim', { 'on_ft': ['php'] }
-Dein 'scrooloose/nerdtree' , { 'on_cmd':  [ 'NERDTreeToggle', 'NERDTreeFind' ] }
-Dein 'embear/vim-localvimrc'
-Dein 'Konfekt/FastFold'
-Dein 'ludovicchabant/vim-gutentags', { 'on_event': 'BufWritePre'}
-Dein 'vim-scripts/progressbar-widget'
-Dein 'suan/vim-instant-markdown'
-Dein 'dhruvasagar/vim-table-mode'
-Dein 'machakann/vim-highlightedyank'
-Dein 'mhinz/vim-grepper'
-Dein 'junegunn/fzf', { 'dir': '~/.fzf', 'build': './install --all', 'merged': 0 }
-Dein 'junegunn/fzf.vim'
-Dein 'christoomey/vim-tmux-navigator'
-Dein 'jszakmeister/vim-togglecursor'
-Dein 'joonty/vdebug', { 'on_cmd': ['VdebugStart']}
-Dein 'ryanoasis/vim-devicons', { 'on_cmd': [ 'NERDTreeToggle', 'NERDTreeFind'], 'rtp': ''}
-Dein 'sgur/vim-editorconfig', { 'on_event': 'InsertCharPre' }
-Dein 'wincent/ferret'
-Dein 'mikehaertl/pdv-standalone', { 'on_ft': ['php']}
-Dein 'adoy/vim-php-refactoring-toolbox', { 'on_ft': ['php'] }
-Dein 'mhinz/vim-startify'
-Dein 'arnaud-lb/vim-php-namespace'
-Dein 'davidhalter/jedi', { 'on_ft': ['python'] }
-Dein 'osyo-manga/vim-over'
-Dein 'justinmk/vim-sneak'
-Dein 'pgdouyon/vim-evanesco'
-Dein 'irrationalistic/vim-tasks'
-Dein 'bfredl/nvim-miniyank'
-Dein 'equalsraf/neovim-gui-shim'
+Plug 'tpope/vim-dispatch'
+Plug 'skywind3000/asyncrun.vim'
+Plug 'w0rp/ale', { 'on_event': 'BufWritePre'}
+Plug 'majutsushi/tagbar'
+DeferPlug 'itchyny/lightline.vim'
+Plug 'scrooloose/nerdtree' , { 'on':  [ 'NERDTreeToggle', 'NERDTreeFind' ] }
+Plug 'Konfekt/FastFold'
+Plug 'ludovicchabant/vim-gutentags', { 'on_event': 'BufWritePre'}
+Plug 'shime/vim-livedown'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'machakann/vim-highlightedyank'
+Plug 'mhinz/vim-grepper'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'build': './install --all', 'merged': 0 }
+Plug 'junegunn/fzf.vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'jszakmeister/vim-togglecursor'
+Plug 'ryanoasis/vim-devicons', { 'on': [ 'NERDTreeToggle', 'NERDTreeFind'], 'rtp': ''}
+Plug 'wincent/ferret'
+Plug 'mhinz/vim-startify'
+Plug 'osyo-manga/vim-over'
+Plug 'pgdouyon/vim-evanesco'
+Plug 'equalsraf/neovim-gui-shim'
+Plug 'lambdalisue/suda.vim'
+" Plug 'svermeulen/vim-cutlass'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'stefandtw/quickfix-reflector.vim'
+Plug 'mhinz/vim-signify'
 " }}}
 
 " ===============  Manipulação de Texto/Objetos  ============= {{{
-Dein 'kana/vim-operator-user'
-Dein 'wellle/targets.vim', {'on_event': 'CursorHold'}
-Dein 'tpope/vim-surround'
-Dein 'tpope/vim-repeat'
-Dein 'junegunn/vim-easy-align'
-Dein 'tomtom/tcomment_vim'
-Dein 'vim-scripts/ReplaceWithRegister'
-Dein 'mattn/emmet-vim'
-function! s:lexima_start() abort
-  call lexima#init()
-  inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : lexima#expand('<LT>CR>', 'i')
-  call lexima#add_rule({'char': '}', 'at': '\%#\n\s*}', 'leave': '}'})
-  call lexima#add_rule({'char': ']', 'at': '\%#\n\s*]', 'leave': ']'})
-  call lexima#add_rule({'char': ')', 'at': '\%#\n\s*)', 'leave': ')'})
-  call lexima#add_rule({'char': '<?php', 'at': '\%#\n\s*)', 'leave': '?>'})
-endfunction
-Dein 'cohama/lexima.vim', {
-      \ 'lazy': 1,
-      \ 'on_event': 'InsertCharPre',
-      \ 'hook_post_source': function('s:lexima_start')
-      \ }
-Dein 'haya14busa/dein-command.vim'
-Dein 'kana/vim-textobj-user'
-Dein 'kana/vim-textobj-function', { 'build': 'mkdir ./after/ftplugin/php; cp ./after/ftplugin/java/textobj-function.vim ./after/ftplugin/php/'}
-Dein 'thinca/vim-textobj-function-javascript'
-Dein 'kana/vim-textobj-line'
-Dein 'rbonvall/vim-textobj-latex'
-Dein 'saaguero/vim-textobj-pastedtext'
-Dein 'docunext/closetag.vim', { 'on_ft': ['html', 'xml', 'php', 'blade']}
-Dein 'matze/vim-move'
+Plug 'kana/vim-operator-user'
+DeferPlug 'wellle/targets.vim'
+" Plug 'machakann/vim-sandwich'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'junegunn/vim-easy-align'
+Plug 'tomtom/tcomment_vim'
+Plug 'vim-scripts/ReplaceWithRegister'
+" function! LeximaStart() abort
+"   call lexima#init()
+"   inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : lexima#expand('<LT>CR>', 'i')
+"   call lexima#add_rule({'char': '}', 'at': '\%#\n\s*}', 'leave': '}'})
+"   call lexima#add_rule({'char': ']', 'at': '\%#\n\s*]', 'leave': ']'})
+"   call lexima#add_rule({'char': ')', 'at': '\%#\n\s*)', 'leave': ')'})
+"   call lexima#add_rule({'char': '<?php', 'at': '\%#\n\s*)', 'leave': '?>'})
+" endfunction
+" Plug 'cohama/lexima.vim', {
+"       \ 'lazy': 1,
+"       \ 'on_event': 'InsertCharPre'
+"       \ 'do': function('LeximaStart')
+"       \ }
+Plug 'Raimondi/delimitMate'
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-function', { 'build': 'mkdir ./after/ftplugin/php; cp ./after/ftplugin/java/textobj-function.vim ./after/ftplugin/php/'}
+Plug 'thinca/vim-textobj-function-javascript'
+Plug 'kana/vim-textobj-line'
+Plug 'rbonvall/vim-textobj-latex'
+Plug 'saaguero/vim-textobj-pastedtext'
+Plug 'matze/vim-move'
 " }}}
-
 " ===============          Completion          ============== {{{
-if has('nvim')
-  function! s:deoplete_start() abort
-    call deoplete#enable()
-
-    call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
-    call deoplete#custom#source('_', 'converters',
-          \ ['converter_remove_paren', 'converter_auto_delimiter', 'converter_remove_overlap', 'converter_truncate_abbr', 'converter_truncate_menu'])
-  endfunction
-  Dein 'Shougo/deoplete.nvim', { 'on_event': 'InsertCharPre', 'hook_source': function('s:deoplete_start') }
-  Dein 'carlitux/deoplete-ternjs', { 'depends': 'deoplete.nvim', 'on_ft': ['javascript'] }
-  Dein 'zchee/deoplete-jedi', { 'depends': 'deoplete.nvim',  'on_ft': 'python' }
-  Dein 'zchee/deoplete-go', { 'depends': 'deoplete.nvim', 'build': 'make', 'on_ft': ['go'] }
-  Dein 'rafaelndev/deoplete-laravel-plugin', {'depends': 'deoplete.nvim','on_ft': ['php'], 'build': 'composer update'}
-endif
-Dein 'Rip-Rip/clang_complete', { 'depends': 'deoplete.nvim', 'on_ft': ['c', 'cpp', 'h'] }
-Dein 'lvht/phpcd.vim', { 'hook_post_update': 'composer install', 'on_ft': ['php']}
-" Dein 'shawncplus/phpcomplete.vim', { 'on_ft': 'php' }
-Dein 'KabbAmine/zeavim.vim'
+" Plug 'ncm2/ncm2'
+" Plug 'roxma/nvim-yarp'
+" Plug 'ncm2/ncm2-bufword'
+" Plug 'ncm2/ncm2-tmux'
+" Plug 'ncm2/ncm2-path'
+" Plug 'ncm2/ncm2-ultisnips'
+" Plug 'ncm2/ncm2-jedi'
+" Plug 'ncm2/float-preview.nvim'
+" Plug 'ObserverOfTime/ncm2-jc2', {'for': ['java', 'jsp']}
+" Plug 'artur-shaik/vim-javacomplete2', {'for': ['java', 'jsp']}
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc-sources'
+Plug 'neoclide/coc-pyls'
+Plug 'neoclide/coc-java'
+Plug 'neoclide/coc-snippets'
 " }}}
 
 " ===============            Syntax          ============== {{{
-Dein 'lervag/vimtex', { 'on_ft': ['tex', 'bib'] }
-Dein 'Chiel92/vim-autoformat'
-Dein 'hynek/vim-python-pep8-indent', { 'on_ft': 'python' }
-Dein 'jelera/vim-javascript-syntax', { 'on_ft': ['javascript', 'html', 'php']}
-Dein 'pangloss/vim-javascript', { 'on_ft': ['javascript', 'html', 'php'] }
-Dein 'ekalinin/Dockerfile.vim', { 'on_ft': 'Dockerfile' }
-Dein 'othree/html5.vim', { 'on_ft': ['html', 'blade', 'php'] }
-Dein 'stephpy/vim-php-cs-fixer', { 'on_ft': ['php'] }
-Dein 'posva/vim-vue', { 'on_ft': 'vue'}
-Dein 'xolox/vim-misc'
-Dein 'xolox/vim-notes', { 'depends': 'vim-misc', 'on_ft': 'notes' }
-Dein 'plasticboy/vim-markdown', { 'on_ft': 'markdown' }
-Dein 'cespare/vim-toml', { 'on_ft': 'toml'}
-Dein 'aklt/plantuml-syntax', { 'on_ft': 'uml'}
-Dein 'Valloric/MatchTagAlways', { 'on_ft': ['html', 'xml', 'php', 'blade' ]}
-Dein 'StanAngeloff/php.vim', { 'on_ft': ['php', 'html'] }
-Dein 'jwalton512/vim-blade', { 'on_ft': 'blade' }
-Dein 'evanmiller/nginx-vim-syntax'
-Dein 'captbaritone/better-indent-support-for-php-with-html'
-Dein 'nelsyeung/twig.vim'
+Plug 'Chiel92/vim-autoformat'
+Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
+Plug 'jelera/vim-javascript-syntax', { 'for': ['javascript', 'html', 'php']}
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'html', 'php'] }
+Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
+Plug 'othree/html5.vim', { 'for': ['html', 'blade', 'php'] }
+Plug 'xolox/vim-misc'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+Plug 'cespare/vim-toml', { 'for': 'toml'}
+Plug 'aklt/plantuml-syntax', { 'for': 'uml'}
+Plug 'Valloric/MatchTagAlways', { 'for': ['html', 'xml', 'php', 'blade' ]}
 "}}
 
-
-" ===============            GIT          ============== {{{
-Dein 'airblade/vim-gitgutter'
-Dein 'tpope/vim-fugitive'
-Dein 'rhysd/committia.vim'
+" ===============        Color Schemes        ============== {{{
+Plug 'morhetz/gruvbox'
 "}}}
+
+call plug#end()
+" runtime ~/.vim/plugged/vim-sandwich/macros/sandwich/keymap/surround.vim
 
 " }}}
-
-" ===============        Color Schemes        ============== {{{
-Dein 'morhetz/gruvbox'
-"}}}
-
-call dein#end()
-call dein#call_hook('source')
-
+"
 " }}}
 
 " ================   Configurações Gerais   ================ {{{
@@ -161,15 +130,15 @@ set linebreak
 set whichwrap+=<,>,h,l
 set complete+=t,i
 set complete-=k,kspell
-set thesaurus+=~/.vim/spell/th_pt_BR.txt
 set showmatch
 set showmode
 set smarttab
 set nrformats-=octal
 set shiftround
 set path+=**
+set title
 if !has('nvim')
-  set encoding=utf-8 nobomb
+set encoding=utf-8 nobomb
 endif
 " Timeout
 set timeout
@@ -179,7 +148,7 @@ set ttimeoutlen=10
 set copyindent
 set cpoptions+=$
 set nofoldenable
-set updatetime=750
+set updatetime=400
 " Sem VisualBells
 set novb
 let &t_Co = 256
@@ -193,7 +162,7 @@ set undodir=~/.vim/undo
 set noautochdir
 
 " Conceal Level
-" set conceallevel=2 concealcursor=niv
+set conceallevel=2 concealcursor=niv
 
 " Novas janelas divididas sempre aparecem do lado direito ou embaixo
 set splitright
@@ -226,7 +195,7 @@ syntax sync minlines=256
 set synmaxcol=256
 set lazyredraw
 if !has('nvim')
-  set ttyfast
+set ttyfast
 endif
 
 " Definições padrões de identação
@@ -243,7 +212,7 @@ set smartcase
 
 " Ativar o mouse, just for fun.
 if has('mouse')
-  set mouse=a
+set mouse=a
 endif
 
 " Força os buffers a ficarem escondidos (hidden)
@@ -256,7 +225,11 @@ set noswapfile
 set fileformats=unix,dos,mac
 
 " Configuração de auto completar para funcionar com o YCM
-set completeopt=menu,menuone,longest
+" set completeopt=menu,menuone,longest
+" set completeopt=noinsert,menu,menuone,noselect
+set completeopt=noinsert,menuone,noselect
+set pumheight=20
+
 " S-k abre a ajuda para a palavra selecionada
 set keywordprg=":help"
 
@@ -270,7 +243,7 @@ set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
 set wildignore+=*.gif,*.jpg,*.png
 
 " Ignorar zip e irmãos
-set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz,tags
 
 " Ignorar algumas pastas
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,/lib/*,*/Vendor/*
@@ -282,26 +255,35 @@ set tags=tags
 set sessionoptions-=options
 set sessionoptions-=help
 
+" Keyword
+set iskeyword+=-
+
 if executable("rg")
-    let g:ag_prg="rg --vimgrep --smart-case -F -U"
-    let g:ackprg = 'rg --nogroup --nocolor --column -U'
-    set grepprg=rg\ --vimgrep\ --no-heading
-    set grepformat=%f:%l:%c:%m,%f:%l:%m
+  let g:ag_prg="rg --vimgrep --smart-case -F -U"
+  let g:ackprg = 'rg --nogroup --nocolor --column -U'
+  set grepprg=rg\ --vimgrep\ --no-heading
+  set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 
 set noshowmode
 
 if exists('&inccommand')
-  set inccommand=split
+set inccommand=split
 endif
 
 " ABBREV
-iabbrev dockerip 172.17.0.1
+iabbrev sqlid -- $Id$
 
 " GoNvim
 let g:gonvim_draw_statusline = 0
 let g:gonvim_draw_tabline = 0
 let g:gonvim_start_fullscreen = 0
+
+" DelimitMate
+let delimitMate_expand_cr = 1
+let delimitMate_jump_expansion = 1
+let delimitMate_balance_matchpairs = 1
+let delimitMate_expand_space = 1
 " }}}
 
 " ================         Keybinds         ================ {{{
@@ -322,7 +304,8 @@ nnoremap j gj
 nnoremap k gk
 
 " Salvar arquivo como root
-cmap w!! w !sudo tee % <CR>
+"cmap w!! w !sudo tee % <CR>
+cmap w!! w suda://%<CR>
 
 " Disabilitar C-z, use sempre uuuuu
 nnoremap <C-z> <nop>
@@ -397,7 +380,6 @@ inoremap <C-s> <Esc>[s1z=gi
 nnoremap <leader>s :w<cr>
 
 nnoremap <leader>how :AsyncRun howdoi -n 5
-inoremap <C-X><C-S> <C-O>:Snippets<CR>
 
 " Completar tags manualmente
 inoremap <silent> <expr> <C-]> utils#manualTagComplete()
@@ -405,17 +387,17 @@ inoremap <silent> <expr> <C-]> utils#manualTagComplete()
 " Selecionar palavra sem pular
 nnoremap * *``
 
-augroup load_insert_plugin
-  autocmd!
-  autocmd InsertEnter * call StartInsertPlugins()
-                     \| autocmd! load_insert_plugin
-augroup END
+" augroup load_insert_plugin
+"   autocmd!
+"   autocmd InsertEnter * call StartInsertPlugins()
+"                      \| autocmd! load_insert_plugin
+" augroup END
 
 " Visual AT
 xnoremap @ :<C-u>call utils#ExecuteMacroOverVisualRange()<CR>
 
-function! StartInsertPlugins() abort
-endfunction
+" function! StartInsertPlugins() abort
+" endfunction
 
 " }}}
 
@@ -448,33 +430,8 @@ let g:vimsyn_embed = 1 "$VIMRUNTIME/syntax/vim.vim
 " vim-plug
 let g:plug_timeout = 5000 "Necessário por causa das compilações
 
-" vim-dein
-let g:dein#enable_notification = 1
-let g:dein#notification_time = 10
-let g:dein#install_max_processes = 4
-let g:dein#install_log_filename = '/home/rafael/dein.log'
-let g:dein#types#git#pull_command = 'pull --ff --ff-only && git reflog expire --expire=now --all && git gc --prune=now --aggressive'
-
 " Lexima
 let g:lexima_enable_space_rules = 0
-
-" VDebug
-let g:vdebug_options= {
-      \    "port":               10000,
-      \    "server":             '127.0.0.1',
-      \    "timeout":            20,
-      \    "on_close":           'detach',
-      \    "break_on_open":      1,
-      \    "ide_key":            'netbeans-xdebug',
-      \    "path_maps":          {"/var/www": "/home/rafael/Projetos/monografia-node.js/Projeto-Video-Interativo/www"},
-      \    "debug_window_level": 0,
-      \    "debug_file_level":   0,
-      \    "debug_file":         "",
-      \    "watch_window_style": 'expanded',
-      \    "marker_default":     '⬦',
-      \    "marker_closed_tree": '▸',
-      \    "marker_open_tree":   '▾'
-      \}
 
 " Vim-Markdown
 let g:vim_markdown_folding_disabled = 1
@@ -482,19 +439,16 @@ let g:vim_markdown_folding_disabled = 1
 " Table-Mode
 let g:table_mode_corner="|"
 
-" Instant Markdown
-let g:instant_markdown_autostart = 0
-
 " MatchTagAways
 let g:mta_filetypes = {
-      \ 'html':  1,
-      \ 'xhtml': 1,
-      \ 'xml':   1,
-      \ 'jinja': 1,
-      \ 'php':   1,
-      \ 'blade': 1,
-      \ 'vue':   1,
-      \}
+    \ 'html':  1,
+    \ 'xhtml': 1,
+    \ 'xml':   1,
+    \ 'jinja': 1,
+    \ 'php':   1,
+    \ 'blade': 1,
+    \ 'vue':   1,
+    \}
 
 " Gutentags
 let g:gutentags_project_info = []
@@ -512,52 +466,29 @@ call add(g:gutentags_project_info, {'type': 'php', 'file': 'composer.json'})
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 let g:ale_fixers = {
-      \   'sh': [
-      \       'shfmt',
-      \   ],
-      \}
-
-" Neomake
-" autocmd! BufWritePost * Neomake
-" let g:neomake_php_jshint_maker = {
-"       \ 'exe': 'jshint',
-"       \ 'args': ['--verbose', '--extract=always'],
-"       \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
-"       \ }
-"
-" let g:neomake_php_tidy_maker = {
-"       \ 'exe': 'tidy',
-"       \ 'args': ['-e', '-q', '--gnu-emacs', 'true', '--doctype', 'omit'],
-"       \ 'errorformat': '%A%f:%l:%c: Warning: %m',
-"       \ }
-"
-" let g:neomake_blade_tidy_maker = {
-"       \ 'exe': 'tidy',
-"       \ 'args': ['-e', '-q', '--gnu-emacs', 'true'],
-"       \ 'errorformat': '%A%f:%l:%c: Warning: %m',
-"       \ }
-" let g:neomake_blade_enabled_makers      = ['tidy']
-" let g:neomake_verbose                 = 0
-" let g:neomake_php_phpcs_args_standard = 'PSR2'
-" let g:neomake_php_enabled_makers      = ['php']
-" " let g:neomake_verbose = 3
-" " let g:neomake_logfile = 'neomake.log'
+    \   'sh': [
+    \       'shfmt',
+    \   ],
+    \}
 
 " Vim Surround
 let g:surround_indent = 1
 autocmd FileType tex let g:surround_{char2nr('c')} = "\\\1command\1{\r}" " Latex Binding c
 autocmd FileType tex
-      \ map <buffer> <leader>wbf ysiwctextbf<CR> |
-      \ map <buffer> <leader>wit ysiwctextit<CR> |
-      \ vmap <buffer> <c-b> Sctextbf<CR> |
-      \ vmap <buffer> <c-i> Sctextit<CR>
+    \ map <buffer> <leader>wbf ysiwctextbf<CR> |
+    \ map <buffer> <leader>wit ysiwctextit<CR> |
+    \ vmap <buffer> <c-b> Sctextbf<CR> |
+    \ vmap <buffer> <c-i> Sctextit<CR>
 
 " Visual mapping
 xmap ' S'
 xmap " S"
 xmap [ S[
+xmap ] S]
 xmap { S{
+xmap } S}
 xmap ( S(
+xmap ) S)
 
 " Polyglot
 let g:polyglot_disabled = ['latex', 'dockerfile', 'git', 'gitcommit', 'javascript', 'markdown']
@@ -570,15 +501,15 @@ let b:javascript_fold            = 0
 let g:used_javascript_libs = 'underscore,jquery,requirejs'
 
 " VimTex
-let g:vimtex_latexmk_continuous           = 1
-let g:vimtex_view_method                  = 'zathura'
-let g:vimtex_fold_enabled                 = 0
-let g:vimtex_latexmk_background           = 1
-let g:vimtex_quickfix_ignore_all_warnings = 1
-let g:vimtex_quickfix_open_on_warning     = 1
-let g:vimtex_latexmk_progname             = 'nvr'
-let g:vimtex_quickfix_autojump = 0
-let g:vimtex_quickfix_mode = 0
+"let g:vimtex_latexmk_continuous           = 1
+"let g:vimtex_view_method                  = 'zathura'
+"let g:vimtex_fold_enabled                 = 0
+"let g:vimtex_latexmk_background           = 1
+"let g:vimtex_quickfix_ignore_all_warnings = 1
+"let g:vimtex_quickfix_open_on_warning     = 1
+"let g:vimtex_latexmk_progname             = 'nvr'
+"let g:vimtex_quickfix_autojump = 0
+"let g:vimtex_quickfix_mode = 0
 
 " Autoformat
 " let g:formatdef_phpfmt = "'fmt.phar --psr2 --no-backup '.shellescape(expand('%:p'))"
@@ -594,84 +525,89 @@ nnoremap <leader>@ :BTags<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <C-p> :FZF<CR>
 
-" Neosnippets
-imap <C-j>     <Plug>(neosnippet_expand_or_jump)
-smap <C-j>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-j>     <Plug>(neosnippet_expand_target)
+" UtiSnips
+" inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 
-let g:neosnippet#enable_snipmate_compatibility = 1
-let g:neosnippet#snippets_directory='~/.vim/snippets/'
-let g:neosnippet#enable_auto_clear_markers = 1
-" let g:neosnippet#enable_conceal_markers = 0
-
-" Lightline
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'readonly', 'filename', 'modified', ] ],
-      \   'right': [ [ 'lineinfo' ],
-      \              [ 'percent' ],
-      \              [ 'tagbar', 'fileformat', 'fileencoding', 'filetype'] ],
-      \ },
-      \ 'component': {
-      \   'lineinfo': '%l\%L [%p%%], %c, %n',
-      \   'readonly': '%{&readonly?"\ue0a2":""}',
-      \ },
-      \ 'component_function': {
-      \   'mode': 'LightLineMode',
-      \   'fugitive': 'LightLineFugitive',
-      \   'tagbar': 'TagBarCurrentTag',
-      \   'gutentags': '%{gutentags#statusline("[Generating...]")}'
-      \ },
-      \ 'separator': { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left': '', 'right': '' }
-      \ }
-
-function! LightLineMode()
-  let fname = expand('%:t')
-  return fname == '__Tagbar__' ? 'Tagbar' :
-        \ fname == 'ControlP' ? 'CtrlP' :
-        \ fname == '__Gundo__' ? 'Gundo' :
-        \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
-        \ fname =~ 'NERD_tree' ? 'NERDTree' :
-        \ &ft == 'unite' ? 'Unite' :
-        \ &ft == 'vimfiler' ? 'VimFiler' :
-        \ &ft == 'vimshell' ? 'VimShell' :
-        \ winwidth(0) > 60 ? lightline#mode() : ''
-endfunction
+" c-j c-k for moving in snippet
+let g:UltiSnipsExpandTrigger		= "<c-j>"
+let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
+let g:UltiSnipsListSnippets="<c-l>"
+let g:UltiSnipsRemoveSelectModeMappings = 0
 
 let s:fugitive_head = ''
 function! GetFugitiveHead(timer)
-  if exists('*fugitive#head')
-    let _ = fugitive#head()
-    let s:fugitive_head = strlen(_) ? ' '._ : ''
-  endif
+if exists('*fugitive#head')
+  let _ = fugitive#head()
+  let s:fugitive_head = strlen(_) ? ' '._ : ''
+endif
 endfunction
 
-  function! LightLineFugitive()
-    if exists('*fugitive#head')
-        return s:fugitive_head
-      endif
+function! LightLineFugitive()
+  if exists('*fugitive#head')
+      return s:fugitive_head
     endif
-    return ''
-  endfunction
+  return ''
+endfunction
+
+
+function! LightLineMode()
+let fname = expand('%:t')
+return fname == '__Tagbar__' ? 'Tagbar' :
+      \ fname == 'ControlP' ? 'CtrlP' :
+      \ fname == '__Gundo__' ? 'Gundo' :
+      \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
+      \ fname =~ 'NERD_tree' ? 'NERDTree' :
+      \ &ft == 'unite' ? 'Unite' :
+      \ &ft == 'vimfiler' ? 'VimFiler' :
+      \ &ft == 'vimshell' ? 'VimShell' :
+      \ winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
 
 let s:fugitive_head_timer = timer_start(10000, 'GetFugitiveHead', {'repeat': -1})
 
+" Lightline
+let g:lightline = {
+    \ 'colorscheme': 'wombat',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [  'readonly', 'filename', 'modified', ] ],
+    \   'right': [ [ 'lineinfo' ],
+    \              [ 'percent' ],
+    \              [ 'tagbar', 'fileformat', 'fileencoding', 'filetype'] ],
+    \ },
+    \ 'component': {
+    \   'lineinfo': '%l\%L [%p%%], %c, %n',
+    \   'readonly': '%{&readonly?"\ue0a2":""}',
+    \ },
+    \ 'component_function': {
+    \   'mode': 'LightLineMode',
+    \   'fugitive': 'LightLineFugitive',
+    \   'tagbar': 'TagBarCurrentTag'
+    \ },
+    \ 'separator': { 'left': '', 'right': '' },
+    \ 'subseparator': { 'left': '', 'right': '' }
+    \ }
+
+
 let s:tagbar_last_lookup_val = ''
-let s:tagbar_need_update = 1
+let s:tagbar_need_update = 0
 function! GetTagbarCurrentTag(timer)
-  if s:tagbar_need_update == 1
-      let s:tagbar_last_lookup_val = tagbar#currenttag('%s ', '')
+if s:tagbar_need_update == 1
+
+  " Só procura tags em arquivos com menos de 20000 linhas
+  if line('$') < 20000
+    let s:tagbar_last_lookup_val = tagbar#currenttag('%s ', '')
+
   endif
+endif
 endfunction
 
 function! TagBarCurrentTag()
-  if !exists('s:tagbar_lookup_timer')
-    let s:tagbar_lookup_timer = timer_start(1000, 'GetTagbarCurrentTag', {'repeat': -1})
-  endif
-  return s:tagbar_last_lookup_val
+if !exists('s:tagbar_lookup_timer')
+  let s:tagbar_lookup_timer = timer_start(1000, 'GetTagbarCurrentTag', {'repeat': -1})
+endif
+return s:tagbar_last_lookup_val
 endfunction
 
 au CursorMoved * let s:tagbar_need_update = 1
@@ -681,91 +617,67 @@ au CursorHold * let s:tagbar_need_update = 0
 nmap <C-t> :TagbarToggle<CR>
 let g:tagbar_autofocus                             = 1
 let g:tagbar_type_php                              = {
-      \ 'ctagstype' : 'php',
-      \ 'kinds'   : [
-      \ 'i:interfaces',
-      \ 'c:classes',
-      \ 'd:constant definitions',
-      \ 'f:functions',
-      \ 'n:namespace',
-      \ 'j:javascript functions:1'
-      \ ]
-      \ }
+    \ 'ctagstype' : 'php',
+    \ 'kinds'   : [
+    \ 'i:interfaces',
+    \ 'c:classes',
+    \ 'd:constant definitions',
+    \ 'f:functions',
+    \ 'n:namespace',
+    \ 'j:javascript functions:1'
+    \ ]
+    \ }
 
 let g:tagbar_type_go = {
-    \ 'ctagstype' : 'go',
-    \ 'kinds'     : [
-        \ 'p:package',
-        \ 'i:imports:1',
-        \ 'c:constants',
-        \ 'v:variables',
-        \ 't:types',
-        \ 'n:interfaces',
-        \ 'w:fields',
-        \ 'e:embedded',
-        \ 'm:methods',
-        \ 'r:constructor',
-        \ 'f:functions'
-    \ ],
-    \ 'sro' : '.',
-    \ 'kind2scope' : {
-        \ 't' : 'ctype',
-        \ 'n' : 'ntype'
-    \ },
-    \ 'scope2kind' : {
-        \ 'ctype' : 't',
-        \ 'ntype' : 'n'
-    \ },
-    \ 'ctagsbin'  : 'gotags',
-    \ 'ctagsargs' : '-sort -silent'
+  \ 'ctagstype' : 'go',
+  \ 'kinds'     : [
+      \ 'p:package',
+      \ 'i:imports:1',
+      \ 'c:constants',
+      \ 'v:variables',
+      \ 't:types',
+      \ 'n:interfaces',
+      \ 'w:fields',
+      \ 'e:embedded',
+      \ 'm:methods',
+      \ 'r:constructor',
+      \ 'f:functions'
+  \ ],
+  \ 'sro' : '.',
+  \ 'kind2scope' : {
+      \ 't' : 'ctype',
+      \ 'n' : 'ntype'
+  \ },
+  \ 'scope2kind' : {
+      \ 'ctype' : 't',
+      \ 'ntype' : 'n'
+  \ },
+  \ 'ctagsbin'  : 'gotags',
+  \ 'ctagsargs' : '-sort -silent'
 \ }
 
-" Deoplete
-if has('nvim')
-  let g:deoplete#enable_at_startup = 0
-  let g:deoplete#auto_complete_start_length = 2
-  let g:deoplete#file#enable_buffer_path = 1
-  " let g:deoplete#enable_refresh_always = 1
-  let g:deoplete#delimiters = ['/', '.', '::', ':', '#']
-  let g:deoplete#sources={}
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 
-  let g:deoplete#omni_patterns = get(g:,'deoplete#omni_patters',{})
-    let g:deoplete#keyword_patterns = {}
+" Use <TAB> to select the popup menu:
 
-    let g:deoplete#omni_patterns.cpp = '[^. *\t]\.\w*|[^. *\t]\::\w*|[^. *\t]\->\w*|#include\s*[<"][^>"]*'
-    let g:deoplete#omni#input_patterns={}
-    let g:deoplete#omni#input_patterns.cpp = ['[^. *\t]\.\w*','[^. *\t]\::\w*','[^. *\t]\->\w*','#include\s*[<"][^>"]*']
-    let g:neoinclude#exts          = {'php': ['php', 'inc', 'tpl', 'blade.php']}
-    let g:neoinclude#max_processes = 5
-    let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
-    let g:deoplete#ignore_sources.php = ['omni']
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-    " call deoplete#util#set_pattern(
-    "       \ g:deoplete#omni#input_patterns,
-    "       \ 'php', [g:deoplete#keyword_patterns.php])
-
-    " let g:deoplete#enable_profile = 1
-    " autocmd VimEnter * call deoplete#enable_logging('DEBUG', '/tmp/deoplete.log')
-
-    let g:clang_complete_auto = 0
-    let g:clang_auto_select = 0
-    let g:clang_omnicppcomplete_compliance = 0
-    let g:clang_make_default_keymappings = 0
-
-  if has("patch-7.4.314")
-    set shortmess+=c
-  endif
-  " use tab to forward cycle
-  inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-  " use tab to backward cycle
-  inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
-  autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-endif
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+" inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<C-R>=UltiSnips#ExpandSnippet()"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Enable omni completion.
 autocmd FileType css           setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml           setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=tern#Complete
 autocmd FileType vim setlocal omnifunc=syntaxcomplete#Complete
 autocmd FileType vim setlocal foldenable
 
@@ -780,7 +692,7 @@ let g:grepper = {
       \   'grepprg':    'rg --vimgrep -F --no-heading',
       \ }}
 
-nnoremap <leader>fi :Grepper -tool rgnew  -open -switch -highlight<cr>
+nnoremap <leader>a :Grepper -tool rgnew  -open -switch -highlight<cr>
 
 " Nerdtree
 map <leader>n :NERDTreeToggle<CR>
@@ -798,28 +710,13 @@ let NERDTreeHijackNetrw = 1
 let g:netrw_liststyle = 3
 let g:netrw_write_AsyncRun = 1
 
-" Vim Fugitive
-nnoremap <Leader>gs  :Gstatus<CR>
-nnoremap <Leader>gr  :Gremove<CR>
-nnoremap <Leader>gl  :Dispatch git pull<CR>
-nnoremap <Leader>glo :Glog<CR>
-nnoremap <Leader>gb  :Gblame<CR>
-nnoremap <Leader>gm  :Gmove<CR>
-nnoremap <Leader>gp  :Dispatch git push<CR>
-nnoremap <Leader>gR  :Gread<CR>
-nnoremap <Leader>gg  :Git
-nnoremap <Leader>gd  :Gdiff<CR>
-nnoremap <Leader>gco :Gcommit<CR>
-
-" Vim Notes
-let g:notes_directories = ['~/Documentos/Notes', '~/Dropbox/Shared Notes']
-let g:notes_suffix = '.note'
-
+if exists('g:GuiLoaded')
+  Guifont Consolas:h9
+endif
 
 " Configurações do GVIM
 if has('gui_running')
-  " set guifont=Dejavu\ Sans\ Mono\ for\ Powerline\ 10
-  set guifont=Fira\ Mono\ Medium\ for\ Powerline\ 10
+
   set guioptions-=m  "remove menu bar
   set guioptions-=T  "remove toolbar
   set guioptions-=r  "remove right-hand scroll bar
@@ -831,22 +728,10 @@ endif
 
 
 " Gruvbox
-let g:gruvbox_italic        = 0
+let g:gruvbox_italic        = 1
 let g:gruvbox_bold          = 1
 let g:gruvbox_contrast_dark = 'medium'
 let g:gruvbox_invert_selection = 0
-
-" PHP Complete
-let g:phpcomplete_cache_taglists = 1
-let g:phpcomplete_parse_docblock_comments = 1
-
-" Php Refactoring
-let g:vim_php_refactoring_use_default_mapping = 0
-let g:vim_php_refactoring_phpdoc = 'pdv#DocumentWithSnip'
-let g:pdv_template_dir = $HOME ."/.vim/plugged/pdv/templates_snip"
-
-" Tagbar PHP
-let g:tagbar_phpctags_bin='/opt/scripts/phpctags'
 
 " Startify
 let g:startify_custom_header = []
@@ -882,47 +767,63 @@ if !has('nvim')
   map y <Plug>(highlightedyank)
 endif
 
-" PHP-CS-FIXER
-let g:php_cs_fixer_level                  = "psr2"              " which level ?
-let g:php_cs_fixer_config                 = "default"             " configuration
-let g:php_cs_fixer_php_path               = "php"               " Path to PHP
-let g:php_cs_fixer_fixers_list            = "linefeed,short_tag,indentation"
-let g:php_cs_fixer_enable_default_mapping = 1     " Enable the mapping by default (<leader>pcd)
-let g:php_cs_fixer_dry_run                = 0                    " Call command with dry-run option
-let g:php_cs_fixer_verbose                = 1                    " Return the output of command if 1, else an inline information.
-
 " Vim-Sneak
 let g:sneak#use_ic_scs = 1
-
-" EditorConfig
-let g:EditorConfig_core_mode = 'external_command'
-
-" Local Vim RC
-let g:localvimrc_sandbox = 0
-let g:localvimrc_ask = '0'
-
-" Gitgutter
-let g:gitgutter_realtime = 0
-let g:gitgutter_eager = 0
-
-" ZeaVim
-let g:zv_file_types = {
-      \   'css'                      : 'css,foundation,bootstrap_4',
-      \   '.htaccess'                : 'apache_http_server',
-      \   '\v^(G|g)runt\.'           : 'gulp,javascript,nodejs',
-      \   '\v^(G|g)ulpfile\.'        : 'grunt',
-      \   '\v^(md|mdown|mkd|mkdn)$'  : 'markdown',
-      \   'php'                      : 'laravel',
-      \   '.blade.php'               : 'laravel',
-      \ }
 
 " AsyncRun
 let g:asyncrun_exit = "silent doautocmd QuickFixCmdPost make"
 
-" MiniYank
-map p <Plug>(miniyank-autoput)
-map P <Plug>(miniyank-autoPut)
-map <leader>c <Plug>(miniyank-cycle)
+" Coc-Nvim
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+function IsComment()
+    let hg = join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'))
+    return hg =~? 'comment' ? 1 : 0
+endfunction
+
+function! HoverFunction() abort
+let cInd = strridx(getline('.'), expand("<cword>"), col('.') - 1)
+let isOnKeyword = (cInd >= 0 && (cInd + strlen(expand("<cword>"))) >= (col('.') - 1))
+if isOnKeyword == 1 && !IsComment()
+  silent! call CocActionAsync('doHover')
+endif
+endfunction
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
+autocmd CursorHold * silent! call HoverFunction()<CR>
+
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+function! Multiple_cursors_before()
+    " call ncm2#lock('vim-multiple-cursors')
+endfunction
+
+function! Multiple_cursors_after()
+    " call ncm2#unlock('vim-multiple-cursors')
+endfunction
+
 
 " }}}
 
@@ -946,17 +847,6 @@ augroup configgroup
 
 augroup END
 
-
-augroup pencil
-  autocmd!
-  autocmd FileType markdown,mkd
-        \ | setl spelllang=pt,en_us fdl=4 noru nonu nornu
-        \ | setl fdo+=search
-
-  autocmd Filetype mail
-        \ | setl spelllang=pt,en_us et sw=2 ts=2 noai nonu nornu
-augroup END
-
 " Voltar para posição anterior
 augroup resCur
   autocmd!
@@ -974,15 +864,34 @@ autocmd WinEnter * if exists('b:NERDTree') | execute 'normal R' | endif
 " Fix QuickFix
 au WinEnter,BufEnter * if &filetype == "qf" | call utils#AdjustWindowHeight(3, 10)
 
+" autocmd BufEnter * call StartNCM()
+" autocmd InsertCharPre * call StartNCM()
+
+function! StartNCM() abort
+  let g:bufentered = 1
+  call ncm2#enable_for_buffer()
+endfunction
+
 " Salvar quando sair do insert mode, usando delay com timer_start
 au InsertLeave * nested call timer_start(250, 'SaveFile', {'repeat': 1})
 
 function! SaveFile(timer) abort
+  let g:insertleave = 1
   " Não tenta salvar caso esteja no modo expand do neosnippet
-  if !neosnippet#expandable_or_jumpable()
-    call utils#AutoSave()
-  endif
+  " if !neosnippet#expandable_or_jumpable()
+  "   call utils#AutoSave()
+  " endif
 endfunction
+
+" Formatar tabela do markdown
+au FileType markdown vmap <Leader><Bar> :EasyAlign*<Bar><Enter>
+
+augroup DeferredLoadOnIdle
+    au!
+    autocmd CursorHold,CursorHoldI * call plug#load(g:deferredPlugins)
+                \ | echom "deferred load completed for ". len(g:deferredPlugins) . " plugins"
+                \ | autocmd! DeferredLoadOnIdle
+augroup END
 
 " }}}
 
@@ -1016,12 +925,6 @@ function! Set( optionName )
 endfunction
 com! -nargs=1 Set call Set( <q-args> )
 
-command! NeoSnippetsList call fzf#run({
-  \ 'source':  g:utils#GetSnippets(),
-  \ 'down':    '40%',
-  \ 'sink':    function('s:snippets_sink')})
-
-imap <f7> <C-o>:NeoSnippetsList<cr>
 
 " }}}
 
@@ -1046,7 +949,3 @@ hi SpellBad cterm=underline ctermfg=red
 hi SpellBad gui=undercurl guisp=red guifg=red
 
 hi StartifyHeader ctermfg=40 guifg=40
-
-" MATCH YIELD LARAVEL
-" let t=[] | %s/\v\@yield\(\'\zs.*\w/\=add(t,submatch(0))[-1]/g:
-"
