@@ -49,20 +49,7 @@ Plug 'tpope/vim-repeat'
 Plug 'junegunn/vim-easy-align'
 Plug 'tomtom/tcomment_vim'
 Plug 'vim-scripts/ReplaceWithRegister'
-" function! LeximaStart() abort
-"   call lexima#init()
-"   inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : lexima#expand('<LT>CR>', 'i')
-"   call lexima#add_rule({'char': '}', 'at': '\%#\n\s*}', 'leave': '}'})
-"   call lexima#add_rule({'char': ']', 'at': '\%#\n\s*]', 'leave': ']'})
-"   call lexima#add_rule({'char': ')', 'at': '\%#\n\s*)', 'leave': ')'})
-"   call lexima#add_rule({'char': '<?php', 'at': '\%#\n\s*)', 'leave': '?>'})
-" endfunction
-" Plug 'cohama/lexima.vim', {
-"       \ 'lazy': 1,
-"       \ 'on_event': 'InsertCharPre'
-"       \ 'do': function('LeximaStart')
-"       \ }
-Plug 'Raimondi/delimitMate'
+" Plug 'Raimondi/delimitMate'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-function', { 'build': 'mkdir ./after/ftplugin/php; cp ./after/ftplugin/java/textobj-function.vim ./after/ftplugin/php/'}
 Plug 'thinca/vim-textobj-function-javascript'
@@ -70,6 +57,7 @@ Plug 'kana/vim-textobj-line'
 Plug 'rbonvall/vim-textobj-latex'
 Plug 'saaguero/vim-textobj-pastedtext'
 Plug 'matze/vim-move'
+Plug 'tmsvg/pear-tree'
 " }}}
 " ===============          Completion          ============== {{{
 " Plug 'ncm2/ncm2'
@@ -82,7 +70,7 @@ Plug 'matze/vim-move'
 " Plug 'ncm2/float-preview.nvim'
 " Plug 'ObserverOfTime/ncm2-jc2', {'for': ['java', 'jsp']}
 " Plug 'artur-shaik/vim-javacomplete2', {'for': ['java', 'jsp']}
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim',  {'tag': '*', 'do': './install.sh'}
 Plug 'neoclide/coc-sources'
 Plug 'neoclide/coc-pyls'
 Plug 'neoclide/coc-java'
@@ -715,8 +703,8 @@ if exists('g:GuiLoaded')
 endif
 
 " Configurações do GVIM
+set guifont=mononoki:h11
 if has('gui_running')
-
   set guioptions-=m  "remove menu bar
   set guioptions-=T  "remove toolbar
   set guioptions-=r  "remove right-hand scroll bar
@@ -725,7 +713,6 @@ if has('gui_running')
 else
   set guioptions=M
 endif
-
 
 " Gruvbox
 let g:gruvbox_italic        = 1
