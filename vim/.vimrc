@@ -10,25 +10,20 @@ command! -nargs=* DeferPlug call g:utils#DeferPluginLoad(<args>)
 call plug#begin('~/.vim/plugged')
 " ===============          Geral            ================ {{{
 Plug 'tpope/vim-dispatch'
-Plug 'skywind3000/asyncrun.vim'
 Plug 'w0rp/ale', { 'on_event': 'BufWritePre'}
 Plug 'majutsushi/tagbar'
 DeferPlug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree' , { 'on':  [ 'NERDTreeToggle', 'NERDTreeFind' ] }
 Plug 'Konfekt/FastFold'
-Plug 'ludovicchabant/vim-gutentags', { 'on_event': 'BufWritePre'}
-Plug 'shime/vim-livedown'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'machakann/vim-highlightedyank'
 Plug 'mhinz/vim-grepper'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'build': './install --all', 'merged': 0 }
 Plug 'junegunn/fzf.vim'
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'jszakmeister/vim-togglecursor'
 Plug 'ryanoasis/vim-devicons', { 'on': [ 'NERDTreeToggle', 'NERDTreeFind'], 'rtp': ''}
 Plug 'wincent/ferret'
 Plug 'mhinz/vim-startify'
-Plug 'osyo-manga/vim-over'
 Plug 'pgdouyon/vim-evanesco'
 Plug 'equalsraf/neovim-gui-shim'
 Plug 'lambdalisue/suda.vim'
@@ -42,13 +37,11 @@ Plug 'mhinz/vim-signify'
 " ===============  Manipulação de Texto/Objetos  ============= {{{
 Plug 'kana/vim-operator-user'
 DeferPlug 'wellle/targets.vim'
-" Plug 'machakann/vim-sandwich'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'junegunn/vim-easy-align'
 Plug 'tomtom/tcomment_vim'
 Plug 'vim-scripts/ReplaceWithRegister'
-" Plug 'Raimondi/delimitMate'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-function', { 'build': 'mkdir ./after/ftplugin/php; cp ./after/ftplugin/java/textobj-function.vim ./after/ftplugin/php/'}
 Plug 'thinca/vim-textobj-function-javascript'
@@ -59,21 +52,12 @@ Plug 'matze/vim-move'
 Plug 'tmsvg/pear-tree'
 " }}}
 " ===============          Completion          ============== {{{
-" Plug 'ncm2/ncm2'
-" Plug 'roxma/nvim-yarp'
-" Plug 'ncm2/ncm2-bufword'
-" Plug 'ncm2/ncm2-tmux'
-" Plug 'ncm2/ncm2-path'
-" Plug 'ncm2/ncm2-ultisnips'
-" Plug 'ncm2/ncm2-jedi'
-" Plug 'ncm2/float-preview.nvim'
-" Plug 'ObserverOfTime/ncm2-jc2', {'for': ['java', 'jsp']}
-" Plug 'artur-shaik/vim-javacomplete2', {'for': ['java', 'jsp']}
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
-Plug 'neoclide/coc-sources'
-Plug 'neoclide/coc-pyls'
-Plug 'neoclide/coc-java'
-Plug 'neoclide/coc-snippets'
+DeferPlug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+DeferPlug 'neoclide/coc-sources'
+DeferPlug 'neoclide/coc-pyls'
+DeferPlug 'neoclide/coc-java'
+DeferPlug 'neoclide/coc-snippets'
+DeferPlug 'iamcco/coc-vimlsp'
 " }}}
 
 " ===============            Syntax          ============== {{{
@@ -89,17 +73,14 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'cespare/vim-toml', { 'for': 'toml'}
 Plug 'aklt/plantuml-syntax', { 'for': 'uml'}
 Plug 'Valloric/MatchTagAlways', { 'for': ['html', 'xml', 'php', 'blade' ]}
-"}}
+"}}}
 
 " ===============        Color Schemes        ============== {{{
 Plug 'morhetz/gruvbox'
 "}}}
 
 call plug#end()
-" runtime ~/.vim/plugged/vim-sandwich/macros/sandwich/keymap/surround.vim
 
-" }}}
-"
 " }}}
 
 " ================   Configurações Gerais   ================ {{{
@@ -260,7 +241,6 @@ endif
 
 " ABBREV
 iabbrev sqlid -- $Id$
-iabbrev
 " GoNvim
 let g:gonvim_draw_statusline = 0
 let g:gonvim_draw_tabline = 0
@@ -366,8 +346,6 @@ inoremap <C-s> <Esc>[s1z=gi
 " Salvar arquivo com <leader>s
 nnoremap <leader>s :w<cr>
 
-nnoremap <leader>how :AsyncRun howdoi -n 5
-
 " Completar tags manualmente
 inoremap <silent> <expr> <C-]> utils#manualTagComplete()
 
@@ -436,18 +414,6 @@ let g:mta_filetypes = {
     \ 'blade': 1,
     \ 'vue':   1,
     \}
-
-" Gutentags
-let g:gutentags_project_info = []
-let g:gutentags_define_advanced_commands = 1
-let g:gutentags_project_root = ['.git', 'composer.json']
-let g:gutentags_ctags_exclude = ['*.js', '*.html', '*.css', 'node_modules/*']
-let g:gutentags_generate_on_write = 1
-let g:gutentags_ctags_auto_set_tags = 0
-let g:gutentags_generate_on_missing = 0
-call add(g:gutentags_project_info, {'type': 'python', 'file': 'setup.py'})
-call add(g:gutentags_project_info, {'type': 'ruby', 'file': 'Gemfile'})
-call add(g:gutentags_project_info, {'type': 'php', 'file': 'composer.json'})
 
 " Ale
 let g:ale_lint_on_text_changed = 'never'
@@ -695,7 +661,6 @@ let NERDTreeHijackNetrw = 1
 
 " Netrw
 let g:netrw_liststyle = 3
-let g:netrw_write_AsyncRun = 1
 
 if exists('g:GuiLoaded')
   Guifont Consolas:h9
@@ -740,11 +705,6 @@ let g:startify_list_order = [
 let g:togglecursor_default = 'block'
 let g:togglecursor_insert = 'line'
 
-" Vim-Over
-nnoremap <C-F> :OverCommandLine %s/<CR>
-vnoremap <C-F> :'<,'>OverCommandLine s/<CR>
-nmap <leader>sw :OverCommandLine %s/\(<c-r>=expand("<cword>")<cr>\)/<CR>/g<left><left>
-
 " Ferret
 let g:FerretDispatch = 0
 let g:FerretQFMap = 1
@@ -756,11 +716,6 @@ endif
 
 " Vim-Sneak
 let g:sneak#use_ic_scs = 1
-
-" AsyncRun
-let g:asyncrun_exit = "silent doautocmd QuickFixCmdPost make"
-
-" Coc-Nvim
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -779,14 +734,16 @@ function IsComment()
 endfunction
 
 function! HoverFunction() abort
-let cInd = strridx(getline('.'), expand("<cword>"), col('.') - 1)
-let isOnKeyword = (cInd >= 0 && (cInd + strlen(expand("<cword>"))) >= (col('.') - 1))
-if isOnKeyword == 1 && !IsComment() && exists('*nvim_open_float_win') == 0
-  silent! call CocActionAsync('doHover')
-endif
+  try
+    let cInd = strridx(getline('.'), expand("<cword>"), col('.') - 1)
+    let isOnKeyword = (cInd >= 0 && (cInd + strlen(expand("<cword>"))) >= (col('.') - 1))
+    if isOnKeyword == 1 && !IsComment() && !coc#util#has_float() && exists('g:did_coc_loaded')
+      silent! call CocActionAsync('doHover')
+    endif
+  catch
+  endtry
 endfunction
 
-autocmd CursorHold * silent call CocActionAsync('highlight')
 autocmd CursorHold * silent! call HoverFunction()<CR>
 autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 
@@ -886,7 +843,6 @@ augroup END
 " ================   Configurações Extras   ================ {{{
 
 " Tig
-command! Tig :AsyncRun tig
 let g:python_host_skip_check = 1
 let g:python3_host_skip_check = 1
 
