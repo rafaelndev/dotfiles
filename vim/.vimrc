@@ -32,7 +32,6 @@ Plug 'osyo-manga/vim-over'
 Plug 'pgdouyon/vim-evanesco'
 Plug 'equalsraf/neovim-gui-shim'
 Plug 'lambdalisue/suda.vim'
-" Plug 'svermeulen/vim-cutlass'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'terryma/vim-multiple-cursors'
@@ -82,7 +81,7 @@ Plug 'matze/vim-move'
 " Plug 'ncm2/float-preview.nvim'
 " Plug 'ObserverOfTime/ncm2-jc2', {'for': ['java', 'jsp']}
 " Plug 'artur-shaik/vim-javacomplete2', {'for': ['java', 'jsp']}
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 Plug 'neoclide/coc-sources'
 Plug 'neoclide/coc-pyls'
 Plug 'neoclide/coc-java'
@@ -162,7 +161,7 @@ set undodir=~/.vim/undo
 set noautochdir
 
 " Conceal Level
-set conceallevel=2 concealcursor=niv
+set conceallevel=2 concealcursor=nv
 
 " Novas janelas divididas sempre aparecem do lado direito ou embaixo
 set splitright
@@ -714,6 +713,8 @@ if exists('g:GuiLoaded')
   Guifont Consolas:h9
 endif
 
+  set guifont=mononoki:h11
+
 " Configurações do GVIM
 if has('gui_running')
 
@@ -725,6 +726,7 @@ if has('gui_running')
 else
   set guioptions=M
 endif
+set guicursor+=a:blinkon0
 
 
 " Gruvbox
@@ -794,13 +796,14 @@ endfunction
 function! HoverFunction() abort
 let cInd = strridx(getline('.'), expand("<cword>"), col('.') - 1)
 let isOnKeyword = (cInd >= 0 && (cInd + strlen(expand("<cword>"))) >= (col('.') - 1))
-if isOnKeyword == 1 && !IsComment()
+if isOnKeyword == 1 && !IsComment() && exists('*nvim_open_float_win') == 0
   silent! call CocActionAsync('doHover')
 endif
 endfunction
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
 autocmd CursorHold * silent! call HoverFunction()<CR>
+autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 
 
 " Remap for rename current word
