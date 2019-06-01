@@ -31,7 +31,8 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'stefandtw/quickfix-reflector.vim'
-Plug 'mhinz/vim-signify'
+DeferPlug 'mhinz/vim-signify'
+Plug 'christoomey/vim-tmux-navigator'
 " }}}
 
 " ===============  Manipulação de Texto/Objetos  ============= {{{
@@ -48,20 +49,20 @@ Plug 'thinca/vim-textobj-function-javascript'
 Plug 'kana/vim-textobj-line'
 Plug 'rbonvall/vim-textobj-latex'
 Plug 'saaguero/vim-textobj-pastedtext'
-Plug 'matze/vim-move'
 Plug 'tmsvg/pear-tree'
+Plug 'machakann/vim-swap'
 " }}}
 " ===============          Completion          ============== {{{
-DeferPlug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
-DeferPlug 'neoclide/coc-sources'
-DeferPlug 'neoclide/coc-pyls'
-DeferPlug 'neoclide/coc-java'
-DeferPlug 'neoclide/coc-snippets'
-DeferPlug 'iamcco/coc-vimlsp'
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+Plug 'neoclide/coc-python'
+  Plug 'neoclide/coc-sources'
+  Plug 'neoclide/coc-java'
+  Plug 'neoclide/coc-snippets'
+  Plug 'iamcco/coc-vimlsp'
+Plug 'fatih/vim-go'
 " }}}
 
 " ===============            Syntax          ============== {{{
-Plug 'Chiel92/vim-autoformat'
 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'jelera/vim-javascript-syntax', { 'for': ['javascript', 'html', 'php']}
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'html', 'php'] }
@@ -214,7 +215,7 @@ set wildignore+=*.gif,*.jpg,*.png
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz,tags
 
 " Ignorar algumas pastas
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,/lib/*,*/Vendor/*
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,/lib/*,*/Vendor/*,*CVS*
 
 " Tags
 set tags=tags
@@ -241,16 +242,6 @@ endif
 
 " ABBREV
 iabbrev sqlid -- $Id$
-" GoNvim
-let g:gonvim_draw_statusline = 0
-let g:gonvim_draw_tabline = 0
-let g:gonvim_start_fullscreen = 0
-
-" DelimitMate
-let delimitMate_expand_cr = 1
-let delimitMate_jump_expansion = 1
-let delimitMate_balance_matchpairs = 1
-let delimitMate_expand_space = 1
 " }}}
 
 " ================         Keybinds         ================ {{{
@@ -287,8 +278,6 @@ nnoremap \ :
 " <leader>h limpa as buscas
 nmap <leader>h :nohlsearch<CR>
 
-noremap <F5> :VdebugStart<CR>
-
 " Abreviações nos comandos
 cnoreabbrev W w
 cnoreabbrev Q q
@@ -313,9 +302,6 @@ vnoremap > >gv
 
 " Mapeando jj para ESC
 inoremap jk <ESC>
-
-" Auto completar html tags com espaço
-iabbrev </ </<C-X><C-O>
 
 " Abrir um buffer limpo
 nmap <leader>t :enew<cr>
@@ -352,17 +338,11 @@ inoremap <silent> <expr> <C-]> utils#manualTagComplete()
 " Selecionar palavra sem pular
 nnoremap * *``
 
-" augroup load_insert_plugin
-"   autocmd!
-"   autocmd InsertEnter * call StartInsertPlugins()
-"                      \| autocmd! load_insert_plugin
-" augroup END
-
 " Visual AT
 xnoremap @ :<C-u>call utils#ExecuteMacroOverVisualRange()<CR>
 
-" function! StartInsertPlugins() abort
-" endfunction
+" Terminal
+tnoremap <Esc> <C-\><C-n>
 
 " }}}
 
@@ -394,9 +374,6 @@ let g:vimsyn_embed = 1 "$VIMRUNTIME/syntax/vim.vim
 
 " vim-plug
 let g:plug_timeout = 5000 "Necessário por causa das compilações
-
-" Lexima
-let g:lexima_enable_space_rules = 0
 
 " Vim-Markdown
 let g:vim_markdown_folding_disabled = 1
@@ -444,7 +421,7 @@ xmap ( S(
 xmap ) S)
 
 " Polyglot
-let g:polyglot_disabled = ['latex', 'dockerfile', 'git', 'gitcommit', 'javascript', 'markdown']
+let g:polyglot_disabled = ['dockerfile', 'latex', 'git', 'gitcommit', 'javascript', 'markdown']
 
 " Vim-Javascript
 let javascript_enable_domhtmlcss = 1
@@ -453,33 +430,10 @@ let b:javascript_fold            = 0
 " Vim Javascript Libraries
 let g:used_javascript_libs = 'underscore,jquery,requirejs'
 
-" VimTex
-"let g:vimtex_latexmk_continuous           = 1
-"let g:vimtex_view_method                  = 'zathura'
-"let g:vimtex_fold_enabled                 = 0
-"let g:vimtex_latexmk_background           = 1
-"let g:vimtex_quickfix_ignore_all_warnings = 1
-"let g:vimtex_quickfix_open_on_warning     = 1
-"let g:vimtex_latexmk_progname             = 'nvr'
-"let g:vimtex_quickfix_autojump = 0
-"let g:vimtex_quickfix_mode = 0
-
-" Autoformat
-" let g:formatdef_phpfmt = "'fmt.phar --psr2 --no-backup '.shellescape(expand('%:p'))"
-let g:formatdef_phpfmt = "'fmt.phar --psr2 --no-backup -'"
-let g:formatters_php = ['phpfmt']
-let g:formatters_blade = ['tidy_html']
-let g:formatters_blade_php = ['tidy_html']
-let g:autoformat_verbosemode = 1
-noremap <leader>f :Autoformat<CR><CR>
-
 "FZF
 nnoremap <leader>@ :BTags<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <C-p> :FZF<CR>
-
-" UtiSnips
-" inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 
 " c-j c-k for moving in snippet
 let g:UltiSnipsExpandTrigger		= "<c-j>"
@@ -551,7 +505,6 @@ if s:tagbar_need_update == 1
   " Só procura tags em arquivos com menos de 20000 linhas
   if line('$') < 20000
     let s:tagbar_last_lookup_val = tagbar#currenttag('%s ', '')
-
   endif
 endif
 endfunction
@@ -612,7 +565,6 @@ let g:tagbar_type_go = {
 inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 
 " Use <TAB> to select the popup menu:
-
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
@@ -658,9 +610,6 @@ let NERDTreeWinSize    = 40
 let NERDTreeDirArrows  = 1
 let NERDTreeQuitOnOpen = 0
 let NERDTreeHijackNetrw = 1
-
-" Netrw
-let g:netrw_liststyle = 3
 
 if exists('g:GuiLoaded')
   Guifont Consolas:h9
@@ -714,8 +663,9 @@ if !has('nvim')
   map y <Plug>(highlightedyank)
 endif
 
-" Vim-Sneak
-let g:sneak#use_ic_scs = 1
+" Tcomment
+let g:tcomment_mapleader_uncomment_anyway = ''
+let g:tcomment_mapleader_comment_anyway = ''
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -747,7 +697,6 @@ endfunction
 autocmd CursorHold * silent! call HoverFunction()<CR>
 autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 
-
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 
@@ -777,19 +726,6 @@ endfunction
 augroup OpenQuickfixWindowAfterMake
     autocmd QuickFixCmdPost [^l]* nested cwindow
     autocmd QuickFixCmdPost    l* nested lwindow
-augroup END
-
-augroup configgroup
-  autocmd!
-
-  " au FileType markdown,mkd UltiSnipsAddFiletypes markdown
-
-  au BufNewFile,BufRead *.ctp set filetype=php
-  au BufNewFile,BufRead *.ctp let b:neomake_php_enabled_makers = ['php', 'jshint', 'tidy']
-
-  au BufNewFile,BufRead *.blade.php set filetype=blade
-  au BufNewFile,BufRead *.note set filetype=notes
-
 augroup END
 
 " Voltar para posição anterior
@@ -842,7 +778,6 @@ augroup END
 
 " ================   Configurações Extras   ================ {{{
 
-" Tig
 let g:python_host_skip_check = 1
 let g:python3_host_skip_check = 1
 
