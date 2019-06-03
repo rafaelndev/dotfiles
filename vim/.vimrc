@@ -76,7 +76,7 @@ Plug 'Valloric/MatchTagAlways', { 'for': ['html', 'xml', 'php', 'blade' ]}
 "}}}
 
 " ===============        Color Schemes        ============== {{{
-Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 "}}}
 
 call plug#end()
