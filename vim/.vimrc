@@ -10,7 +10,7 @@ command! -nargs=* DeferPlug call g:utils#DeferPluginLoad(<args>)
 call plug#begin('~/.vim/plugged')
 " ===============          Geral            ================ {{{
 Plug 'tpope/vim-dispatch'
-Plug 'w0rp/ale', { 'on_event': 'BufWritePre'}
+" Plug 'w0rp/ale', { 'on_event': 'BufWritePre'}
 Plug 'majutsushi/tagbar'
 DeferPlug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree' , { 'on':  [ 'NERDTreeToggle', 'NERDTreeFind' ] }
@@ -53,10 +53,10 @@ Plug 'tmsvg/pear-tree'
 Plug 'machakann/vim-swap'
 " }}}
 " ===============          Completion          ============== {{{
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-python'
   Plug 'neoclide/coc-sources'
-  Plug 'neoclide/coc-java'
+  " Plug 'neoclide/coc-java'
   Plug 'neoclide/coc-snippets'
   Plug 'iamcco/coc-vimlsp'
 Plug 'fatih/vim-go'
@@ -137,25 +137,25 @@ set conceallevel=2 concealcursor=nv
 set splitright
 set splitbelow
 
-" Configurações da Busca
+" ConfiguraÃ§Ãµes da Busca
 set incsearch
 set hlsearch
 set magic
 
-" Configurações da commandline
+" ConfiguraÃ§Ãµes da commandline
 set ruler
 set wildmenu
 
-" Não resetar o cursor para o inicio da linha
+" NÃ£o resetar o cursor para o inicio da linha
 set nostartofline
 
 " Ler arquivo automaticamente caso ele for modificado externalmente
 set autoread
 
-" Mudar versão do Regex para 0 (Automatico)
+" Mudar versÃ£o do Regex para 0 (Automatico)
 set regexpengine=0
 
-" Realça linha atual
+" RealÃ§a linha atual
 set cursorline
 
 " Melhorar performance
@@ -167,12 +167,12 @@ if !has('nvim')
 set ttyfast
 endif
 
-" Definições padrões de identação
+" DefiniÃ§Ãµes padrÃµes de identaÃ§Ã£o
 set tabstop=2 shiftwidth=2 expandtab
 set listchars=tab:▒░,trail:▓
 set listchars-=eol
 
-" Mostrar espaços em branco
+" Mostrar espaÃ§os em branco
 set list
 
 set number
@@ -184,16 +184,16 @@ if has('mouse')
 set mouse=a
 endif
 
-" Força os buffers a ficarem escondidos (hidden)
+" ForÃ§a os buffers a ficarem escondidos (hidden)
 set hidden
 
-" Não salvar arquivos de backup
+" NÃ£o salvar arquivos de backup
 set nobackup
 set nowritebackup
 set noswapfile
 set fileformats=unix,dos,mac
 
-" Configuração de auto completar para funcionar com o YCM
+" ConfiguraÃ§Ã£o de auto completar para funcionar com o YCM
 " set completeopt=menu,menuone,longest
 " set completeopt=noinsert,menu,menuone,noselect
 set completeopt=noinsert,menuone,noselect
@@ -211,7 +211,7 @@ set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
 " Ignorar Imagens e arquivos de Log
 set wildignore+=*.gif,*.jpg,*.png
 
-" Ignorar zip e irmãos
+" Ignorar zip e irmÃ£os
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz,tags
 
 " Ignorar algumas pastas
@@ -228,9 +228,9 @@ set sessionoptions-=help
 set iskeyword+=-
 
 if executable("rg")
-  let g:ag_prg="rg --vimgrep --smart-case -F -U"
-  let g:ackprg = 'rg --nogroup --nocolor --column -U'
-  set grepprg=rg\ --vimgrep\ --no-heading
+  let g:ag_prg="rg -i --vimgrep --smart-case -F -U"
+  let g:ackprg = 'rg -i --nogroup --nocolor --column -U'
+  set grepprg=rg\ --vimgrep\ --no-heading\ -i
   set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 
@@ -242,6 +242,7 @@ endif
 
 " ABBREV
 iabbrev sqlid -- $Id$
+
 " }}}
 
 " ================         Keybinds         ================ {{{
@@ -252,12 +253,12 @@ nnoremap Q <nop>
 " Toggle Paste mode
 set pastetoggle=<F2>
 
-" Mapeando <leader> para " " Espaço"
+" Mapeando <leader> para " " EspaÃ§o"
 nnoremap <Space> <nop>
 let mapleader = ' '
 let maplocalleader = ' '
 
-" Modifica a movimentação por linhas visuais
+" Modifica a movimentaÃ§Ã£o por linhas visuais
 nnoremap j gj
 nnoremap k gk
 
@@ -278,7 +279,7 @@ nnoremap \ :
 " <leader>h limpa as buscas
 nmap <leader>h :nohlsearch<CR>
 
-" Abreviações nos comandos
+" AbreviaÃ§Ãµes nos comandos
 cnoreabbrev W w
 cnoreabbrev Q q
 
@@ -296,7 +297,7 @@ nnoremap <leader><down> :resize +5<cr>
 nnoremap <leader><up> :resize -5<cr>
 nnoremap <leader><right> :vertical resize +5<cr>
 
-" Faz com que < e > continue com a seleção
+" Faz com que < e > continue com a seleÃ§Ã£o
 vnoremap < <gv
 vnoremap > >gv
 
@@ -316,16 +317,16 @@ nmap <leader>j :bprevious<CR>
 nnoremap <leader>q :call utils#CloseSplitOrDeleteBuffer()<CR>
 nnoremap <leader>qb :bp<cr>:bd #<cr>
 
-" Salvar mais rápido
+" Salvar mais rÃ¡pido
 nmap <leader>w :w!<cr>
 
-" Remover Espaços em branco
+" Remover EspaÃ§os em branco
 map <Leader>T :%s/\s\+$//<CR>
 
-" Transformar tabs em espaços no documento
+" Transformar tabs em espaÃ§os no documento
 map <Leader>R :retab<CR>
 
-" Corrigir erros de digitação
+" Corrigir erros de digitaÃ§Ã£o
 nnoremap <C-s> [s1z=<c-o>
 inoremap <C-s> <Esc>[s1z=gi
 
@@ -446,7 +447,7 @@ let s:fugitive_head = ''
 function! GetFugitiveHead(timer)
 if exists('*fugitive#head')
   let _ = fugitive#head()
-  let s:fugitive_head = strlen(_) ? ' '._ : ''
+  let s:fugitive_head = strlen(_) ? 'î  '._ : ''
 endif
 endfunction
 
@@ -478,31 +479,41 @@ let g:lightline = {
     \ 'colorscheme': 'wombat',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
-    \             [  'readonly', 'filename', 'modified', ] ],
+    \             [  'readonly', 'filename', 'modified', 'cocnvim'] ],
     \   'right': [ [ 'lineinfo' ],
     \              [ 'percent' ],
-    \              [ 'tagbar', 'fileformat', 'fileencoding', 'filetype'] ],
+    \              [ 'tagbar', 'fileformat', 'fileencoding', 'bomb', 'filetype'] ],
     \ },
     \ 'component': {
     \   'lineinfo': '%l\%L [%p%%], %c, %n',
     \   'readonly': '%{&readonly?"\ue0a2":""}',
+    \   'bomb': '%{&bomb?"BOM":""}',
+    \   'cocnvim': '%{coc#status()}'
     \ },
     \ 'component_function': {
     \   'mode': 'LightLineMode',
     \   'fugitive': 'LightLineFugitive',
-    \   'tagbar': 'TagBarCurrentTag'
+    \   'tagbar': 'TagBarCurrentTag',
+    \   'currentfunction': 'CocCurrentFunction'
+    \ },
+    \ 'component_visible_condition': {
+    \   'bomb': '&bomb',
     \ },
     \ 'separator': { 'left': '', 'right': '' },
     \ 'subseparator': { 'left': '', 'right': '' }
     \ }
 
+function! CocCurrentFunction()
+    return 'C' . get(b:, 'coc_current_function', '')
+endfunction
 
 let s:tagbar_last_lookup_val = ''
 let s:tagbar_need_update = 0
+
 function! GetTagbarCurrentTag(timer)
 if s:tagbar_need_update == 1
 
-  " Só procura tags em arquivos com menos de 20000 linhas
+  " SÃ³ procura tags em arquivos com menos de 20000 linhas
   if line('$') < 20000
     let s:tagbar_last_lookup_val = tagbar#currenttag('%s ', '')
   endif
@@ -562,7 +573,7 @@ let g:tagbar_type_go = {
   \ 'ctagsargs' : '-sort -silent'
 \ }
 
-inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+" inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 
 " Use <TAB> to select the popup menu:
 " Use tab for trigger completion with characters ahead and navigate.
@@ -577,8 +588,11 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<C-R>=UltiSnips#ExpandSnippet()"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <silent><expr> <c-space> coc#refresh()
+
 
 " Enable omni completion.
 autocmd FileType css           setlocal omnifunc=csscomplete#CompleteCSS
@@ -594,10 +608,10 @@ nmap ga <Plug>(EasyAlign)
 let g:grepper = {
       \ 'tools': ['rgnew'],
       \ 'rgnew': {
-      \   'grepprg':    'rg --vimgrep -F --no-heading',
+      \   'grepprg':    'rg -i --vimgrep -F --no-heading',
       \ }}
 
-nnoremap <leader>a :Grepper -tool rgnew  -open -switch -highlight<cr>
+nnoremap <leader>a :Grepper -tool rgnew -open -switch -highlight<cr>
 
 " Nerdtree
 map <leader>n :NERDTreeToggle<CR>
@@ -611,12 +625,9 @@ let NERDTreeDirArrows  = 1
 let NERDTreeQuitOnOpen = 0
 let NERDTreeHijackNetrw = 1
 
-if exists('g:GuiLoaded')
-  Guifont Consolas:h9
-endif
 
-" Configurações do GVIM
-set guifont=mononoki:h11
+" ConfiguraÃ§Ãµes do GVIM
+set guifont=mononoki:h14
 if has('gui_running')
   set guioptions-=m  "remove menu bar
   set guioptions-=T  "remove toolbar
@@ -640,7 +651,7 @@ let g:startify_session_dir         = '~/.vim/sessions'
 let g:startify_session_persistence = 1
 let g:startify_enable_unsafe = 1
 let g:startify_list_order = [
-      \ ['   Sessões:'],
+      \ ['   SessÃµes:'],
       \ 'sessions',
       \ ['   Arquivos usados recentimente:'],
       \ 'files',
@@ -669,6 +680,12 @@ let g:tcomment_mapleader_comment_anyway = ''
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+nmap <silent> <leader>gd <Plug>(coc-definition)
+nmap <silent> <leader>gy <Plug>(coc-type-definition)
+nmap <silent> <leader>gi <Plug>(coc-implementation)
+nmap <silent> <leader>gr <Plug>(coc-references)
+nmap <silent> <leader>jd <Plug>(coc-definition)
 
 function! s:show_documentation()
   if &filetype == 'vim'
@@ -718,6 +735,11 @@ function! Multiple_cursors_after()
     " call ncm2#unlock('vim-multiple-cursors')
 endfunction
 
+if exists('g:GuiLoaded')
+  Guifont Consolas:h9
+  GuiPopupmenu 0
+endif
+
 
 " }}}
 
@@ -728,7 +750,7 @@ augroup OpenQuickfixWindowAfterMake
     autocmd QuickFixCmdPost    l* nested lwindow
 augroup END
 
-" Voltar para posição anterior
+" Voltar para posiÃ§Ã£o anterior
 augroup resCur
   autocmd!
   autocmd BufReadPost * call setpos(".", getpos("'\""))
@@ -758,7 +780,7 @@ au InsertLeave * nested call timer_start(250, 'SaveFile', {'repeat': 1})
 
 function! SaveFile(timer) abort
   let g:insertleave = 1
-  " Não tenta salvar caso esteja no modo expand do neosnippet
+  " NÃ£o tenta salvar caso esteja no modo expand do neosnippet
   " if !neosnippet#expandable_or_jumpable()
   "   call utils#AutoSave()
   " endif
@@ -783,13 +805,13 @@ let g:python3_host_skip_check = 1
 
 cnoremap <silent> <leader>q<CR>  :call ils#ConfirmQuit(0)<CR>
 
-" Text Object para indentação
+" Text Object para indentaÃ§Ã£o
 onoremap <silent>ai :<C-U>call utils#IndTxtObj(0)<CR>
 onoremap <silent>ii :<C-U>call utils#IndTxtObj(1)<CR>
 vnoremap <silent>ai :<C-U>call utils#IndTxtObj(0)<CR><Esc>gv
 vnoremap <silent>ii :<C-U>call utils#IndTxtObj(1)<CR><Esc>gv
 
-" Abrir a configuração
+" Abrir a configuraÃ§Ã£o
 command! Config call utils#config()
 
 command! -nargs=0 -bar Qargs execute 'args ' . utils#QuickfixFilenames()
@@ -803,6 +825,18 @@ function! Set( optionName )
   set verbose=0
 endfunction
 com! -nargs=1 Set call Set( <q-args> )
+
+command! ReplacePLSQLChar call ReplacePLSQLChar()<CR>
+
+function! ReplacePLSQLChar()
+    " Save cursor position
+    let l:save = winsaveview()
+    " Remove trailing whitespace
+    %s/¿\|á\|¿\|à\|¿\|é\|¿\|è\|¿\|í\|¿\|ì\|¿\|ó\|¿\|ò\|¿\|ú\|¿\|ù\|¿\|¿\|¿\|¿\|¿\|Á\|¿\|À\|¿\|É\|¿\|È\|¿\|Í\|¿\|Ì\|¿\|Ó\|¿\|Ò\|¿\|Ú\|¿\|Ù\|¿\|¿\|¿\|¿\|ç\|Ç/\='''|| CHR('.char2nr(submatch('0')).') ||'''/g
+    " Move cursor to original position
+    call winrestview(l:save)
+    echo "Corrigido characters ascii."
+endfunction
 
 
 " }}}
