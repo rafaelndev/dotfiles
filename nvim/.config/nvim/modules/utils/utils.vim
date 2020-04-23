@@ -197,3 +197,9 @@ endfunction
 function! s:plug_install(name, opts)
   Plug a:name, a:opts
 endfunction
+
+function! g:utils#FindSqlFiles()
+  let filter = input('Filtro: ')
+  silent! execute 'r! for file in $(find -iname "*'. filter .'*" -type f -printf ''\%P\n'' | sort -V); do echo "PROMPT Executando script $(basename $file)\n@$file"; done'
+endfunction
+

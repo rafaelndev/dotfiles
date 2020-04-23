@@ -1,0 +1,87 @@
+{
+  "suggest.enablePreview": true,
+  "suggest.noselect": false,
+  "coc.preferences.formatOnType": true,
+  "coc.preferences.messageLevel": "error",
+  "experimentalDecorators": "true",
+  "languageserver": {
+    "bash": {
+      "command": "bash-language-server",
+      "args": [
+        "start"
+      ],
+      "filetypes": [
+        "sh"
+      ],
+      "ignoredRootPaths": [
+        "~"
+      ]
+    },
+    "golang": {
+      "command": "gopls",
+      "args": [
+        "-logfile",
+        "/tmp/gopls.log"
+      ],
+      "trace.server": "verbose",
+      "rootPatterns": [
+        "go.mod",
+        ".vim/",
+        ".git/",
+        ".hg/"
+      ],
+      "filetypes": [
+        "go"
+      ]
+    },
+    "ccls": {
+      "command": "ccls",
+      "filetypes": [
+        "c",
+        "cpp",
+        "objc",
+        "objcpp"
+      ],
+      "rootPatterns": [
+        "Makefile",
+        ".ccls",
+        "compile_commands.json",
+        ".vim/",
+        ".git/",
+        ".hg/"
+      ],
+      "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/ccls"
+        }
+      }
+    },
+    "kotlin": {
+      "command": "/usr/bin/kotlin-language-server",
+      "filetypes": ["kotlin"]
+    }
+  },
+  "java.home": "/usr/lib/jvm/java-8-jdk",
+  "java.jdt.ls.home": "/usr/share/java/jdtls/",
+  "java.jdt.ls.vmargs": "-Xmx512M -XX:+UseG1GC -XX:+UseStringDeduplication",
+  "java.completion.overwrite": false,
+  "java.completion.guessMethodArguments": true,
+  "java.signatureHelp.enabled": true,
+  "java.implementationsCodeLens.enabled": true,
+  "java.referencesCodeLens.enabled": true,
+  "java.contentProvider.preferred": "cfr",
+  "explorer.file.columns": [
+    "selection",
+    "clip",
+    "diagnosticError",
+    "indent",
+    "icon",
+    "filename",
+    "size",
+    "modified",
+    "readonly"
+  ],
+  "explorer.debug": false,
+  "explorer.icon.enableNerdfont": true,
+  "java.errors.incompleteClasspath.severity": "ignore"
+}

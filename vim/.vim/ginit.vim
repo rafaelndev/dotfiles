@@ -1,1 +1,1 @@
-Guifont! mononoki:h10
+Guifont! mononoki Nerd Font:h10
